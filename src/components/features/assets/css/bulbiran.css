@@ -1,0 +1,55 @@
+@font-face {
+    font-family: "IRANYekan-Black";
+    src: url("../webfonts/IRANYekanBlackFaNum.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "IRANYekan-Bold";
+    src: url("../webfonts/IRANYekanBoldFaNum.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "IRANYekan-Light";
+    src: url("../webfonts/IRANYekanLightFaNum.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "IRANYekan-Regular";
+    src: url("../webfonts/IRANYekanRegularFaNum.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "IRANYekan-Medium";
+    src: url("../webfonts/IRANYekanMediumFaNum.ttf") format("truetype");
+  }
+body{
+    direction: rtl;
+}
+p{
+    font-family: 'IRANYekan-Medium';
+}
+.alert-row{
+    background-color: #003586;
+    height: auto;
+    padding-top:5px;
+    padding-bottom: 5px;
+}
+.alert-row p{
+    color:#fff;
+    text-align: center;
+    font-size: 13px;
+    font-family: 'IRANYekan-Bold';
+    margin-bottom: 0px;
+}
+.gray-row{
+    background-color: #f5f5f5;
+    padding:10px 5%;
+    
+}
+.ta-right{
+    text-align: right;
+}
+.f-bold{
+    font-family: 'IRANYekan-Bold' !important;
+}
+.send-text{
+    font-size: 15px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+}
