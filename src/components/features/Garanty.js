@@ -1,0 +1,191 @@
+import React , {useState} from 'react'
+import TopBar from './layouts/TopBar'
+import Header from './layouts/Header'
+import SocialRow from './layouts/SocialRow'
+import IconRow from './layouts/IconRow'
+import Footer from './layouts/Footer'
+import {Container,Row,Col,Button} from 'react-bootstrap'
+import LifeTime from './assets/icons/LifeTime'
+import Khadamat3 from './assets/icons/Khadamat3'
+import { FaAngleLeft,FaAlignRight ,FaCheck } from 'react-icons/fa';
+import b1 from './assets/img/b1.png';
+import b2 from './assets/img/b2.png';
+import b3 from './assets/img/b3.jpeg';
+import b4 from './assets/img/b4.png';
+import b5 from './assets/img/b5.png';
+import b6 from './assets/img/b6.png';
+import b7 from './assets/img/b7.png';
+import b8 from './assets/img/b8.png';
+import b9 from './assets/img/b9.png';
+import b10 from './assets/img/b10.png';
+import b11 from './assets/img/b11.png';
+import b12 from './assets/img/b12.png';
+import FormIcon from './assets/icons/FormIcon'
+import ContactMail from './assets/icons/ContactMail'
+const Garanty = () => {
+  
+    return (
+    <>
+          <TopBar/>
+      <Header/> 
+    <Container fluid className="bulbiranContainer"> 
+    <div className="whiteBox">
+        <div className="ta-right">
+            <LifeTime className="d-inline-block"/>
+            <p className="gTitle">گارانتی محصولات خریداری شده از برندهای همکار</p>
+        </div>
+        <p className="brandShopDescription w100" style={{color:"#18206b"}}>
+        در پروژه‌های تجاری دو بخش روشنایی عمومی و نورپردازی ویژه بخصوص در نمای ساختمان حائز اهمیت می‌باشد. ویترین مغازه‌ها، فروشگاه‌ها، نحوه نمایش محصولات و نورپردازی نمای بیرونی از اجزاء اصلی در روشنایی مکان‌های تجاری است. در این مکان‌ها انتخاب درست سیستم روشنایی و نورپردازی می‌تواند عامل اصلی بالا رفتن فروش و جذب مشتری باشد. نورپردازی صحیح می‌تواند با مشتری ارتباط برقرار کرده و او را به درون فضا دعوت کند. همچنین محصولات را  دیدنی و جذاب نشان داده و باعث رونق خرید و فروش شود. رنگ، کنتراست و تعادل مناسب بین سطوح نورپردازی شده از مهمترین ویژگی‌های نورپردازی مکان‌های تجاری است.
+        </p>
+        <Row className="mgt40">
+          <Col md={6} className="ta-right">
+            <p className="gTitle">مواردی که شامل گارانتی می شوند</p>
+            <ul className="garanteList">
+              <li>
+                <p className="">محصول سوخته</p>
+              </li>
+              <li>
+                <p>افت شدید شار نوری (کاهش قابل ملاحظه نور محصول نسبت به نور اولیه).</p>
+              </li>
+              <li>
+                <p>محصول دارای اعتبار تاریخ ضمانت (بر روی بدنه محصول یا روی جعبه).</p>
+              </li>
+              <li>
+                <p>افت شدید شار نوری (کاهش قابل ملاحظه نور محصول نسبت به نور اولیه).</p>
+              </li>
+              <li>
+                <p>محصول دارای اعتبار تاریخ ضمانت (بر روی بدنه محصول یا روی جعبه).</p>
+              </li>
+              <li>
+                <p>محصول دارای اعتبار تاریخ ضمانت (بر روی بدنه محصول یا روی جعبه).</p>
+              </li>
+              <li>
+                <p>افت شدید شار نوری (کاهش قابل ملاحظه نور محصول نسبت به نور اولیه).</p>
+              </li>
+            </ul>
+          </Col>
+          <Col md={6}>
+            <Khadamat3/>
+          </Col>
+        </Row>
+        <Row className="mgt20">
+          <Col md={12} className="ta-right">
+          <p className="gTitle">مواردی که شامل گارانتی نمی شوند</p>
+            <ul className="garanteList">
+              <li>
+                <p className="">محصول سالم</p>
+              </li>
+              <li>
+                <p>محصولی که به دلیل استفاده در محیط و قاب‌های بسته که تبادل حرارتی در آن به درستی صورت نمی‌گیرد و معیوب شده باشد.</p>
+              </li>
+              <li>
+                <p>
+عیوب فیزیکی و خسارت‌های مکانیکی مانند وارد آمدن ضربه به قسمت‌های مختلف محصول که باعث فرورفتگی، شکستگی و یا سوراخ شدن بدنه محصول می‌گردد.
+                </p>
+              </li>
+              <li>
+                <p>	
+صدمات و ضایعات ناشی از سقوط، حمل ونقل، تماس یا نفوذ آب و مواد شیمیایی، حرارت زیاد، گرد و غبار شدید، نوسانات برق یا اتصال دو فاز به محصول.
+                </p>
+              </li>
+            </ul>
+          </Col>
+        </Row>
+        <Row className="mgt20">
+          <Col md={12} className="ta-right">
+          <p className="gTitle">برندهای طرف قرارداد با بالبیران</p>
+         <Row className="mgt20">
+           <Col md={12}>
+           <div href="#" className="brandIconBox">
+            <img src={b10}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b2}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b3}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b4}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b5}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b6}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b7}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b10}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b2}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b3}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b4}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b5}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b6}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b7}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b2}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b3}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b4}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b5}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b6}/>
+          </div>
+          <div href="#" className="brandIconBox">
+            <img src={b7}/>
+          </div>
+           </Col>
+         </Row>
+            </Col>
+            </Row>
+    </div>
+    <div className="whiteBox" style={{paddingTop:'25',paddingRight:'0',paddingLeft:'0'}}>
+      <Row>
+        <Col md={1}>
+          <FormIcon/>
+        </Col>
+        <Col md={11} className="ta-right pd0">
+        <p className="gTitle" style={{marginRight:'0',marginTop:'5'}} >فرم درخواست استفاده از گارانتی</p>
+      <p className="shortDescription">برای آگاهی از شرایط گارانتی فرم زیر را تکمیل نمایید</p>
+        </Col>
+        </Row>
+        <hr></hr>
+        <Row>
+          <Col md={6}>
+
+          </Col>
+          <Col md={6}>
+            <ContactMail/>
+          </Col>
+        </Row>
+      </div>  
+  </Container>
+    <SocialRow/>
+    <IconRow/>
+    <Footer/>
+    </>
+  );
+};
+export default Garanty;
