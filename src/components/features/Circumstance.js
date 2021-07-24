@@ -51,7 +51,7 @@ const Circumstance = () => {
 
                 </p>
             </Col>
-            <Col md={4}>
+            <Col md={4}> 
             <CircumstanceB/>
             </Col>
         </Row>
