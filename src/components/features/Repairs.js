@@ -5,8 +5,8 @@ import SocialRow from './layouts/SocialRow'
 import IconRow from './layouts/IconRow'
 import Footer from './layouts/Footer'
 import {Container,Row,Col,Button} from 'react-bootstrap'
-import LifeTime from './assets/icons/LifeTime'
-import Khadamat3 from './assets/icons/Khadamat3'
+import Repair from './assets/icons/Repair'
+import Khadamat4 from './assets/icons/Khadamat4'
 import { FaAngleLeft,FaAlignRight ,FaCheck ,FaStar} from 'react-icons/fa';
 import b1 from './assets/img/b1.png';
 import b2 from './assets/img/b2.png';
@@ -24,7 +24,7 @@ import FormIcon from './assets/icons/FormIcon'
 import ContactMail from './assets/icons/ContactMail'
 import MailForm from './assets/img/MailForm.png'
 
-const Garanty = () => {
+const Repairs = () => {
   
     return (
     <>
@@ -33,67 +33,44 @@ const Garanty = () => {
     <Container fluid className="bulbiranContainer"> 
     <div className="whiteBox">
         <div className="ta-right">
-            <LifeTime className="d-inline-block"/>
-            <p className="gTitle">گارانتی محصولات خریداری شده از برندهای همکار</p>
+            <Repair className="d-inline-block"/>
+            <p className="gTitle">تعمیرات کالاهای آسیب دیده خارج از گارانتی</p>
         </div>
         <p className="brandShopDescription w100" style={{color:"#18206b"}}>
         در پروژه‌های تجاری دو بخش روشنایی عمومی و نورپردازی ویژه بخصوص در نمای ساختمان حائز اهمیت می‌باشد. ویترین مغازه‌ها، فروشگاه‌ها، نحوه نمایش محصولات و نورپردازی نمای بیرونی از اجزاء اصلی در روشنایی مکان‌های تجاری است. در این مکان‌ها انتخاب درست سیستم روشنایی و نورپردازی می‌تواند عامل اصلی بالا رفتن فروش و جذب مشتری باشد. نورپردازی صحیح می‌تواند با مشتری ارتباط برقرار کرده و او را به درون فضا دعوت کند. همچنین محصولات را  دیدنی و جذاب نشان داده و باعث رونق خرید و فروش شود. رنگ، کنتراست و تعادل مناسب بین سطوح نورپردازی شده از مهمترین ویژگی‌های نورپردازی مکان‌های تجاری است.
         </p>
         <Row className="mgt40">
           <Col md={6} className="ta-right">
-            <p className="gTitle">مواردی که شامل گارانتی می شوند</p>
+            <p className="gTitle">مواردی که شامل تعمیرات می شوند</p>
             <ul className="garanteList">
               <li>
                 <p className="">محصول سوخته</p>
               </li>
               <li>
-                <p>افت شدید شار نوری (کاهش قابل ملاحظه نور محصول نسبت به نور اولیه).</p>
+                <p>محصولی که به دلیل استفاده در محیط و قاب‌های بسته که تبادل حرارتی در آن به درستی صورت نمی‌گیرد و معیوب شده باشد.</p>
               </li>
               <li>
                 <p>محصول دارای اعتبار تاریخ ضمانت (بر روی بدنه محصول یا روی جعبه).</p>
               </li>
               <li>
-                <p>افت شدید شار نوری (کاهش قابل ملاحظه نور محصول نسبت به نور اولیه).</p>
-              </li>
-              <li>
-                <p>محصول دارای اعتبار تاریخ ضمانت (بر روی بدنه محصول یا روی جعبه).</p>
-              </li>
-              <li>
-                <p>محصول دارای اعتبار تاریخ ضمانت (بر روی بدنه محصول یا روی جعبه).</p>
-              </li>
-              <li>
-                <p>افت شدید شار نوری (کاهش قابل ملاحظه نور محصول نسبت به نور اولیه).</p>
-              </li>
-            </ul>
-          </Col>
-          <Col md={6}>
-            <Khadamat3/>
-          </Col>
-        </Row>
-        <Row className="mgt20">
-          <Col md={12} className="ta-right">
-          <p className="gTitle">مواردی که شامل گارانتی نمی شوند</p>
-            <ul className="garanteList">
-              <li>
-                <p className="">محصول سالم</p>
+                <p>عیوب فیزیکی و خسارت‌های مکانیکی مانند وارد آمدن ضربه به قسمت‌های مختلف محصول که باعث فرورفتگی، شکستگی و یا سوراخ شدن بدنه محصول می‌گردد..</p>
               </li>
               <li>
                 <p>محصولی که به دلیل استفاده در محیط و قاب‌های بسته که تبادل حرارتی در آن به درستی صورت نمی‌گیرد و معیوب شده باشد.</p>
               </li>
               <li>
-                <p>
-عیوب فیزیکی و خسارت‌های مکانیکی مانند وارد آمدن ضربه به قسمت‌های مختلف محصول که باعث فرورفتگی، شکستگی و یا سوراخ شدن بدنه محصول می‌گردد.
-                </p>
+                <p>عیوب فیزیکی و خسارت‌های مکانیکی مانند وارد آمدن ضربه به قسمت‌های مختلف محصول که باعث فرورفتگی، شکستگی و یا سوراخ شدن بدنه محصول می‌گردد.</p>
               </li>
               <li>
-                <p>	
-صدمات و ضایعات ناشی از سقوط، حمل ونقل، تماس یا نفوذ آب و مواد شیمیایی، حرارت زیاد، گرد و غبار شدید، نوسانات برق یا اتصال دو فاز به محصول.
-                </p>
+                <p>محصولی که به دلیل استفاده در محیط و قاب‌های بسته که تبادل حرارتی در آن به درستی صورت نمی‌گیرد و معیوب شده باشد.</p>
               </li>
             </ul>
           </Col>
+          <Col md={6}>
+            <Khadamat4/>
+          </Col>
         </Row>
-        <Row className="mgt20">
+       <Row className="mgt20">
           <Col md={12} className="ta-right">
           <p className="gTitle">برندهای طرف قرارداد با بالبیران</p>
          <Row className="mgt20">
@@ -169,8 +146,8 @@ const Garanty = () => {
           <FormIcon/>
         </Col>
         <Col md={11} className="ta-right pd0">
-        <p className="gTitle" style={{marginRight:'0',marginTop:'5'}} >فرم درخواست استفاده از گارانتی</p>
-      <p className="shortDescription">برای آگاهی از شرایط گارانتی فرم زیر را تکمیل نمایید</p>
+        <p className="gTitle" style={{marginRight:'0',marginTop:'5'}} >فرم درخواست تعمیرات کالا</p>
+      <p className="shortDescription">برای آگاهی از شرایط تعمیرات کالا فرم زیر را تکمیل نمایید</p>
         </Col>
         </Row>
         <hr></hr>
@@ -221,4 +198,4 @@ const Garanty = () => {
     </>
   );
 };
-export default Garanty;
+export default Repairs;

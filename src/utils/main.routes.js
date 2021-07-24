@@ -14,6 +14,9 @@ import Verification from '../components/features/Verification';
 import IndoorLighting from '../components/features/IndoorLighting';
 import Circumstancesecond from '../components/features/CircumstanceSecond';
 import Garanty from '../components/features/Garanty';
+import Repairs from '../components/features/Repairs'
+import LavazemYadaki from '../components/features/LavazemYadaki'
+import SingleProduct from '../components/features/SingleProduct'
 const MainRoutes = (props) => {
 	return (
 		<BrowserRouter>
@@ -22,7 +25,7 @@ const MainRoutes = (props) => {
 					exact
 					path='/'
 					name='صفحه اصلی'
-					render={(props) => <Garanty {...props}/>}>
+					render={(props) => <SingleProduct {...props}/>}>
 						
 					</Route>
 			</Switch>

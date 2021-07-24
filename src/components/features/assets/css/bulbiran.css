@@ -1,3 +1,4 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
 @font-face {
     font-family: "IRANYekan-Black";
     src: url("../webfonts/IRANYekanBlackFaNum.ttf") format("truetype");
@@ -1590,4 +1591,131 @@ color:#18206b;
 hr{
   color:#e1dee6;
 
+}
+.w90{
+  width:90%;
+}
+.serviceForm{
+  padding:2% 10% 2% 5%;
+}
+.cFormDiv span{
+  font-family: 'IRANYekan-Bold';
+  color:#000;
+  font-size: 15px;
+}
+.cFormDiv svg{
+  color: #cf1e22;
+  font-size: 12px;
+  margin-top: -15px;
+  margin-right: 5px;
+
+}
+.cFormDiv input ,.cFormDiv textarea{
+  font-family: 'IRANYekan-Medium';
+  color:#000;
+  border:1px solid #d0d0d0;
+  border-radius: 5px;
+  padding: 5px 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  float: left;
+  font-size: 13px;
+  width: 60%;
+  margin-top: -7px;
+}
+.cFormDiv{
+  margin:45px 0px;
+}
+.cP .brandIconBox{
+  margin:11px;
+}
+.bSh{
+  box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.16);
+}
+.singleBox{
+  border-radius: 10px;
+  box-shadow: 0 3px 10px 0 #f2f2f2;
+  background-color: #ffffff;
+ padding: 30px 10px;
+}
+.imgBoxS .image-gallery-using-mouse{
+  width: 95%;
+  margin-right:auto ;
+  margin-left:auto;
+  display: block;
+}
+.image-gallery-slide .image-gallery-image{
+  border:1px solid #e0e0e0;
+  padding:0px;
+  border-radius:5px;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  -ms-border-radius:5px;
+  -o-border-radius:5px;
+}
+.image-gallery-thumbnails-wrapper{
+  padding: 10px;
+}
+.image-gallery-thumbnail{
+  width:68px;
+}
+.image-gallery-thumbnail.active, .image-gallery-thumbnail:focus{
+  border:1px solid #e0e0e0;
+}
+.image-gallery-thumbnail:hover{
+  border:1px solid #e0e0e0;
+}
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+  max-height: calc(100vh - 50px);
+}
+.a1{
+  display: inline-block;
+  margin-top: 20px;
+}
+.a1 span{
+  font-family: 'IRANYekan-ExtraBold';
+  font-size: 13px;
+  color:#18206b;
+  margin-right: 15px;
+}
+.grayBox2{
+  border-radius: 5px;
+  box-shadow: 0 3px 10px 0 #f2f2f2;
+  background-color: #f7f7f7;
+  padding: 15px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.grayBox2 div{
+  text-align: right;
+  padding: 15px 0px;
+  border-bottom: 2px solid #ececec;
+}
+.grayBox2 div span{
+  font-family: 'IRANYekan-Bold';
+  color: #18206b;
+  font-size: 13px;
+  margin-right: 10px;
+}
+.grayBox2 div svg{
+  width: 50px;
+}
+.singlePrice{
+  float: left;
+  font-family: 'IRANYekan-ExtraBold' !important;
+font-size: 15px !important;
+}
+.tedad{
+  font-family: 'IRANYekan-ExtraBold' !important;
+font-size: 15px !important;
+}
+.tedadDrop{
+
+}
+.addToCart{
+  
 }

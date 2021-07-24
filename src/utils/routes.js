@@ -12,12 +12,15 @@ import Verification from '../components/features/Verification';
 import InndoorLighting from '../components/features/IndoorLighting';
 import Circumstancesecond from '../components/features/CircumstanceSecond';
 import Garanty from '../components/features/Garanty';
+import Repairs from '../components/features/Repairs'
+import LavazemYadaki from '../components/features/LavazemYadaki'
+import SingleProduct from '../components/features/SingleProduct'
 const routes = [
 	{
 		path: '/',
 		exact: true,
 		name: 'صفحه اصلی',
-		component: <Garanty/>,
+		component: <SingleProduct/>,
 	},
 ];
 
