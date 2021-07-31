@@ -15,12 +15,14 @@ import Garanty from '../components/features/Garanty';
 import Repairs from '../components/features/Repairs'
 import LavazemYadaki from '../components/features/LavazemYadaki'
 import SingleProduct from '../components/features/SingleProduct'
+import Design from '../components/features/Design';
+import News from '../components/features/News';
 const routes = [
 	{
 		path: '/',
 		exact: true,
 		name: 'صفحه اصلی',
-		component: <SingleProduct/>,
+		component: <News/>,
 	},
 ];
 

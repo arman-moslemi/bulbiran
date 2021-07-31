@@ -16,7 +16,9 @@ import Circumstancesecond from '../components/features/CircumstanceSecond';
 import Garanty from '../components/features/Garanty';
 import Repairs from '../components/features/Repairs'
 import LavazemYadaki from '../components/features/LavazemYadaki'
-import SingleProduct from '../components/features/SingleProduct'
+import SingleProduct from '../components/features/SingleProduct';
+import Design from '../components/features/Design';
+import News from '../components/features/News';
 const MainRoutes = (props) => {
 	return (
 		<BrowserRouter>
@@ -25,7 +27,7 @@ const MainRoutes = (props) => {
 					exact
 					path='/'
 					name='صفحه اصلی'
-					render={(props) => <SingleProduct {...props}/>}>
+					render={(props) => <News {...props}/>}>
 						
 					</Route>
 			</Switch>
