@@ -13,7 +13,9 @@ import MiniIcon from './assets/icons/MiniIcon.js';
 import AmazingSlider from './layouts/AmazingSlider';
 import BulbsImg from './assets/img/bulbs.png';
 import SliderImg from './assets/icons/SliderImg';
+import { Link, useHistory } from "react-router-dom";
 const Indoor = () => {
+   const history = useHistory();
     return (
       <>
         <TopBar/>
@@ -27,7 +29,7 @@ const Indoor = () => {
           <div className="indoorBox">
           <MiniIcon className="fRight"/>
           <span className="fRight">انواع چراغ سقفی</span>
-          <Button>خرید محصولات</Button>
+          <Button onClick={()=>  history.push("/indoorsecond")}>خرید محصولات</Button>
           </div>
           
        </div>
@@ -38,7 +40,7 @@ const Indoor = () => {
           <div className="indoorBox">
           <MiniIcon className="fRight"/>
           <span className="fRight">انواع چراغ دیواری</span>
-          <Button>خرید محصولات</Button>
+          <Button onClick={()=>  history.push("/indoorsecond")}>خرید محصولات</Button>
           </div>
           
        </div>
@@ -49,7 +51,7 @@ const Indoor = () => {
           <div className="indoorBox">
           <MiniIcon className="fRight"/>
           <span className="fRight">انواع چراغ آویز</span>
-          <Button>خرید محصولات</Button>
+          <Button onClick={()=>  history.push("/indoorsecond")}>خرید محصولات</Button>
           </div>
           
        </div>
@@ -60,7 +62,7 @@ const Indoor = () => {
           <div className="indoorBox">
           <MiniIcon className="fRight"/>
           <span className="fRight">انواع چراغ ایستاده</span>
-          <Button>خرید محصولات</Button>
+          <Button onClick={()=>  history.push("/indoorsecond")}>خرید محصولات</Button>
           </div>
           
        </div>

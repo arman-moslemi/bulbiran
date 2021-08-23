@@ -3,6 +3,7 @@ import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
 import IconRow from './layouts/IconRow'
+import { Link, useHistory } from "react-router-dom";
 import Footer from './layouts/Footer'
 import {Container,Row,Col,Button} from 'react-bootstrap'
 import { FaAngleLeft ,FaEye,FaEyeSlash,FaCheck} from 'react-icons/fa';
@@ -11,6 +12,7 @@ import ReactPasswordToggleIcon from 'react-password-toggle-icon';
 import Checkbox from "react-custom-checkbox";
 
 const Login = () => {
+  const history = useHistory();
   let inputRef = useRef();
   const showIcon = () =><FaEye></FaEye>;
   const hideIcon = () => <FaEyeSlash></FaEyeSlash>;
@@ -39,7 +41,7 @@ const Login = () => {
               hideIcon={hideIcon}
             />
           </div>
-          <a href="#" className="ta-right cLabel mgt20" id="fo12">فراموشی رمز عبور</a>
+          <a href="#" className="ta-right cLabel mgt20" id="fo12" onClick={()=>  history.push("/verification")}>فراموشی رمز عبور</a>
           <div className="mgt10 checkB">
           <Checkbox
         icon={<FaCheck color="#ffb921" size={14} />}
@@ -60,7 +62,7 @@ const Login = () => {
           <Button className="loginBtn">ورود</Button>
           <div className="mgt20">
             <span className="d-inline-block cLabel" id="fo12">حساب کاربری ندارید؟</span>
-          <a href="#" className="d-inline-block inLink" id="fo12">ثبت نام کنید</a>
+          <a href="#" className="d-inline-block inLink" id="fo12" onClick={()=>  history.push("/register")}>ثبت نام کنید</a>
           </div>
 
         </div>

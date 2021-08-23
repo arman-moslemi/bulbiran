@@ -25,7 +25,7 @@ export default function SimpleSlider() {
                 </span>
       
       <div className="yw"></div>
-      <span className="kh1">خبر تخفیف اول</span>
+      <a className="kh1">خبر تخفیف اول</a>
       </div>
       <div>
       <img src={News2}/>
@@ -34,7 +34,7 @@ export default function SimpleSlider() {
                 </span>
       
       <div className="yw"></div>
-      <span className="kh1">خبر تخفیف اول</span>
+      <a className="kh1">خبر تخفیف اول</a>
       </div>
      
     </Slider>

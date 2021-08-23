@@ -11,7 +11,7 @@ import ReactPasswordToggleIcon from 'react-password-toggle-icon';
 import Checkbox from "react-custom-checkbox";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-
+import { Link, useHistory } from "react-router-dom";
 const Register = () => {
   const options=[
     'one',
@@ -22,7 +22,7 @@ const Register = () => {
   let inputRef = useRef();
   const showIcon = () =><FaEye></FaEye>;
   const hideIcon = () => <FaEyeSlash></FaEyeSlash>;
- 
+  const history = useHistory();
   return (
       <>
         <TopBar/>
@@ -87,7 +87,7 @@ const Register = () => {
           <Button className="loginBtn w50 mgt40" style={{marginTop:40}}>ثبت نام</Button>
           <div className="mgt20">
             <span className="d-inline-block cLabel" id="fo12">حساب کاربری دارید؟</span>
-          <a href="#" className="d-inline-block inLink" id="fo12">وارد شوید</a>
+          <a href="#" className="d-inline-block inLink" id="fo12" onClick={()=>  history.push("/login")}>وارد شوید</a>
           </div>
 
         </div>

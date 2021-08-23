@@ -20,9 +20,10 @@ import b9 from './assets/img/b9.png';
 import b10 from './assets/img/b10.png';
 import b11 from './assets/img/b11.png';
 import b12 from './assets/img/b12.png';
-
+import { Link, useHistory } from "react-router-dom";
 
 const BrandShop = () => {
+    const history = useHistory();
   return (
     <>
       <TopBar/>
@@ -58,7 +59,7 @@ const BrandShop = () => {
             <Col md={3}>
                 <div className="whiteBrandBox">
                     <img src={b1}/>
-                    <div className="grayBox">
+                    <div className="grayBox" onClick={()=>  history.push("/brandsecond")}>
                         <p>میتره</p>
                     </div>
                 </div>

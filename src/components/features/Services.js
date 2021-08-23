@@ -15,9 +15,10 @@ import CreativeDesign from './assets/icons/CreativeDesign';
 import Janebi from './assets/icons/Janebi';
 import LifeTime from './assets/icons/LifeTime';
 import Repair from './assets/icons/Repair';
-
+import { Link, useHistory } from "react-router-dom";
 
 const Services = () => {
+    const history = useHistory();
     return (
       <>
         <TopBar/>
@@ -76,7 +77,7 @@ const Services = () => {
  
  
                </p>
-               <Button className="servicesButton">
+               <Button className="servicesButton" onClick={()=>  history.push("/design")}>
                    مشاهده نمونه کارها و ثبت درخواست
                </Button>
            </Col>
@@ -105,7 +106,7 @@ const Services = () => {
  
  
                </p>
-               <Button className="servicesButton">
+               <Button className="servicesButton" onClick={()=>  history.push("/garanty")}>
                    درخواست استفاده از گارانتی و مشاهده شرایط
                </Button>
            </Col>
@@ -130,7 +131,7 @@ const Services = () => {
  
  
                </p>
-               <Button className="servicesButton">
+               <Button className="servicesButton" onClick={()=>  history.push("/repairs")}>
                    درخواست تعمیرات
                </Button>
            </Col>
@@ -159,7 +160,7 @@ const Services = () => {
  
  
                </p>
-               <Button className="servicesButton">
+               <Button className="servicesButton" onClick={()=>  history.push("/lavazemyadaki")}>
                  خرید لوازم یدکی
                </Button>
            </Col>

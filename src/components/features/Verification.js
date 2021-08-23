@@ -3,13 +3,14 @@ import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
 import IconRow from './layouts/IconRow'
+import { Link, useHistory } from "react-router-dom";
 import Footer from './layouts/Footer'
 import {Container,Row,Col,Button} from 'react-bootstrap'
 import { FaAngleLeft ,FaEye,FaEyeSlash,FaCheck} from 'react-icons/fa';
 import ConfirmSvg from '../features/assets/icons/ConfirmSvg';
 
 const Verification = () => {
-
+  const history = useHistory();
   return (
       <>
         <TopBar/>
@@ -26,7 +27,8 @@ const Verification = () => {
            <input className="cInput mgt10"  placeholder="کد تایید" type="number" ></input>
            
           
-          <Button className="loginBtn mgt40" id="cMargintop">ارسال مجدد</Button>
+          <Button className="loginBtn mgt40" id="cMargintop" onClick={()=>  history.push("/forgetpass")}>تنظیم رمز عبور جدید</Button>
+          <span className="d-inline-block cLabel mgt20" id="fo12">ارسال مجدد</span>
           <div className="mgt20">
             <span className="d-inline-block cLabel" id="fo12">حساب کاربری ندارید؟</span>
           <a href="#" className="d-inline-block inLink" id="fo12">ثبت نام کنید</a>

@@ -9,7 +9,9 @@ import {Container,Row,Col,Button} from 'react-bootstrap'
 import Enamad from '../assets/img/enamad-copy.png'
 import Samandehi from '../assets/img/samandehi.png'
 import Logonama from '../assets/img/logonama.png'
+import { Link, useHistory } from "react-router-dom";
 const Footer = () => {
+  const history = useHistory();
     return (
       <>
       <Container fluid>
@@ -18,10 +20,10 @@ const Footer = () => {
                  <p className="footerTitle">درباره بالبیران</p>
                <ul className="footerList">
                  <li>
-                 <a href="#" className="footerLink">لینک یک</a>
+                 <a href="#" className="footerLink"onClick={()=>  history.push("/rules")}>قوانین و مقررات</a>
                  </li>
                  <li>
-                 <a href="#" className="footerLink">لینک دو</a>
+                 <a href="#" className="footerLink"onClick={()=>  history.push("/contactUs")}>تماس با ما</a>
                  </li>
                  <li>
                  <a href="#" className="footerLink">لینک سه</a>

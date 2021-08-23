@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { Link, useHistory } from "react-router-dom";
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -16,9 +17,11 @@ import Standard from './assets/icons/Standard'
 import UvFree from './assets/icons/UvFree'
 import LedButton from './assets/icons/LedButton'
 import Slider from './layouts/Slider'
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 import CircumstanceBanner from './assets/icons/CircumstanceBanner'
 import LedBanner from './assets/icons/LedBanner'
-import { FaAngleLeft } from 'react-icons/fa';
+import { FaAngleLeft ,FaSearch} from 'react-icons/fa';
 import Slide1 from './assets/img/slide1.jpg';
 import Lamp from './assets/img/lamp.png';
 import Rise from './assets/img/rise.png';
@@ -45,7 +48,13 @@ import AmazingSlider from './layouts/AmazingSlider';
 import BulbsImg from './assets/img/bulbs.png';
 import ProductSlider from './layouts/Productslider';
 import BrandSlider from './layouts/BrandSlider';
+const options=[
+  'نورلامپ',
+  'شکل لامپ'
+]
+const defaultOption = options[0];
 const Home = () => {
+  const history = useHistory();
   return (
     <>
       <TopBar/>
@@ -110,7 +119,7 @@ const Home = () => {
         </Col>
       <Col md={2}>
       <LedButton className="d-block ledbuttonIcon"></LedButton>
-      <Button className="ledButton d-block">فروشگاه سبز</Button>
+      <Button onClick={()=>  history.push("/GreenShop")} className="ledButton d-block">فروشگاه سبز</Button>
       </Col>
       </Row>
       <Row className="mgt20">
@@ -122,7 +131,7 @@ const Home = () => {
        <div className="firstBanner">
             <CircumstanceBanner/>
             <div className="bottomDiv">
-              <Button className="bottomButton">مکان روشنایی
+              <Button onClick={()=>  history.push("/circumstance")}  className="bottomButton">مکان روشنایی
               
               </Button>
               <FaAngleLeft className="leftArrow"></FaAngleLeft>
@@ -132,7 +141,7 @@ const Home = () => {
           <div className="secondBanner">
             <LedBanner/>
             <div className="bottomDiv2">
-              <Button className="bottomButton">مصارف LED
+              <Button className="bottomButton" onClick={()=>  history.push("/masarefLED")}   >مصارف LED
               
               </Button>
               <FaAngleLeft className="leftArrow"></FaAngleLeft>
@@ -154,7 +163,7 @@ const Home = () => {
         </a>
       </Col>
       <Col md={2} className="pd10">
-        <a href="#" className="categoryBox">
+        <a href="#" className="categoryBox" onClick={()=>  history.push("/indoorlighting")} >
       <img src={Inner}/>
       <p className="categoryName">روشنایی داخلی</p>
         </a>
@@ -187,7 +196,7 @@ const Home = () => {
           <p className="wBoxDescription">
           این لامپ‌ها دارای کارایی و طول عمر و بازده انرژی بالا چند برابر لامپ‌های رشته‌ای هستند و به شکل قابل ملاحظه ای از کارآمدی بالاتری نسبت به دیگر لامپ‌های فلورسنت برخوردارند.
           </p>
-          <Button className="readMoreBtn">بازار روشنایی</Button>
+          <Button className="readMoreBtn" onClick={()=>  history.push("/brandshop")}>بازار روشنایی</Button>
         </Col>
         <Col md={7}>
           <div href="#" className="brandIconBox">
@@ -214,13 +223,55 @@ const Home = () => {
         </Col>
       </Row>
     </div>
+  <div className="hSearchBar">
+    <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"40px"}}>
+      <Col md={1} className="pd0">
+      <div className="sIcon">
+        <FaSearch/>
+      </div>
+      </Col>
+      <Col md={9} className="pd0">
+      <div className="centerSearch">
+      <div className="centerSearch2">
+      <Dropdown className="cInput mgt10" options={options} value={defaultOption} placeholder="Select an option" />
+          
+      </div>
+      <div className="centerSearch2">
+      <Dropdown className="cInput mgt10" options={options} value={defaultOption} placeholder="Select an option" />
+          
+      </div>
+      <div className="centerSearch2">
+      <Dropdown className="cInput mgt10" options={options} value={defaultOption} placeholder="Select an option" />
+          
+      </div>
+      <div className="centerSearch2">
+      <Dropdown className="cInput mgt10" options={options} value={defaultOption} placeholder="Select an option" />
+          
+      </div>
+      <div className="centerSearch2">
+      <Dropdown className="cInput mgt10" options={options} value={defaultOption} placeholder="Select an option" />
+          
+      </div>
+      <div className="centerSearch2">
+      <Dropdown className="cInput mgt10" options={options} value={defaultOption} placeholder="Select an option" />
+          
+      </div>
+      </div>
+      </Col>
+      <Col md={2} className="pd0">
+      <div className="searchIBtn">
+        <Button className="searchIBtn2" onClick={()=>  history.push("/searchresult")}>جستجو</Button>
+      </div>
+      </Col>
+    </Row>
+  </div>
    <Row className="threeColRow">
      <Col md={4}>
        <div className="littleBanner" id="suggestionBanner">
      <Suggestion/>
        <div className="bottomDiv3">
          
-              <Button className="bottomButton">پیشنهادات ویژه بالبیران
+              <Button className="bottomButton" onClick={()=>  history.push("/pishnahadvijhe")}>پیشنهادات ویژه بالبیران
               
               </Button>
               <FaAngleLeft className="leftArrow"></FaAngleLeft>
@@ -232,7 +283,7 @@ const Home = () => {
          <Services/>
          <div className="bottomDiv3">
          
-         <Button className="bottomButton">خدمات بالبیران
+         <Button className="bottomButton" onClick={()=>  history.push("/services")}>خدمات بالبیران
          </Button>
          <FaAngleLeft className="leftArrow"></FaAngleLeft>
        </div>
@@ -243,7 +294,7 @@ const Home = () => {
          <Magazine/>
          <div className="bottomDiv3">
          
-         <Button className="bottomButton">مجله بالبیران
+         <Button className="bottomButton"onClick={()=>  history.push("/news")}>مجله بالبیران
          
          </Button>
          <FaAngleLeft className="leftArrow"></FaAngleLeft>
@@ -259,7 +310,7 @@ const Home = () => {
       <div className="innerSlider ta-center">
         <p>محصولات شگفت انگیز بالبیران</p>
         <img src={BulbsImg}/>
-        <Button>
+        <Button onClick={()=>  history.push("/Shegeftangiz")}>
           مشاهده ی همه
           <FaAngleLeft/>
         </Button>

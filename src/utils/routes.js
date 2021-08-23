@@ -17,12 +17,38 @@ import LavazemYadaki from '../components/features/LavazemYadaki'
 import SingleProduct from '../components/features/SingleProduct'
 import Design from '../components/features/Design';
 import News from '../components/features/News';
+import UserPanel from '../components/features/UserPanel';
+import PishnahaVijhe  from '../components/features/PishnahadVijhe';
+import MasarefLED from '../components/features/MasarefLED';
+import PriceBrand from '../components/features/PriceBrand';
+import LEDMasarefDakheli from '../components/features/LEDMasarefDakheli'
+import LEDTechnology from '../components/features/LEDTechnology';
+import PriceTable from '../components/features/PriceTable';
+import DarkhastPrice from '../components/features/DarkhastPrice';
+import BulbFinderStart from '../components/features/BulbFinderStart';
+import BulbFinder from '../components/features/BulbFinder';
+import ShowBlog from '../components/features/ShowBlog';
+import GreenShop from '../components/features/GreenShop';
+import BulbiranShop from '../components/features/BulbiranShop';
+import Shegeftangiz from '../components/features/Shegeftangiz';
 const routes = [
 	{
 		path: '/',
 		exact: true,
 		name: 'صفحه اصلی',
-		component: <News/>,
+		component: <GreenShop/>,
+	},
+	{
+		path: '/pages/GreenShop',
+		exact: true,
+		name: 'فروشگاه سبز',
+		component: <GreenShop/>,
+	},
+	{
+		path: '/GreenShop',
+		exact: true,
+		name: 'فروشگاه سبز',
+		component: <GreenShop/>,
 	},
 ];
 

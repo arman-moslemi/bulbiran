@@ -19,6 +19,23 @@ import LavazemYadaki from '../components/features/LavazemYadaki'
 import SingleProduct from '../components/features/SingleProduct';
 import Design from '../components/features/Design';
 import News from '../components/features/News';
+import UserPanel from '../components/features/UserPanel';
+import PishnahaVijhe  from '../components/features/PishnahadVijhe';
+import MasarefLED from '../components/features/MasarefLED';
+import PriceBrand from '../components/features/PriceBrand';
+import LEDMasarefDakheli from '../components/features/LEDMasarefDakheli'
+import LEDTechnology from '../components/features/LEDTechnology';
+import PriceTable from '../components/features/PriceTable';
+import DarkhastPrice from '../components/features/DarkhastPrice';
+import BulbFinderStart from '../components/features/BulbFinderStart';
+import BulbFinder from '../components/features/BulbFinder';
+import ShowBlog from '../components/features/ShowBlog';
+import GreenShop from '../components/features/GreenShop';
+import BulbiranShop from '../components/features/BulbiranShop';
+import Shegeftangiz from '../components/features/Shegeftangiz';
+import SearchResult from '../components/features/SearchResult';
+import BrandSecond from '../components/features/BrandSecond';
+import IndoorSecond from '../components/features/IndoorSecond';
 const MainRoutes = (props) => {
 	return (
 		<BrowserRouter>
@@ -27,9 +44,248 @@ const MainRoutes = (props) => {
 					exact
 					path='/'
 					name='صفحه اصلی'
-					render={(props) => <News {...props}/>}>
+					render={(props) => <Home {...props}/>}>
 						
 					</Route>
+					<Route
+					exact
+					path='/GreenShop'
+					name='فروشگاه سبز'
+					render={(props) => <GreenShop/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/indoorsecond'
+					name='داخلی'
+					render={(props) => <IndoorSecond/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/brandsecond'
+					name='برند داخلی'
+					render={(props) => <BrandSecond/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/searchresult'
+					name='جستجو'
+					render={(props) => <SearchResult/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/brandshop'
+					name='برند شاپ'
+					render={(props) => <BrandShop/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/circumstance'
+					name='روشنایی بر اساس محیط'
+					render={(props) => <Circumstance/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/services'
+					name='خدمات'
+					render={(props) => <Services/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/contactUs'
+					name='تماس با ما'
+					render={(props) => <ContactUs/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/rules'
+					name='قوانین و مقررات'
+					render={(props) => <Rules/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/login'
+					name='ورود'
+					render={(props) => <Login/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/register'
+					name='ثبت نام'
+					render={(props) => <Register/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/forgetpass'
+					name='فراموشی رمز'
+					render={(props) => <ForgetPass/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/verification'
+					name='تایید'
+					render={(props) => <Verification/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/indoorlighting'
+					name='روشنایی داخلی'
+					render={(props) => <IndoorLighting/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/circumstancesecond'
+					name='فروشگاه سبمحیط داخلی'
+					render={(props) => <Circumstancesecond/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/garanty'
+					name='گارانتی'
+					render={(props) => <Garanty/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/repairs'
+					name='تعمیرات'
+					render={(props) => <Repairs/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/lavazemyadaki'
+					name='لوازم یدکی'
+					render={(props) => <LavazemYadaki/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/singleproduct'
+					name='محصول'
+					render={(props) => <SingleProduct/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/design'
+					name='طراحیو دیزاین'
+					render={(props) => <Design/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/news'
+					name='اخبار و مقالات'
+					render={(props) => <News/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/userpanel'
+					name='پنل کاربری'
+					render={(props) => <UserPanel/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/pishnahadvijhe'
+					name='پیشنهاد ویژه'
+					render={(props) => <PishnahaVijhe/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/masarefLED'
+					name='مصارف ال ای دی'
+					render={(props) => <MasarefLED/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/pricebrand'
+					name='برند قیمت'
+					render={(props) => <PriceBrand/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/LEDtechnology'
+					name='تکنولوژی ال ای دی'
+					render={(props) => <LEDTechnology/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/LEDmasarefdakheli'
+					name='مصارف داخلی ال ای دی'
+					render={(props) => <LEDMasarefDakheli/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/pricetable'
+					name='جدول قیمت'
+					render={(props) => <PriceTable/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/darkhastprice'
+					name='درخواست استعلام قیمت'
+					render={(props) => <DarkhastPrice/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/bulbfinderstart'
+					name='بالب یاب شروع'
+					render={(props) => <BulbFinderStart/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/bulbfinder'
+					name='لامپ یاب'
+					render={(props) => <BulbFinder/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/showblog'
+					name='مقاله'
+					render={(props) => <ShowBlog/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/BulbiranShop'
+					name='فروشگاه بالبیران'
+					render={(props) => <BulbiranShop/>}>
+						
+					</Route>
+					<Route
+					exact
+					path='/Shegeftangiz'
+					name='محصولات شگفت انگیز'
+					render={(props) => <Shegeftangiz/>}>
+						
+					</Route>
+					{/* <PrivateRoute path='/pages' /> */}
 			</Switch>
 		</BrowserRouter>
 	);
