@@ -1,4 +1,5 @@
-import React , {useState} from 'react'
+import React,{useEffect,useState} from 'react'
+import { Link, useHistory } from "react-router-dom";
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -25,21 +26,83 @@ import Cheragh from './assets/img/cheragh.png';
 import Panel from './assets/img/panel.png';
 import Loster from './assets/img/loster.png';
 import Janebi from './assets/img/janebi.png';
-import rise from './assets/img/rise.png';
-import Img4 from './assets/img/Image 4.png';
-import Img5 from './assets/img/Image 5.png';
-import Img6 from './assets/img/Image 6.png';
-import Img7 from './assets/img/Image 7.png';
+
 import Noorafkan from './assets/img/noorafkan.png';
 import Chain from './assets/img/chain.png';
 import GreenShopLogo from './assets/icons/GreenShopLogo';
 import ShopLogo from './assets/icons/ShopLogo';
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+import {useParams } from "react-router-dom";
+
 const BulbiranShop = () => {
-  
+    const [product,setProduct]=useState([])
+    const [group,setGroup]=useState([])
+    const [val,setVal]=useState(0)
+    const params = useParams().id;
+    const mainSlider=()=>{
+        const axios = require("axios");
+
+          axios
+              .get(apiUrl + "CategoryProduct/"+params)
+          .then(function (response) {
+            if (response.data.result == "true") {
+
+                setProduct(response.data.Data)
+
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+          axios
+          .get(apiUrl + "SubGroup/"+params)
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+            setGroup(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      }
+      const mainCat=(id)=>{
+        const axios = require("axios");
+        console.log(486)
+        console.log(id)
+        axios
+        .get(apiUrl + "SubGroupProduct/"+id)
+    .then(function (response) {
+      if (response.data.result == "true") {
+        console.log(response.data)
+
+          setProduct(response.data.Data)
+
+    }
+    else{
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+    // console.log(159876)
+      }
+        useEffect(() => {
+          mainSlider();
+// alert(val)
+        }, []);
     return (
     <>
           <TopBar/>
-      <Header/> 
+      <Header/>
       <Container fluid className="pd0">
           <div className="yellowBack">
           <Row style={{margin:"0px"}}>
@@ -48,27 +111,31 @@ const BulbiranShop = () => {
            <div className="cTitle">
                <p>فروشگاه بالبیران</p>
            </div>
-           <RadioGroup horizontal className="radioB">
-  <RadioButton value="لامپ" rootColor="transparent" pointColor="#ffb921">
-   لامپ
+           <RadioGroup horizontal
+             onChange={ss=>mainCat(ss)}
+            // value="1"
+           className="radioB">
+            { group?.map((item, i) => {
+  return (
+
+  <RadioButton value={item.SubGroupID.toString()} rootColor="transparent"
+//    onChange={()=>mainCat(1)}
+    pointColor="#ffb921">
+  {item.Title}
   </RadioButton>
-  <RadioButton value="روشنایی داخلی" rootColor="transparent" pointColor="#ffb921">
+
+                    );
+
+            })
+          }
+  {/* <RadioButton value="2" rootColor="transparent" pointColor="#ffb921">
    روشنایی داخلی
-  </RadioButton>
-  <RadioButton value="روشنایی خارجی" rootColor="transparent" pointColor="#ffb921">
+  </RadioButton> */}
+  {/* <RadioButton value="3" rootColor="transparent"  pointColor="#ffb921">
  روشنایی خارجی
-  </RadioButton>
-  <RadioButton value="روشنایی تزئینی" rootColor="transparent" pointColor="#ffb921">
-   روشنایی تزئینی
-  </RadioButton>
-  <RadioButton value="روشنایی خاص" rootColor="transparent" pointColor="#ffb921">
-  روشنایی خاص
-  </RadioButton>
-  <RadioButton value="لوازم جانبی" rootColor="transparent" pointColor="#ffb921">
-  لوازم جانبی
-  </RadioButton>
-  
-  
+  </RadioButton> */}
+
+
 </RadioGroup>
             </div>
         </Col>
@@ -81,42 +148,38 @@ const BulbiranShop = () => {
         <span className="gTitle">فروشگاه بالبیران</span>
     </div>
     <div>
-        <span className="gTitle2">انواع محصولات روشنایی</span>
+        <span className="gTitle2">انواع محصولات </span>
     </div>
     </div>
           </div>
       </Container>
-    <Container fluid className="bulbiranContainer"> 
+    <Container fluid className="bulbiranContainer">
     <Row style={{margin:"0px",marginTop:"-7%"}}>
         <Col md={12}>
             <div className="categoryBox2">
             <h4 className="circumstanceTitle ta-right">دسته بندی ها</h4>
             <div className="cateInner ta-center">
-                <div>
-                    <img src={Lamp}/>
-                    <p>لامپ</p>
+            { group?.map((item, i) => {
+  return (
+                  <Link onClick={()=>mainCat(item.SubGroupID)}>
+    <div>
+                    <img src={apiAsset+item.Photo}/>
+                    <p>{item.Title}</p>
                 </div>
+                </Link>
+                      );
+
+})
+}
+                {/* <Link onClick={()=>mainCat(2)}>
+
                 <div>
                     <img src={Panel}/>
                     <p>روشنایی داخلی</p>
                 </div>
-                <div>
-                    <img src={Noorafkan}/>
-                    <p>روشنایی خارجی</p>
-                </div>
-                <div>
-                    <img src={Chain} id="chain"/>
-                    <p>روشنایی تزئینی</p>
-                </div>
-                <div>
-                    <img src={Cheragh}/>
-                    <p>روشنایی خاص</p>
-                </div>
-                
-                <div>
-                    <img src={Janebi}/>
-                    <p>لوازم جانبی</p>
-                </div>
+                </Link>
+          */}
+
             </div>
             </div>
         </Col>
@@ -138,7 +201,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -146,7 +209,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -154,7 +217,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -162,7 +225,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -170,7 +233,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -178,7 +241,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -186,7 +249,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -194,7 +257,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -202,7 +265,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -210,7 +273,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -229,7 +292,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -237,7 +300,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -245,7 +308,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -253,7 +316,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -261,7 +324,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -269,7 +332,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -277,7 +340,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -285,7 +348,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -293,7 +356,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -301,7 +364,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -320,7 +383,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -328,7 +391,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -336,7 +399,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -344,7 +407,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -352,7 +415,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -360,7 +423,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -368,7 +431,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -376,7 +439,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -384,7 +447,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -392,7 +455,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -411,7 +474,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -419,7 +482,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -427,7 +490,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -435,7 +498,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -443,7 +506,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -451,7 +514,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -459,7 +522,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -467,7 +530,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -475,7 +538,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -483,7 +546,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -502,7 +565,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -510,7 +573,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -518,7 +581,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -526,7 +589,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -534,7 +597,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -542,7 +605,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -550,7 +613,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -558,7 +621,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -566,7 +629,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -574,7 +637,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -593,7 +656,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -601,7 +664,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -609,7 +672,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -617,7 +680,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -625,7 +688,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -633,7 +696,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -641,7 +704,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -649,7 +712,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -657,7 +720,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -665,7 +728,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -684,7 +747,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -692,7 +755,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -700,7 +763,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -708,7 +771,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -716,7 +779,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -724,7 +787,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -732,7 +795,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -740,7 +803,7 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -748,7 +811,7 @@ const BulbiranShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -756,12 +819,12 @@ const BulbiranShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
             </AccordionItem>
-           
+
            </Accordion>
         </Col>
         <Col md={9}>
@@ -788,91 +851,34 @@ const BulbiranShop = () => {
 
             </div>
             <Row style={{margin:"-5px"}}>
+            {
+
+product?.map((item, i) => {
+  return (
+          <>
                 <Col md={3} className="pd0">
+            <Link
+          to={`/singleProduct/${item.ProductID}`}
+        >
+                    <div className="whiteCard">
+                        <img src={apiAsset+item.Pic1}/>
+                        <p>{item.ProductName}</p>
+                        <span>{item.Cost} تومان</span>
+                    </div>
+                </Link>
+                </Col>
+                </>
+                    );
+
+            })
+          }
+                {/* <Col md={3} className="pd0">
                     <div className="whiteCard">
                         <img src={Img4}/>
                         <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
                         <span>125000 تومان</span>
                     </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-           
+                </Col> */}
             </Row>
         </Col>
     </Row>

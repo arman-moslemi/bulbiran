@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React,{useEffect,useState} from 'react'
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -21,30 +21,150 @@ import Pardakht from './assets/icons/Pardakht';
 import Price from './assets/icons/Price';
 import BGarantee from './assets/icons/BGarantee';
 import Save from './assets/icons/Save';
-
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import { Link, useHistory,useParams } from "react-router-dom";
 
-const images = [
-    {
-        original: 'https://dkstatics-public.digikala.com/digikala-products/f84556d54d4bb6ba8acd9cc89ab99e90fb98b9b9_1613471623.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
-        thumbnail: 'https://dkstatics-public.digikala.com/digikala-products/f84556d54d4bb6ba8acd9cc89ab99e90fb98b9b9_1613471623.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
-      },
-    {
-      original: 'https://dkstatics-public.digikala.com/digikala-products/ccd1f31c1c5d457c6a5ecc11d92251b6166b8151_1613471627.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
-      thumbnail: 'https://dkstatics-public.digikala.com/digikala-products/ccd1f31c1c5d457c6a5ecc11d92251b6166b8151_1613471627.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
-    },
-   
-    {
-        original: 'https://dkstatics-public.digikala.com/digikala-products/4db64af2b0c2e2b756463832b67514eee93f9e67_1613471624.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
-        thumbnail: 'https://dkstatics-public.digikala.com/digikala-products/4db64af2b0c2e2b756463832b67514eee93f9e67_1613471624.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
-      },
-      {
-        original: 'https://dkstatics-public.digikala.com/digikala-products/8df22cf09a20ad4af87e49582f7a5768f4026a03_1613471626.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
-        thumbnail: 'https://dkstatics-public.digikala.com/digikala-products/8df22cf09a20ad4af87e49582f7a5768f4026a03_1613471626.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
-      },
-  ];
+// const images = [
+    // {
+    //     original: 'https://dkstatics-public.digikala.com/digikala-products/f84556d54d4bb6ba8acd9cc89ab99e90fb98b9b9_1613471623.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
+    //     thumbnail: 'https://dkstatics-public.digikala.com/digikala-products/f84556d54d4bb6ba8acd9cc89ab99e90fb98b9b9_1613471623.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
+    //   },
+    // {
+    //   original: 'https://dkstatics-public.digikala.com/digikala-products/ccd1f31c1c5d457c6a5ecc11d92251b6166b8151_1613471627.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
+    //   thumbnail: 'https://dkstatics-public.digikala.com/digikala-products/ccd1f31c1c5d457c6a5ecc11d92251b6166b8151_1613471627.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
+    // },
+
+    // {
+    //     original: 'https://dkstatics-public.digikala.com/digikala-products/4db64af2b0c2e2b756463832b67514eee93f9e67_1613471624.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
+    //     thumbnail: 'https://dkstatics-public.digikala.com/digikala-products/4db64af2b0c2e2b756463832b67514eee93f9e67_1613471624.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
+    //   },
+    //   {
+    //     original: 'https://dkstatics-public.digikala.com/digikala-products/8df22cf09a20ad4af87e49582f7a5768f4026a03_1613471626.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
+    //     thumbnail: 'https://dkstatics-public.digikala.com/digikala-products/8df22cf09a20ad4af87e49582f7a5768f4026a03_1613471626.jpg?x-oss-process=image/resize,h_1600/quality,q_80/watermark,image_ZGstdy8xLnBuZw==,t_90,g_nw,x_15,y_15',
+    //   },
+//   ];
+
+
   const SingleProduct=() => {
+    const images = [];
+    const  Colors=[];
+    const [product,setProduct]=useState([])
+    const [allimg,setAllimg]=useState([])
+    const [color,setColor]=useState([])
+    const [comments,setComment]=useState([])
+    const [property,setProperty]=useState([])
+    const [rate,setRate]=useState(0)
+    const [rateCount,setRateCount]=useState(0)
+	const params = useParams().id;
+
+    const getProduct=()=>{
+        const axios = require("axios");
+        axios
+          .get(apiUrl + "Products/" + params)
+        //   .get(apiUrl + "Blog")
+          .then(function (response) {
+            if (response.data.result == "true") {
+             console.log(22)
+             console.log(response.data.Data)
+             setProduct(response.data.Data)
+             if(response.data.Data.Pic1)
+{
+     images.push({original:apiAsset+response.data.Data.Pic1,thumbnail:apiAsset+response.data.Data.Pic1})
+}    if(response.data.Data.Pic2)
+{
+     images.push({original:apiAsset+response.data.Data.Pic2,thumbnail:apiAsset+response.data.Data.Pic2})
+    }
+if(response.data.Data.Pic3)
+
+{
+     images.push({original:apiAsset+response.data.Data.Pic3,thumbnail:apiAsset+response.data.Data.Pic3}
+        )
+}
+    if(response.data.Data.Pic4)
+
+{    images.push({original:apiAsset+response.data.Data.Pic4,thumbnail:apiAsset+response.data.Data.Pic4})
+}
+// Colors=product.Color.split(',')[0];
+for (let index = 0; index < response.data.Data?.Color?.split(',').length; index++) {
+   if( response.data.Data?.Color?.split(',')[index] != "")
+{
+      Colors.push(response.data.Data?.Color?.split(',')[index])
+    // setColor([...color,product?.Color?.split(',')[index]])
+}
+
+}
+  console.log(77)
+  setColor(Colors)
+    console.log(color)
+    console.log(Colors)
+    setAllimg(images)
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+          axios
+          .get(apiUrl + "Comment/" + params)
+        //   .get(apiUrl + "Blog")
+          .then(function (response) {
+            if (response.data.result == "true") {
+             console.log(22)
+             console.log(response.data.Data)
+             setComment(response.data.Data)
+
+
+}})
+          .catch(function (error) {
+            console.log(error);
+          });
+          axios
+          .get(apiUrl + "ProductProperty/" + params)
+        //   .get(apiUrl + "Blog")
+          .then(function (response) {
+            if (response.data.result == "true") {
+             console.log(22)
+             console.log(response.data.Data)
+             setProperty(response.data.Data)
+
+
+}})
+          .catch(function (error) {
+            console.log(error);
+          });
+          axios
+          .get(apiUrl + "ProductRate/" + params)
+        //   .get(apiUrl + "Blog")
+          .then(function (response) {
+            if (response.data.result == "true") {
+             console.log(423)
+             console.log(response.data.Data)
+             var ss=0;
+             response.data.Data.forEach(element => {
+                 ss+=element.Rate;
+             });
+
+             console.log(ss)
+            if( response.data.Data.length != 0)
+            { setRate(parseInt(ss/response.data.Data.length))
+             setRateCount(parseInt(response.data.Data.length))}
+
+
+
+}})
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+      useEffect(() => {
+        getProduct();
+
+      }, []);
+
     const options=[
         'one',
         'two',
@@ -63,35 +183,50 @@ const images = [
       };
       let subtitle;
       const [modalIsOpen, setIsOpen] = React.useState(false);
-    
+
       function openModal() {
         setIsOpen(true);
       }
-    
+
       function afterOpenModal() {
         // references are now sync'd and can be accessed.
         subtitle.style.color = '#f00';
       }
-    
+
       function closeModal() {
         setIsOpen(false);
       }
+      const ratelist=(rate)=>{
+           for (let index = 0; index < rate; index++) {
+return(
+
+    <FaRegStar className="s1"/>
+)
+
+
+           }
+           for (let index = 0; index <5- rate; index++) {
+                <FaStar className="s2"/>
+
+                       }
+
+      }
       return(
-        
+
       <>
-   
+
         <TopBar/>
-        <Header/> 
-      <Container fluid className="bulbiranContainer"> 
-     <div className="singleBox"> 
+        <Header/>
+      <Container fluid className="bulbiranContainer">
+     <div className="singleBox">
         <Row>
             <Col md={3} className="imgBoxS">
-                <ImageGallery items={images} showBullets={false} showPlayButton={false} showNav={false} showFullscreenButton={false}/>
+                <ImageGallery items={allimg} showBullets={false} showPlayButton={false} showNav={false} showFullscreenButton={false}/>
             </Col>
             <Col md={6}>
                 <Row style={{margin:"0"}}>
                     <Col md={12} className="ta-right pd0">
-                        <span className="breadCrumbs">بروکس</span>
+                        <span className="breadCrumbs">{product.BrnadName}</span>
                         <span className="breadCrumbs">/</span>
                         <span className="breadCrumbs">لامپ</span>
                     </Col>
@@ -99,27 +234,40 @@ const images = [
                 <Row style={{margin:"0"}}>
                     <Col md={12} className="ta-right pd0">
                         <p className="singleProductName">
-                        لامپ ال ای دی 10 وات بروکس مدل 5322-A60 پایه E27
+                        {/* لامپ ال ای دی 10 وات بروکس مدل 5322-A60 پایه E27 */}
+                        {product.ProductName}
                         </p>
                     </Col>
                 </Row>
                 <Row style={{margin:"0",borderBottomColor:"#ececec",borderBottomWidth:"2px",borderBottomStyle:"solid",paddingBottom:"10px"}}>
                     <Col md={12} className="ta-right pd0">
                         <span className="breadCrumbs" style={{marginLeft:"5px"}}>
-                            امتیاز این کالا از دید کاربران : 
+                            امتیاز این کالا از دید کاربران :
                         </span>
                         <span className="breadCrumbs" >
-                            2
+                            {rate}
                         </span>
                         <div className="rateStar">
-                            <FaRegStar className="s1"/>
+                            {/* <FaRegStar className="s1"/>
                             <FaRegStar className="s1"/>
                             <FaRegStar className="s1"/>
                             <FaStar className="s2"/>
-                            <FaStar className="s2"/>
+                            <FaStar className="s2"/> */}
+                             {
+        Array(5-rate).fill(
+            <FaRegStar className="s1"/>
+
+        )
+    }
+{
+    Array(rate).fill(
+        <FaStar className="s2"/>
+
+    )
+}
                         </div>
                         <span className="breadCrumbs" style={{marginRight:"5px"}}>
-                           12 نظر
+                           {comments.length} نظر
                         </span>
                     </Col>
                 </Row>
@@ -127,26 +275,44 @@ const images = [
                     <Col md={12} className="pd0 ta-right">
                         <span className="vijhegiTitle">ویژگی های این کالا</span>
                         <ul className="vijhegiList">
-                            <li>
-                                شکل ظاهری : حبابی
+                        { property?.map((item, i) => {
+             return (
+                 i<3?
+          <>
+
+<li>
+                                {item.Title} : {item.Text}
                             </li>
-                <li>
-                    بازه توان مصرفی : 10 تا 12 وات
-                </li>
-                <li>
-                    نوع پایه : E27
-                    </li>
+            </>
+:
+null
+                        );})}
+
+
                         </ul>
+
                     </Col>
                 </Row>
                 <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px"}}>
                     <Col md={12} className="pd0 ta-right">
                         <span className="vijhegiTitle">رنگ محصول : </span>
                         <ul className="colorUl">
-                            <li>
-                                <Button id="color1"></Button>
+                            {
+                                color?.map((item)=>{
+return(
+    <>
+ <li>
+                                <Button style={{backgroundColor: item}} ></Button>
                                 </li>
-                                <li>
+                      </>
+
+
+);
+
+                                })
+                            }
+
+                                {/* <li>
                                 <Button id="color2"></Button>
                                 </li>
                                 <li>
@@ -154,7 +320,7 @@ const images = [
                                 </li>
                                 <li>
                                 <Button id="color4"></Button>
-                                </li>    
+                                </li> */}
                         </ul>
                     </Col>
                 </Row>
@@ -173,14 +339,14 @@ const images = [
                         <span>قیمت این کالا</span>
                         <br/>
                         <span className="singlePrice">
-                            125000 تومان
+                            {product.Cost} تومان
                         </span>
                     </div>
                     <div>
                     <span className="tedad">
                             تعداد :
                         </span>
-                        
+
                     </div>
                     <Button className="addToCart">
                         افزودن به سبد خرید
@@ -212,9 +378,9 @@ const images = [
                   <div className="a1">
                     <Zemanat/>
                     <span>ضمانت اصل بودن کالا</span>
-                </div>   
+                </div>
                 </Col>
-               
+
                 <Col md={2} className="ta-center">
                 <div className="a1">
                     <Ersal/>
@@ -233,7 +399,7 @@ const images = [
                     <span>قیمت کارخانه</span>
                 </div>
                </Col>
-            
+
         </Row>
 
      </div>
@@ -253,15 +419,14 @@ const images = [
                        نقد و بررسی اجمالی
                         </p>
                         <p className="pNameMini">
-                        لامپ ال ای دی 10 وات بروکس مدل 5322-A60 پایه E27
-                        </p>
+{product.ProductName}
+                     </p>
                     </Col>
                 </Row>
     <Row style={{margin:"0"}}>
         <Col md={9} className="pd0">
             <p className="productDetail">
-            لامپ ال‌ای‌دی فوق یکی از محصولات تولیدی شرکت «بروکس» (Burux) است که تحت عنوان مدل «A60-5322» به بازار عرضه می‌شود. این لامپ راندمان بالایی دارد و بیشترین مقدار انرژی مصرفی را صرف تولید نور می‌کند؛ ازاین‌رو حرارت تولیدی کمی دارد. این محصول توانسته در رده‌ی انرژی A+ قرار گیرد و در کنار این راندمان مناسب، از طول عمر بالایی برخوردار است. طول عمر این محصول 35000 ساعت بوده و کیفیت ساخت مناسبی دارد. از دیگر مشخصات این لامپ می‌توان به پایه‌ی E27 آن اشاره کرد که برای نصب روی سرپیچ‌های E27 مناسب است. حباب قرارگرفته روی این لامپ مقاومت بالایی در برابر ضربه دارد و می‌توان آن را در مکان‌هایی که احتمال برخورد ضربه با لامپ وجود دارد، استفاده کرد. این محصول موفق به اخذ استاندارد RoHS شده و دلیل آن استفاده‌نکردن از عناصر مضر سرب و جیوه در ساخت لامپ است. نور خروجی این محصول معادل یک لامپ 75 وات رشته‌ای اندازه‌گیری شده است.
-            </p>
+            {product.Text}             </p>
         </Col>
         <Col md={3}>
             <div className="productTable">
@@ -270,69 +435,29 @@ const images = [
                    <span className="tableSub">ویژگی های اصلی</span>
                    </Col>
                </Row>
+               { property?.map((item, i) => {
+             return (
+                 i<4?
+          <>
                 <Row style={{margin:"0"}} className="tableRow">
                     <Col md={6} className="ta-right pd0">
                         <span className="tableSpan">
-                            روشنایی
+                            {item.Title}
                         </span>
                     </Col>
                     <Col md={6} className="ta-left pd0">
                         <span className="tableSpan">
-                            800 Lums
+                            {item.Text}
                         </span>
                     </Col>
                 </Row>
-                <Row style={{margin:"0"}} className="tableRow">
-                    <Col md={6} className="ta-right pd0">
-                        <span className="tableSpan">
-                           برآورد هزینه ی سالانه انرژی
-                        </span>
-                    </Col>
-                    <Col md={6} className="ta-left pd0">
-                        <span className="tableSpan">
-                            1200 تومان
-                        </span>
-                    </Col>
-                </Row>
-                <Row style={{margin:"0"}} className="tableRow">
-                    <Col md={6} className="ta-right pd0">
-                        <span className="tableSpan">
-                           عمر این کالا
-                        </span>
-                    </Col>
-                    <Col md={6} className="ta-left pd0">
-                        <span className="tableSpan">
-                            12 ماه
-                        </span>
-                    </Col>
-                </Row>
-                <Row style={{margin:"0"}} className="tableRow">
-                    <Col md={6} className="ta-right pd0">
-                        <span className="tableSpan">
-                           میزان روشنایی
-                        </span>
-                    </Col>
-                    <Col md={6} className="ta-left pd0">
-                        <span className="tableSpan">
-                            12 ماه
-                        </span>
-                    </Col>
-                </Row>
-                <Row style={{margin:"0",border:"none"}} className="tableRow">
-                    <Col md={6} className="ta-right pd0">
-                        <span className="tableSpan">
-                          مصرف انرژی
-                        </span>
-                    </Col>
-                    <Col md={6} className="ta-left pd0">
-                        <span className="tableSpan">
-                            100 وات
-                        </span>
-                    </Col>
-                </Row>
-            </div>
+                </>
+:
+null
+                        );})}
+             </div>
         </Col>
-        </Row>                
+        </Row>
     </TabPanel>
     <TabPanel>
       <div>
@@ -340,12 +465,100 @@ const images = [
                       مشخصات کالا
                         </p>
                         <p className="pNameMini">
-                        لامپ ال ای دی 10 وات بروکس مدل 5322-A60 پایه E27
+                        {product.ProductName}
                         </p>
-                     
+
       </div>
       <Row className="mgt20" style={{margin:"0"}}>
           <Col md={4}>
+         { property?.map((item, i) => {
+             console.log(i)
+             return (
+                 i<4?
+          <>
+
+            <Row style={{margin:"0"}} className="pTableRow">
+                <Col md={6} className="pd0 ta-right">
+                    <span className="tableTR">
+                      {item.Title}
+                    </span>
+                </Col>
+                <Col md={6} className="pd0 ta-right">
+                <span className="tableTH">
+                {item.Text}
+                    </span>
+                    </Col>
+            </Row>
+            </>
+:
+null
+);
+
+                                })
+                            }
+                                                                                             </Col>
+                                                                                             <Col md={4}>
+
+
+ { property?.map((item, i) => {
+             console.log(i)
+             return (
+
+             i<8  &&  i>3 ?
+                 <>
+
+
+            <Row style={{margin:"0"}} className="pTableRow">
+                <Col md={6} className="pd0 ta-right">
+                    <span className="tableTR">
+                      {item.Title}
+                    </span>
+                </Col>
+                <Col md={6} className="pd0 ta-right">
+                <span className="tableTH">
+                {item.Text}
+                    </span>
+                    </Col>
+            </Row>
+            </>
+            :
+null
+);
+
+                                })
+                            }
+                                                                                                                         </Col>
+                                                                                                                         <Col>
+                                                      { property?.map((item, i) => {
+             console.log(i)
+             return (
+
+           i>7 ?
+                 <>
+
+
+            <Row style={{margin:"0"}} className="pTableRow">
+                <Col md={6} className="pd0 ta-right">
+                    <span className="tableTR">
+                      {item.Title}
+                    </span>
+                </Col>
+                <Col md={6} className="pd0 ta-right">
+                <span className="tableTH">
+                {item.Text}
+                    </span>
+                    </Col>
+            </Row>
+            </>
+            :
+null
+);
+
+                                })
+                            }
+</Col>
+
+          {/* <Col md={4}>
             <Row style={{margin:"0"}} className="pTableRow">
                 <Col md={6} className="pd0 ta-right">
                     <span className="tableTR">
@@ -397,7 +610,7 @@ const images = [
             <Row style={{margin:"0"}} className="pTableRow">
                 <Col md={6} className="pd0 ta-right">
                     <span className="tableTR">
-                       ولتاژ 
+                       ولتاژ
                     </span>
                 </Col>
                 <Col md={6} className="pd0 ta-right">
@@ -419,6 +632,7 @@ const images = [
                     </Col>
             </Row>
           </Col>
+
           <Col md={4}>
             <Row style={{margin:"0"}} className="pTableRow">
                 <Col md={6} className="pd0 ta-right">
@@ -468,88 +682,13 @@ const images = [
                     </span>
                     </Col>
             </Row>
-            <Row style={{margin:"0"}} className="pTableRow">
-                <Col md={6} className="pd0 ta-right">
-                    <span className="tableTR">
-                       ولتاژ 
-                    </span>
-                </Col>
-                <Col md={6} className="pd0 ta-right">
-                <span className="tableTH">
-                        220 ولت
-                    </span>
-                    </Col>
-            </Row>
-            <Row style={{margin:"0"}} className="pTableRow">
-                <Col md={6} className="pd0 ta-right">
-                    <span className="tableTR">
-                       ابعاد
-                    </span>
-                </Col>
-                <Col md={6} className="pd0 ta-right">
-                <span className="tableTH">
-                        6 * 1.2 * 1 سانتی متر
-                    </span>
-                    </Col>
-            </Row>
-          </Col>
-         
-          <Col md={4}>
-            <Row style={{margin:"0"}} className="pTableRow">
-                <Col md={6} className="pd0 ta-right">
-                    <span className="tableTR">
-                        شکل ظاهری
-                    </span>
-                </Col>
-                <Col md={6} className="pd0 ta-right">
-                <span className="tableTH">
-                        حبابی
-                    </span>
-                    </Col>
-            </Row>
-            <Row style={{margin:"0"}} className="pTableRow">
-                <Col md={6} className="pd0 ta-right">
-                    <span className="tableTR">
-                       توان
-                    </span>
-                </Col>
-                <Col md={6} className="pd0 ta-right">
-                <span className="tableTH">
-                        ده وات
-                    </span>
-                    </Col>
-            </Row>
-            <Row style={{margin:"0"}} className="pTableRow">
-                <Col md={6} className="pd0 ta-right">
-                    <span className="tableTR">
-                        بازه توانی مصرفی
-                    </span>
-                </Col>
-                <Col md={6} className="pd0 ta-right">
-                <span className="tableTH">
-                        5 تا 10 وات
-                    </span>
-                    </Col>
-            </Row>
-            <Row style={{margin:"0"}} className="pTableRow">
-                <Col md={6} className="pd0 ta-right">
-                    <span className="tableTR">
-                       میزان روشنایی
-                    </span>
-                </Col>
-                <Col md={6} className="pd0 ta-right">
-                <span className="tableTH">
-                        820 لومن
-                    </span>
-                    </Col>
-            </Row>
-       
-          </Col>
-         
+
+          </Col> */}
+
       </Row>
     <Row style={{margin:"0"}}>
         <Col md={12} className="pd0">
-           
+
         </Col>
     </Row>
     </TabPanel>
@@ -559,30 +698,37 @@ const images = [
                      امتیاز و دیدگاه کاربران
                         </p>
                         <p className="pNameMini">
-                        لامپ ال ای دی 10 وات بروکس مدل 5322-A60 پایه E27
+                        {product.ProductName}
                         </p>
-                     
+
       </div>
       <Row style={{margin:"0"}}>
           <Col md={3}>
             <div className="cWhiteBox mgt20">
                 <div className="ta-center">
-                    <span className="boldScore d-inline-block">3.7</span>
+                    <span className="boldScore d-inline-block">{rate}</span>
                     <span className="thinScore d-inline-block">از 5</span>
                 </div>
                 <Row style={{marginRight:"0",marginLeft:"0",marginTop:"10"}}>
                     <Col md={12} className="ta-center pd0">
                     <div className="rateStar">
-                            <FaRegStar className="s1"/>
-                            <FaRegStar className="s1"/>
-                            <FaRegStar className="s1"/>
-                            <FaStar className="s2"/>
-                            <FaStar className="s2"/>
+                    {
+        Array(5-rate).fill(
+            <FaRegStar className="s1"/>
+
+        )
+    }
+{
+    Array(rate).fill(
+        <FaStar className="s2"/>
+
+    )
+}
                         </div>
                         <span className="breadCrumbs" style={{marginRight:"10px"}}>
-                            از مجموع 15 امتیاز
+                            از مجموع {rateCount} امتیاز
                         </span>
-                     
+
                     </Col>
                 </Row>
                 <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px"}}>
@@ -676,8 +822,8 @@ const images = [
       >
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
         <button onClick={closeModal}>close</button>
-      
-        
+
+
       </Modal>
     </div>
             </div>
@@ -695,63 +841,57 @@ const images = [
               <li>
                   <Button className="sortBtn">قدیمی ترین دیدگاه ها</Button>
               </li>
-            
+
             </ul>
 
             </div>
-     
+
         </Col>
         </Row>
           <div className="commentBox">
+          {
+
+comments?.map((item, i) => {
+  return (
+          <>
               <div className="bBottom">
-                  <span className="commenterName d-inline-block">احمدرضا عابدزاده</span>
+                  <span className="commenterName d-inline-block">{item.NameFamily}</span>
                   <div className="rateStar d-inline-block">
-                            <FaRegStar className="s1"/>
+                      {/* {
+                          ratelist(item.rate)
+                      } */}
+    {
+        Array(5-item.Rate).fill(
+            <FaRegStar className="s1"/>
+
+        )
+    }
+{
+    Array(item.Rate).fill(
+        <FaStar className="s2"/>
+
+    )
+}
+                            {/* <FaRegStar className="s1"/>
                             <FaRegStar className="s1"/>
                             <FaRegStar className="s1"/>
                             <FaStar className="s2"/>
-                            <FaStar className="s2"/>
+                            <FaStar className="s2"/> */}
                         </div>
                         <span className="commentDate d-inline-block">
-                            14 اردیبهشت 1400
+{item.Date}
                         </span>
               </div>
               <p className="commentText">
-              من برای چراغ مطالعه خریده بودم که زیاد مناسب نبود چون نورش زیاده تا حدی که کل اتاقو روشن میکنه قیمت مناسبی داشت شرکت هم که تو تبلیغات خیلی از کیفیت می گه امیدوارم در عمل هم کیفیت ببینم­
-              </p>
-              <div className="bBottom mgt40">
-                  <span className="commenterName d-inline-block">احمدرضا عابدزاده</span>
-                  <div className="rateStar d-inline-block">
-                            <FaRegStar className="s1"/>
-                            <FaRegStar className="s1"/>
-                            <FaRegStar className="s1"/>
-                            <FaStar className="s2"/>
-                            <FaStar className="s2"/>
-                        </div>
-                        <span className="commentDate d-inline-block">
-                            14 اردیبهشت 1400
-                        </span>
-              </div>
-              <p className="commentText">
-              من برای چراغ مطالعه خریده بودم که زیاد مناسب نبود چون نورش زیاده تا حدی که کل اتاقو روشن میکنه قیمت مناسبی داشت شرکت هم که تو تبلیغات خیلی از کیفیت می گه امیدوارم در عمل هم کیفیت ببینم­
-              </p>
-              <div className="bBottom mgt40">
-                  <span className="commenterName d-inline-block">احمدرضا عابدزاده</span>
-                  <div className="rateStar d-inline-block">
-                            <FaRegStar className="s1"/>
-                            <FaRegStar className="s1"/>
-                            <FaRegStar className="s1"/>
-                            <FaStar className="s2"/>
-                            <FaStar className="s2"/>
-                        </div>
-                        <span className="commentDate d-inline-block">
-                            14 اردیبهشت 1400
-                        </span>
-              </div>
-              <p className="commentText">
-              من برای چراغ مطالعه خریده بودم که زیاد مناسب نبود چون نورش زیاده تا حدی که کل اتاقو روشن میکنه قیمت مناسبی داشت شرکت هم که تو تبلیغات خیلی از کیفیت می گه امیدوارم در عمل هم کیفیت ببینم­
-              </p>
-          </div>
+{item.Text}
+    </p>
+
+              </>
+                    );
+
+            })
+          }
+        </div>
           </Col>
       </Row>
     </TabPanel>
@@ -763,6 +903,6 @@ const images = [
     <IconRow/>
     <Footer/>
       </>);
-    
+
     };
     export default SingleProduct;

@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React , {useState,useEffect} from 'react'
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -25,27 +25,82 @@ import Img4 from './assets/img/Image 4.png';
 import Img5 from './assets/img/Image 5.png';
 import Img6 from './assets/img/Image 6.png';
 import Img7 from './assets/img/Image 7.png';
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+import { Link, useHistory } from "react-router-dom";
 
 const Shegeftangiz = () => {
-  
+    const [product,setProduct]=useState([])
+    const [news,setNews]=useState([])
+    const [img1,setimg1]=useState('')
+    const [img2,setimg2]=useState('')
+    const [img3,setimg3]=useState('')
+
+    const mainSlider=()=>{
+        const axios = require("axios");
+        axios
+        // .post(apiUrl + "RequestPhotos",{RequestID:params})
+        .get(apiUrl + "FirstPage")
+        .then(function (response) {
+          if (response.data.result == "true") {
+           console.log(123456)
+           console.log(response.data.Data)
+           console.log(response.data.Data[2].Pic)
+           setimg1(response.data.Data[2].Pic)
+           setimg2(response.data.Data[2].Pic2)
+           setimg3(response.data.Data[2].Pic3)
+
+           console.log(img1)
+        }
+        else{
+          console.log(response.data.result)
+
+        }})
+        .catch(function (error) {
+          console.log(error);
+        });
+          axios
+              .get(apiUrl + "AllProductWonder")
+          .then(function (response) {
+            if (response.data.result == "true") {
+                console.log(11)
+                console.log(response.data.Data)
+
+
+                setProduct(response.data.Data)
+
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+
+
+      }
+      useEffect(() => {
+        mainSlider();
+// alert(val)
+      }, []);
     return (
     <>
           <TopBar/>
-      <Header/> 
-     
-    <Container fluid className="bulbiranContainer"> 
+      <Header/>
+
+    <Container fluid className="bulbiranContainer">
     <Row className="mgt20">
         <Col md={8} className="pdl0">
-        <img src={Sh1} className="w100 h100"/>
+        <img src={apiAsset+img1} className="w100 h100"/>
        </Col>
         <Col md={4} className="ta-left">
        <div>
        <div className="firstBanner brt" style={{paddingTop:"0px"}}>
-       <img src={Sh2}  className="w100"/>
+       <img src={apiAsset+img2}  className="w100"/>
          </div>
        </div>
           <div className="secondBanner brt">
-          <img src={Sh3}  className="w100"/>
+          <img src={apiAsset+img3}  className="w100"/>
             </div>
         </Col>
       </Row>
@@ -74,96 +129,39 @@ const Shegeftangiz = () => {
 
             </div>
             <Row style={{margin:"-5px"}}>
+            {product?.map((item, i) => {
+  return (
+          <>
                 <Col md={2} className="pd0">
+              <Link
+          to={`/singleProduct/${item.ProductID}`}
+        >
+                    <div className="whiteCard">
+                        <img src={Img4}/>
+                        <p>{item.ProductName}</p>
+                        <span>{item.Cost} تومان</span>
+                    </div>
+                </Link>
+                </Col>
+                </>
+
+                        );
+
+})
+}
+                {/* <Col md={2} className="pd0">
                     <div className="whiteCard">
                         <img src={Img4}/>
                         <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
                         <span>125000 تومان</span>
                     </div>
-                </Col>
-                <Col md={2} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={2} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={2} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={2} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={2} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={2} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={2} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={2} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={2} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={2} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={2} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-           
+                </Col> */}
+
             </Row>
-       
+
           </Col>
       </Row>
-     
+
      </Container>
     <SocialRow/>
     <IconRow/>

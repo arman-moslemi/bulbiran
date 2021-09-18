@@ -1,4 +1,5 @@
-import React , {useState} from 'react'
+import React , {useState,useEffect} from 'react'
+import { Link, useHistory } from "react-router-dom"
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -34,12 +35,77 @@ import Noorafkan from './assets/img/noorafkan.png';
 import Chain from './assets/img/chain.png';
 import GreenShopLogo from './assets/icons/GreenShopLogo';
 import ShopLogo from './assets/icons/ShopLogo';
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+import {useParams } from "react-router-dom";
 const GreenShop = () => {
-  
+    const [product,setProduct]=useState([])
+    const [val,setVal]=useState(0)
+    const params = useParams().id;
+    const [group,setGroup]=useState([])
+
+    const mainSlider=()=>{
+        const axios = require("axios");
+
+          axios
+              .get(apiUrl + "CategoryGreenShop/"+params)
+          .then(function (response) {
+            if (response.data.result == "true") {
+
+                setProduct(response.data.Data)
+
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+          axios
+          .get(apiUrl + "SubGreenGroup/"+params)
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+            setGroup(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      }
+      const mainCat=(id)=>{
+        const axios = require("axios");
+        axios
+        .get(apiUrl + "SubGreenProduct/"+id)
+    .then(function (response) {
+      if (response.data.result == "true") {
+        console.log(response.data)
+
+          setProduct(response.data.Data)
+
+    }
+    else{
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+    // console.log(159876)
+      }
+        useEffect(() => {
+          mainSlider();
+// alert(val)
+        }, []);
     return (
     <>
           <TopBar/>
-      <Header/> 
+      <Header/>
       <Container fluid className="pd0">
           <div className="yellowBack">
           <Row style={{margin:"0px"}}>
@@ -48,29 +114,27 @@ const GreenShop = () => {
            <div className="cTitle">
                <p>فروشگاه سبز</p>
            </div>
-           <RadioGroup horizontal className="radioB">
-  <RadioButton value="لامپ" rootColor="transparent" pointColor="#ffb921">
-   لامپ
+           <RadioGroup horizontal
+             onChange={ss=>mainCat(ss)}
+            // value="1"
+           className="radioB">
+             { group?.map((item, i) => {
+  return (
+
+  <RadioButton value={item.SubGreenGroupID.toString()} rootColor="transparent"
+//    onChange={()=>mainCat(1)}
+    pointColor="#ffb921">
+  {item.Title}
   </RadioButton>
-  <RadioButton value="پنل" rootColor="transparent" pointColor="#ffb921">
+
+                    );
+
+            })
+          }
+  {/* <RadioButton value="2" rootColor="transparent" pointColor="#ffb921">
     پنل
   </RadioButton>
-  <RadioButton value="نورافکن" rootColor="transparent" pointColor="#ffb921">
-  نورافکن
-  </RadioButton>
-  <RadioButton value="ریسه" rootColor="transparent" pointColor="#ffb921">
-   ریسه
-  </RadioButton>
-  <RadioButton value="چراغ" rootColor="transparent" pointColor="#ffb921">
-  چراغ
-  </RadioButton>
-  <RadioButton value="آویز لوستر" rootColor="transparent" pointColor="#ffb921">
-  آویز لوستر
-  </RadioButton>
-  <RadioButton value="لوازم جانبی" rootColor="transparent" pointColor="#ffb921">
-   لوازم جانبی
-  </RadioButton>
-  
+  */}
 </RadioGroup>
             </div>
         </Col>
@@ -82,47 +146,31 @@ const GreenShop = () => {
     <div>
         <span className="gTitle">فروشگاه سبز</span>
     </div>
-    <div>
+    {/* <div>
         <span className="gTitle2">انواع محصولات LED </span>
-    </div>
+    </div> */}
     </div>
           </div>
       </Container>
-    <Container fluid className="bulbiranContainer"> 
+    <Container fluid className="bulbiranContainer">
     <Row style={{margin:"0px",marginTop:"-7%"}}>
         <Col md={12}>
             <div className="categoryBox2">
             <h4 className="circumstanceTitle ta-right">دسته بندی ها</h4>
             <div className="cateInner ta-center">
+            { group?.map((item, i) => {
+  return (
+                <Link onClick={()=>mainCat(item.SubGreenGroupID)}>
                 <div>
-                    <img src={Lamp}/>
-                    <p>لامپ</p>
+                    <img src={apiAsset+item.Photo}/>
+                    <p>{item.Title}</p>
                 </div>
-                <div>
-                    <img src={Panel}/>
-                    <p>پنل</p>
-                </div>
-                <div>
-                    <img src={Noorafkan}/>
-                    <p>نورافکن</p>
-                </div>
-                <div>
-                    <img src={Chain} id="chain"/>
-                    <p>ریسه</p>
-                </div>
-                <div>
-                    <img src={Cheragh}/>
-                    <p>چراغ</p>
-                </div>
-                <div>
-                    <img src={Loster}/>
-                    <p>آویز لوستر</p>
-                </div>
-                <div>
-                    <img src={Janebi}/>
-                    <p>لوازم جانبی</p>
-                </div>
-            </div>
+                </Link>
+                      );
+
+})
+}
+           </div>
             </div>
         </Col>
     </Row>
@@ -143,7 +191,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -151,7 +199,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -159,7 +207,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -167,7 +215,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -175,7 +223,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -183,7 +231,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -191,7 +239,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -199,7 +247,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -207,7 +255,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -215,7 +263,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -234,7 +282,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -242,7 +290,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -250,7 +298,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -258,7 +306,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -266,7 +314,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -274,7 +322,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -282,7 +330,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -290,7 +338,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -298,7 +346,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -306,7 +354,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -325,7 +373,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -333,7 +381,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -341,7 +389,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -349,7 +397,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -357,7 +405,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -365,7 +413,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -373,7 +421,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -381,7 +429,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -389,7 +437,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -397,7 +445,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -416,7 +464,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -424,7 +472,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -432,7 +480,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -440,7 +488,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -448,7 +496,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -456,7 +504,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -464,7 +512,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -472,7 +520,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -480,7 +528,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -488,7 +536,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -507,7 +555,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -515,7 +563,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -523,7 +571,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -531,7 +579,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -539,7 +587,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -547,7 +595,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -555,7 +603,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -563,7 +611,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -571,7 +619,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -579,7 +627,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -598,7 +646,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -606,7 +654,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -614,7 +662,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -622,7 +670,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -630,7 +678,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -638,7 +686,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -646,7 +694,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -654,7 +702,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -662,7 +710,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -670,7 +718,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -689,7 +737,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -697,7 +745,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -705,7 +753,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -713,7 +761,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -721,7 +769,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -729,7 +777,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -737,7 +785,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -745,7 +793,7 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -753,7 +801,7 @@ const GreenShop = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -761,12 +809,12 @@ const GreenShop = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
             </AccordionItem>
-           
+
            </Accordion>
         </Col>
         <Col md={9}>
@@ -793,91 +841,34 @@ const GreenShop = () => {
 
             </div>
             <Row style={{margin:"-5px"}}>
+
+                {product?.map((item, i) => {
+  return (
+          <>
                 <Col md={3} className="pd0">
+            <Link
+          to={`/singleProduct/${item.ProductID}`}
+        >
+                    <div className="whiteCard">
+                        <img src={apiAsset+item.Pic1}/>
+                        <p>{item.ProductName}</p>
+                        <span>{item.Cost} تومان</span>
+                    </div>
+                </Link>
+                </Col>
+                </>
+                    );
+
+            })
+          }
+                {/* <Col md={3} className="pd0">
                     <div className="whiteCard">
                         <img src={Img4}/>
                         <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
                         <span>125000 تومان</span>
                     </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-           
+                </Col> */}
+
             </Row>
         </Col>
     </Row>

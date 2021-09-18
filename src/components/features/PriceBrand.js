@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -22,13 +22,42 @@ import b11 from './assets/img/b11.png';
 import b12 from './assets/img/b12.png';
 import GetPrice from './assets/icons/GetPrice'
 import { Link, useHistory } from "react-router-dom";
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+
 const PriceBrand = () => {
     const history = useHistory();
-  return (
+    const [brand,setBrand]=useState([])
+
+    const mainSlider=()=>{
+
+    const axios = require("axios");
+
+    axios
+        .get(apiUrl + "AllBrandProduct")
+    .then(function (response) {
+      if (response.data.result == "true") {
+
+          setBrand(response.data.Data)
+
+    }
+    else{
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+
+
+}
+  useEffect(() => {
+    mainSlider();
+
+  }, []);  return (
     <>
       <TopBar/>
-      <Header/> 
-    <Container fluid className="bulbiranContainer"> 
+      <Header/>
+    <Container fluid className="bulbiranContainer">
     <div className="whiteBox pdc">
         <Row>
             <Col md={8}>
@@ -56,111 +85,34 @@ const PriceBrand = () => {
     </div>
     <div className="brandShopBox">
         <Row>
+            {
+        brand?.map((item, i) => {
+  return (
+          <>
+          <Link  onClick={()=>  history.push("/pricetable/"+item.BrandID)}>
             <Col md={3}>
                 <div className="whiteBrandBox" onClick={()=>  history.push("/pricetable")}>
-                    <img src={b1}/>
+                <img src={apiAsset+item.BrandLogo}/>
                     <div className="grayBox">
-                        <p>میتره</p>
+                        <p>{item.BrandName}</p>
                     </div>
                 </div>
             </Col>
-            <Col md={3}>
+            </Link>
+            </>
+        );
+
+})
+}
+            {/* <Col md={3}>
                 <div className="whiteBrandBox">
                     <img src={b6}/>
                     <div className="grayBox">
                         <p>پارس شهاب</p>
                     </div>
                 </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b1}/>
-                    <div className="grayBox">
-                        <p>میتره</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b6}/>
-                    <div className="grayBox">
-                        <p>پارس شهاب</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b6}/>
-                    <div className="grayBox">
-                        <p>پارس شهاب</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b1}/>
-                    <div className="grayBox">
-                        <p>میتره</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b6}/>
-                    <div className="grayBox">
-                        <p>پارس شهاب</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b1}/>
-                    <div className="grayBox">
-                        <p>میتره</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b6}/>
-                    <div className="grayBox">
-                        <p>پارس شهاب</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b1}/>
-                    <div className="grayBox">
-                        <p>میتره</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b6}/>
-                    <div className="grayBox">
-                        <p>پارس شهاب</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b1}/>
-                    <div className="grayBox">
-                        <p>میتره</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b6}/>
-                    <div className="grayBox">
-                        <p>پارس شهاب</p>
-                    </div>
-                </div>
-            </Col>
-        </Row>
+            </Col> */}
+          </Row>
     </div>
     </Container>
     <SocialRow/>

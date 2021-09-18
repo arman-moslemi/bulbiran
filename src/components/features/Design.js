@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React , {useState,useEffect} from 'react'
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -11,15 +11,88 @@ import { FaAngleLeft,FaAlignRight ,FaCheck ,FaStar, FaCircle} from 'react-icons/
 import Bulding from './assets/img/bulding.jpg';
 import FormIcon from './assets/icons/FormIcon'
 import ContactMail from './assets/icons/ContactMail'
-import MailForm from './assets/img/MailForm.png'
+import MailForm from './assets/img/MailForm.png';
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+
 
 const Design = () => {
+    const [product,setProduct]=useState([])
+    const [name,setName]=useState('')
+    const [productname,setProductName]=useState('')
+    const [email,setEmail]=useState('')
+    const [phone,setPhone]=useState('')
+    const [subject,setSubject]=useState('')
+    const [des,setDes]=useState('')
+    const mainSlider=()=>{
+        const axios = require("axios");
+
+          axios
+              .get(apiUrl + "AllHistoryDesigns")
+          .then(function (response) {
+            if (response.data.result == "true") {
+                console.log(11)
+                console.log(response.data.Data)
+
+
+                setProduct(response.data.Data)
+
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
   
+      }
+      const sendReq=()=>{
+        const axios = require("axios");
+        // console.log(name)
+        // console.log(phone)
+        // console.log(productname)
+        // console.log(des)
+        // console.log(subject)
+        if(name!=""&&productname!=""&&phone!=""&&des!=""){
+          axios
+          .post(apiUrl + "InsertDesign",{NameFamily:name,ProductName:productname,Mobile:phone,Email:email,Title:subject,Text:des})
+      .then(function (response) {
+        if (response.data.result == "true") {
+            console.log(22)
+            // console.log(response.data.Data)
+alert("با موفقیت انجام شد")
+        setName("")
+        setProductName("")
+        setDes("")
+        setEmail("")
+        setPhone("")
+        setSubject("")
+
+            // setProduct(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+        alert("عملیات با خطا رویرو شد")
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+    else{
+        alert("لطفا فیلدهای ستاره دار را کامل کنید")
+    }
+      }
+      useEffect(() => {
+        mainSlider();
+// alert(val)
+      }, []);
     return (
     <>
           <TopBar/>
-      <Header/> 
-    <Container fluid className="bulbiranContainer"> 
+      <Header/>
+    <Container fluid className="bulbiranContainer">
     <Row style={{marginRight:"0px",marginLeft:"0px",MarginTop:"20px"}}>
         <Col md={3}>
         <div className="whiteBox ta-right">
@@ -68,7 +141,65 @@ const Design = () => {
                     <span className="gTitle mgt40 mgr0">
                         نمونه کارهای بالبیران
                     </span>
+                    {product?.map((item, i) => {
+  return (
+          <>
                     <div>
+                    <div style={{marginTop:"50px"}}>
+                        <FaCircle className="bCircle d-inline-block"/>
+                        <span className="projectName d-inline-block">
+{item[i].DesignProjectName}
+                        </span>
+                    </div>
+                    <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px",paddingBottom:"15px"}} className="bBottom">
+                    {item?.map((items, i) => {
+  return (
+          <>
+                        <Col md={4}>
+                            <img src={apiAsset+items.HistoryDesignLogo} className="projectImg"/>
+                            <span className="projectName ta-right">
+                            {items.HistoryDesignName}
+                        </span>
+                        </Col>
+                        </>
+                        );
+
+})
+}
+</Row>
+                    </div>
+                        {/* <Col md={4}>
+                            <img src={apiAsset+item.HistoryDesignLogo} className="projectImg"/>
+                            <span className="projectName ta-right">
+                            {item[i].HistoryDesignName}
+                        </span>
+                        </Col>
+                        <Col md={4}>
+                            <img src={apiAsset+item.HistoryDesignLogo} className="projectImg"/>
+                            <span className="projectName ta-right">
+                            {item[i].HistoryDesignName}
+                        </span>
+                        </Col>
+                        <Col md={4}>
+                            <img src={apiAsset+item.HistoryDesignLogo} className="projectImg"/>
+                            <span className="projectName ta-right">
+                            {item[i].HistoryDesignName}
+                        </span>
+                        </Col>
+                        <Col md={4}>
+                            <img src={apiAsset+item.HistoryDesignLogo} className="projectImg"/>
+                            <span className="projectName ta-right">
+                            {item[i].HistoryDesignName}
+                        </span>
+                        </Col>
+                    */}
+
+                    </>
+                    );
+
+            })
+          }
+                    {/* <div>
                     <div style={{marginTop:"50px"}}>
                         <FaCircle className="bCircle d-inline-block"/>
                         <span className="projectName d-inline-block">
@@ -100,12 +231,7 @@ const Design = () => {
                             نمای اولیه - لابی برج میلاد
                         </span>
                         </Col>
-                        <Col md={4}>
-                            <img src={Bulding} className="projectImg"/>
-                            <span className="projectName ta-right">
-                            نمای اولیه - لابی برج میلاد
-                        </span>
-                        </Col>
+
                     </Row>
                     </div>
                     <div>
@@ -128,44 +254,10 @@ const Design = () => {
                             نمای اولیه - لابی برج میلاد
                         </span>
                         </Col>
-                        <Col md={4}>
-                            <img src={Bulding} className="projectImg"/>
-                            <span className="projectName ta-right">
-                            نمای اولیه - لابی برج میلاد
-                        </span>
-                        </Col>
-                        <Col md={4}>
-                            <img src={Bulding} className="projectImg"/>
-                            <span className="projectName ta-right">
-                            نمای اولیه - لابی برج میلاد
-                        </span>
-                        </Col>
-                        
+
                     </Row>
                     </div>
-                    <div>
-                    <div style={{marginTop:"50px"}}>
-                        <FaCircle className="bCircle d-inline-block"/>
-                        <span className="projectName d-inline-block">
-                            پروژه برج میلاد
-                        </span>
-                    </div>
-                    <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px",paddingBottom:"15px"}} className="bBottom">
-                        <Col md={4}>
-                            <img src={Bulding} className="projectImg"/>
-                            <span className="projectName ta-right">
-                            نمای اولیه - لابی برج میلاد
-                        </span>
-                        </Col>
-                        <Col md={4}>
-                            <img src={Bulding} className="projectImg"/>
-                            <span className="projectName ta-right">
-                            نمای اولیه - لابی برج میلاد
-                        </span>
-                        </Col>
-                      
-                    </Row>
-                    </div>
+                */}
                 </div>
 
             </div>
@@ -188,31 +280,33 @@ const Design = () => {
           <Col md={5} className="ta-right">
           <form className="serviceForm">
             <div className="cFormDiv">
-           <span>نام و نام خانوادگی</span><FaStar/>   
-           <input placeholder="نام و نام خانوادگی خود را وارد کنید" required/>
+           <span>نام و نام خانوادگی</span><FaStar/>
+           <input onChange={(event)=>setName(event.target.value)} value={name} placeholder="نام و نام خانوادگی خود را وارد کنید" type='text' required/>
             </div>
             <div className="cFormDiv">
-           <span>نام محصول</span><FaStar/>   
-           <input placeholder="نام محصول خود را وارد کنید" required/>
+           <span>نام محصول</span><FaStar/>
+           <input onChange={(event)=>setProductName(event.target.value)} value={productname} placeholder="نام محصول خود را وارد کنید" required/>
             </div>
             <div className="cFormDiv">
-           <span>شماره تماس</span><FaStar/>   
-           <input placeholder="شماره تماس خود را وارد کنید" required type="number"/>
+           <span>شماره تماس</span><FaStar/>
+           <input onChange={(event)=>setPhone(event.target.value)} value={phone} placeholder="شماره تماس خود را وارد کنید" required type="number"/>
             </div>
             <div className="cFormDiv">
-           <span>پست الکترونیکی</span> 
-           <input placeholder="پست الکترونیکی خود را وارد کنید" type="email"/>
+           <span>پست الکترونیکی</span>
+           <input onChange={(event)=>setEmail(event.target.value)} value={email} placeholder="پست الکترونیکی خود را وارد کنید" type="email"/>
             </div>
             <div className="cFormDiv">
-           <span>موضوع درخواست</span>  
-           <input placeholder="موضوع درخواست را وارد کنید"/>
+           <span>موضوع درخواست </span>
+           <input onChange={(event)=>setSubject(event.target.value)} value={subject} placeholder="موضوع درخواست را وارد کنید"/>
             </div>
             <div className="cFormDiv">
-           <span>توضیحات</span><FaStar/>   
-           <textarea placeholder="توضیحات خود را وارد کنید" required/>
+           <span>توضیحات</span><FaStar/>
+           <textarea onChange={(event)=>setDes(event.target.value)} value={des} placeholder="توضیحات خود را وارد کنید" required/>
             </div>
             <div className="cFormDiv ta-left" style={{marginBottom:"0"}}>
-            <Button className="servicesButton" type="submit">
+            <Button
+             onClick={()=>sendReq()}
+              className="servicesButton" type="submit">
                    ثبت درخواست
                </Button>
             </div>
@@ -223,8 +317,8 @@ const Design = () => {
             <img src={MailForm} className="w90"/>
           </Col>
         </Row>
-      </div>  
- 
+      </div>
+
        </Col>
    </Row>
   </Container>

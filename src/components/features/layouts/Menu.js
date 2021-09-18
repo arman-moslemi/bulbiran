@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/bulbiran.css'
 import { Link, useHistory } from "react-router-dom";
@@ -28,13 +28,73 @@ import c5 from '../assets/img/c5.png';
 import c6 from '../assets/img/c6.png';
 import c7 from '../assets/img/c7.png';
 import c8 from '../assets/img/c8.png';
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
+
+
 import { required } from 'glamor';
 
 const Menu = () => {
     const history = useHistory();
     const [pic,setpic]=useState(Lamp)
+    const [brand,setBrand]=useState([])
+    const [group,setGroup]=useState([])
+    const [greenGroup,setGreenGroup]=useState([])
     //   const [pic,setpic]=useState("../assets/img/lamp.png")
-    
+    const mainSlider=()=>{
+        const axios = require("axios");
+
+          axios
+              .get(apiUrl + "AllBrandProduct")
+          .then(function (response) {
+            if (response.data.result == "true") {
+
+                setBrand(response.data.Data)
+
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+          axios
+          .get(apiUrl + "AllRoles")
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+            setGroup(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+          axios
+          .get(apiUrl + "AllGreenGroup")
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+            setGreenGroup(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      }
+
+        useEffect(() => {
+          mainSlider();
+
+        }, []);
     const LampM = () => {
         return <div className="whiteMega">
     <div className="whiteMegaTitle">
@@ -44,41 +104,90 @@ const Menu = () => {
        <Col md={3}>
         <img src={pic} className="megaMenuImg"/>
        </Col>
-       <Col md={4}>
+       <Col md={3}>
            <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
+               return (
+                  i<4?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop")}>لامپ LED</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
+               </li>
+               {/* <li>
+                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/3")}>لامپ کم مصرف</a>
                </li>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop")}>لامپ کم مصرف</a>
+                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/5")}>لامپ گازی</a>
                </li>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop")}>لامپ گازی</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop")}>لامپ هالوژنی</a>
-               </li>
-               
+                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/6")}>لامپ هالوژنی</a>
+               </li> */}
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-       <Col md={5}>
+       <Col md={3}>
            <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
+               return (
+                i>3 &&  i<8?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop")}>لامپ رشته ای</a>
+                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
+               </li>
+               {/* <li>
+                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/3")}>لامپ کم مصرف</a>
                </li>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ فلورسنت</a>
+                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/5")}>لامپ گازی</a>
                </li>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ فیلامنتی</a>
+                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/6")}>لامپ هالوژنی</a>
+               </li> */}
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col>
+       <Col md={3}>
+           <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
+               return (
+               i>7?
+                      <>
+               <li>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
-              
-               
+               {/* <li>
+                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/3")}>لامپ کم مصرف</a>
+               </li>
+               <li>
+                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/5")}>لامپ گازی</a>
+               </li>
+               <li>
+                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/6")}>لامپ هالوژنی</a>
+               </li> */}
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
    </Row>
         </div>
-     
+
       }
       const DakheliM = () => {
         return <div className="whiteMega">
@@ -86,66 +195,70 @@ const Menu = () => {
       روشنایی داخلی
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
-       <Col md={3}>
+   <Col md={3}>
         <img src={pic} className="megaMenuImg"/>
-        {/* <img src={required("../assets/img/lamp.png")} className="megaMenuImg"/> */}
        </Col>
        <Col md={3}>
            <ul className="megaUl">
-               <li >
-                   <a onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)} href="#"onClick={()=>  history.push("/bulbiranshop")} >چراغ سقفی</a>
-               </li>
-               <li > 
-                   <a onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} href="#" onClick={()=>  history.push("/bulbiranshop")}>چراغ دیواری</a>
-               </li>
+           {group.filter(t=>t.BiggerGroup==2)?.map((item, i) => {
+               return (
+                  i<4?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>چراغ آویز</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>چراغ ایستاده</a>
-               </li>
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
        <Col md={3}>
            <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==2)?.map((item, i) => {
+               return (
+                i>3 &&  i<8?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop")}>چراغ رومیزی</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#"  onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop")}>چراغ مخفی</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>چراغ زیرکابینتی</a>
-               </li>
-               <li>
-                   <a href="#" href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>چراغ دکوراتیو</a>
-               </li>
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
        <Col md={3}>
            <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==2)?.map((item, i) => {
+               return (
+               i>7?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop")}>لوازم جانبی</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>چراغ پارکتی</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>چراغ دستی</a>
-               </li>
-               <li>
-                   <a href="#"  onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>چراغ اضطراری</a>
-               </li>
-              
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-  
+
    </Row>
         </div>
-     
+
       }
       const KharejiM = () => {
         return <div className="whiteMega">
@@ -153,44 +266,69 @@ const Menu = () => {
      روشنایی خارجی
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
-       <Col md={3}>
+   <Col md={3}>
         <img src={pic} className="megaMenuImg"/>
        </Col>
-       <Col md={4}>
+       <Col md={3}>
            <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==3)?.map((item, i) => {
+               return (
+                  i<4?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ LED</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ کم مصرف</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ گازی</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ هالوژنی</a>
-               </li>
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-       <Col md={5}>
+       <Col md={3}>
            <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==3)?.map((item, i) => {
+               return (
+                i>3 &&  i<8?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ رشته ای</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ فلورسنت</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ فیلامنتی</a>
-               </li>
-              
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-   </Row>
+       <Col md={3}>
+           <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==3)?.map((item, i) => {
+               return (
+               i>7?
+                      <>
+               <li>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
+               </li>
+
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col>
+  </Row>
         </div>
-     
+
       }
       const TazeinM = () => {
         return <div className="whiteMega">
@@ -198,44 +336,69 @@ const Menu = () => {
       روشنایی تزئینی
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
-       <Col md={3}>
+   <Col md={3}>
         <img src={pic} className="megaMenuImg"/>
        </Col>
-       <Col md={4}>
+       <Col md={3}>
            <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==4)?.map((item, i) => {
+               return (
+                  i<4?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ LED</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#"onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ کم مصرف</a>
-               </li>
-               <li>
-                   <a href="#"onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ گازی</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ هالوژنی</a>
-               </li>
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-       <Col md={5}>
+       <Col md={3}>
            <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==4)?.map((item, i) => {
+               return (
+                i>3 &&  i<8?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ رشته ای</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ فلورسنت</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ فیلامنتی</a>
-               </li>
-              
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-   </Row>
+       <Col md={3}>
+           <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==4)?.map((item, i) => {
+               return (
+               i>7?
+                      <>
+               <li>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
+               </li>
+
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col>
+  </Row>
         </div>
-     
+
       }
       const KhasM = () => {
         return <div className="whiteMega">
@@ -243,44 +406,70 @@ const Menu = () => {
       روشنایی خاص
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
-       <Col md={3}>
+   <Col md={3}>
         <img src={pic} className="megaMenuImg"/>
        </Col>
-       <Col md={4}>
+       <Col md={3}>
            <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==5)?.map((item, i) => {
+               return (
+                  i<4?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ LED</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ کم مصرف</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ گازی</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ هالوژنی</a>
-               </li>
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-       <Col md={5}>
+       <Col md={3}>
            <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==5)?.map((item, i) => {
+               return (
+                i>3 &&  i<8?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ رشته ای</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ فلورسنت</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ فیلامنتی</a>
-               </li>
-              
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
+       <Col md={3}>
+           <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==5)?.map((item, i) => {
+               return (
+               i>7?
+                      <>
+               <li>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
+               </li>
+
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col>
+
    </Row>
         </div>
-     
+
       }
       const JanebiM = () => {
         return <div className="whiteMega">
@@ -288,89 +477,142 @@ const Menu = () => {
       لوازم جانبی
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
-       <Col md={3}>
+   <Col md={3}>
         <img src={pic} className="megaMenuImg"/>
        </Col>
-       <Col md={4}>
+   <Col md={3}>
            <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==6)?.map((item, i) => {
+               return (
+                  i<4?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ LED</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ کم مصرف</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ گازی</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ هالوژنی</a>
-               </li>
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-       <Col md={5}>
+       <Col md={3}>
            <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==6)?.map((item, i) => {
+               return (
+                i>3 &&  i<8?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ رشته ای</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ فلورسنت</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ فیلامنتی</a>
-               </li>
-              
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
+       <Col md={3}>
+           <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==6)?.map((item, i) => {
+               return (
+               i>7?
+                      <>
+               <li>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
+               </li>
+
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col>
+
    </Row>
         </div>
-     
+
       }
+
+      //greenshop
       const LampLED = () => {
         return <div className="whiteMega hc1">
     <div className="whiteMegaTitle">
        لامپ
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
-       <Col md={3}>
+   <Col md={3}>
         <img src={pic} className="megaMenuImg"/>
        </Col>
-       <Col md={4}>
+       <Col md={3}>
            <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
+               return (
+                  i<4?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/Greenshop")}>لامپ LED</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ کم مصرف</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ گازی</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ هالوژنی</a>
-               </li>
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-       <Col md={5}>
+       <Col md={3}>
            <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
+               return (
+                i>3 &&  i<8?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ رشته ای</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
+
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col>
+       <Col md={3}>
+           <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
+               return (
+               i>7?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ فلورسنت</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ فیلامنتی</a>
-               </li>
-              
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
    </Row>
         </div>
-     
+
       }
       const PanelLED = () => {
         return <div className="whiteMega hc1">
@@ -378,66 +620,70 @@ const Menu = () => {
       پنل
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
-       <Col md={3}>
+   <Col md={3}>
         <img src={pic} className="megaMenuImg"/>
-        {/* <img src={required("../assets/img/lamp.png")} className="megaMenuImg"/> */}
        </Col>
        <Col md={3}>
            <ul className="megaUl">
-               <li >
-                   <a onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)} href="#" >چراغ سقفی</a>
-               </li>
-               <li > 
-                   <a onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} href="#">چراغ دیواری</a>
-               </li>
+           {greenGroup.filter(t=>t.BiggerGroup==2)?.map((item, i) => {
+               return (
+                  i<4?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>چراغ آویز</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>چراغ ایستاده</a>
-               </li>
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
        <Col md={3}>
            <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==2)?.map((item, i) => {
+               return (
+                i>3 &&  i<8?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>چراغ رومیزی</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#"  onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>چراغ مخفی</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>چراغ زیرکابینتی</a>
-               </li>
-               <li>
-                   <a href="#" href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>چراغ دکوراتیو</a>
-               </li>
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
        <Col md={3}>
            <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==2)?.map((item, i) => {
+               return (
+               i>7?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لوازم جانبی</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>چراغ پارکتی</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>چراغ دستی</a>
-               </li>
-               <li>
-                   <a href="#"  onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>چراغ اضطراری</a>
-               </li>
-              
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-  
+
    </Row>
         </div>
-     
+
       }
       const NoorafkanLED = () => {
         return <div className="whiteMega hc1">
@@ -445,44 +691,70 @@ const Menu = () => {
      نورافکن
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
-       <Col md={3}>
+   <Col md={3}>
         <img src={pic} className="megaMenuImg"/>
        </Col>
-       <Col md={4}>
+       <Col md={3}>
            <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==3)?.map((item, i) => {
+               return (
+                  i<4?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ LED</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ کم مصرف</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ گازی</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ هالوژنی</a>
-               </li>
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-       <Col md={5}>
+       <Col md={3}>
            <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==3)?.map((item, i) => {
+               return (
+                i>3 &&  i<8?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ رشته ای</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ فلورسنت</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ فیلامنتی</a>
-               </li>
-              
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
+       <Col md={3}>
+           <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup == 3)?.map((item, i) => {
+               return (
+               i>7?
+                      <>
+               <li>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
+               </li>
+
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col>
+
    </Row>
         </div>
-     
+
       }
       const RiseLED = () => {
         return <div className="whiteMega hc1">
@@ -490,44 +762,70 @@ const Menu = () => {
     ریسه
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
-       <Col md={3}>
+   <Col md={3}>
         <img src={pic} className="megaMenuImg"/>
        </Col>
-       <Col md={4}>
+       <Col md={3}>
            <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==4)?.map((item, i) => {
+               return (
+                  i<4?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ LED</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#"onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ کم مصرف</a>
-               </li>
-               <li>
-                   <a href="#"onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ گازی</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ هالوژنی</a>
-               </li>
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-       <Col md={5}>
+       <Col md={3}>
            <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==4)?.map((item, i) => {
+               return (
+                i>3 &&  i<8?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ رشته ای</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ فلورسنت</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ فیلامنتی</a>
-               </li>
-              
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-   </Row>
+       <Col md={3}>
+           <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==4)?.map((item, i) => {
+               return (
+               i>7?
+                      <>
+               <li>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
+               </li>
+
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col>
+
+    </Row>
         </div>
-     
+
       }
       const CheraghLED = () => {
         return <div className="whiteMega hc1">
@@ -535,44 +833,70 @@ const Menu = () => {
       چراغ
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
-       <Col md={3}>
+   <Col md={3}>
         <img src={pic} className="megaMenuImg"/>
        </Col>
-       <Col md={4}>
+       <Col md={3}>
            <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==5)?.map((item, i) => {
+               return (
+                  i<4?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ LED</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ کم مصرف</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ گازی</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ هالوژنی</a>
-               </li>
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-       <Col md={5}>
+       <Col md={3}>
            <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==5)?.map((item, i) => {
+               return (
+                i>3 &&  i<8?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ رشته ای</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ فلورسنت</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ فیلامنتی</a>
-               </li>
-              
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
+       <Col md={3}>
+           <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==5)?.map((item, i) => {
+               return (
+               i>7?
+                      <>
+               <li>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
+               </li>
+
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col>
+
    </Row>
         </div>
-     
+
       }
       const AvizLED = () => {
         return <div className="whiteMega hc1">
@@ -580,44 +904,70 @@ const Menu = () => {
       آویز
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
-       <Col md={3}>
+   <Col md={3}>
         <img src={pic} className="megaMenuImg"/>
        </Col>
-       <Col md={4}>
+       <Col md={3}>
            <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==6)?.map((item, i) => {
+               return (
+                  i<4?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ LED</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ کم مصرف</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ گازی</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ هالوژنی</a>
-               </li>
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-       <Col md={5}>
+       <Col md={3}>
            <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==6)?.map((item, i) => {
+               return (
+                i>3 &&  i<8?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ رشته ای</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ فلورسنت</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ فیلامنتی</a>
-               </li>
-              
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
+       <Col md={3}>
+           <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==6)?.map((item, i) => {
+               return (
+               i>7?
+                      <>
+               <li>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
+               </li>
+
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col>
+
    </Row>
         </div>
-     
+
       }
       const JanebiLED = () => {
         return <div className="whiteMega hc1">
@@ -625,45 +975,71 @@ const Menu = () => {
       لوازم جانبی
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
-       <Col md={3}>
+   <Col md={3}>
         <img src={pic} className="megaMenuImg"/>
        </Col>
-       <Col md={4}>
+       <Col md={3}>
            <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==7)?.map((item, i) => {
+               return (
+                  i<4?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ LED</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ کم مصرف</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ گازی</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ هالوژنی</a>
-               </li>
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
-       <Col md={5}>
+       <Col md={3}>
            <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==7)?.map((item, i) => {
+               return (
+                i>3 &&  i<8?
+                      <>
                <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)}>لامپ رشته ای</a>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ فلورسنت</a>
-               </li>
-               <li>
-                   <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ فیلامنتی</a>
-               </li>
-              
-               
+
+               </>
+:null
+
+                    );
+
+            })
+          }
            </ul>
        </Col>
+       <Col md={3}>
+           <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==7)?.map((item, i) => {
+               return (
+               i>7?
+                      <>
+               <li>
+                   <a href="#" onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
+               </li>
+
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col>
+
    </Row>
         </div>
-     
-      }  
+
+      }
       const DesignMega = () => {
         return <div className="whiteMega hc2">
     <div className="whiteMegaTitle">
@@ -684,8 +1060,8 @@ const Menu = () => {
                <li>
                    <a href="#"onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)}>لامپ گازی</a>
                </li>
-            
-               
+
+
            </ul>
        </Col>
        <Col md={5}>
@@ -699,13 +1075,13 @@ const Menu = () => {
                <li>
                    <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ فیلامنتی</a>
                </li>
-              
-               
+
+
            </ul>
        </Col>
    </Row>
         </div>
-     
+
       }
       const GaranteeMega = () => {
         return <div className="whiteMega hc2">
@@ -727,8 +1103,8 @@ const Menu = () => {
                <li>
                    <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ گازی</a>
                </li>
-            
-               
+
+
            </ul>
        </Col>
        <Col md={5}>
@@ -742,13 +1118,13 @@ const Menu = () => {
                <li>
                    <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ فیلامنتی</a>
                </li>
-              
-               
+
+
            </ul>
        </Col>
    </Row>
         </div>
-     
+
       }
       const RepairMega = () => {
         return <div className="whiteMega hc2">
@@ -770,7 +1146,7 @@ const Menu = () => {
                <li>
                    <a href="#" onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ گازی</a>
                </li>
-      
+
            </ul>
        </Col>
        <Col md={5}>
@@ -784,13 +1160,13 @@ const Menu = () => {
                <li>
                    <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ فیلامنتی</a>
                </li>
-              
-               
+
+
            </ul>
        </Col>
    </Row>
         </div>
-     
+
       }
       const YadakiMega = () => {
         return <div className="whiteMega hc2">
@@ -812,8 +1188,8 @@ const Menu = () => {
                <li>
                    <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ گازی</a>
                </li>
-        
-               
+
+
            </ul>
        </Col>
        <Col md={5}>
@@ -827,13 +1203,13 @@ const Menu = () => {
                <li>
                    <a href="#" onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ فیلامنتی</a>
                </li>
-              
-               
+
+
            </ul>
        </Col>
    </Row>
         </div>
-     
+
       }
       const data = [
         {
@@ -846,13 +1222,13 @@ const Menu = () => {
           label: 'روشنایی خارجی', key: 3,items:<KharejiM/>
         },
         {
-            label: 'روشنایی تزئینی', key: 3,items:<TazeinM/>
+            label: 'روشنایی تزئینی', key: 4,items:<TazeinM/>
           },
           {
-            label: 'روشنایی خاص', key: 3,items:<KhasM/>
+            label: 'روشنایی خاص', key: 5,items:<KhasM/>
           },
           {
-            label: 'لوازم جانبی', key: 3,items:<JanebiM/>
+            label: 'لوازم جانبی', key:6,items:<JanebiM/>
           },
       ]
       const data2 = [
@@ -892,8 +1268,8 @@ const Menu = () => {
         {
             label: 'لوازم یدکی', key: 4,items:<YadakiMega/>
           },
-        
-        
+
+
       ]
       const styleConf = {
         menuProps: {
@@ -907,19 +1283,19 @@ const Menu = () => {
         },
         contentProps: {
           style: {
-            
+
           }
         },
         menuItemProps: {
           style: {
-            
+
             padding: "2px",
             height: "2em"
           }
         },
         menuItemSelectedProps: {
           style: {
-           
+
             padding: "2px",
             height: "2em",
             backgroundColor: "grey"
@@ -927,12 +1303,12 @@ const Menu = () => {
         },
         containerProps: {
           style: {
-      
+
             padding: "2px"
           }
         }
       }
-    
+
     return (
       <>
       <Container fluid>
@@ -946,7 +1322,7 @@ const Menu = () => {
         </Dropdown.Toggle>
         <Dropdown.Menu className="MegamenuDropList">
         <div className="bMega">
-        <ReactMegaMenu 
+        <ReactMegaMenu
         direction="right"
         data={data}
         styleConfig={styleConf}
@@ -966,158 +1342,72 @@ const Menu = () => {
         <div className="megaBrand">
            <Row className="mBrandRow">
                <Col md={3}>
-                <div className="bMegaLi">
+               {
+
+brand?.map((item, i) => {
+  return (
+      i<4?
+          <>
+
+
+<div className="bMegaLi">
+                    <img src={apiAsset+item.BrandLogo}/>
+                    <a onClick={()=>  history.push("/brandsecond/"+item.BrandID)}>{item.BrandName}</a>
+                </div>
+          </>
+          :null
+        );
+
+})
+}
+                {/* <div className="bMegaLi">
                     <img src={B3}/>
                     <a onClick={()=>  history.push("/brandsecond")}>گروه صنعتی شعاع</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B2}/>
-                    <a href="#">پارس شهاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B3}/>
-                    <a href="#">افراتاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B4}/>
-                    <a href="#">گروه صنعتی شعاع</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B5}/>
-                    <a href="#">افراتاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B6}/>
-                    <a href="#">پارس شهاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B7}/>
-                    <a href="#">بروکس</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B8}/>
-                    <a href="#">گروه صنعتی شعاع</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B9}/>
-                    <a href="#">افراتاب</a>
-                </div>
+                </div> */}
+
+
                </Col>
                <Col md={3}>
-                <div className="bMegaLi">
-                    <img src={B3}/>
-                    <a href="#">گروه صنعتی شعاع</a>
+               {            brand?.map((item, i) => {
+  return (
+     i<9&&  i>4?
+          <>
+
+
+<div className="bMegaLi">
+                    <img src={apiAsset+item.BrandLogo}/>
+                    <a onClick={()=>  history.push("/brandsecond/4")}>{item.BrandName}</a>
                 </div>
-                <div className="bMegaLi">
-                    <img src={B2}/>
-                    <a href="#">پارس شهاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B3}/>
-                    <a href="#">افراتاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B4}/>
-                    <a href="#">گروه صنعتی شعاع</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B5}/>
-                    <a href="#">افراتاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B6}/>
-                    <a href="#">پارس شهاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B7}/>
-                    <a href="#">بروکس</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B8}/>
-                    <a href="#">گروه صنعتی شعاع</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B9}/>
-                    <a href="#">افراتاب</a>
-                </div>
-               </Col>
-              
-               <Col md={3}>
-                <div className="bMegaLi">
-                    <img src={B3}/>
-                    <a href="#">گروه صنعتی شعاع</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B2}/>
-                    <a href="#">پارس شهاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B3}/>
-                    <a href="#">افراتاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B4}/>
-                    <a href="#">گروه صنعتی شعاع</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B5}/>
-                    <a href="#">افراتاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B6}/>
-                    <a href="#">پارس شهاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B7}/>
-                    <a href="#">بروکس</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B8}/>
-                    <a href="#">گروه صنعتی شعاع</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B9}/>
-                    <a href="#">افراتاب</a>
-                </div>
+          </>
+          :null
+        );
+
+})
+}
                </Col>
                <Col md={3}>
-                <div className="bMegaLi">
-                    <img src={B3}/>
-                    <a href="#">گروه صنعتی شعاع</a>
+           {    brand?.map((item, i) => {
+  return (
+      i>9?
+          <>
+
+
+<div className="bMegaLi">
+                    <img src={apiAsset+item.BrandLogo}/>
+                    <a onClick={()=>  history.push("/brandsecond/4")}>{item.BrandName}</a>
                 </div>
-                <div className="bMegaLi">
-                    <img src={B2}/>
-                    <a href="#">پارس شهاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B3}/>
-                    <a href="#">افراتاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B4}/>
-                    <a href="#">گروه صنعتی شعاع</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B5}/>
-                    <a href="#">افراتاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B6}/>
-                    <a href="#">پارس شهاب</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B7}/>
-                    <a href="#">بروکس</a>
-                </div>
-                <div className="bMegaLi">
-                    <img src={B8}/>
-                    <a href="#">گروه صنعتی شعاع</a>
-                </div>
-                <div className="bMegaLi">
+          </>
+          :null
+        );
+
+})
+}
+<div className="bMegaLi">
                    <Button className="seeAllB" onClick={()=>  history.push("/brandshop")}> مشاهده همه برندها</Button>
                 </div>
+
                </Col>
-              
+
            </Row>
         </div>
         </Dropdown.Menu>
@@ -1132,7 +1422,7 @@ const Menu = () => {
         </Dropdown.Toggle>
         <Dropdown.Menu className="MegamenuDropList">
         <div className="bMega">
-        <ReactMegaMenu 
+        <ReactMegaMenu
         direction="right"
         data={data2}
         styleConfig={styleConf}
@@ -1154,11 +1444,11 @@ const Menu = () => {
                 <div className="RightCmenu">
                     <img src={LogoLarge} className="w100"/>
                     <p>
-                    ما بیش از 3000 لامپ برای 
-انتخاب داریم و شما احتمالاً 
-فقط به دنبال یک لامپ 
-هستید. استفاده از لامپ یاب 
-ما به شما کمک می کند 
+                    ما بیش از 3000 لامپ برای
+انتخاب داریم و شما احتمالاً
+فقط به دنبال یک لامپ
+هستید. استفاده از لامپ یاب
+ما به شما کمک می کند
 لامپ صحیحی را پیدا کنید.
                     </p>
                 </div>
@@ -1213,14 +1503,19 @@ const Menu = () => {
         <p className="menu-items d-inline-block">خدمات بالبیران</p>
                   <FaCaretDown display="inline-block" color="ffd200" fontSize="2rem"></FaCaretDown>
         </Dropdown.Toggle>
-        <Dropdown.Menu className="MegamenuDropList">
-        <div className="bMega ko1">
-        <ReactMegaMenu 
+        {/* <Dropdown.Menu className="MegamenuDropList"> */}
+        <Dropdown.Menu className="menuDropList">
+        {/* <div className="bMega ko1">
+        <ReactMegaMenu
         direction="right"
         data={data3}
         styleConfig={styleConf}
       />
-         </div>
+         </div> */}
+           <Dropdown.Item  onClick={()=>  history.push("/design")}>طراحی و دیزاین</Dropdown.Item>
+    <Dropdown.Item  onClick={()=>  history.push("/Garanty")}>گارانتی و خدمات پس از فروش</Dropdown.Item>
+    <Dropdown.Item  onClick={()=>  history.push("/repairs")}>تعمیرات</Dropdown.Item>
+    <Dropdown.Item  onClick={()=>  history.push("/LavazemYadaki")}>لوازم یدکی</Dropdown.Item>
         </Dropdown.Menu>
         </Dropdown>
              </Col>
@@ -1232,7 +1527,7 @@ const Menu = () => {
   </Dropdown.Toggle>
 
   <Dropdown.Menu className="menuDropList">
-   
+
     <Dropdown.Item href="#/action-1" onClick={()=>  history.push("/news")}>آخرین اخبار</Dropdown.Item>
     <Dropdown.Item href="#/action-2" onClick={()=>  history.push("/news")}>مقالات علمی</Dropdown.Item>
     <Dropdown.Item href="#/action-3" onClick={()=>  history.push("/news")}>تکنولوژی روز</Dropdown.Item>
@@ -1254,14 +1549,14 @@ const Menu = () => {
   </Dropdown.Toggle>
 
   <Dropdown.Menu className="menuDropList">
-   
-    <Dropdown.Item href="#/action-1" onClick={()=>  history.push("/shegeftangiz")}>کالای شگفت انگیز</Dropdown.Item>
-    <Dropdown.Item href="#/action-2" onClick={()=>  history.push("/shegeftangiz")}>شگفت انگیز فروشگاه سبز</Dropdown.Item>
-    <Dropdown.Item href="#/action-2" onClick={()=>  history.push("/pishnahadvijhe")}>فروش ویژه</Dropdown.Item>
-    <Dropdown.Item href="#/action-2" onClick={()=>  history.push("/pishnahadvijhe")}>پرفروش ترین</Dropdown.Item>
+
+    <Dropdown.Item  onClick={()=>  history.push("/shegeftangiz")}>کالای شگفت انگیز</Dropdown.Item>
+    <Dropdown.Item  onClick={()=>  history.push("/ShegeftGreen")}>شگفت انگیز فروشگاه سبز</Dropdown.Item>
+    <Dropdown.Item  onClick={()=>  history.push("/pishnahadvijhe")}>فروش ویژه</Dropdown.Item>
+    <Dropdown.Item  onClick={()=>  history.push("/pishnahadvijhe")}>پرفروش ترین</Dropdown.Item>
     </Dropdown.Menu>
     </Dropdown>
-          
+
               </Col>
               <Col md="auto" className="ta-center flex-1">
               <Dropdown>
@@ -1271,7 +1566,7 @@ const Menu = () => {
   </Dropdown.Toggle>
 
   <Dropdown.Menu className="menuDropList">
-   
+
     <Dropdown.Item href="#/action-1" onClick={()=>  history.push("/pricebrand")}>لیست قیمت</Dropdown.Item>
     <Dropdown.Item href="#/action-2"onClick={()=>  history.push("/darkhastprice")}>درخواست استعلام قیمت</Dropdown.Item>
     </Dropdown.Menu>

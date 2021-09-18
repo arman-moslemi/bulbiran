@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React , {useState,useEffect} from 'react'
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -26,23 +26,45 @@ import Img5 from './assets/img/Image 5.png';
 import Img6 from './assets/img/Image 6.png';
 import Img7 from './assets/img/Image 7.png';
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
-import {useParams } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-const SearchResult = () => {
-    const params = useParams().id;
+const ShegeftGreen = () => {
+    const [product,setProduct]=useState([])
+    const [news,setNews]=useState([])
     const [img1,setimg1]=useState('')
     const [img2,setimg2]=useState('')
     const [img3,setimg3]=useState('')
-    const [product,setProduct]=useState([])
-
 
     const mainSlider=()=>{
         const axios = require("axios");
+        axios
+        // .post(apiUrl + "RequestPhotos",{RequestID:params})
+        .get(apiUrl + "FirstPage")
+        .then(function (response) {
+          if (response.data.result == "true") {
+           console.log(123456)
+           console.log(response.data.Data)
+           console.log(response.data.Data[2].Pic)
+           setimg1(response.data.Data[2].Pic)
+           setimg2(response.data.Data[2].Pic2)
+           setimg3(response.data.Data[2].Pic3)
 
+           console.log(img1)
+        }
+        else{
+          console.log(response.data.result)
+
+        }})
+        .catch(function (error) {
+          console.log(error);
+        });
           axios
-              .get(apiUrl + "ProductBySerach/"+params)
+              .get(apiUrl + "AllProductWonderGreenShop")
           .then(function (response) {
             if (response.data.result == "true") {
+                console.log(11)
+                console.log(response.data.Data)
+
 
                 setProduct(response.data.Data)
 
@@ -56,31 +78,11 @@ const SearchResult = () => {
           });
 
 
-          axios
-          // .post(apiUrl + "RequestPhotos",{RequestID:params})
-          .get(apiUrl + "FirstPage")
-          .then(function (response) {
-            if (response.data.result == "true") {
-             console.log(123456)
-             console.log(response.data.Data[4].Pic)
-             setimg1(response.data.Data[4].Pic)
-             setimg2(response.data.Data[4].Pic2)
-             setimg3(response.data.Data[4].Pic3)
-
-             console.log(img1)
-          }
-          else{
-            console.log(response.data.result)
-
-          }})
-          .catch(function (error) {
-            console.log(error);
-          });
       }
-        useEffect(() => {
-          mainSlider();
-
-        }, []);
+      useEffect(() => {
+        mainSlider();
+// alert(val)
+      }, []);
     return (
     <>
           <TopBar/>
@@ -127,23 +129,34 @@ const SearchResult = () => {
 
             </div>
             <Row style={{margin:"-5px"}}>
-            {
-
-product?.map((item, i) => {
+            {product?.map((item, i) => {
   return (
           <>
                 <Col md={2} className="pd0">
+              <Link
+          to={`/singleProduct/${item.ProductID}`}
+        >
                     <div className="whiteCard">
-                        <img src={apiAsset+item.Pic1}/>
+                        <img src={Img4}/>
                         <p>{item.ProductName}</p>
                         <span>{item.Cost} تومان</span>
                     </div>
+                </Link>
                 </Col>
                 </>
-                    );
 
-            })
-          }
+                        );
+
+})
+}
+                {/* <Col md={2} className="pd0">
+                    <div className="whiteCard">
+                        <img src={Img4}/>
+                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
+                        <span>125000 تومان</span>
+                    </div>
+                </Col> */}
+
             </Row>
 
           </Col>
@@ -156,4 +169,4 @@ product?.map((item, i) => {
     </>
   );
 };
-export default SearchResult;
+export default ShegeftGreen;

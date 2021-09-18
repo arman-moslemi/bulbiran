@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React , {useState,useEffect} from 'react'
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -33,33 +33,74 @@ import Img7 from './assets/img/Image 7.png';
 import Noorafkan from './assets/img/noorafkan.png';
 import Chain from './assets/img/chain.png';
 import b14 from './assets/img/b14.png';
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+import {useParams } from "react-router-dom";
 const PriceTable = () => {
-  
+    const [product,setProduct]=useState([])
+    const [brand,setBrand]=useState([])
+    const params = useParams().id;
+    const mainSlider=()=>{
+        const axios = require("axios");
+
+          axios
+              .get(apiUrl + "BrandProduct/"+params+"/0")
+          .then(function (response) {
+            if (response.data.result == "true") {
+
+                setProduct(response.data.Data)
+
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+
+
+          axios
+          .get(apiUrl + "AboutBrand/"+params)
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+            setBrand(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      }
+        useEffect(() => {
+          mainSlider();
+
+        }, []);
     return (
     <>
           <TopBar/>
-      <Header/> 
-    <Container fluid className="bulbiranContainer"> 
+      <Header/>
+    <Container fluid className="bulbiranContainer">
     <Row style={{margin:"0px"}}>
         <Col md={3} className="d-flex pdr0">
             <div className="whiteBox ta-center pd60 mgt0">
-                <img src={b14} className="w100"/>
+                <img src={apiAsset+brand.BrandLogo} className="w100"/>
             </div>
         </Col>
         <Col md={9} className="d-flex pdl0">
             <div className="whiteBox mgt0">
-                <h4 className="circumstanceTitle">معرفی برند بروکس</h4>
-                <p className="brandShopDescription w100 mgt10">
-                شرکت «بروکس» (Burux) یکی از تولیدکنندگان انواع چراغ‌ها و لامپ‌های LED محسوب می‌شود. این شرکت با شعار «نور سالم است» محصولات خود را تولید می‌کند و بر عدم استفاده از عناصری مانند سرب و جیوه که برای سلامتی انسان مضر هستند، تاکید دارد. کیفیت لامپ و چراغ بروکس با بسیاری از برندهای اروپایی و آسیایی قابل رقابت است و خدماتی گسترده‌ای را در تهران و 30 استان دیگر در ایران ارایه می‌دهد.
-                30 استان دیگر در ایران ارایه می‌دهد.
-                30 استان دیگر در ایران ارایه می‌دهد.
+                <h4 className="circumstanceTitle">{brand.BrandName}</h4>
+                <p className="brandShopDescription w100 mgt10">{brand.Description}
                  </p>
             </div>
         </Col>
     </Row>
     <div className="coloredBox" id="red1">
         <h3 className="coloredBoxTitle3">
-       لیست محصولات برند بروکس
+       لیست محصولات {brand.BrandName}
         </h3>
     </div>
     <div className="tableWhiteBox">
@@ -81,7 +122,34 @@ const PriceTable = () => {
                     <span className="tableHeader">قیمت باکس</span>
                 </Col>
             </Row>
+            {
+
+product?.map((item, i) => {
+  return (
+          <>
             <Row style={{marginRight:"0px",marginLeft:"0px"}} className="bBottomC">
+                <Col md={1} className="ta-center">
+                    <span className="tableHeader">{i+1}</span>
+                </Col>
+                <Col md={2} className="ta-center">
+                    <img src={apiAsset+item.Pic1} className="cImgT"/>
+                </Col>
+                <Col md={5} className="ta-right">
+                    <span className="tablePName">{item.ProductName}</span>
+                </Col>
+                <Col md={2} className="ta-center">
+                    <span className="tablePries">{item.Cost} تومان</span>
+                </Col>
+                <Col md={2} className="ta-center">
+                    <span className="tablePries">{item.Cost} تومان</span>
+                </Col>
+            </Row>
+            </>
+                    );
+
+            })
+          }
+            {/* <Row style={{marginRight:"0px",marginLeft:"0px"}} className="bBottomC">
                 <Col md={1} className="ta-center">
                     <span className="tableHeader">1</span>
                 </Col>
@@ -98,92 +166,8 @@ const PriceTable = () => {
                     <span className="tablePries">245000 تومان</span>
                 </Col>
             </Row>
-            <Row style={{marginRight:"0px",marginLeft:"0px"}} className="bBottomC">
-                <Col md={1} className="ta-center">
-                    <span className="tableHeader">1</span>
-                </Col>
-                <Col md={2} className="ta-center">
-                    <img src={Img4} className="cImgT"/>
-                </Col>
-                <Col md={5} className="ta-right">
-                    <span className="tablePName">لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</span>
-                </Col>
-                <Col md={2} className="ta-center">
-                    <span className="tablePries">12500 تومان</span>
-                </Col>
-                <Col md={2} className="ta-center">
-                    <span className="tablePries">245000 تومان</span>
-                </Col>
-            </Row>
-            <Row style={{marginRight:"0px",marginLeft:"0px"}} className="bBottomC">
-                <Col md={1} className="ta-center">
-                    <span className="tableHeader">1</span>
-                </Col>
-                <Col md={2} className="ta-center">
-                    <img src={Img4} className="cImgT"/>
-                </Col>
-                <Col md={5} className="ta-right">
-                    <span className="tablePName">لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</span>
-                </Col>
-                <Col md={2} className="ta-center">
-                    <span className="tablePries">12500 تومان</span>
-                </Col>
-                <Col md={2} className="ta-center">
-                    <span className="tablePries">245000 تومان</span>
-                </Col>
-            </Row>
-            <Row style={{marginRight:"0px",marginLeft:"0px"}} className="bBottomC">
-                <Col md={1} className="ta-center">
-                    <span className="tableHeader">1</span>
-                </Col>
-                <Col md={2} className="ta-center">
-                    <img src={Img4} className="cImgT"/>
-                </Col>
-                <Col md={5} className="ta-right">
-                    <span className="tablePName">لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</span>
-                </Col>
-                <Col md={2} className="ta-center">
-                    <span className="tablePries">12500 تومان</span>
-                </Col>
-                <Col md={2} className="ta-center">
-                    <span className="tablePries">245000 تومان</span>
-                </Col>
-            </Row>
-            <Row style={{marginRight:"0px",marginLeft:"0px"}} className="bBottomC">
-                <Col md={1} className="ta-center">
-                    <span className="tableHeader">1</span>
-                </Col>
-                <Col md={2} className="ta-center">
-                    <img src={Img4} className="cImgT"/>
-                </Col>
-                <Col md={5} className="ta-right">
-                    <span className="tablePName">لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</span>
-                </Col>
-                <Col md={2} className="ta-center">
-                    <span className="tablePries">12500 تومان</span>
-                </Col>
-                <Col md={2} className="ta-center">
-                    <span className="tablePries">245000 تومان</span>
-                </Col>
-            </Row>
-            <Row style={{marginRight:"0px",marginLeft:"0px"}} className="bBottomC">
-                <Col md={1} className="ta-center">
-                    <span className="tableHeader">1</span>
-                </Col>
-                <Col md={2} className="ta-center">
-                    <img src={Img4} className="cImgT"/>
-                </Col>
-                <Col md={5} className="ta-right">
-                    <span className="tablePName">لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</span>
-                </Col>
-                <Col md={2} className="ta-center">
-                    <span className="tablePries">12500 تومان</span>
-                </Col>
-                <Col md={2} className="ta-center">
-                    <span className="tablePries">245000 تومان</span>
-                </Col>
-            </Row>
-        </div>
+        */}
+         </div>
     </div>
     </Container>
     <SocialRow/>

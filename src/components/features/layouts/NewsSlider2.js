@@ -8,9 +8,11 @@ import News2 from '../assets/img/news2.jpg';
 import { Overlay } from 'react-bootstrap';
 import NewsImg from '../assets/img/bulding.jpg'
 import { FaAngleLeft,FaAlignRight ,FaCheck ,FaStar, FaCircle, FaRegClock} from 'react-icons/fa';
+import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 
+import { Link, useHistory } from "react-router-dom";
 
-export default function SimpleSlider() {
+export default function SimpleSlider({data}) {
   var settings = {
     dots: false,
     infinite: true,
@@ -18,69 +20,51 @@ export default function SimpleSlider() {
     slidesToShow: 3,
     slidesToScroll: 1
   };
+  const history = useHistory();
+
   return (
     <Slider {...settings} className="newsSliderClass2">
-   <div className="newsBox2">
-                <img src={NewsImg}/>
-                <span className="imageTag">
-                    مقاله
-                </span>
-                <a href="#">
-                تجزیه و تحلیل وضعیت بازار و 
-روند توسعه صنعت جهانی  
-                </a>
-                <div className="ta-left dq">
-                <span>27 فروردین 1400</span>
-                    <FaRegClock className="d-inline-block"/>
-                  
-                </div>
-            </div>
+           {data?.map((item, i) => {
+  return (
+      i>1?
+      <>
             <div className="newsBox2">
+                <img src={apiAsset+item.Pic}/>
+                <span className="imageTag">
+                    مقاله
+                </span>
+                <a onClick={()=>  history.push("/showblog/"+item.BlogID)}>
+               {item.Title}
+                </a>
+                <div className="ta-left dq">
+                <span>{item.date}</span>
+                    <FaRegClock className="d-inline-block"/>
+
+                </div>
+            </div>
+                       </>
+                :
+                null
+                        );
+
+})
+}
+            {/* <div className="newsBox2">
                 <img src={NewsImg}/>
                 <span className="imageTag">
                     مقاله
                 </span>
                 <a href="#">
-                تجزیه و تحلیل وضعیت بازار و 
-روند توسعه صنعت جهانی  
+                تجزیه و تحلیل وضعیت بازار و
+روند توسعه صنعت جهانی
                 </a>
                 <div className="ta-left dq">
                 <span>27 فروردین 1400</span>
                     <FaRegClock className="d-inline-block"/>
-                    
+
                 </div>
             </div>
-            <div className="newsBox2">
-                <img src={NewsImg}/>
-                <span className="imageTag">
-                    مقاله
-                </span>
-                <a href="#">
-                تجزیه و تحلیل وضعیت بازار و 
-روند توسعه صنعت جهانی  
-                </a>
-                <div className="ta-left dq">
-                <span>27 فروردین 1400</span>
-                    <FaRegClock className="d-inline-block"/>
-                  
-                </div>
-            </div>
-            <div className="newsBox2">
-                <img src={NewsImg}/>
-                <span className="imageTag">
-                    مقاله
-                </span>
-                <a href="#">
-                تجزیه و تحلیل وضعیت بازار و 
-روند توسعه صنعت جهانی  
-                </a>
-                <div className="ta-left dq">
-                <span>27 فروردین 1400</span>
-                    <FaRegClock className="d-inline-block"/>
-                
-                </div>
-            </div>
-   
+    */}
     </Slider>
   );
 }

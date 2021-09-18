@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -9,26 +9,45 @@ import {Container,Row,Col,Button} from 'react-bootstrap'
 import { FaAngleLeft } from 'react-icons/fa';
 import BrandShopSvg from './assets/icons/BrandShopSvg';
 import b1 from './assets/img/b1.png';
-import b2 from './assets/img/b2.png';
-import b3 from './assets/img/b3.jpeg';
-import b4 from './assets/img/b4.png';
-import b5 from './assets/img/b5.png';
-import b6 from './assets/img/b6.png';
-import b7 from './assets/img/b7.png';
-import b8 from './assets/img/b8.png';
-import b9 from './assets/img/b9.png';
-import b10 from './assets/img/b10.png';
-import b11 from './assets/img/b11.png';
-import b12 from './assets/img/b12.png';
+
 import { Link, useHistory } from "react-router-dom";
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 
 const BrandShop = () => {
     const history = useHistory();
+    const [brand,setBrand]=useState([])
+
+    const mainSlider=()=>{
+
+    const axios = require("axios");
+
+    axios
+        .get(apiUrl + "AllBrandProduct")
+    .then(function (response) {
+      if (response.data.result == "true") {
+
+          setBrand(response.data.Data)
+
+    }
+    else{
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+
+
+}
+  useEffect(() => {
+    mainSlider();
+
+  }, []);
   return (
     <>
       <TopBar/>
-      <Header/> 
-    <Container fluid className="bulbiranContainer"> 
+      <Header/>
+    <Container fluid className="bulbiranContainer">
     <div className="whiteBox pdc">
         <Row>
             <Col md={8}>
@@ -56,111 +75,34 @@ const BrandShop = () => {
     </div>
     <div className="brandShopBox">
         <Row>
+            {
+        brand?.map((item, i) => {
+  return (
+          <>
+          <Link  onClick={()=>  history.push("/brandsecond/"+item.BrandID)}>
             <Col md={3}>
                 <div className="whiteBrandBox">
-                    <img src={b1}/>
-                    <div className="grayBox" onClick={()=>  history.push("/brandsecond")}>
-                        <p>میتره</p>
+                    <img src={apiAsset+item.BrandLogo}/>
+                    <div className="grayBox" >
+                        <p>{item.BrandName}</p>
                     </div>
                 </div>
             </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b6}/>
-                    <div className="grayBox">
-                        <p>پارس شهاب</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b1}/>
-                    <div className="grayBox">
-                        <p>میتره</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
+            </Link>
+            </>
+        );
+
+})
+}
+            {/* <Col md={3}>
                 <div className="whiteBrandBox">
                     <img src={b6}/>
                     <div className="grayBox">
                         <p>پارس شهاب</p>
                     </div>
                 </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b6}/>
-                    <div className="grayBox">
-                        <p>پارس شهاب</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b1}/>
-                    <div className="grayBox">
-                        <p>میتره</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b6}/>
-                    <div className="grayBox">
-                        <p>پارس شهاب</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b1}/>
-                    <div className="grayBox">
-                        <p>میتره</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b6}/>
-                    <div className="grayBox">
-                        <p>پارس شهاب</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b1}/>
-                    <div className="grayBox">
-                        <p>میتره</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b6}/>
-                    <div className="grayBox">
-                        <p>پارس شهاب</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b1}/>
-                    <div className="grayBox">
-                        <p>میتره</p>
-                    </div>
-                </div>
-            </Col>
-            <Col md={3}>
-                <div className="whiteBrandBox">
-                    <img src={b6}/>
-                    <div className="grayBox">
-                        <p>پارس شهاب</p>
-                    </div>
-                </div>
-            </Col>
-        </Row>
+            </Col> */}
+         </Row>
     </div>
     </Container>
     <SocialRow/>

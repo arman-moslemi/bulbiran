@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -14,38 +14,106 @@ import AmazingSlider from './layouts/AmazingSlider';
 import BulbsImg from './assets/img/bulbs.png';
 import SliderImg from './assets/icons/SliderImg';
 import { Link, useHistory } from "react-router-dom";
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+import {useParams } from "react-router-dom";
+
 const Indoor = () => {
    const history = useHistory();
+   const [img1,setimg1]=useState('')
+const [img2,setimg2]=useState('')
+const params = useParams().id;
+const [brand,setBrand]=useState([])
+const [product,setProduct]=useState([])
+const [amazing,setAmazing]=useState([])
+
+   const mainSlider=()=>{
+      const axios = require("axios");
+      axios
+        // .post(apiUrl + "RequestPhotos",{RequestID:params})
+        .get(apiUrl + "FirstPage")
+        .then(function (response) {
+          if (response.data.result == "true") {
+           console.log(123456)
+           console.log(response.data.Data[3].Pic)
+           setimg1(response.data.Data[3].Pic)
+           setimg2(response.data.Data[3].Pic2)
+
+           console.log(img1)
+        }
+        else{
+          console.log(response.data.result)
+
+        }})
+        .catch(function (error) {
+          console.log(error);
+        });
+
+    axios
+    .get(apiUrl + "Group/"+params)
+    .then(function (response) {
+    if (response.data.result == "true") {
+
+    setProduct(response.data.Data)
+    //  console.log(response.data.Data)
+    }
+    else{
+    console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+    console.log(error);
+    });
+
+    axios
+.get(apiUrl + "AllProductWonder")
+.then(function (response) {
+if (response.data.result == "true") {
+
+setAmazing(response.data.Data)
+//  console.log(response.data.Data)
+}
+else{
+console.log(response.data.result)
+
+}})
+.catch(function (error) {
+console.log(error);
+});
+
+
+    }
+      useEffect(() => {
+        mainSlider();
+
+      }, []);
     return (
       <>
         <TopBar/>
-        <Header/> 
-      <Container fluid className="bulbiranContainer"> 
-        <IndoorSlider/>
+        <Header/>
+      <Container fluid className="bulbiranContainer">
+        <IndoorSlider img1={img1}img2={img2}/>
         <Row style={{margin:"0px"}}>
+        {product?.map((item, i) => {
+  return (
+          <>
         <Col md={4}>
        <div className="miniBox">
-          <img className="w100" src={Saghfi}/>
+          <img className="w100" src={apiAsset+item.Photo}/>
           <div className="indoorBox">
           <MiniIcon className="fRight"/>
-          <span className="fRight">انواع چراغ سقفی</span>
-          <Button onClick={()=>  history.push("/indoorsecond")}>خرید محصولات</Button>
+          <span className="fRight">انواع {item.SmallerGroup}</span>
+          <Button onClick={()=>  history.push("/indoorsecond/"+item.GroupID)}>خرید محصولات</Button>
+          {/* <Button onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>خرید محصولات</Button> */}
           </div>
-          
+
        </div>
         </Col>
-        <Col md={4}>
-       <div className="miniBox">
-          <img className="w100" src={Saghfi}/>
-          <div className="indoorBox">
-          <MiniIcon className="fRight"/>
-          <span className="fRight">انواع چراغ دیواری</span>
-          <Button onClick={()=>  history.push("/indoorsecond")}>خرید محصولات</Button>
-          </div>
-          
-       </div>
-        </Col>
-        <Col md={4}>
+        </>
+                    );
+
+            })
+          }
+        {/* <Col md={4}>
        <div className="miniBox">
           <img className="w100" src={Saghfi}/>
           <div className="indoorBox">
@@ -53,110 +121,12 @@ const Indoor = () => {
           <span className="fRight">انواع چراغ آویز</span>
           <Button onClick={()=>  history.push("/indoorsecond")}>خرید محصولات</Button>
           </div>
-          
+
        </div>
         </Col>
-        <Col md={4}>
-       <div className="miniBox">
-          <img className="w100" src={Saghfi}/>
-          <div className="indoorBox">
-          <MiniIcon className="fRight"/>
-          <span className="fRight">انواع چراغ ایستاده</span>
-          <Button onClick={()=>  history.push("/indoorsecond")}>خرید محصولات</Button>
-          </div>
-          
-       </div>
-        </Col>
-        <Col md={4}>
-       <div className="miniBox">
-          <img className="w100" src={Saghfi}/>
-          <div className="indoorBox">
-          <MiniIcon className="fRight"/>
-          <span className="fRight">انواع چراغ رومیزی</span>
-          <Button>خرید محصولات</Button>
-          </div>
-          
-       </div>
-        </Col>
-        <Col md={4}>
-       <div className="miniBox">
-          <img className="w100" src={Saghfi}/>
-          <div className="indoorBox">
-          <MiniIcon className="fRight"/>
-          <span className="fRight">انواع چراغ مخفی</span>
-          <Button>خرید محصولات</Button>
-          </div>
-          
-       </div>
-        </Col>
-        <Col md={4}>
-       <div className="miniBox">
-          <img className="w100" src={Saghfi}/>
-          <div className="indoorBox">
-          <MiniIcon className="fRight"/>
-          <span className="fRight">انواع چراغ زیرکابینتی</span>
-          <Button>خرید محصولات</Button>
-          </div>
-          
-       </div>
-        </Col>
-        <Col md={4}>
-       <div className="miniBox">
-          <img className="w100" src={Saghfi}/>
-          <div className="indoorBox">
-          <MiniIcon className="fRight"/>
-          <span className="fRight">انواع چراغ دکوراتیو</span>
-          <Button>خرید محصولات</Button>
-          </div>
-          
-       </div>
-        </Col>
-        <Col md={4}>
-       <div className="miniBox">
-          <img className="w100" src={Saghfi}/>
-          <div className="indoorBox">
-          <MiniIcon className="fRight"/>
-          <span className="fRight">انواع لوازم جانبی</span>
-          <Button>خرید محصولات</Button>
-          </div>
-          
-       </div>
-        </Col>
-        <Col md={4}>
-       <div className="miniBox">
-          <img className="w100" src={Saghfi}/>
-          <div className="indoorBox">
-          <MiniIcon className="fRight"/>
-          <span className="fRight">انواع چراغ پارکتی</span>
-          <Button>خرید محصولات</Button>
-          </div>
-          
-       </div>
-        </Col>
-        <Col md={4}>
-       <div className="miniBox">
-          <img className="w100" src={Saghfi}/>
-          <div className="indoorBox">
-          <MiniIcon className="fRight"/>
-          <span className="fRight">انواع چراغ دستی</span>
-          <Button>خرید محصولات</Button>
-          </div>
-          
-       </div>
-        </Col>
-        <Col md={4}>
-       <div className="miniBox">
-          <img className="w100" src={Saghfi}/>
-          <div className="indoorBox">
-          <MiniIcon className="fRight"/>
-          <span className="fRight">انواع چراغ اضطراری</span>
-          <Button>خرید محصولات</Button>
-          </div>
-          
-       </div>
-        </Col>
+       */}
         </Row>
-        
+
      </Container>
      <Container fluid className="pd0">
    <div className="amazingSliderBody" id="greencolor">
@@ -167,7 +137,9 @@ const Indoor = () => {
        </div>
       </Col>
       <Col md={9}>
-        <AmazingSlider className="amazingSlider"/>
+        <AmazingSlider
+         data={amazing}
+ className="amazingSlider"/>
       </Col>
     </Row>
    </div>

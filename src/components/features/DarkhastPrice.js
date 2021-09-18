@@ -13,13 +13,55 @@ import FormIcon from './assets/icons/FormIcon'
 import ContactMail from './assets/icons/ContactMail'
 import MailForm from './assets/img/MailForm.png'
 import Coin from './assets/icons/Coin';
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+
 const DarkhastPrice = () => {
-  
+  const [name,setName]=useState('')
+  const [company,setCompany]=useState('')
+  const [fax,setFax]=useState('')
+  const [phone,setPhone]=useState('')
+  const [des,setDes]=useState('')
+  const sendReq=()=>{
+    const axios = require("axios");
+    console.log(name)
+    console.log(phone)
+    console.log(des)
+    if(name!=""&&company!=""&&phone!=""&&des!=""){
+      axios
+      .post(apiUrl + "InsertRequestCost",{NameFamily:name,CompanyName:company,Mobile:phone,Fax:fax,Text:des})
+  .then(function (response) {
+    if (response.data.result == "true") {
+        console.log(22)
+        console.log(response.data.Data)
+alert("با موفقیت انجام شد")
+    setName("")
+    setCompany("")
+    setDes("")
+    setFax("")
+    setPhone("")
+
+
+  }
+  else{
+    // console.log(response.data.result)
+    alert("عملیات با خطا رویرو شد")
+
+  }
+}
+  )
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+else{
+    alert("لطفا فیلدهای ستاره دار را کامل کنید")
+}
+  }
     return (
     <>
           <TopBar/>
-      <Header/> 
-    <Container fluid className="bulbiranContainer"> 
+      <Header/>
+    <Container fluid className="bulbiranContainer">
     <div className="whiteBox">
         <div className="ta-right">
             <Coin className="d-inline-block"/>
@@ -33,27 +75,27 @@ const DarkhastPrice = () => {
           <p className="gTitle" style={{marginRight:"0px"}}>ثبت درخواست استعلام قیمت</p>
           <form className="serviceForm">
             <div className="cFormDiv">
-           <span>نام و نام خانوادگی : </span><FaStar/>   
-           <input placeholder="نام و نام خانوادگی خود را وارد کنید" required/>
+           <span>نام و نام خانوادگی : </span><FaStar/>
+           <input placeholder="نام و نام خانوادگی خود را وارد کنید" onChange={(event)=>setName(event.target.value)} value={name} required/>
             </div>
             <div className="cFormDiv">
-           <span>نام شرکت : </span><FaStar/>   
-           <input placeholder="نام شرکت خود را وارد کنید" required/>
+           <span>نام شرکت : </span><FaStar/>
+           <input onChange={(event)=>setCompany(event.target.value)} value={company} placeholder="نام شرکت خود را وارد کنید" required/>
             </div>
             <div className="cFormDiv">
-           <span>شماره تماس : </span><FaStar/>   
-           <input placeholder="شماره تماس خود را وارد کنید" required type="number"/>
+           <span>شماره تماس : </span><FaStar/>
+           <input onChange={(event)=>setPhone(event.target.value)} value={phone} placeholder="شماره تماس خود را وارد کنید" required type="number"/>
             </div>
             <div className="cFormDiv">
-           <span>شماره فکس : </span> 
-           <input placeholder="شماره فکس خود را وارد کنید" type="number"/>
+           <span>شماره فکس : </span>
+           <input onChange={(event)=>setFax(event.target.value)} value={fax} placeholder="شماره فکس خود را وارد کنید" type="number"/>
             </div>
             <div className="cFormDiv">
-           <span>متن درخواست : </span><FaStar/>   
-           <textarea placeholder="توضیحات خود را وارد کنید" required/>
+           <span>متن درخواست : </span><FaStar/>
+           <textarea onChange={(event)=>setDes(event.target.value)} value={des} placeholder="توضیحات خود را وارد کنید" required/>
             </div>
             <div className="cFormDiv ta-left" style={{marginBottom:"0"}}>
-            <Button className="servicesButton" type="submit">
+            <Button   onClick={sendReq} className="servicesButton" >
                    ثبت درخواست
                </Button>
             </div>
@@ -64,9 +106,9 @@ const DarkhastPrice = () => {
            <Khadamat3 style={{marginTop:"100px"}}/>
           </Col>
         </Row>
-     
+
   </div>
-   
+
   </Container>
     <SocialRow/>
     <IconRow/>

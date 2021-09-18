@@ -1,4 +1,5 @@
-import React , {useState} from 'react'
+import React,{useEffect,useState} from 'react'
+import { Link, useHistory } from "react-router-dom";
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -32,28 +33,93 @@ import Img6 from './assets/img/Image 6.png';
 import Img7 from './assets/img/Image 7.png';
 import Noorafkan from './assets/img/noorafkan.png';
 import Chain from './assets/img/chain.png';
-import B14 from './assets/img/b14.png'
+import B14 from './assets/img/b14.png';
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+import {useParams } from "react-router-dom";
+
 const BrandSecond = () => {
-  
+    const [product,setProduct]=useState([])
+    const [brand,setBrand]=useState([])
+    const params = useParams().id;
+
+    const mainCat=(id)=>{
+        const axios = require("axios");
+        axios
+        .get(apiUrl + "BrandProduct/"+params+"/"+id)
+    .then(function (response) {
+      if (response.data.result == "true") {
+        console.log(response.data)
+
+          setProduct(response.data.Data)
+
+    }
+    else{
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+    // console.log(159876)
+      }
+    const mainSlider=()=>{
+        const axios = require("axios");
+
+          axios
+              .get(apiUrl + "BrandProduct/"+params+"/0")
+          .then(function (response) {
+            if (response.data.result == "true") {
+
+                setProduct(response.data.Data)
+
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+
+
+          axios
+          .get(apiUrl + "AboutBrand/"+params)
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+            setBrand(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      }
+        useEffect(() => {
+          mainSlider();
+
+        }, []);
     return (
     <>
           <TopBar/>
-      <Header/> 
-     
-    <Container fluid className="bulbiranContainer"> 
+      <Header/>
+
+    <Container fluid className="bulbiranContainer">
     <Row style={{margin:"0px"}}>
         <Col md={3}>
             <div className="whiteBox ta-center pd60 mgt0">
-                <img src={B14} className="w100"/>
+                <img src={apiAsset+brand.BrandLogo} className="w100"/>
             </div>
         </Col>
         <Col md={9}>
             <div className="whiteBox mgt0">
-                <h4 className="circumstanceTitle">برند پارس شعاع توس</h4>
+                <h4 className="circumstanceTitle">{brand.BrandName}</h4>
                 <p className="brandShopDescription w100 mgt10">
-                شرکت «بروکس» (Burux) یکی از تولیدکنندگان انواع چراغ‌ها و لامپ‌های LED محسوب می‌شود. این شرکت با شعار «نور سالم است» محصولات خود را تولید می‌کند و بر عدم استفاده از عناصری مانند سرب و جیوه که برای سلامتی انسان مضر هستند، تاکید دارد. کیفیت لامپ و چراغ بروکس با بسیاری از برندهای اروپایی و آسیایی قابل رقابت است و خدماتی گسترده‌ای را در تهران و 30 استان دیگر در ایران ارایه می‌دهد.
-                شرکت «بروکس»محسوب می‌شود. این شرکت با شعار «نور سالم است» محصولات خود ر و بر عدم استفاده از عناصری مانند سرب و جیوه که برای سلامتی انسان مضر هستند، تاکید دارد. کیفیت لامپ و چراغ بروکس با بسیاری از برندهای اروپایی و آسیایی قابل رقابت است و خدماتی گسترده‌ای را  30 استان دیگر در ایران ارایه می‌دهد.
-                </p>
+                    {brand.Description}
+               </p>
             </div>
         </Col>
     </Row>
@@ -61,31 +127,34 @@ const BrandSecond = () => {
         <Col md={12}>
             <div className="whiteBand">
            <div className="cTitle">
-               <p>برند پارس شعاع توس</p>
+               <p>برند {brand.BrandName}</p>
            </div>
-           <RadioGroup horizontal className="radioB">
-  <RadioButton value="لامپ" rootColor="transparent" pointColor="#ffb921">
+           <RadioGroup horizontal
+             onChange={ss=>mainCat(ss)}
+            // value="1"
+           className="radioB">
+  <RadioButton value="1" rootColor="transparent"
+//    onChange={()=>mainCat(1)}
+    pointColor="#ffb921">
    لامپ
   </RadioButton>
-  <RadioButton value="پنل" rootColor="transparent" pointColor="#ffb921">
-    پنل
+  <RadioButton value="2" rootColor="transparent" pointColor="#ffb921">
+   روشنایی داخلی
   </RadioButton>
-  <RadioButton value="نورافکن" rootColor="transparent" pointColor="#ffb921">
-  نورافکن
+  <RadioButton value="3" rootColor="transparent"  pointColor="#ffb921">
+ روشنایی خارجی
   </RadioButton>
-  <RadioButton value="ریسه" rootColor="transparent" pointColor="#ffb921">
-   ریسه
+  <RadioButton value="4" rootColor="transparent" name="fruit" pointColor="#ffb921">
+   روشنایی تزئینی
   </RadioButton>
-  <RadioButton value="چراغ" rootColor="transparent" pointColor="#ffb921">
-  چراغ
+  <RadioButton value="5" rootColor="transparent"  pointColor="#ffb921">
+  روشنایی خاص
   </RadioButton>
-  <RadioButton value="آویز لوستر" rootColor="transparent" pointColor="#ffb921">
-  آویز لوستر
+  <RadioButton value="6" rootColor="transparent"  pointColor="#ffb921">
+  لوازم جانبی
   </RadioButton>
-  <RadioButton value="لوازم جانبی" rootColor="transparent" pointColor="#ffb921">
-   لوازم جانبی
-  </RadioButton>
-  
+
+
 </RadioGroup>
             </div>
         </Col>
@@ -95,34 +164,43 @@ const BrandSecond = () => {
             <div className="categoryBox2">
             <h4 className="circumstanceTitle ta-right">دسته بندی ها</h4>
             <div className="cateInner ta-center">
+                <Link onClick={()=>mainCat(1)}>
                 <div>
                     <img src={Lamp}/>
                     <p>لامپ</p>
                 </div>
+                </Link>
+                <Link onClick={()=>mainCat(2)}>
+
                 <div>
                     <img src={Panel}/>
-                    <p>پنل</p>
+                    <p>روشنایی داخلی</p>
                 </div>
+                </Link>
+                <Link onClick={()=>mainCat(3)}>
                 <div>
                     <img src={Noorafkan}/>
-                    <p>نورافکن</p>
+                    <p>روشنایی خارجی</p>
                 </div>
+                </Link>
+                <Link onClick={()=>mainCat(4)}>
                 <div>
                     <img src={Chain} id="chain"/>
-                    <p>ریسه</p>
+                    <p>روشنایی تزئینی</p>
                 </div>
+                </Link>
+                <Link onClick={()=>mainCat(5)}>
                 <div>
                     <img src={Cheragh}/>
-                    <p>چراغ</p>
+                    <p>روشنایی خاص</p>
                 </div>
-                <div>
-                    <img src={Loster}/>
-                    <p>آویز لوستر</p>
-                </div>
+                </Link>
+                <Link onClick={()=>mainCat(6)}>
                 <div>
                     <img src={Janebi}/>
                     <p>لوازم جانبی</p>
                 </div>
+                </Link>
             </div>
             </div>
         </Col>
@@ -144,7 +222,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -152,7 +230,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -160,7 +238,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -168,7 +246,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -176,7 +254,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -184,7 +262,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -192,7 +270,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -200,7 +278,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -208,7 +286,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -216,7 +294,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -235,7 +313,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -243,7 +321,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -251,7 +329,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -259,7 +337,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -267,7 +345,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -275,7 +353,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -283,7 +361,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -291,7 +369,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -299,7 +377,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -307,7 +385,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -326,7 +404,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -334,7 +412,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -342,7 +420,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -350,7 +428,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -358,7 +436,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -366,7 +444,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -374,7 +452,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -382,7 +460,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -390,7 +468,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -398,7 +476,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -417,7 +495,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -425,7 +503,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -433,7 +511,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -441,7 +519,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -449,7 +527,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -457,7 +535,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -465,7 +543,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -473,7 +551,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -481,7 +559,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -489,7 +567,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -508,7 +586,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -516,7 +594,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -524,7 +602,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -532,7 +610,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -540,7 +618,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -548,7 +626,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -556,7 +634,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -564,7 +642,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -572,7 +650,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -580,7 +658,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -599,7 +677,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -607,7 +685,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -615,7 +693,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -623,7 +701,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -631,7 +709,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -639,7 +717,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -647,7 +725,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -655,7 +733,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -663,7 +741,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -671,7 +749,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -690,7 +768,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -698,7 +776,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -706,7 +784,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -714,7 +792,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -722,7 +800,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -730,7 +808,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -738,7 +816,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -746,7 +824,7 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -754,7 +832,7 @@ const BrandSecond = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -762,12 +840,12 @@ const BrandSecond = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
             </AccordionItem>
-           
+
            </Accordion>
         </Col>
         <Col md={9}>
@@ -794,91 +872,35 @@ const BrandSecond = () => {
 
             </div>
             <Row style={{margin:"-5px"}}>
+            {
+
+product?.map((item, i) => {
+  return (
+          <>
                 <Col md={3} className="pd0">
+            <Link
+          to={`/singleProduct/${item.ProductID}`}
+        >
+                    <div className="whiteCard">
+                        <img src={apiAsset+item.Pic1}/>
+                        <p>{item.ProductName}</p>
+                        <span>{item.Cost} تومان</span>
+                    </div>
+                </Link>
+                </Col>
+                </>
+                    );
+
+            })
+          }
+                {/* <Col md={3} className="pd0">
                     <div className="whiteCard">
                         <img src={Img4}/>
                         <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
                         <span>125000 تومان</span>
                     </div>
                 </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-           
+             */}
             </Row>
         </Col>
     </Row>
