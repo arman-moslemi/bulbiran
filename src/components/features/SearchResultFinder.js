@@ -30,7 +30,7 @@ import {useParams } from "react-router-dom";
 import { Link, useHistory } from "react-router-dom";
 
 const SearchResult = () => {
-    const params = useParams().id;
+    const {id,base,tech,color,light,hobab} = useParams();
     const [img1,setimg1]=useState('')
     const [img2,setimg2]=useState('')
     const [img3,setimg3]=useState('')
@@ -38,23 +38,30 @@ const SearchResult = () => {
 
 
     const mainSlider=()=>{
-        const axios = require("axios");
+      const axios = require("axios");
+      axios
+      .post(apiUrl + "ProductByFinder",{BulbFindBaseID:base,BulbFindGroupID:id,Technology:tech,Color:color,Lighting:light,Hobab:hobab})
+  .then(function (response) {
+    if (response.data.result == "true") {
+      console.log(response.data)
+      console.log(response.data.Data.length)
+      console.log(id)
+      console.log(base)
+      console.log(color)
+      console.log(tech)
+      console.log(light)
+      console.log(hobab)
 
-          axios
-              .get(apiUrl + "ProductBySerach/"+params)
-          .then(function (response) {
-            if (response.data.result == "true") {
+        setProduct(response.data.Data)
 
-                setProduct(response.data.Data)
+  }
+  else{
+    console.log(response.data.result)
 
-          }
-          else{
-            console.log(response.data.result)
-
-          }})
-          .catch(function (error) {
-            console.log(error);
-          });
+  }})
+  .catch(function (error) {
+    console.log(error);
+  });
 
 
           axios
@@ -78,6 +85,7 @@ const SearchResult = () => {
             console.log(error);
           });
       }
+
         useEffect(() => {
           mainSlider();
 
@@ -133,9 +141,8 @@ const SearchResult = () => {
 product?.map((item, i) => {
   return (
           <>
-
                 <Col md={2} className="pd0">
-                <Link
+              <Link
           to={`/singleProduct/${item.ProductID}`}
         >
                     <div className="whiteCard">
@@ -143,7 +150,7 @@ product?.map((item, i) => {
                         <p>{item.ProductName}</p>
                         <span>{item.Cost} تومان</span>
                     </div>
-                    </Link>
+                </Link>
                 </Col>
                 </>
                     );

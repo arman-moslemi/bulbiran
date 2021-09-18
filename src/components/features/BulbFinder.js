@@ -1,8 +1,7 @@
 
-import * as React from 'react';
+import React , {useState,useEffect} from 'react'
 import ReactDOM from "react-dom";
 import { Range, getTrackBackground } from "react-range";
-
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -12,7 +11,6 @@ import {Container,Row,Col,Button} from 'react-bootstrap'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { FaAngleLeft,FaAlignRight ,FaCheck ,FaTimes,FaAngleDoubleLeft} from 'react-icons/fa';
 import Checkbox from "react-custom-checkbox";
-
 import BulbFinder from './assets/icons/BulbFinder';
 import F1 from './assets/icons/f1.js';
 import F2 from './assets/icons/f2.js';
@@ -36,17 +34,93 @@ import Mate from './assets/img/mate.png';
 import Mirror from './assets/img/mirror.png';
 import Table from './assets/img/table.png';
 import { Link, useHistory } from "react-router-dom";
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+import {useParams } from "react-router-dom";
+
 const STEP = 0.1;
 const MIN = 0;
 const MAX = 100;
 const BulbFinders=() =>{
   const history = useHistory();
     const [values, setValues] = React.useState([50]);
+    const [values2, setValues2] = React.useState([50]);
+    const params = useParams().id;
+    const [group,setGroup]=useState([])
+    const [base,setBase]=useState(0)
+    const [tech,setTech]=useState(0)
+    const [color,setColor]=useState(0)
+    const [light,setLight]=useState(0)
+    const [count,setCount]=useState(0)
+    const [hobab,setHobab]=useState(0)
+
+    const mainSlider=()=>{
+        const axios = require("axios");
+
+          axios
+              .get(apiUrl + "BulnFindBase")
+          .then(function (response) {
+            if (response.data.result == "true") {
+                console.log(response.data.Data)
+
+                setGroup(response.data.Data)
+
+
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+          axios
+          .post(apiUrl + "ProductByFinder",{BulbFindBaseID:base,BulbFindGroupID:params,Technology:tech,Color:color,Lighting:light,Hobab:hobab})
+      .then(function (response) {
+        if (response.data.result == "true") {
+          console.log(response.data.Data)
+          console.log(response.data.Data.length)
+
+            setCount(response.data.Data.length)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      }
+      const mainCat=(id)=>{
+        const axios = require("axios");
+        axios
+        .post(apiUrl + "ProductByFinder",{BulbFindBaseID:base,BulbFindGroupID:params,Technology:tech,Color:color,Lighting:light,Hobab:hobab})
+    .then(function (response) {
+      if (response.data.result == "true") {
+        console.log(response.data.Data)
+        console.log(response.data.Data.length)
+
+          setCount(response.data.Data.length)
+
+    }
+    else{
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+    // console.log(159876)
+      }
+      useEffect(() => {
+        mainSlider();
+// alert(val)
+      }, []);
     return (
     <>
           <TopBar/>
-      <Header/> 
-    <Container fluid className="bulbiranContainer"> 
+      <Header/>
+    <Container fluid className="bulbiranContainer">
     <div className="bulbFinderWBox">
         <Row style={{marginRight:"0px",marginLeft:"0px",alignItems:"center"}}>
             <Col md={2}>
@@ -63,51 +137,80 @@ const BulbFinders=() =>{
         </Row>
     </div>
     <div className="bRow">
-        <div className="bRowDiv" id="ff1">
+
+        {/* <div className="bRowDiv" id="ff1">
             <F1 className="bRowDivIcon"/>
             <span className="bRowDvText">حبابی</span>
             <Button className="bRowBtn">
                 <FaTimes/>
             </Button>
-        </div>
+        </div> */}
+        {
+        base!=0?
+
         <div className="bRowDiv mgr5" >
             <F2 className="bRowDivIcon"/>
             <span className="bRowDvText">پایه</span>
-            <Button className="bRowBtn">
+            <Button onClick={()=>setBase(0)} className="bRowBtn">
                 <FaTimes/>
             </Button>
         </div>
+        :null
+      }
+      {
+        color!=""?
         <div className="bRowDiv mgr5">
             <F3 className="bRowDivIcon"/>
             <span className="bRowDvText">رنگ</span>
-            <Button className="bRowBtn">
+            <Button onClick={()=>setColor(0)} className="bRowBtn">
                 <FaTimes/>
             </Button>
         </div>
+        :
+        null
+        }
+        {
+        light!=0?
         <div className="bRowDiv mgr5" >
             <F4 className="bRowDivIcon"/>
             <span className="bRowDvText">روشنایی</span>
-            <Button className="bRowBtn">
+            <Button onClick={()=>setLight(0)} className="bRowBtn">
                 <FaTimes/>
             </Button>
         </div>
+        :
+        null
+        }
+        {
+        hobab!=0?
         <div className="bRowDiv mgr5" >
             <F5 className="bRowDivIcon"/>
             <span className="bRowDvText">حباب</span>
-            <Button className="bRowBtn">
+            <Button onClick={()=>setHobab(0)} className="bRowBtn">
                 <FaTimes/>
             </Button>
         </div>
+        :
+        null}
+          {
+        tech!=0?
         <div className="bRowDiv mgr5" >
             <F6 className="bRowDivIcon"/>
             <span className="bRowDvText">تکنولوژی</span>
-            <Button className="bRowBtn">
+            <Button onClick={()=>setTech(0)} className="bRowBtn">
                 <FaTimes/>
             </Button>
         </div>
-        <Button className="deleteRow">
+        :
+        null
+        }
+        {
+base==0&& tech==0&&color==0&& hobab==0?
+null:
+        <Button onClick={()=>{setBase(0);setColor(0);setLight(0);setTech(0);setHobab(0)}} className="deleteRow">
             پاک کردن
         </Button>
+        }
     </div>
     <div className="bulbFinderWBox mgt40 ta-right paddingC">
     <Tabs dir={'rtl'}>
@@ -145,8 +248,8 @@ const BulbFinders=() =>{
     </TabList>
     <div className="nn">
         <div>
-            <span className="natije">123 لامپ پیدا شد</span>
-            <a href="#" className="moshahedeN" onClick={()=>  history.push("/searchresult")}>مشاهده نتیاج <FaAngleDoubleLeft/></a>
+            <span className="natije">{count} لامپ پیدا شد</span>
+            <a href="#" className="moshahedeN" onClick={()=>  history.push("/searchresultFinder/"+base+"/"+params+"/"+tech+"/"+color+"/"+light+"/"+hobab)}>مشاهده نتایج <FaAngleDoubleLeft/></a>
             <p className="moshahedeP">این فرایند را ادامه دهید تا نتایج بهتر را مشاهده کنید</p>
         </div>
     </div>
@@ -155,30 +258,22 @@ const BulbFinders=() =>{
         پایه ای را انتخاب کنید که متناسب با وسیله شما باشد یا با لامپ شما مطابقت داشته باشد. برای مشاهده جزئیات بیشتر ، ماوس را روی تصویر ببرید
         </p>
         <div className="bulbFinder2">
-            <a href="#">
-            <img src={P1} className="kl1"/>
-            <span>پایه یک</span>
-            </a>
-            <a href="#">
-            <img src={P2} className="kl1"/>
-            <span>پایه دو</span>
-            </a>
-            <a href="#">
-            <img src={P3} className="kl1"/>
-            <span>پایه سه</span>
-            </a>
-            <a href="#">
-            <img src={P4} className="kl1"/>
-            <span>پایه چهار</span>
-            </a>
-            <a href="#">
-            <img src={P5} className="kl1"/>
-            <span>پایه پنج</span>
-            </a>
+        {group?.map((item, i) => {
+  return (
+<Link
+onClick={()=>{setBase(item.BulbFindBaseID) ;mainCat()}}
+>
+            <img src={apiAsset+item.Photo} className="kl1"/>
+            <span>{item.Title}</span>
+            </Link>
+                                    );
+
+})
+}
         </div>
         <Row>
             <Col md={12} className="ta-center">
-                <Button className="clearBtn">
+                <Button  className="clearBtn">
                     پاک کردن
                 </Button>
             </Col>
@@ -255,11 +350,11 @@ const BulbFinders=() =>{
               height: '42px',
               width: '15px',
               borderRadius: '4px',
-             
+
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-            
+
               opacity: 0.5
             }}
           >
@@ -277,7 +372,7 @@ const BulbFinders=() =>{
         {values[0].toFixed(1)}
       </output>
     </div>
-    <div className="op3"> 
+    <div className="op3">
           <div className="ta-right">
               <span>سرد تر</span>
           </div>
@@ -286,12 +381,12 @@ const BulbFinders=() =>{
           </div>
       </div>
           </div>
-      
+
       </Col>
   </Row>
   <Row>
             <Col md={12} className="ta-center">
-                <Button className="selectBtn">
+                <Button onClick={()=>{setColor(values[0].toFixed(1));mainCat()}} className="selectBtn">
                    انتخاب
                 </Button>
             </Col>
@@ -326,7 +421,7 @@ const BulbFinders=() =>{
         min={MIN}
         max={MAX}
         rtl={true}
-        onChange={(values) => setValues(values)}
+        onChange={(values) => setValues2(values)}
         renderTrack={({ props, children }) => (
           <div
             onMouseDown={props.onMouseDown}
@@ -368,11 +463,11 @@ const BulbFinders=() =>{
               height: '42px',
               width: '15px',
               borderRadius: '4px',
-             
+
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-            
+
               opacity: 0.5
             }}
           >
@@ -387,10 +482,10 @@ const BulbFinders=() =>{
         )}
       />
       <output style={{ marginTop: '10px' }} id="output">
-        {values[0].toFixed(1)}
+        {values2[0].toFixed(1)}
       </output>
     </div>
-    <div className="op3"> 
+    <div className="op3">
           <div className="ta-right">
               <span>روشن تر</span>
           </div>
@@ -399,12 +494,12 @@ const BulbFinders=() =>{
           </div>
       </div>
           </div>
-      
+
       </Col>
   </Row>
   <Row className="borderbb">
             <Col md={12} className="ta-center">
-                <Button className="selectBtn">
+                <Button onClick={()=>{setLight(values2[0].toFixed(1));mainCat()}} className="selectBtn">
                    انتخاب
                 </Button>
             </Col>
@@ -413,27 +508,29 @@ const BulbFinders=() =>{
      جدول زیر می تواند به شما کمک کند  </p>
      <img src={Table}/>
     </TabPanel>
-    
+
         <TabPanel>
         <p className="tabFDes">
         مات ، شفاف ، آینه ای یا مات - لایه ی نهایی مورد نظر را برای لامپ خود انتخاب کنید <a href="#">رد کردن این مرحله</a>
          </p>
          <div className="bulbFinder2">
-            <a href="#">
+           <Link onClick={()=>{setHobab(1);mainCat()}}>
             <img src={Shafaf} className="kl1"/>
             <span>شفاف</span>
-            </a>
-            <a href="#">
+            </Link>
+            <Link onClick={()=>{setHobab(2);mainCat()}}>
+
             <img src={Mirror} className="kl1"/>
             <span>آینه ای</span>
-            </a>
-            <a href="#">
+            </Link>
+            <Link onClick={()=>{setHobab(3);mainCat()}}>
+
             <img src={Mate} className="kl1"/>
             <span>مات</span>
-            </a>
-         
+            </Link>
+
         </div>
-     
+
         </TabPanel>
         <TabPanel>
         <p className="tabFDes">
@@ -445,7 +542,7 @@ const BulbFinders=() =>{
   <tr>
 
     <th>
-    
+
     </th>
               <th>
                   <span>تکنولوژی</span>
@@ -480,15 +577,15 @@ const BulbFinders=() =>{
         name="my-input"
         checked={true}
         onChange={(value) => {
-        
+
         }}
         borderColor="#18206b"
         borderWidth="1px"
         style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
         labelStyle={{ marginLeft: 20, userSelect: "none" }}
-    
+
       />
-          
+
           </div>
     </td>
     <td>لامپ رشته ای</td>
@@ -505,7 +602,7 @@ const BulbFinders=() =>{
     name="my-input"
     checked={true}
     onChange={(value) => {
-    
+
     }}
     borderColor="#18206b"
     borderWidth="1px"
@@ -513,7 +610,7 @@ const BulbFinders=() =>{
     labelStyle={{ marginLeft: 20, userSelect: "none" }}
 
   />
-      
+
       </div>
 </td>
 <td>لامپ رشته ای</td>
@@ -534,7 +631,7 @@ const BulbFinders=() =>{
         </Row>
         </TabPanel>
  </Tabs>
-     
+
 
     </div>
    </Container>

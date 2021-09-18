@@ -35,6 +35,7 @@ import BulbiranShop from '../components/features/BulbiranShop';
 import Shegeftangiz from '../components/features/Shegeftangiz';
 import ShegeftGreen from '../components/features/ShegeftGreen';
 import SearchResult from '../components/features/SearchResult';
+import SearchResultFinder from '../components/features/SearchResultFinder';
 import BrandSecond from '../components/features/BrandSecond';
 import IndoorSecond from '../components/features/IndoorSecond';
 const MainRoutes = (props) => {
@@ -74,6 +75,13 @@ const MainRoutes = (props) => {
 					path='/searchresult/:id'
 					name='جستجو'
 					render={(props) => <SearchResult/>}>
+
+					</Route>
+					<Route
+					exact
+					path='/searchresultfinder/:base/:id/:tech/:color/:light/:hobab'
+					name='لامپ یاب جستجو'
+					render={(props) => <SearchResultFinder/>}>
 
 					</Route>
 					<Route
@@ -260,7 +268,7 @@ const MainRoutes = (props) => {
 					</Route>
 					<Route
 					exact
-					path='/bulbfinder'
+					path='/bulbfinder/:id'
 					name='لامپ یاب'
 					render={(props) => <BulbFinder/>}>
 

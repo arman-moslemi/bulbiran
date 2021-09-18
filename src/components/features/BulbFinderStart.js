@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React , {useState,useEffect} from 'react'
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -16,13 +16,43 @@ import c6 from './assets/img/c6.png';
 import c7 from './assets/img/c7.png';
 import c8 from './assets/img/c8.png';
 import { Link, useHistory } from "react-router-dom";
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+
 const BulbFinderStart = () => {
     const history = useHistory();
+    const [group,setGroup]=useState([])
+
+    const mainSlider=()=>{
+        const axios = require("axios");
+
+          axios
+              .get(apiUrl + "BulbFindGroup")
+          .then(function (response) {
+            if (response.data.result == "true") {
+                console.log(response.data.Data)
+
+                setGroup(response.data.Data)
+
+
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+
+      }
+      useEffect(() => {
+        mainSlider();
+// alert(val)
+      }, []);
     return (
     <>
           <TopBar/>
-      <Header/> 
-    <Container fluid className="bulbiranContainer"> 
+      <Header/>
+    <Container fluid className="bulbiranContainer">
     <div className="bulbFinderWBox">
         <Row style={{marginRight:"0px",marginLeft:"0px",alignItems:"center"}}>
             <Col md={2}>
@@ -41,39 +71,17 @@ const BulbFinderStart = () => {
     <div className="bulbFinderWBox mgt40 ta-right paddingC">
         <span className="bFinderTitle">برای شروع دسته بندی مورد نظر خود را انتخاب کنید : </span>
         <div className="bulbFinder1">
+        {group?.map((item, i) => {
+  return (
             <div>
-            <img src={c1} className="kl1"/>
-            <a href="#" onClick={()=>  history.push("/bulbfinder")}>دسته یک</a>
+            <img src={apiAsset+item.Photo} className="kl1"/>
+            <a href="#" onClick={()=>  history.push("/bulbfinder/"+item.BulbFindGroupID)}>{item.Title}</a>
             </div>
-            <div>
-            <img src={c2} className="kl1"/>
-            <a href="#">دسته دو</a>
-            </div>
-            <div>
-            <img src={c3} className="kl1"/>
-            <a href="#">دسته سه</a>
-            </div>
-            <div>
-            <img src={c4} className="kl1"/>
-            <a href="#">دسته چهار</a>
-            </div>
-            <div>
-            <img src={c5} className="kl1"/>
-            <a href="#">دسته پنج</a>
-            </div>
-            <div>
-            <img src={c6} className="kl1"/>
-            <a href="#">دسته شش</a>
-            </div>
-            <div>
-            <img src={c7} className="kl1"/>
-            <a href="#">دسته هفت</a>
-            </div>
-            <div>
-            <img src={c8} className="kl1"/>
-            <a href="#">دسته هشت</a>
-            </div>
-        </div>
+                                  );
+
+})
+}
+          </div>
 
     </div>
    </Container>
