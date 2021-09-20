@@ -38,6 +38,7 @@ import SearchResult from '../components/features/SearchResult';
 import SearchResultFinder from '../components/features/SearchResultFinder';
 import BrandSecond from '../components/features/BrandSecond';
 import IndoorSecond from '../components/features/IndoorSecond';
+import Cartstep1 from '../components/features/Cartstep1';
 const MainRoutes = (props) => {
 	return (
 		<BrowserRouter>
@@ -299,6 +300,13 @@ const MainRoutes = (props) => {
 					path='/ShegeftGreen'
 					name='محصولات شگفت انگیزفروشگاه سبز'
 					render={(props) => <ShegeftGreen/>}>
+
+					</Route>
+					<Route
+					exact
+					path='/Cartstep1'
+					name='سبد خرید'
+					render={(props) => <Cartstep1/>}>
 
 					</Route>
 					{/* <PrivateRoute path='/pages' /> */}
