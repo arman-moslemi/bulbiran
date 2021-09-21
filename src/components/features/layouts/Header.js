@@ -7,6 +7,7 @@ import SearchBar from './SearchBar'
 import Logo from '../assets/img/logo2.png';
 import { FaSearch,FaMapMarkerAlt } from 'react-icons/fa';
 const Header = () => {
+
     return (
       <>
       <Container fluid className="menuContainer">
