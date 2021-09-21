@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React , {useState,useEffect} from 'react'
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -15,21 +15,88 @@ import 'react-tabs/style/react-tabs.css';
 import Poshtibani from './assets/icons/Poshtiban';
 import Phone from './assets/icons/Phone';
 import Email from './assets/icons/Email';
-
+import { Link, useHistory } from "react-router-dom";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import Pardazesh from './layouts/Pardazesh';
 import Tarikhche  from './layouts/Tarikhche';
 import UserData from './layouts/UserData';
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+import {useParams } from "react-router-dom";
+import { PanoramaFishEyeSharp } from '@material-ui/icons'
   const UserPanel=() => {
- 
+    const [product,setProduct]=useState([])
+    const [total,setTotal]=useState(0)
+    const [date,setDate]=useState(0)
+    const params = useParams().id;
+    const [group,setGroup]=useState([])
+    const [userdata,setUserData]=useState([])
+    const history = useHistory();
+
+    const mainSlider=()=>{
+        const axios = require("axios");
+
+          axios
+              .post(apiUrl + "Factor",{CustomerID:params,Payment:false})
+          .then(function (response) {
+            if (response.data.result == "true") {
+                setTotal( response.data.Data[0].TotalCost);
+setDate( response.data.Data[0].Date);
+                setProduct(response.data.Data)
+          }
+          else{
+            console.log(response.data.result)
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+          axios
+          .post(apiUrl + "FactorGroup",{CustomerID:params,Payment:true})
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+            setGroup(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      axios
+          .get(apiUrl + "GetCustomer/"+params)
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+            setUserData(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      }
+      useEffect(() => {
+       const UserID= localStorage.getItem("user_id");
+//        if(UserID==null ||UserID==null=="" ){
+// history.push("/Login")
+//        }
+console.log(UserID)
+        mainSlider();
+// alert(val)
+      }, []);
       return(
-        
+
       <>
-   
+
         <TopBar/>
-        <Header/> 
-      <Container fluid className="bulbiranContainer"> 
+        <Header/>
+      <Container fluid className="bulbiranContainer">
       <div className="singleBox">
         <Row style={{marginRight:"0px",marginLeft:"0px",alignItems:"center"}}>
             <Col md={2}>
@@ -72,24 +139,24 @@ import UserData from './layouts/UserData';
        <Tab>تیکت های پشتیبانی</Tab>
     </TabList>
         <TabPanel>
-        <Pardazesh/>
+        <Pardazesh data={product}total={total} date={date}/>
         </TabPanel>
         <TabPanel>
-            <Tarikhche/>
+            <Tarikhche data={group}/>
         </TabPanel>
         <TabPanel>
-            <UserData/>
+            <UserData data={userdata}/>
         </TabPanel>
         <TabPanel>
         <div className="pardazeshBox">
             <Row style={{margin:"0px",padding:"15px"}}>
                 <Col md={9}>
-                    <p className="uAddress ta-right">تهران،پاسداران،میدان هروی ، بلوار گلها ، بن بست ارکیده،پلاک 2 ،واحد 3</p>
+                    <p className="uAddress ta-right">{userdata.Address}</p>
                 </Col>
                 <Col md={3} className="ta-left">
                 <Button className="factorBTN">ویرایش آدرس</Button>
                 <Button className="factorBTN" id="dAddress">حذف</Button>
-                
+
                 </Col>
             </Row>
             <Row style={{margin:"0px",padding:"15px"}}>
@@ -97,10 +164,10 @@ import UserData from './layouts/UserData';
                     <p className="adddetail">کد پستی : 1669148569</p>
                 </Col>
                 <Col md={4} className="ta-center">
-                <p className="adddetail">نام گیرنده : یاسمن طاهری صراف</p>
+                <p className="adddetail">نام گیرنده : {userdata.NameFamily}</p>
                     </Col>
                     <Col md={4} className="ta-left">
-                    <p className="adddetail">شماره تماس گیرنده : 09120362598</p>
+                    <p className="adddetail">شماره تماس گیرنده : {userdata.Mobile}</p>
                     </Col>
                 </Row>
                 <Row style={{margin:"0px",padding:"15px"}}>
@@ -109,7 +176,39 @@ import UserData from './layouts/UserData';
                    </Col>
                     </Row>
       </div>
-      
+      {userdata.Address2?
+    <div className="pardazeshBox">
+            <Row style={{margin:"0px",padding:"15px"}}>
+                <Col md={9}>
+                    <p className="uAddress ta-right">{userdata.Address}</p>
+                </Col>
+                <Col md={3} className="ta-left">
+                <Button className="factorBTN">ویرایش آدرس</Button>
+                <Button className="factorBTN" id="dAddress">حذف</Button>
+
+                </Col>
+            </Row>
+            <Row style={{margin:"0px",padding:"15px"}}>
+                <Col md={4} className="ta-right">
+                    <p className="adddetail">کد پستی : 1669148569</p>
+                </Col>
+                <Col md={4} className="ta-center">
+                <p className="adddetail">نام گیرنده : {userdata.NameFamily}</p>
+                    </Col>
+                    <Col md={4} className="ta-left">
+                    <p className="adddetail">شماره تماس گیرنده : {userdata.Mobile}</p>
+                    </Col>
+                </Row>
+                <Row style={{margin:"0px",padding:"15px"}}>
+                   <Col md={12} className="ta-left">
+                       <Button className="addressadd">+ افزودن آدرس جدید</Button>
+                   </Col>
+                    </Row>
+      </div>
+:
+null
+    }
+
         </TabPanel>
         <TabPanel></TabPanel>
  </Tabs>
@@ -120,6 +219,6 @@ import UserData from './layouts/UserData';
     <IconRow/>
     <Footer/>
       </>);
-    
+
     };
     export default UserPanel;

@@ -205,7 +205,7 @@ const MainRoutes = (props) => {
 					</Route>
 					<Route
 					exact
-					path='/userpanel'
+					path='/userpanel/:id'
 					name='پنل کاربری'
 					render={(props) => <UserPanel/>}>
 
@@ -233,14 +233,14 @@ const MainRoutes = (props) => {
 					</Route>
 					<Route
 					exact
-					path='/LEDtechnology'
+					path='/LEDtechnology/:id'
 					name='تکنولوژی ال ای دی'
 					render={(props) => <LEDTechnology/>}>
 
 					</Route>
 					<Route
 					exact
-					path='/LEDmasarefdakheli'
+					path='/LEDmasarefdakheli/:id'
 					name='مصارف داخلی ال ای دی'
 					render={(props) => <LEDMasarefDakheli/>}>
 

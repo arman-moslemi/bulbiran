@@ -1,4 +1,4 @@
-import React  ,{ useRef } from 'react'
+import React  ,{ useRef,useState,useEffect } from 'react'
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -12,6 +12,8 @@ import Checkbox from "react-custom-checkbox";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { Link, useHistory } from "react-router-dom";
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+
 const Register = () => {
   const options=[
     'one',
@@ -23,11 +25,51 @@ const Register = () => {
   const showIcon = () =><FaEye></FaEye>;
   const hideIcon = () => <FaEyeSlash></FaEyeSlash>;
   const history = useHistory();
+  const [mobile,setMobile]=useState('')
+  const [pass,setPass]=useState('')
+  const [againPass,setAgainPass]=useState('')
+  const [name,setName]=useState('')
+  const [email,setEmail]=useState('')
+  const [rol,setRol]=useState(0)
+
+  const loginto=()=>{
+    console.log(mobile)
+    console.log(pass)
+    if(pass==againPass){
+    const axios = require("axios");
+    axios
+    .post(apiUrl + "InsertCustomerFull",{Mobile:mobile.toString(),Password:pass.toString(),Role:rol,Email:email,NameFamily:name})
+.then(function (response) {
+  if (response.data.result == "true") {
+    console.log(response.data.Data)
+    // console.log(response.data.Data[0].UserID)
+    // localStorage.setItem("user_id", response.data.Data[0].CustomerID);
+alert("عملیات موفقیت آمیز بود")
+history.push("/verification")
+
+} else if (response.data.result == "duplicate"){
+  alert("این شماره موبایل وجود دارد")
+}
+ else{
+  console.log(response.data.result)
+  alert("عملیات با خطا روبرو شد")
+
+}})
+.catch(function (error) {
+  console.log(error);
+});
+    }
+    else{
+      alert(" تکرار رمز عبور درست نمی باشد")
+
+    }
+// console.log(159876)
+  }
   return (
       <>
         <TopBar/>
-        <Header/> 
-      <Container fluid className="bulbiranContainer"> 
+        <Header/>
+      <Container fluid className="bulbiranContainer">
       <div className="whiteBox pd0 loginBox">
     <Row>
         <Col md={6}>
@@ -38,18 +80,18 @@ const Register = () => {
           <Row>
             <Col md={6}>
             <label className="cLabel mgt40">نام و نام خانوادگی</label>
-            <input className="cInput mgt10"  placeholder="نام و نام خانوادگی" ></input>
-          
+            <input onChange={(event)=>setName(event.target.value)} className="cInput mgt10"  placeholder="نام و نام خانوادگی" ></input>
+
             </Col>
             <Col md={6}>
             <label className="cLabel mgt40">شماره تلفن همراه</label>
-            <input className="cInput mgt10"  placeholder="تلفن همراه" type="number" ></input>
-           
+            <input onChange={(event)=>setMobile(event.target.value)} className="cInput mgt10"  placeholder="تلفن همراه" type="number" ></input>
+
             </Col>
             <Col md={6}>
             <label className="cLabel mgt20">ایمیل</label>
-            <input className="cInput mgt10"  placeholder="ایمیل" type="email" ></input>
-           
+            <input onChange={(event)=>setEmail(event.target.value)} className="cInput mgt10"  placeholder="ایمیل" type="email" ></input>
+
             </Col>
             <Col md={6}>
             <label className="cLabel mgt20">نوع کاربر</label>
@@ -58,10 +100,10 @@ const Register = () => {
             <Col md={6}>
             <label className="cLabel mgt20">رمز عبور</label>
            <div className="col fa" style={{position:"relative",display:"block",padding:"0px"}}>
-           <input className="cInput mgt10" ref={inputRef} type="password" placeholder="رمز عبور"></input>
-           
-            <ReactPasswordToggleIcon 
-              inputRef={inputRef} 
+           <input onChange={(event)=>setPass(event.target.value)} className="cInput mgt10" ref={inputRef} type="password" placeholder="رمز عبور"></input>
+
+            <ReactPasswordToggleIcon
+              inputRef={inputRef}
               showIcon={showIcon}
               hideIcon={hideIcon}
             />
@@ -70,21 +112,21 @@ const Register = () => {
             <Col md={6}>
             <label className="cLabel mgt20">تکرار رمز عبور</label>
            <div className="col fa" style={{position:"relative",display:"block",padding:"0px"}}>
-           <input className="cInput mgt10" ref={inputRef} type="password" placeholder="رمز عبور"></input>
-           
-            <ReactPasswordToggleIcon 
-              inputRef={inputRef} 
+           <input onChange={(event)=>setAgainPass(event.target.value)} className="cInput mgt10" ref={inputRef} type="password" placeholder="رمز عبور"></input>
+
+            <ReactPasswordToggleIcon
+              inputRef={inputRef}
               showIcon={showIcon}
               hideIcon={hideIcon}
             />
           </div>
             </Col>
-            
+
           </Row>
 
-          
-         
-          <Button className="loginBtn w50 mgt40" style={{marginTop:40}}>ثبت نام</Button>
+
+
+          <Button onClick={()=>loginto()} className="loginBtn w50 mgt40" style={{marginTop:40}}>ثبت نام</Button>
           <div className="mgt20">
             <span className="d-inline-block cLabel" id="fo12">حساب کاربری دارید؟</span>
           <a href="#" className="d-inline-block inLink" id="fo12" onClick={()=>  history.push("/login")}>وارد شوید</a>
@@ -98,7 +140,7 @@ const Register = () => {
             </Col>
     </Row>
      </div>
-          
+
      </Container>
      <SocialRow/>
     <IconRow/>

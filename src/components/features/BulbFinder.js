@@ -509,7 +509,7 @@ onClick={()=>{setBase(item.BulbFindBaseID) ;mainCat()}}
      <img src={Table}/>
     </TabPanel>
 
-        <TabPanel>
+        {/* <TabPanel>
         <p className="tabFDes">
         مات ، شفاف ، آینه ای یا مات - لایه ی نهایی مورد نظر را برای لامپ خود انتخاب کنید <a href="#">رد کردن این مرحله</a>
          </p>
@@ -629,7 +629,7 @@ onClick={()=>{setBase(item.BulbFindBaseID) ;mainCat()}}
                 </Button>
             </Col>
         </Row>
-        </TabPanel>
+        </TabPanel> */}
  </Tabs>
 
 

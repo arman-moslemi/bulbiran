@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React , {useState,useEffect} from 'react'
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -19,6 +19,7 @@ import 'react-accessible-accordion/dist/fancy-example.css';
 import { FaAngleLeft,FaAlignRight ,FaCheck } from 'react-icons/fa';
 import CircumstanceB from './assets/icons/CircumstanceB';
 
+import { Link, useHistory } from "react-router-dom"
 
 import Lamp from './assets/img/lamp.png';
 import Cheragh from './assets/img/cheragh.png';
@@ -33,100 +34,78 @@ import Img7 from './assets/img/Image 7.png';
 import Noorafkan from './assets/img/noorafkan.png';
 import Chain from './assets/img/chain.png';
 import Reshte2 from './assets/icons/Reshte2';
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+import {useParams } from "react-router-dom";
 const LEDTechnology = () => {
-  
+    const [product,setProduct]=useState([])
+    const [val,setVal]=useState(0)
+    const params = useParams().id;
+    const [group,setGroup]=useState([])
+
+    const mainSlider=()=>{
+        const axios = require("axios");
+
+          axios
+              .get(apiUrl + "SubGroupProduct/"+params)
+          .then(function (response) {
+            if (response.data.result == "true") {
+
+                setProduct(response.data.Data)
+
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+          axios
+          .get(apiUrl + "SubGroupAbout/"+params)
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+            setGroup(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+
+      }
+      useEffect(() => {
+        mainSlider();
+// alert(val)
+      }, []);
     return (
     <>
           <TopBar/>
-      <Header/> 
-    <Container fluid className="bulbiranContainer"> 
+      <Header/>
+    <Container fluid className="bulbiranContainer">
     <Row style={{margin:"0px"}}>
+
+        <Col md={9}>
+        <Row style={{margin:"0px"}}>
         <Col md={3}>
-            <div className="whiteBox ta-center pd60 mgt0">
-                <Reshte2/>
+        <div className="whiteBox ta-center pd60 mgt0">
+                <img src={apiAsset+group.Photo} className="w100"/>
             </div>
         </Col>
         <Col md={9}>
             <div className="whiteBox mgt0">
-                <h4 className="circumstanceTitle">LED جایزگین لامپ های رشته ای</h4>
+                <h4 className="circumstanceTitle">کاربرد لامپ LED در {group.Title}</h4>
                 <p className="brandShopDescription w100 mgt10">
-                شرکت «بروکس» (Burux) یکی از تولیدکنندگان انواع چراغ‌ها و لامپ‌های LED محسوب می‌شود. این شرکت با شعار «نور سالم است» محصولات خود را تولید می‌کند و بر عدم استفاده از عناصری مانند سرب و جیوه که برای سلامتی انسان مضر هستند، تاکید دارد. کیفیت لامپ و چراغ بروکس با بسیاری از برندهای اروپایی و آسیایی قابل رقابت است و خدماتی گسترده‌ای را در تهران و 30 استان دیگر در ایران ارایه می‌دهد.
-                شرکت «بروکس» (Burux) یکی از تولیدکنندگان انواع چرا
-                 </p>
+{group.Despriction}                </p>
             </div>
         </Col>
     </Row>
-    <Row style={{margin:"0px"}}>
-        <Col md={12}>
-            <div className="whiteBand">
-           <div className="cTitle">
-               <p>عنوان دسته بندی</p>
-           </div>
-           <RadioGroup horizontal className="radioB">
-  <RadioButton value="لامپ" rootColor="transparent" pointColor="#ffb921">
-   لامپ
-  </RadioButton>
-  <RadioButton value="پنل" rootColor="transparent" pointColor="#ffb921">
-    پنل
-  </RadioButton>
-  <RadioButton value="نورافکن" rootColor="transparent" pointColor="#ffb921">
-  نورافکن
-  </RadioButton>
-  <RadioButton value="ریسه" rootColor="transparent" pointColor="#ffb921">
-   ریسه
-  </RadioButton>
-  <RadioButton value="چراغ" rootColor="transparent" pointColor="#ffb921">
-  چراغ
-  </RadioButton>
-  <RadioButton value="آویز لوستر" rootColor="transparent" pointColor="#ffb921">
-  آویز لوستر
-  </RadioButton>
-  <RadioButton value="لوازم جانبی" rootColor="transparent" pointColor="#ffb921">
-   لوازم جانبی
-  </RadioButton>
-  
-</RadioGroup>
-            </div>
         </Col>
     </Row>
-    <Row style={{margin:"0px"}}>
-        <Col md={12}>
-            <div className="categoryBox2">
-            <h4 className="circumstanceTitle ta-right">دسته بندی ها</h4>
-            <div className="cateInner ta-center">
-                <div>
-                    <img src={Lamp}/>
-                    <p>لامپ</p>
-                </div>
-                <div>
-                    <img src={Panel}/>
-                    <p>پنل</p>
-                </div>
-                <div>
-                    <img src={Noorafkan}/>
-                    <p>نورافکن</p>
-                </div>
-                <div>
-                    <img src={Chain} id="chain"/>
-                    <p>ریسه</p>
-                </div>
-                <div>
-                    <img src={Cheragh}/>
-                    <p>چراغ</p>
-                </div>
-                <div>
-                    <img src={Loster}/>
-                    <p>آویز لوستر</p>
-                </div>
-                <div>
-                    <img src={Janebi}/>
-                    <p>لوازم جانبی</p>
-                </div>
-            </div>
-            </div>
-        </Col>
-    </Row>
-    <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px"}}>
+        <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px"}}>
         <Col md={3}>
         <Accordion allowMultipleExpanded={true} className="cAcc">
             <AccordionItem className="accItem">
@@ -143,7 +122,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -151,7 +130,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -159,7 +138,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -167,7 +146,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -175,7 +154,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -183,7 +162,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -191,7 +170,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -199,7 +178,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -207,7 +186,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -215,7 +194,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -234,7 +213,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -242,7 +221,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -250,7 +229,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -258,7 +237,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -266,7 +245,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -274,7 +253,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -282,7 +261,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -290,7 +269,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -298,7 +277,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -306,7 +285,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -325,7 +304,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -333,7 +312,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -341,7 +320,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -349,7 +328,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -357,7 +336,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -365,7 +344,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -373,7 +352,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -381,7 +360,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -389,7 +368,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -397,7 +376,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -416,7 +395,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -424,7 +403,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -432,7 +411,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -440,7 +419,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -448,7 +427,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -456,7 +435,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -464,7 +443,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -472,7 +451,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -480,7 +459,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -488,7 +467,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -507,7 +486,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -515,7 +494,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -523,7 +502,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -531,7 +510,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -539,7 +518,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -547,7 +526,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -555,7 +534,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -563,7 +542,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -571,7 +550,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -579,7 +558,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -598,7 +577,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -606,7 +585,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -614,7 +593,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -622,7 +601,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -630,7 +609,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -638,7 +617,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -646,7 +625,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -654,7 +633,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -662,7 +641,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -670,7 +649,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
@@ -689,7 +668,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -697,7 +676,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -705,7 +684,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -713,7 +692,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -721,7 +700,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -729,7 +708,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -737,7 +716,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -745,7 +724,7 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                        <li>
                        <Checkbox
@@ -753,7 +732,7 @@ const LEDTechnology = () => {
         name="my-input"
         checked={false}
         onChange={(value) => {
-        
+
         }}
         borderColor="#cf1e22"
         borderWidth="1px"
@@ -761,12 +740,12 @@ const LEDTechnology = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
         label="100 وات"
       />
-      
+
                        </li>
                    </ul>
                 </AccordionItemPanel>
             </AccordionItem>
-           
+
            </Accordion>
         </Col>
         <Col md={9}>
@@ -793,93 +772,28 @@ const LEDTechnology = () => {
 
             </div>
             <Row style={{margin:"-5px"}}>
-                <Col md={3} className="pd0">
+                {product?.map((item, i) => {
+  return (
+          <>
+               <Col md={3} className="pd0">
+            <Link
+          to={`/singleProduct/${item.ProductID}`}
+        >
                     <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
+                        <img src={apiAsset+item.Pic1}/>
+                        <p>{item.ProductName}</p>
+                        <span>{item.Cost} تومان</span>
                     </div>
+                  </Link>
                 </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-                <Col md={3} className="pd0">
-                    <div className="whiteCard">
-                        <img src={Img4}/>
-                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
-                        <span>125000 تومان</span>
-                    </div>
-                </Col>
-           
+                </>
+                    );
+
+            })
+          }
+
             </Row>
-        </Col>
+         </Col>
     </Row>
      </Container>
     <SocialRow/>

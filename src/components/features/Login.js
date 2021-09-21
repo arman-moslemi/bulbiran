@@ -1,4 +1,4 @@
-import React  ,{ useRef } from 'react'
+import React  ,{ useRef,useState,useEffect } from 'react'
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -10,18 +10,50 @@ import { FaAngleLeft ,FaEye,FaEyeSlash,FaCheck} from 'react-icons/fa';
 import LoginSvg from './assets/icons/LoginSvg';
 import ReactPasswordToggleIcon from 'react-password-toggle-icon';
 import Checkbox from "react-custom-checkbox";
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+import {useParams } from "react-router-dom";
 
 const Login = () => {
   const history = useHistory();
   let inputRef = useRef();
   const showIcon = () =><FaEye></FaEye>;
   const hideIcon = () => <FaEyeSlash></FaEyeSlash>;
- 
+  const [mobile,setMobile]=useState('')
+  const [pass,setPass]=useState('')
+  const [pro,setPro]=useState([])
+
+  const loginto=()=>{
+    console.log(mobile)
+    console.log(pass)
+    const axios = require("axios");
+    axios
+    .post(apiUrl + "Login",{Mobile:mobile.toString(),Password:pass.toString()})
+.then(function (response) {
+  if (response.data.result == "true") {
+    console.log(response.data.Data)
+    console.log(response.data.Data[0].UserID)
+    localStorage.setItem("user_id", response.data.Data[0].CustomerID);
+// alert("عملیات موفقیت آمیز بود")
+history.push("/userpanel/"+response.data.Data[0].CustomerID)
+
+} else if (response.data.result == "duplicate"){
+  alert("اطلاعات وارد شده درست نمی باشد")
+}
+ else{
+  console.log(response.data.result)
+  alert("عملیات با خطا روبرو شد")
+
+}})
+.catch(function (error) {
+  console.log(error);
+});
+// console.log(159876)
+  }
   return (
       <>
         <TopBar/>
-        <Header/> 
-      <Container fluid className="bulbiranContainer"> 
+        <Header/>
+      <Container fluid className="bulbiranContainer">
       <div className="whiteBox pd0 loginBox">
     <Row>
         <Col md={6}>
@@ -30,13 +62,13 @@ const Login = () => {
 
           <div className="loginForm">
             <label className="cLabel mgt40">شماره تلفن همراه</label>
-            <input className="cInput mgt10"  placeholder="تلفن همراه" type="number" ></input>
+            <input className="cInput mgt10" onChange={(event)=>setMobile(event.target.value)}  placeholder="تلفن همراه" type="number" ></input>
             <label className="cLabel mgt20">رمز عبور</label>
            <div className="col fa" style={{position:"relative",display:"block",padding:"0px"}}>
-           <input className="cInput mgt10" ref={inputRef} type="password" placeholder="رمز عبور"></input>
-           
-            <ReactPasswordToggleIcon 
-              inputRef={inputRef} 
+           <input className="cInput mgt10" onChange={(event)=>setPass(event.target.value)} ref={inputRef} type="password" placeholder="رمز عبور"></input>
+
+            <ReactPasswordToggleIcon
+              inputRef={inputRef}
               showIcon={showIcon}
               hideIcon={hideIcon}
             />
@@ -48,7 +80,7 @@ const Login = () => {
         name="my-input"
         checked={true}
         onChange={(value) => {
-        
+
         }}
         borderColor="#18206b"
         borderWidth="1px"
@@ -56,10 +88,10 @@ const Login = () => {
         labelStyle={{ marginLeft: 20, userSelect: "none" }}
         label="مرا به خاطر بسپار"
       />
-          
+
           </div>
           </div>
-          <Button className="loginBtn">ورود</Button>
+          <Button className="loginBtn" onClick={()=>loginto()}>ورود</Button>
           <div className="mgt20">
             <span className="d-inline-block cLabel" id="fo12">حساب کاربری ندارید؟</span>
           <a href="#" className="d-inline-block inLink" id="fo12" onClick={()=>  history.push("/register")}>ثبت نام کنید</a>
@@ -72,7 +104,7 @@ const Login = () => {
             </Col>
     </Row>
      </div>
-          
+
      </Container>
      <SocialRow/>
     <IconRow/>
