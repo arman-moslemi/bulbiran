@@ -3484,3 +3484,88 @@ background-color: transparent !important;
   color:#fff !important;
   font-family: 'IRANYekan-Bold';
 }
+.grayCartBox{
+  border-radius: 10px;
+  box-shadow: 0 3px 10px 0 #f2f2f2;
+  background-color: #fff;
+  width: 90%;
+  padding: 5%;
+}
+.bDes{
+  text-align: right;
+  color: #bebebe;
+  font-size: 10px;
+}
+.trashBTN{
+  background-color: transparent !important;
+  background-image: none !important;
+  border:none !important;
+  width: 100%;
+  padding: a0px !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+.trashBTN svg{
+  color: #cd191e;
+  width: 100%;
+  font-size: 25px;
+}
+.counterDiv{
+  border:1px solid #bebebe;
+  border-radius: 25px;
+  padding: 5px;
+}
+.decBTN{
+  float: right;
+  background-image: none;
+  background-color: transparent !important;
+  border:none !important;
+  font-family: 'IRANYekan-ExtraBold';
+font-size: 15px;
+color: #bebebe !important;
+}
+.inBTN{
+  float: left;
+  background-image: none;
+  background-color: transparent !important;
+  border:none !important;
+  font-family: 'IRANYekan-ExtraBold';
+font-size: 15px;
+color: #bebebe !important;
+}
+.counterDiv span{
+  font-family: 'IRANYekan-ExtraBold';
+  font-size: 15px;
+}
+.addToCart:hover{
+  background-color: #ffb921 !important;
+  background-image: none;
+  color: #fff !important;
+}
+.ersalWay{
+  text-align: right;
+  font-family: 'IRANYekan-ExtraBold';
+  font-size: 18px;
+color:#142b6f;  
+margin-right:15px;
+}
+.entekhabAdd{
+  color: #142b6f;
+  text-align: right;
+  font-family: 'IRANYekan-Bold';
+  font-size: 15px;
+}
+.eAddBox{
+  width: 95%;
+margin-right: auto;
+margin-left: auto;
+margin-top:15px;
+}
+.ersalRadio{
+
+}
+.sendLabel{
+  font-family: 'IRANYekan-Bold';
+  color:#142b6f;
+  margin-right: 10px;
+}

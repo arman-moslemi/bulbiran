@@ -7,6 +7,7 @@ import Truck from'../assets/icons/TruckSvg'
 import Percent from '../assets/icons/Percent'
 import User from '../assets/icons/User'
 import Cart from '../assets/icons/Cart'
+
 const TopBar = () => {
   const history = useHistory();
     return (
@@ -41,7 +42,7 @@ const TopBar = () => {
     
     <Button className="topbar-btn">
       <Cart className="d-inline-block"></Cart>
-      <p className="d-inline-block"  onClick={()=>  history.push("/userpanel")}>سبد خرید</p>
+      <p className="d-inline-block"  onClick={()=>  history.push("/Cartstep1")}>سبد خرید</p>
       </Button>
     </Col>
 
