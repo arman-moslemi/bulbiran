@@ -16,15 +16,45 @@ import News3 from './assets/img/news3.png';
 import Banner1 from './assets/img/banner1.jpg';
 import { Link, useHistory } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+import {useParams } from "react-router-dom";
 
 const BlogSecond = () => {
-   
+    const [product,setProduct]=useState([])
+    const [val,setVal]=useState(0)
+    const params = useParams().id;
+    const [group,setGroup]=useState([])
+    const history = useHistory();
+
+    const mainSlider=()=>{
+        const axios = require("axios");
+
+          axios
+              .post(apiUrl + "CategoryBlog",{Role:params})
+          .then(function (response) {
+            if (response.data.result == "true") {
+
+                setProduct(response.data.Data)
+
+          }
+          else{
+            console.log(response.data.result)
+
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+
+    }
+    useEffect(() => {
+      mainSlider();
+// alert(val)
+    }, []);
     return (
     <>
           <TopBar/>
       <Header/>
     <Container fluid className="bulbiranContainer">
- 
+
     <Row style={{marginRight:"0px",marginLeft:"0px"}}>
         <Col md={3}>
         <div className="pdr0 pdl0 w100 d-inline-block h100">
@@ -35,8 +65,8 @@ const BlogSecond = () => {
                 دسته بندی
             </span>
            </div>
-        <div className="newsList">
-            <a className="newsLista" href="#">
+           <div className="newsList">
+            <a className="newsLista" href="/BlogSecond/1">
                 آخرین اخبار
             </a>
         </div>
@@ -46,37 +76,37 @@ const BlogSecond = () => {
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista" href="/BlogSecond/2">
                مقالات علمی
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista" href="/BlogSecond/3">
               تکنولوژی روز
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista" href="/BlogSecond/4">
                نور
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista" href="/BlogSecond/5">
               مهندسی روشنایی
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista" href="/BlogSecond/6">
               ساخت و تولید
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista" href="/BlogSecond/7">
              طراحی روشنایی
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista"href="/BlogSecond/8">
               رویدادهای مرتبط با روشنایی
             </a>
         </div>
@@ -91,128 +121,28 @@ const BlogSecond = () => {
         </Col>
         <Col md={9}>
       <Row style={{margin:"0px",backgroundColor:"#fff",padding:"15px"}}>
+      {product?.map((item, i) => {
+          return (
       <Col md={4}>
           <div className="newsBox w100">
-                <img src={News3}/>
+          <img src={apiAsset+item.Pic}/>
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a  href="#">
-                   مقاله یک
-                </a>
+                <a  onClick={()=>  history.push("/showblog/"+item.BlogID)}>
+                                    {item.Title}
+                                </a>
                 <div className="ta-left dq">
                     <FaRegClock className="d-inline-block"/>
-                    <span>28 فروردین 1399</span>
+                    <span>{item.Date}</span>
                 </div>
             </div>
           </Col>
-          <Col md={4}>
-          <div className="newsBox w100">
-                <img src={News3}/>
-                <span className="imageTag">
-                    مقاله
-                </span>
-                <a  href="#">
-                   مقاله یک
-                </a>
-                <div className="ta-left dq">
-                    <FaRegClock className="d-inline-block"/>
-                    <span>28 فروردین 1399</span>
-                </div>
-            </div>
-          </Col>
-          <Col md={4}>
-          <div className="newsBox w100">
-                <img src={News3}/>
-                <span className="imageTag">
-                    مقاله
-                </span>
-                <a  href="#">
-                   مقاله یک
-                </a>
-                <div className="ta-left dq">
-                    <FaRegClock className="d-inline-block"/>
-                    <span>28 فروردین 1399</span>
-                </div>
-            </div>
-          </Col>
-          <Col md={4}>
-          <div className="newsBox w100">
-                <img src={News3}/>
-                <span className="imageTag">
-                    مقاله
-                </span>
-                <a  href="#">
-                   مقاله یک
-                </a>
-                <div className="ta-left dq">
-                    <FaRegClock className="d-inline-block"/>
-                    <span>28 فروردین 1399</span>
-                </div>
-            </div>
-          </Col>
-          <Col md={4}>
-          <div className="newsBox w100">
-                <img src={News3}/>
-                <span className="imageTag">
-                    مقاله
-                </span>
-                <a  href="#">
-                   مقاله یک
-                </a>
-                <div className="ta-left dq">
-                    <FaRegClock className="d-inline-block"/>
-                    <span>28 فروردین 1399</span>
-                </div>
-            </div>
-          </Col>
-          <Col md={4}>
-          <div className="newsBox w100">
-                <img src={News3}/>
-                <span className="imageTag">
-                    مقاله
-                </span>
-                <a  href="#">
-                   مقاله یک
-                </a>
-                <div className="ta-left dq">
-                    <FaRegClock className="d-inline-block"/>
-                    <span>28 فروردین 1399</span>
-                </div>
-            </div>
-          </Col>
-          <Col md={4}>
-          <div className="newsBox w100">
-                <img src={News3}/>
-                <span className="imageTag">
-                    مقاله
-                </span>
-                <a  href="#">
-                   مقاله یک
-                </a>
-                <div className="ta-left dq">
-                    <FaRegClock className="d-inline-block"/>
-                    <span>28 فروردین 1399</span>
-                </div>
-            </div>
-          </Col>
-          <Col md={4}>
-          <div className="newsBox w100">
-                <img src={News3}/>
-                <span className="imageTag">
-                    مقاله
-                </span>
-                <a  href="#">
-                   مقاله یک
-                </a>
-                <div className="ta-left dq">
-                    <FaRegClock className="d-inline-block"/>
-                    <span>28 فروردین 1399</span>
-                </div>
-            </div>
-          </Col>
+                                   );
+
+})}
       </Row>
-      
+
         </Col>
     </Row>
  </Container>

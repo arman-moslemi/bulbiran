@@ -24,11 +24,11 @@ export default function AmazingSlider({data}) {
           {
 
 data?.map((item, i) => {
-  var ss=((item.Cost-item.CostMajor)/item.Cost)*100
+  var ss=((item.Cost-item.SpecialCost)/item.Cost)*100
   return (
           <>
           {
-            item.CostMajor?
+            item.SpecialCost?
             <Link
           to={`/singleProduct/${item.ProductID}`}
         >
@@ -47,7 +47,7 @@ data?.map((item, i) => {
           </p>
       </div>
       <div className="amazingPrice2 ta-left">
-          <p className="price d-inline-block">  {item.CostMajor}</p>
+          <p className="price d-inline-block">  {item.SpecialCost}</p>
           <p className="vahed d-inline-block">تومان</p>
       </div>
       <div>

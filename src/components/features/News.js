@@ -109,7 +109,7 @@ const News = () => {
             </span>
            </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista" href="/BlogSecond/1">
                 آخرین اخبار
             </a>
         </div>
@@ -119,37 +119,37 @@ const News = () => {
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista" href="/BlogSecond/2">
                مقالات علمی
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista" href="/BlogSecond/3">
               تکنولوژی روز
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista" href="/BlogSecond/4">
                نور
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista" href="/BlogSecond/5">
               مهندسی روشنایی
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista" href="/BlogSecond/6">
               ساخت و تولید
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista" href="/BlogSecond/7">
              طراحی روشنایی
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista"href="/BlogSecond/8">
               رویدادهای مرتبط با روشنایی
             </a>
         </div>

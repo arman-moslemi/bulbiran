@@ -305,14 +305,14 @@ const MainRoutes = (props) => {
 					</Route>
 					<Route
 					exact
-					path='/Cartstep1'
+					path='/Cartstep1/:id'
 					name='سبد خرید'
 					render={(props) => <Cartstep1/>}>
 
 					</Route>
 					<Route
 					exact
-					path='/BlogSecond'
+					path='/BlogSecond/:id'
 					name='بلاگ دو'
 					render={(props) => <BlogSecond/>}>
 

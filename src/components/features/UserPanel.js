@@ -83,9 +83,10 @@ setDate( response.data.Data[0].Date);
       }
       useEffect(() => {
        const UserID= localStorage.getItem("user_id");
-//        if(UserID==null ||UserID==null=="" ){
-// history.push("/Login")
-//        }
+       if(UserID==null ||UserID=="" ){
+history.push("/Login")
+       }
+       alert("ابتدا وارد شوید")
 console.log(UserID)
         mainSlider();
 // alert(val)

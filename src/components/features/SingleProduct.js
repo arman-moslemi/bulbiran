@@ -53,12 +53,26 @@ import { Link, useHistory,useParams } from "react-router-dom";
     const [product,setProduct]=useState([])
     const [allimg,setAllimg]=useState([])
     const [color,setColor]=useState([])
+    const [colorSel,setColorSel]=useState("")
     const [comments,setComment]=useState([])
     const [property,setProperty]=useState([])
     const [rate,setRate]=useState(0)
     const [rateCount,setRateCount]=useState(0)
+    const [count,setCount]=useState(0)
 	const params = useParams().id;
+   const increment = () => {
+    setCount(count+1)
+    console.log(count)
 
+      }
+
+      const   decrement = () => {
+        // this.setState({
+        //   count: this.state.count - 1
+        // });
+        if(count!=0)
+        setCount(count-1)
+      }
     const getProduct=()=>{
         const axios = require("axios");
         axios
@@ -159,6 +173,34 @@ for (let index = 0; index < response.data.Data?.Color?.split(',').length; index+
           .catch(function (error) {
             console.log(error);
           });
+      }
+      const InserBasket=()=>{
+        const axios = require("axios");
+        const UserID= localStorage.getItem("user_id");
+        console.log(22)
+        console.log(UserID)
+               if(UserID==null ||UserID=="" ){
+alert("ابتدا وارد شوید")               }
+else{
+    console.log(55)
+
+    const total=product?.SpecialCost?product?.SpecialCost:product.Cost;
+    console.log(total)
+          axios.post(apiUrl + "InsertShopBasket",{CustomerID:UserID,ProductID:params,Cost:product.SpecialCost?product.SpecialCost:product.Cost,Number:count,TotalCost:total,Color:colorSel})
+        //   .get(apiUrl + "Blog")
+          .then(function (response) {
+              console.log(475)
+              console.log(response)
+            if (response.data.result == "true") {
+             console.log(44)
+             console.log(response.data.result)
+             alert("محصول با موفقیت به سبد خرید اضافه شد.")
+
+}})
+          .catch(function (error) {
+            console.log(error);
+          });
+        }
       }
       useEffect(() => {
         getProduct();
@@ -302,7 +344,7 @@ null
 return(
     <>
  <li>
-                                <Button style={{backgroundColor: item}} ></Button>
+                                <Button onClick={()=>setColorSel(item)} style={{backgroundColor: item}} ></Button>
                                 </li>
                       </>
 
@@ -346,9 +388,16 @@ return(
                     <span className="tedad">
                             تعداد :
                         </span>
+                        <div  className="ta-center pd0">
+                    <div className="counterDiv">
+              <button onClick={()=>decrement()} className="decBTN">-</button>
+              <span>{count}</span>
+              <button onClick={()=>increment()} className="inBTN">+</button>
+            </div>
+                    </div>
 
                     </div>
-                    <Button className="addToCart">
+                    <Button onClick={()=>InserBasket()} className="addToCart">
                         افزودن به سبد خرید
                     </Button>
                 </div>
