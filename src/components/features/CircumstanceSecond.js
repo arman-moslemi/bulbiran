@@ -95,6 +95,42 @@ const Circumstancesecond = () => {
     });
     // console.log(159876)
       }
+      const expensive=()=>{
+
+
+        console.log(14563)
+//  setProduct([])
+// var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
+setProduct([...product].sort((a, b) => (a.Cost < b.Cost) ? 1 : -1))
+console.log(product)
+
+}
+const viewset=()=>{
+
+
+  console.log(14563)
+//  setProduct([])
+// var list=[...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1);
+setProduct([...product].sort((a, b) => (a.Viewer < b.Viewer) ? 1 : -1))
+console.log(product)
+
+}
+const cheap=()=>{
+
+
+
+setProduct([...product].sort((a, b) => (a.Cost > b.Cost) ? 1 : -1))
+console.log(product)
+
+}
+const newest=()=>{
+
+
+
+  setProduct([...product].sort((a, b) => (a.ProductID < b.ProductID) ? 1 : -1))
+  console.log(product)
+
+  }
         useEffect(() => {
           mainSlider();
 // alert(val)
@@ -840,19 +876,19 @@ const Circumstancesecond = () => {
             <span>مرتب سازی بر اساس : </span>
             <ul>
               <li>
-                  <Button className="sortBtn">پر بازدید ترین</Button>
+                  <Button onClick={()=>viewset()} className="sortBtn">پر بازدید ترین</Button>
               </li>
-              <li>
+              {/* <li>
                   <Button className="sortBtn">پر فروش ترین</Button>
+              </li> */}
+              <li>
+                  <Button onClick={()=>newest()} className="sortBtn">جدید ترین</Button>
               </li>
               <li>
-                  <Button className="sortBtn">جدید ترین</Button>
+                  <Button onClick={()=>cheap()} className="sortBtn">ارزان ترین</Button>
               </li>
               <li>
-                  <Button className="sortBtn">ارزان ترین</Button>
-              </li>
-              <li>
-                  <Button className="sortBtn">گران ترین</Button>
+                  <Button onClick={()=>expensive()} className="sortBtn">گران ترین</Button>
               </li>
             </ul>
 

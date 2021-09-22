@@ -84,6 +84,7 @@ alert("با موفقیت انجام شد")
         alert("لطفا فیلدهای ستاره دار را کامل کنید")
     }
       }
+     
       useEffect(() => {
         mainSlider();
 // alert(val)
