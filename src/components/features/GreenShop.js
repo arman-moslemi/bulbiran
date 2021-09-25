@@ -37,12 +37,15 @@ import GreenShopLogo from './assets/icons/GreenShopLogo';
 import ShopLogo from './assets/icons/ShopLogo';
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import {useParams } from "react-router-dom";
+const check=[];
+
 const GreenShop = () => {
     const [product,setProduct]=useState([])
     const [val,setVal]=useState(0)
     const params = useParams().id;
     const [group,setGroup]=useState([])
-
+    const [property,setProperty]=useState([])
+    const [propertySel,setPropertySel]=useState([])
     const mainSlider=()=>{
         const axios = require("axios");
 
@@ -76,7 +79,21 @@ const GreenShop = () => {
       .catch(function (error) {
         console.log(error);
       });
+      axios
+      .get(apiUrl + "SubGreenGroupProperty/"+params)
+  .then(function (response) {
+    if (response.data.result == "true") {
 
+        setProperty(response.data.Data)
+
+  }
+  else{
+    console.log(response.data.result)
+
+  }})
+  .catch(function (error) {
+    console.log(error);
+  });
       }
       const mainCat=(id)=>{
         const axios = require("axios");
@@ -132,6 +149,64 @@ const newest=()=>{
 
   setProduct([...product].sort((a, b) => (a.ProductID < b.ProductID) ? 1 : -1))
   console.log(product)
+
+  }
+  const setPropertyid=(id,value)=>{
+    const axios = require("axios");
+    console.log(48956)
+    var gg=""
+    if( value==true){
+      //  check = check.concat(id+",");
+      check.push(id+",")
+      console.log(check)
+
+   }
+   else{
+    // setPropertySel(propertySel.filter(c => c != id));
+    check.map((item, i) => {
+      if(item.split(',')[0]==id)
+      check.splice(i, 1)
+console.log(22)
+console.log(check.length)
+    })
+    if(check.length==0){
+      console.log(88)
+
+      const axios = require("axios");
+
+      axios
+          .get(apiUrl + "CategoryGreenShop/"+params)
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+            setProduct(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+   }
+
+      axios
+          .post(apiUrl + "GetProductPropertyFilter",{id:check.toString()})
+      .then(function (response) {
+        if (response.data.result == "true") {
+
+            setProduct(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
 
   }
         useEffect(() => {
@@ -213,15 +288,45 @@ const newest=()=>{
     <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px"}}>
         <Col md={3}>
         <Accordion allowMultipleExpanded={true} className="cAcc">
+        {property.map((item, i) => {
+  return (
             <AccordionItem className="accItem">
                 <AccordionItemHeading className="accHeading">
                     <AccordionItemButton className="accBtn">
-                        توان
+                        {item[0].MainTitle}
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel className="accItempannel">
                    <ul>
+                   {item.map((items, i) => {
+  return (
                        <li>
+                       <Checkbox
+        icon={<FaCheck color="#cf1e22" size={14} />}
+        name="my-input"
+        value={items.SubGroupPropertyID}
+        checked={false}
+        onChange={(value) => {
+          setPropertyid(items.SubGroupPropertyID,value)
+
+
+        }}
+        // reference={() => {
+        //   setPropertyid(swiper)              }}
+
+        borderColor="#cf1e22"
+        borderWidth="1px"
+        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
+        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
+        label={items.Title}
+      />
+
+                       </li>
+                                    );
+
+})
+}
+                       {/* <li>
                        <Checkbox
         icon={<FaCheck color="#cf1e22" size={14} />}
         name="my-input"
@@ -236,621 +341,15 @@ const newest=()=>{
         label="100 وات"
       />
 
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
+                       </li> */}
 
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
                    </ul>
                 </AccordionItemPanel>
             </AccordionItem>
-            <AccordionItem className="accItem">
-                <AccordionItemHeading className="accHeading">
-                    <AccordionItemButton className="accBtn">
-                        نوع لامپ
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel className="accItempannel">
-                   <ul>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
+                  );
 
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                   </ul>
-                </AccordionItemPanel>
-            </AccordionItem>
-            <AccordionItem className="accItem">
-                <AccordionItemHeading className="accHeading">
-                    <AccordionItemButton className="accBtn">
-                        کاربرد محیطی
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel className="accItempannel">
-                   <ul>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                   </ul>
-                </AccordionItemPanel>
-            </AccordionItem>
-            <AccordionItem className="accItem">
-                <AccordionItemHeading className="accHeading">
-                    <AccordionItemButton className="accBtn">
-                        کاربرد شغلی
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel className="accItempannel">
-                   <ul>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                   </ul>
-                </AccordionItemPanel>
-            </AccordionItem>
-            <AccordionItem className="accItem">
-                <AccordionItemHeading className="accHeading">
-                    <AccordionItemButton className="accBtn">
-                        رنگ نور
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel className="accItempannel">
-                   <ul>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                   </ul>
-                </AccordionItemPanel>
-            </AccordionItem>
-            <AccordionItem className="accItem">
-                <AccordionItemHeading className="accHeading">
-                    <AccordionItemButton className="accBtn">
-                        سرپیچ
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel className="accItempannel">
-                   <ul>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                   </ul>
-                </AccordionItemPanel>
-            </AccordionItem>
-            <AccordionItem className="accItem">
-                <AccordionItemHeading className="accHeading">
-                    <AccordionItemButton className="accBtn">
-                        شکل
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel className="accItempannel">
-                   <ul>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none" ,marginRight:10}}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                       <li>
-                       <Checkbox
-        icon={<FaCheck color="#cf1e22" size={14} />}
-        name="my-input"
-        checked={false}
-        onChange={(value) => {
-
-        }}
-        borderColor="#cf1e22"
-        borderWidth="1px"
-        style={{ cursor: "pointer",fontFamily:'IRANYekan' }}
-        labelStyle={{ marginLeft: 20, userSelect: "none",marginRight:10 }}
-        label="100 وات"
-      />
-
-                       </li>
-                   </ul>
-                </AccordionItemPanel>
-            </AccordionItem>
-
+})
+}
            </Accordion>
         </Col>
         <Col md={9}>

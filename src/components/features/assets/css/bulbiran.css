@@ -199,7 +199,7 @@ p{
   color:#fff;
   font-size: 15px;
   background-color: #ffb921;
-  
+
 }
 .socialIcons{
   background-color:  rgba(255, 255, 255, 0.26);
@@ -222,7 +222,7 @@ p{
 .iconTitle{
   font-family: 'IRANYekan-Bold';
   font-size: 15px;
-  
+
   color: #18206b;
 }
 .footerIcon{
@@ -243,7 +243,7 @@ p{
   font-family: 'IRANYekan-Bold';
   color:#000;
   text-decoration: none;
-  
+
 }
 .footerList li{
   list-style: none !important;
@@ -254,7 +254,7 @@ p{
 }
 .footerImg{
   width: 45%;
- 
+
   border-radius: 5px;
   padding: 15px;
   text-align: center;
@@ -292,7 +292,7 @@ p{
 .heroIcons{
   height: 55px;
     width: 55px;
-    
+
     border-radius: 5px;
     -webkit-border-radius: 5px;
     padding: 3px;
@@ -489,11 +489,11 @@ box-shadow:none;
   -o-border-radius: 5px;
 }
 .wBoxTitle{
-  
+
   font-family: 'IRANYekan-ExtraBold';
   font-size: 30px;
   font-weight: 800;
-  
+
   color: #18206b;
 }
 .wBoxDescription{
@@ -685,13 +685,13 @@ margin-left: 10px;
 .innerSlider button:hover{
   background-color: #fff;
   color:#cd191e;
-  
+
 }
 .sliderCard img{
   height: auto;
 }
 .productNameSlider{
- 
+
   font-family: 'IRANYekan-Bold';
   font-size: 14px;
   line-height: 25px;
@@ -726,7 +726,7 @@ margin-left: 10px;
   color: #bebebe;
   margin-left: 10px;
   margin-bottom: 0px;
-  
+
 }
 .vahed{
   font-family: 'IRANYekan-Medium';
@@ -765,7 +765,7 @@ margin-left: 10px;
 .homeSlider{
   width: 100%;
   height: auto;
-  
+
   padding: 32.7px 20px 33px 20px;
   border-radius: 10px;
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.09);
@@ -1028,7 +1028,7 @@ text-align: right;
 .contactIcons{
   font-size: 3rem;
     color: #ffb921;
-    
+
 }
 .boldText{
   font-family:'IRANYekan-ExtraBold';
@@ -1049,7 +1049,7 @@ text-align: right;
 .contactDescription{
   font-family:'IRANYekan-Bold';
   font-size: 15px;
-  
+
   line-height:2.5rem;
   text-align: right;
   color: #0056a5;
@@ -1083,7 +1083,7 @@ text-align: right;
   opacity: 1; /* Firefox */
 }
 .contactBtn{
- 
+
   border-radius: 25px;
  background-image: none;
  color:#fff;
@@ -1128,7 +1128,7 @@ textarea :focus-visible{
  font-size: 25px;
  width:65%;
  border-bottom: 3px solid #003586;
- 
+
  text-align: center;
  color: #003586;
  padding-bottom: 15px;
@@ -1246,7 +1246,7 @@ font-weight: 500;
   left: 0px !important;
   font-size: 15px;
   right:0px !important;
- 
+
 }
 .w50{
   width:50% !important;
@@ -1314,7 +1314,7 @@ font-weight: 500;
 padding: 5px 40px;
 display: inline-block;
     direction: rtl;
-    
+
 background-color: rgba(254, 229, 67, 0.22);
 }
 .cTitle p{
@@ -1542,7 +1542,7 @@ margin-top: 4px;
   display: block;
   margin-right: auto;
   margin-left: auto;
-  
+
 }
 
 .whiteCard p{
@@ -1583,7 +1583,7 @@ color:#18206b;
 }
 .garanteList li{
   color: #cd191e;
-  
+
   margin: 20px 15px;
 }
 .shortDescription{
@@ -1870,7 +1870,7 @@ margin-right: auto;
   font-family: 'IRANYekan-ExtraBold';
   color:#000;
   font-size: 12px;
- 
+
 }
 .bb{
   border-bottom: 3px solid #000;
@@ -1881,13 +1881,19 @@ margin-right: auto;
   font-size: 10px;
   color:#000;
 }
+.pd5{
+  padding:5px !important;
+}
+.borderNone{
+  border:none !important;
+}
 .tableRow{
   padding:10px 0px;
   border-bottom: 1px solid #000;
 }
 .pTableRow{
   border-bottom: 2px solid #ececec;
- 
+
   padding:10px 0px;
 }
 .tableTR{
@@ -1905,6 +1911,10 @@ margin-right: auto;
   box-shadow: 0 3px 10px 0 #f2f2f2;
   background-color: #ffffff;
   padding: 10px;
+}
+.yellowBTN{
+  background-color: #ffb921 !important;
+  background-image:none !important;
 }
 .boldScore{
   font-size: 42px;
@@ -1933,7 +1943,7 @@ margin-right: auto;
 .sliderRangeBlue{
   border-radius: 25px;
   height: 15px;
-  
+
   background-color: #81dbe2;
 }
 #w10{
@@ -2016,7 +2026,7 @@ margin-right: auto;
   padding-right: 10px;
   font-family: 'IRANYekan-ExtraBold';
   font-size: 15px;
-  
+
 }
 .aUl{
   padding-right: 25px;
@@ -2033,7 +2043,7 @@ margin-top:30px;
 }
 .aUi li ::before{
   color:red !important;
-  
+
 }
 .mgr0{
   margin-right:0px !important;
@@ -2158,7 +2168,7 @@ border-radius: 5px;
   background-color: #cd191e;
   position:absolute;
   padding: 5px 20px;
- 
+
   top:2%;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -2386,7 +2396,7 @@ text-align: left;
   margin-top: 40px;
 }
 .newsBox2{
- 
+
   background-color: #ffffff;
 
   position: relative;
@@ -2406,7 +2416,7 @@ text-align: right;
   font-family: 'IRANYekan-ExtraBold';
   color:#18206b;
   font-size: 15px;
-  
+
 margin-bottom: 0px !important;
 margin-top: 10px;
 
@@ -2483,13 +2493,13 @@ text-align: right;
 
 }
 .newsSliderClass2{
- 
+
 }
 .newsSliderClass2 .slick-list .slick-track .slick-slide{
 
 }
 .newsSliderClass2 .slick-list .slick-track .slick-slide div{
- 
+
 }
 .m1{
   width: 90%;
@@ -2656,7 +2666,7 @@ text-align: right;
   margin-right: auto;
   margin-left: auto;
   width: 80%;
-  
+
 }
 .c2Label{
   color:#000;
@@ -2827,7 +2837,7 @@ margin-top:15px;
   font-family: 'IRANYekan-ExtraBold';
   color:#18206b;
 
-font-size: 15px;  
+font-size: 15px;
 }
 .tablePries{
   font-family: 'IRANYekan-Bold';
@@ -2841,7 +2851,7 @@ font-size: 15px;
   display: block;
   border:1px solid #bebebe;
   border-radius: 5px;
- 
+
 }
 .tableWhiteBox{
   padding-top:25px;
@@ -2933,7 +2943,7 @@ margin-top: 50px;
   border: none;
   padding: 0px;
   float: left;
-  
+
 }
 .bRowBtn svg{
   font-size: 12px;
@@ -2946,7 +2956,7 @@ margin-top: 50px;
   margin-right: 5px;
 }
 .bRowDivIcon{
-  
+
 }
 .deleteRow{
   box-shadow: 0 3px 16px 0 rgba(254, 229, 67, 0.31);
@@ -3001,7 +3011,7 @@ width: 77%;
 .nn{
   width: auto;
   padding: 20px 15px;
- 
+
   border-radius: 5px;
   box-shadow: 2px 4px 12px 0 rgba(242, 177, 143, 0.3);
   background-color: #cf1e22;
@@ -3546,7 +3556,7 @@ color: #bebebe !important;
   text-align: right;
   font-family: 'IRANYekan-ExtraBold';
   font-size: 18px;
-color:#142b6f;  
+color:#142b6f;
 margin-right:15px;
 }
 .entekhabAdd{

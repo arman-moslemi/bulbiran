@@ -159,7 +159,7 @@ const newest=()=>{
             </div>
         </Col>
     </Row>
-    <Row style={{margin:"0px"}}>
+    {/* <Row style={{margin:"0px"}}>
         <Col md={12}>
             <div className="whiteBand">
            <div className="cTitle">
@@ -195,7 +195,8 @@ const newest=()=>{
             </div>
         </Col>
     </Row>
-    <Row style={{margin:"0px"}}>
+   */}
+    {/* <Row style={{margin:"0px"}}>
         <Col md={12}>
             <div className="categoryBox2">
             <h4 className="circumstanceTitle ta-right">دسته بندی ها</h4>
@@ -240,9 +241,9 @@ const newest=()=>{
             </div>
             </div>
         </Col>
-    </Row>
+    </Row> */}
     <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px"}}>
-        <Col md={3}>
+        {/* <Col md={3}>
         <Accordion allowMultipleExpanded={true} className="cAcc">
             <AccordionItem className="accItem">
                 <AccordionItemHeading className="accHeading">
@@ -884,6 +885,7 @@ const newest=()=>{
 
            </Accordion>
         </Col>
+       */}
         <Col md={9}>
             <div className="tabRow">
             <FaAlignRight className="sortIcon"/>

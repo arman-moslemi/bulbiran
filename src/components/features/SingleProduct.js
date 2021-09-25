@@ -377,19 +377,43 @@ return(
                         <Save/>
                         <span>موجود در انبار فروشنده</span>
                     </div>
-                    <div style={{paddingBottom:"30px"}}>
+
+                    {product.SpecialCost?
+                     <div style={{paddingBottom:"0px"}}>
+                        <span>قیمت تخفیف خورده :</span>
+                        <br/>
+                        <div class="amazingPrice ta-left borderNone pd0" style={{textAlign:"left"}}>
+
+                        <div className="d-inline-block borderNone pd0">
+
+                          <p class="strokeOutPrice d-inline-block pd0">{product.Cost} تومان</p>
+                          <br/>
+                          <span className="singlePrice" style={{marginLeft:"10px"}}>
+                            {product.SpecialCost} تومان
+                        </span>
+                        </div>
+                        <div className="d-inline-block borderNone pd0">
+                          <p class="percentPrice d-inline-block">{((product.Cost-product.SpecialCost)/product.Cost)*100}%</p>
+
+                        </div>
+
+                        </div>
+
+                    </div>
+
+                    : <div style={{paddingBottom:"30px"}}>
                         <span>قیمت این کالا</span>
                         <br/>
                         <span className="singlePrice">
                             {product.Cost} تومان
                         </span>
-                    </div>
+                    </div>}
                     <div>
-                    <span className="tedad">
+                    <span className="tedad d-inline-block" >
                             تعداد :
                         </span>
-                        <div  className="ta-center pd0">
-                    <div className="counterDiv">
+                        <div  className="ta-center pd0 d-inline-block" style={{borderBottom:"none"}}>
+                    <div className="counterDiv pd5" style={{padding:"0px !important",marginRight:"10px"}}>
               <button onClick={()=>decrement()} className="decBTN">-</button>
               <span>{count}</span>
               <button onClick={()=>increment()} className="inBTN">+</button>
