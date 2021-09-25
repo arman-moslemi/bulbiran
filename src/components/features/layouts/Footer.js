@@ -25,7 +25,7 @@ const Footer = () => {
                  <li>
                  <a href="#" className="footerLink"onClick={()=>  history.push("/contactUs")}>تماس با ما</a>
                  </li>
-                 <li>
+                 {/* <li>
                  <a href="#" className="footerLink">لینک سه</a>
                  </li>
                  <li>
@@ -33,12 +33,12 @@ const Footer = () => {
                  </li>
                  <li>
                  <a href="#" className="footerLink">لینک پنج</a>
-                 </li>
+                 </li> */}
                </ul>
-               
-               
-                 </Col> 
-            <Col md={2} className="ta-right">
+
+
+                 </Col>
+            {/* <Col md={2} className="ta-right">
             <p className="footerTitle">فروشگاه بالبیران</p>
             <ul className="footerList">
                  <li>
@@ -48,22 +48,25 @@ const Footer = () => {
                  <a href="#" className="footerLink">لینک دو</a>
                  </li>
                  </ul>
-            </Col>
+            </Col> */}
             <Col md={2} className="ta-right">
             <p className="footerTitle">خدمات بالبیران</p>
             <ul className="footerList">
                  <li>
-                 <a href="#" className="footerLink">لینک یک</a>
+                 <a href="/design" className="footerLink">طراحی و دیزاین</a>
                  </li>
                  <li>
-                 <a href="#" className="footerLink">لینک دو</a>
+                 <a href="/Garanty" className="footerLink">گارانتی و خدمات پس از فروش</a>
                  </li>
                  <li>
-                 <a href="#" className="footerLink">لینک سه</a>
+                 <a href="/repairs" className="footerLink">تعمیرات</a>
+                 </li>
+                 <li>
+                 <a href="/LavazemYadaki" className="footerLink">لوازم یدکی</a>
                  </li>
                  </ul>
             </Col>
-            <Col md={2} className="ta-right">
+            {/* <Col md={2} className="ta-right">
             <p className="footerTitle">خدمات مشتریان</p>
             <ul className="footerList">
                  <li>
@@ -81,21 +84,21 @@ const Footer = () => {
 
                  </ul>
 
-                 </Col> 
+                 </Col>  */}
             <Col md={2} className="ta-right">
             <p className="footerTitle">مجله بالبیران</p>
                     <ul className="footerList">
                  <li>
-                 <a href="#" className="footerLink">لینک یک</a>
+                 <a href="/news" className="footerLink">آخرین اخبار</a>
                  </li>
                  <li>
-                 <a href="#" className="footerLink">لینک دو</a>
+                 <a href="/news" className="footerLink">مقالات علمی</a>
                  </li>
                  <li>
-                 <a href="#" className="footerLink">لینک سه</a>
+                 <a href="/news" className="footerLink">طراحی روشنایی</a>
                  </li>
-                 
-                 
+
+
                  </ul>
             </Col>
             <Col md={2}>
