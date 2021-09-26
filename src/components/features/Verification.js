@@ -18,7 +18,7 @@ const Verification = () => {
       <Container fluid className="bulbiranContainer"> 
       <div className="whiteBox pd0 loginBox">
     <Row>
-        <Col md={6}>
+        <Col md={6} id="secondOrder">
         <div className="lBox ta-center">
           <h4 className="w100">دریافت کد تایید</h4>
 
@@ -37,8 +37,8 @@ const Verification = () => {
         </div>
         </div>
         </Col>
-        <Col md={6} className="colBackground ta-center">
-            <ConfirmSvg/>
+        <Col md={6} className="colBackground ta-center" id="firstOrder">
+            <ConfirmSvg className="wRes85"/>
             </Col>
     </Row>
      </div>

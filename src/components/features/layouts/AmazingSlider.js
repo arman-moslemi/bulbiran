@@ -17,10 +17,16 @@ export default function AmazingSlider({data}) {
     autoplay:false,
 
   };
+  var settings2 = {
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay:false,
 
+  };
 
   return (
-    <Slider {...settings} className="amazingSlider">
+   <>
+    <Slider {...settings} className="amazingSlider responsiveNone">
           {
 
 data?.map((item, i) => {
@@ -102,5 +108,90 @@ data?.map((item, i) => {
 }
 
     </Slider>
-  );
+    <Slider {...settings2} className="amazingSlider">
+          {
+
+data?.map((item, i) => {
+  var ss=((item.Cost-item.SpecialCost)/item.Cost)*100
+  return (
+          <>
+          {
+            item.SpecialCost?
+            <Link
+          to={`/singleProduct/${item.ProductID}`}
+        >
+     <div className="sliderCard">
+      <img src={apiAsset+item.Pic1}/>
+      <p className="productNameSlider">
+     {item.ProductName}
+      </p>
+      <div className="amazingPrice ta-left">
+          <p className="strokeOutPrice d-inline-block">
+              {item.Cost} تومان
+          </p>
+
+          <p className="percentPrice d-inline-block">
+          {parseInt(ss) }%
+          </p>
+      </div>
+      <div className="amazingPrice2 ta-left">
+          <p className="price d-inline-block">  {item.SpecialCost}</p>
+          <p className="vahed d-inline-block">تومان</p>
+      </div>
+      <div>
+          <div className="amazingTime d-inline-block">
+          {/* 07:05:20 */}
+          </div>
+          <div className="clockIcon d-inline-block">
+
+          <FaClock/>
+          </div>
+      </div>
+      </div>
+    </Link>
+      :
+      <Link
+          to={`/singleProduct/${item.ProductID}`}
+        >
+      <div className="sliderCard">
+      <img  src={apiAsset+item.Pic1}/>
+      <p className="productNameSlider">
+     {item.ProductName}
+      </p>
+      {/* <div className="amazingPrice ta-left">
+          <p className="strokeOutPrice d-inline-block">
+              {item.Cost} تومان
+          </p>
+
+          <p className="percentPrice d-inline-block">
+          %
+          </p>
+      </div> */}
+      <div className="amazingPrice2 ta-left">
+          <p className="price d-inline-block">  {item.Cost}</p>
+          <p className="vahed d-inline-block">تومان</p>
+      </div>
+      <div>
+          <div className="amazingTime d-inline-block">
+          {/* 07:05:20 */}
+          </div>
+          <div className="clockIcon d-inline-block">
+
+          <FaClock/>
+          </div>
+      </div>
+      </div>
+      </Link>
+          }
+          </>
+        );
+
+})
+}
+
+    </Slider>
+ 
+ 
+ </>
+ );
 }

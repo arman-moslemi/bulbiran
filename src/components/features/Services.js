@@ -26,11 +26,11 @@ const Services = () => {
       <Container fluid className="bulbiranContainer"> 
       <div className="whiteBox pdc">
           <Row>
-              <Col md={6} className="ta-right">
-                <Khadamat1 className="mgt40"/>
+              <Col md={6} className="ta-right" id="firstOrder">
+                <Khadamat1 className="mgt40 wRes100"/>
               </Col>
-              <Col md={6} className="ta-right">
-                  <p className="brandShopTitle">خدمات شرکت بالبیران</p>
+              <Col md={6} className="ta-right" id="secondOrder">
+                  <p className="brandShopTitle mFontRes">خدمات شرکت بالبیران</p>
                   <div className="oneLine mgt40">
                       <CreativeDesign className="d-inline-block mgL15"/>
                       <p>طراحی و دیزاین محیط مورد نظر شما</p>
@@ -62,7 +62,7 @@ const Services = () => {
       </div>
    <div className="whiteBox pdc">
        <Row>
-           <Col md={6} className="ta-right">
+           <Col md={6} className="ta-right" id="secondOrder">
            <CreativeDesign className="d-inline-block mgL15"/>
                      
            <p className="brandShopTitle d-inline-block cFontSize">طراحی و دیزاین محیط های مورد نظر شما</p>
@@ -81,17 +81,17 @@ const Services = () => {
                    مشاهده نمونه کارها و ثبت درخواست
                </Button>
            </Col>
-           <Col md={6} className="ta-left">
-               <Khadamat2/>
+           <Col md={6} className="ta-left" id="firstOrder">
+               <Khadamat2 className="wRes100"/>
            </Col>
        </Row>
    </div>
    <div className="whiteBox pdc">
    <Row>
-   <Col md={6} className="ta-right">
-               <Khadamat3/>
+   <Col md={6} className="ta-right" id="firstOrder">
+               <Khadamat3 className="wRes100"/>
            </Col>
-           <Col md={6} className="ta-right">
+           <Col md={6} className="ta-right" id="secondOrder">
            <LifeTime className="d-inline-block mgL15"/>
                      
            <p className="brandShopTitle d-inline-block cFontSize">گارانتی محصولات خریداری شده از برند های همکار</p>
@@ -116,7 +116,7 @@ const Services = () => {
    </div>
    <div className="whiteBox pdc">
        <Row>
-           <Col md={6} className="ta-right">
+           <Col md={6} className="ta-right" id="secondOrder">
            <Repair className="d-inline-block mgL15"/>
                      
            <p className="brandShopTitle d-inline-block cFontSize">تعمیرات کالاهای آسیب دیده خارج از گارانتی</p>
@@ -135,17 +135,17 @@ const Services = () => {
                    درخواست تعمیرات
                </Button>
            </Col>
-           <Col md={6} className="ta-left">
-               <Khadamat4/>
+           <Col md={6} className="ta-left" id="firstOrder">
+               <Khadamat4 className="wRes100"/>
            </Col>
        </Row>
    </div>
    <div className="whiteBox pdc">
    <Row>
-   <Col md={6} className="ta-right">
-               <Khadamat5/>
+   <Col md={6} className="ta-right" id="firstOrder">
+               <Khadamat5 className="wRes100"/>
            </Col>
-           <Col md={6} className="ta-right">
+           <Col md={6} className="ta-right" id="secondOrder">
            <Janebi className="d-inline-block mgL15"/>
                      
            <p className="brandShopTitle d-inline-block cFontSize">فروش انواع لوازم یدکی مرتبط با روشنایی</p>

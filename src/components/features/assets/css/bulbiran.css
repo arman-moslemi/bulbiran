@@ -3569,3 +3569,740 @@ margin-top:15px;
   color:#142b6f;
   margin-right: 10px;
 }
+.disNone{
+  display: none;
+}
+.ledbuttonIcon2 {
+  margin-top: -5%;
+  margin-right: 20%;
+}
+.desktopNone{
+  display: none !important;
+}
+.ReactModal__Overlay--after-open{
+  background-color: rgba(144, 144, 144, 0.47) !important;
+
+}
+.commentModal{
+  background: #fff;
+width: 50%;
+margin-right: auto !important;
+margin-left: auto !important;
+margin-top: 10%;
+inset: none !important;
+transform: none !important;
+border-radius: 10px !important;
+box-shadow: 0 3px 10px 0 #f2f2f2 !important;
+padding: 25px;
+}
+.modalSubmit{
+  border-radius: 7px;
+  box-shadow: 0 3px 10px 0 rgba(22, 90, 159, 0.47);
+  background-color: #37a7b7 !important;
+  background-image: none !important;
+  color:#fff !important;
+border:none !important;
+width: 136px;
+text-shadow: none !important;
+font-family: 'IRANYekan-Bold' !important;
+padding: 5px 10px;
+height: 35px;
+margin-top: 10px;
+margin-left: 10px;
+border-radius: 5px;
+font-size: 14px;
+}
+.closeModal{
+  border-radius: 7px;
+  box-shadow: 0 3px 10px 0 rgba(22, 90, 159, 0.47);
+  background-color: #cd191e !important;
+  background-image: none !important;
+  color:#fff !important;
+border:none !important;
+width: 136px;
+text-shadow: none !important;
+font-family: 'IRANYekan-Bold' !important;
+padding: 5px 10px;
+height: 35px;
+margin-top: 10px;
+margin-left: 10px;
+border-radius: 5px;
+font-size: 14px;
+}
+.cFormDiv2 span {
+  font-family: 'IRANYekan-Bold';
+  color: #000;
+  font-size: 15px;
+  display: inline-block !important;
+}
+.cFormDiv2 {
+  margin: 45px 0px;
+}
+.cFormDiv3 span {
+  font-family: 'IRANYekan-Bold';
+  color: #000;
+  font-size: 15px;
+  display: inline-block !important;
+}
+.cFormDiv3 {
+  margin: 0px 0px;
+}
+.cFormDiv3 input, .cFormDiv textarea {
+  font-family: 'IRANYekan-Medium';
+  color: #000;
+  border: 1px solid #d0d0d0;
+  border-radius: 5px;
+  padding: 5px 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  float: left;
+  font-size: 13px;
+  width: 60%;
+  margin-top: -7px;
+}
+.react-stars-wrapper-030081220979665646{
+  display: inline-block !important;
+}
+.search-form{
+  background-color: transparent !important;
+}
+.ticketBox{
+  margin-top:30px;
+border-radius: 5px;
+padding: 15px;
+width: 90% !important;
+margin-right: auto;
+margin-left: auto;
+display: block;
+}
+.b-box {
+  width: 103%;
+  background-color: #1a3263;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 2.5%;
+  margin-bottom: 10%;
+}
+.ticket-text {
+  text-align: right;
+  font-size: 12px;
+line-height: 31px;
+padding: 1% 3%;
+}
+.ticket-title {
+  color: #ffffff !important;
+  font-family: 'IRANYekan-Bold';
+  text-align: right;
+}
+.ticket-data {
+  color: #ffffff !important;
+  font-family: 'IRANYekan-Bold';
+  text-align: left;
+}
+.w801{
+margin-top: 5% !important;
+  overflow-y:scroll;
+  width: 80% !important;
+height: 630px;
+}
+.moshahede{
+  border:0px solid #142b6f !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  text-align: center;
+font-family: 'IRANYekan-Bold';
+font-size: 15px;
+color: #142b6f !important;
+text-shadow: none;
+padding: 0px !important;
+margin-top: 0px !important;
+}
+#question-box {
+  float: right;
+  box-shadow: 0px 8px 20px 2px #8d92974d;
+  width: 50% !important;
+  border-bottom-right-radius: 0px !important;
+  border-radius: 40px;
+      border-bottom-right-radius: 40px;
+  height: 250px;
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#answer-box{
+  float: left;
+  border-radius: 40px;
+  border-bottom-left-radius: 40px;
+border-bottom-left-radius: 0px !important;
+height: 250px;
+
+overflow: scroll;
+overflow-x: hidden;
+overflow-y: auto;
+box-shadow: 0px 8px 20px 2px #8d92974d;
+width: 50% !important;
+margin-top: 20px;
+margin-bottom: 20px;
+}
+
+
+.b-box2 {
+
+    width: 104%;
+    background-color: #9E9E9E;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 2.5%;
+    margin-bottom: 3%;
+
+}
+.row-title{
+  text-align: center;
+  font-family: 'IRANYekan-Bold';
+  font-size: 15px;
+}
+.addIn{
+  box-shadow: 0px 8px 20px 2px #8d92974d;
+border-radius: 10px;
+padding: 1%;
+margin: 15px 0px 15px 0px;
+}
+.bastenashode{
+  color: #17940E;
+width: 50%;
+padding: 2%;
+border-radius: 5px;
+border: 1px solid #17940E;
+text-align: center;
+margin-right: auto !important;
+margin-left: auto !important;
+display: block;
+
+}
+.baste-shode {
+  width: 50%;
+  padding: 2%;
+  border-radius: 5px;
+  border: 1px solid #C12020;
+  color: #C12020;
+  text-align: center;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  display: block;
+
+}
+.etela {
+  color: #ffb921;
+  width: 50%;
+  padding: 2%;
+  border-radius: 5px;
+  border: 1px solid #ffb921;
+  text-align: center;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  display: block;
+  
+}
+@media only screen and (max-width: 768px) {
+  /* For Tablet */
+ .menuContainer {
+   display: none;
+ }
+ .gray-row {
+  display: none !important;
+}
+}
+@media only screen and (max-width: 414px) {
+  /* For Mobile: */
+ .gray-row {
+   display: none !important;
+ }
+ .menuContainer {
+   display: none;
+ }
+
+.heroBanner {
+  background-image: url('../img/herobanner-responsive.png') !important;
+    height: auto !important;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    padding: 3% 2% !important;
+    background-repeat: no-repeat;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+ 
+}
+.heroBanner .col-md-10{
+  padding: 0px !important;
+}
+.heroText{
+  font-size: 15px !important;
+  text-align: center !important;
+  margin-top: 5%;
+}
+.dResNone{
+  display: none !important;
+}
+.whiteBorder{
+  height: 35px !important;
+  width: 35px !important;
+  margin-left: 5px !important;
+border-radius: 5px !important;
+border: 1px solid #fff !important;
+background-color: transparent;
+padding: 2px !important;
+}
+.heroIcons {
+  height: 30px !important;
+  width: 30px !important;
+  padding: 2px !important;
+}
+.resMargin0{
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+.disNone{
+  display: block !important;
+}
+
+.resTaCenter{
+  text-align: center !important;
+}
+.ledbuttonIcon{
+  width: 20% !important;
+  display: inline-block !important;
+  margin-right: 0px !important;
+  margin-top: 0px !important;
+}
+.ledButton{
+  display: inline-block !important;
+  float: unset !important;
+  margin-top: 10% !important;
+  margin-right: -2% !important;
+  font-size: 12px !important;
+  width: 90px !important;
+  padding: 3px !important;
+  height: 25px !important;
+  border-radius: 2px !important;
+}
+.categoryBox{
+  height: 176px !important;
+  padding:5px !important;
+  margin-bottom: 8px !important;
+}
+.categoryName{
+  font-size: 15px !important;
+}
+.wBoxTitle{
+  font-size: 18px !important;
+  text-align: center !important;
+}
+.wBoxDescription{
+  font-size: 13px !important;
+  margin:0px 10px !important;
+}
+.brandIconBox {
+  width: 67px !important;
+  height: 67px !important;
+  margin: 8px !important;
+  padding: 5px !important;
+}
+.centerSearch2{
+  width:107px !important;
+  height: auto !important;
+  
+}
+.centerSearch2 .cInput {
+  height: 45px !important;
+  padding-top: 9px !important;
+}
+.centerSearch{
+  height: auto !important;
+  padding-bottom: 10px !important;
+}
+.sIcon{
+  display: none !important;
+}
+.Dropdown-arrow{
+ border-width: 7px 6px 0 !important;
+}
+.searchIBtn {
+  height: 40px !important;
+  background-color: #ffb921;
+  width: 100%;
+  border-radius: 5px !important;
+  margin-top: 5px !important;
+}
+.searchIBtn2{
+  font-size: 20px !important;
+}
+.littleBanner{
+  margin-bottom: 15px !important;
+}
+.lightBorder{
+  width:50% !important;
+}
+.thickBorder{
+  width: 43% !important;
+}
+.sliderTitle{
+  margin-right: 0px !important;
+}
+.bulbiranContainer{
+  padding:2% 15px !important;
+}
+.hamkarLogo img{
+  width: 100% !important;
+  height: auto !important;
+}
+.resCpadding{
+  padding:0px !important;
+}
+.slick-prev::before, .slick-next::before {
+color: #142b6f !important;
+}
+.email-title{
+  font-size: 13px !important;
+  margin-top:5px !important;
+  text-align: center !important;
+}
+.emailBox{
+  width:100% !important;
+}
+.mobileInput{
+  width: 64% !important;
+}
+.iconRow{
+  padding:5% 0% 2% 0%!important;
+}
+.iconRow .col-md-2{
+  padding:0px !important;
+}
+.footerIcon{
+  height: 30px !important;
+}
+.iconTitle{
+  font-size: 6px !important;
+  margin-top:5px !important;
+}
+.footerTitle{
+  font-size: 15px !important;
+}
+.footerLink{
+  font-size: 12px !important;
+}
+.footerImg {
+  width:30% !important;
+  margin:5px !important;
+  height: 103px !important;
+padding: 5px !important;
+}
+.footerImg img{
+  width:75% !important;
+}
+.whiteBand {
+ 
+ 
+  width: 380px !important;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 5px !important;
+}
+.tabRow{
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.gTitle{
+  font-size: 13px !important;
+}
+.u3{
+  margin-top:-17% !important;
+}
+.cateInner div{
+  height: 70px !important;
+  width: 70px !important;
+  border-radius: 5px !important;
+}
+.cateInner div p{
+  font-size: 10px !important;
+}
+.tabRow span{
+  font-size: 13px !important;
+  margin-top: 5px;
+}
+.sortBtn{
+  font-size: 10px !important;
+  text-shadow: none !important;
+  padding:5px 10px !important;
+}
+.circumstanceTitle{
+  font-size: 15px !important;
+}
+.categoryBox2{
+  border-radius: 5px !important;
+}
+.accHeading{
+  font-size: 14px !important;
+}
+.accItempannel ul li{
+  margin:10px 0px !important;
+  font-size: 12px !important;
+}
+.accBtn::before {
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+.whiteCard img{
+  width: 90% !important;
+}
+.whiteCard p{
+  line-height: 2rem !important;
+}
+.gTitle2{
+  font-size: 15px !important;
+}
+#chain{
+  height: unset !important;
+}
+
+.cateInner div p{
+  color: #142b6f !important;
+}
+.whiteBox{
+  padding:15px !important;
+  margin-top: 10px !important;
+}
+.brandShopDescription{
+  font-size: 12px !important;
+  line-height: 2rem;
+}
+.cTitle{
+  padding:5px 20px !important;
+
+}
+.cTitle p{
+  font-size: 15px !important;
+}
+.radioB div{
+  font-size: 13px !important;
+}
+.brandShopTitle{
+  text-align: center;
+  font-size: 20px !important;
+}
+.brandShopDescription{
+  width: 100% !important;
+  margin-top: 15px !important;
+  text-align: justify !important;
+}
+.resW100{
+  width: 100% !important;
+}
+.cBox{
+  height: 145px !important;
+  width: 100px !important;
+  padding:15px !important;
+}
+.cBox svg{
+  width: 100% !important;
+}
+.cBox p{
+  font-size: 12px !important;
+  right:17px !important;
+  font-family: 'IRANYekan-Bold' !important;
+}
+.wRes100{
+  width: 100% !important;
+}
+.brandShopTitle{
+  font-size: 13px !important;
+}
+.oneLine p{
+  font-size: 12px !important;
+}
+.borderRight{
+  right:50% !important;
+}
+#firstOrder{
+  order:1 !important;
+}
+#secondOrder{
+  order:2 !important;
+}
+.servicesButton{
+  width:100% !important;
+}
+.oneLine {
+  text-align: center !important;
+}
+.mFontRes{
+  font-size: 20px !important;
+}
+.serviceForm{
+  padding:2% 0% 2% 0% !important;
+}
+.cFormDiv span{
+  font-size: 12px !important;
+}
+.cFormDiv svg{
+  font-size: 8px !important;
+}
+.cFormDiv input, .cFormDiv textarea{
+  font-size: 10px !important;
+}
+.garanteList{
+  padding-right: 5px !important;
+}
+.garanteList{
+  padding-right: 5px !important;
+}
+.pdResCustom{
+  padding:7px !important;
+}
+.miniBox{
+  border-radius: 5px !important;
+}
+.indoorBox .fRight{
+  width: 25px !important;
+  height: 25px !important;
+}
+.indoorBox span{
+  margin-right: 5px !important;
+  font-size: 10px !important;
+}
+.indoorBox button{
+  text-shadow: none !important;
+
+border-radius: 3px !important;
+margin-top: 8px;
+}
+.miniBox img{
+  height: 100px !important;
+}
+.heightResCustom{
+  height: 200px !important;
+}
+.slick-dots li, .slick-dots li button{
+  height: 10px !important;
+  width: 10px !important;
+}
+.bigSlider .slick-dots li button{
+  height: 10px !important;
+  width: 10px !important;
+}
+.responsiveNone{
+  display: none !important;
+}
+.coloredBoxTitle3{
+  font-family: 'IRANYEkan-Bold' !important;
+  font-size: 12px !important;
+}
+.whiteBrandBox{
+  width: 100% !important;
+  height: 100px !important;
+}
+.whiteBrandBox img{
+  width:90% !important;
+}
+.grayBox{
+  height: 25px !important;
+width: 111px !important;
+}
+.grayBox p{
+  font-size: 10px !important;
+  font-family: 'IRANYekan-Bold' !important;
+}
+.brandShopBox .row{
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+.brandShopBox .row .col-4{
+  padding:0px 7px !important;
+}
+.cTabList{
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+.commentModal{
+  width: 92% !important;
+}
+.techWhite{
+  margin-top: 50px !important;
+}
+.ledTitle{
+  font-size: 17px !important;
+}
+.desP{
+  font-size: 20px !important;
+}
+.j1{
+  overflow-x: scroll;
+white-space: nowrap;
+width: 450px;
+border-bottom: none !important;
+}
+.tableHeader {
+  font-family: 'IRANYekan-Bold' !important;
+  color: #18206b;
+  font-size: 11px !important;
+
+}
+.resOver{
+  overflow-x: scroll;
+  white-space: nowrap !important;
+}
+.mgtres0{
+  margin-top:0px !important;
+}
+.lBox{
+  width: 100% !important;
+}
+.colBackground{
+  border-radius: 10px !important;
+  background-color: #fff !important;
+}.loginBox{
+  width: 100% !important;
+}
+.wRes85{
+  width: 85% !important;
+}
+.mresbottom20{
+  margin-bottom: 20px !important;
+}
+.poshtibaniTitle{
+  font-size: 16px !important;
+}
+.poshtibaniDescription {
+  
+  line-height: 2.5rem !important;
+  font-size: 12px !important;
+}
+.poshtibaniPhone{
+  font-size: 17px !important;
+}
+.poshtibanIconBox{
+  padding-right: 0px !important;
+}
+.cTabList{
+  white-space: nowrap !important;
+overflow-x: scroll !important;
+overflow-y: none !important;
+height: 50px !important;
+}
+.pardazeshPrice{
+  margin-top:10px;
+  font-size: 13px !important;
+  margin-bottom: 0px !important;
+}
+.userRow{
+  width: 100% !important;
+  padding-bottom: 15px !important;
+}
+.uAddress{
+  font-family: 'IRANYekan-Bold' !important;
+  font-size: 12px !important;
+}
+}

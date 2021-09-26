@@ -6,6 +6,7 @@ import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
 import IconRow from './layouts/IconRow'
 import Footer from './layouts/Footer'
+import Modal from 'react-modal';
 import {Container,Row,Col,Button} from 'react-bootstrap'
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
 import ProductSlider from './layouts/Productslider';
@@ -18,7 +19,29 @@ import {useParams } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 
 const CartStep1=() => {
-
+    let subtitle;
+    const customStyles = {
+        content: {
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
+        },
+      };
+      const [modalIsOpen, setIsOpen] = React.useState(false);
+      function openModal() {
+        setIsOpen(true);
+      }
+      function afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        subtitle.style.color = '#f00';
+      }
+  
+      function closeModal() {
+        setIsOpen(false);
+      }
     const [count,setCount]=useState(0)
 	const params = useParams().id;
     const [product,setProduct]=useState([])
@@ -291,7 +314,61 @@ console.log(UserID)
 
       <Row style={{margin:"0px",padding:"15px"}}>
                    <Col md={12} className="ta-left">
-                       <Button className="addressadd">+ افزودن آدرس جدید</Button>
+                   <Button className="addressadd" onClick={openModal} >+ افزودن آدرس جدید</Button>
+                <Modal
+        isOpen={modalIsOpen}
+      className="commentModal"
+        style={customStyles}
+       
+        contentLabel="Example Modal"
+      >
+ 
+ <Row style={{margin:"0px"}}>
+        <Col md={6}>
+        <div className="serviceForm pd0">
+            <div className="cFormDiv3 ta-right">
+           <span>کد پستی : </span>
+           
+           <input placeholder="کد پستی خود را وارد کنید" type='text' style={{float:"right !important"}}/>
+            </div>
+            </div>
+        </Col>
+       
+        <Col md={6}>
+        <div className="serviceForm pd0">
+            <div className="cFormDiv3 ta-right">
+           <span>شماره تماس : </span>
+      
+           <input placeholder="شماره تماس را وارد کنید" type='text' style={{float:"right !important"}}/>
+            </div>
+            </div>
+        </Col>
+        <Col md={6} style={{margin:"20px !important"}}>
+        <div className="serviceForm pd0">
+            <div className="cFormDiv3 ta-right"  style={{marginTop:"20px"}}>
+           <span>نام تحویل گیرنده : </span>
+         
+           <input placeholder="نام تحویل گیرنده را وارد کنید" type='text' style={{float:"right !important"}}/>
+            </div>
+            </div>
+        </Col>
+        </Row>
+      <Row style={{margin:"0px",marginTop:"20px !important"}}>
+          <Col md={12} style={{marginTop:"20px"}}>
+          <div className="cFormDiv3 ta-right" style={{margin:"20px !important"}}>
+           <span style={{margin:"20px !important"}}>آدرس خود را وارد کنید : </span>
+           <br/>
+           <input placeholder="آدرس ..." type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
+            </div>
+          </Col>
+      </Row>
+      <Button className="modalSubmit">افزودن آدرس</Button>
+
+        <Button onClick={closeModal} className="closeModal">بستن</Button>
+
+
+      </Modal>
+   
                    </Col>
                     </Row>
             </div>

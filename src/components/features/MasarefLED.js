@@ -40,12 +40,12 @@ const MasarefLED = () => {
       <TopBar/>
       <Header/>
     <Container fluid className="bulbiranContainer">
-      <Row className="heroBanner">
-        <Col md={10}>
+    <Row className="heroBanner">
+        <Col md={10}  sm={12}>
           <div >
             <p className="heroText">عمر بیشتر ، نور بیشتر مصرف کمتر با محصولات LED</p>
-         <Row>
-           <Col md={12} className="ta-right">
+         <Row className="resMargin0">
+           <Col md={12} className="ta-right resTaCenter">
              <div className="whiteBorder d-inline-block">
              <div className="heroIcons ta-center" id="degree">
 
@@ -89,7 +89,7 @@ const MasarefLED = () => {
              </div>
              </div>
              <div className="d-inline-block">
-               <LED className="ledLabel"/>
+               <LED className="ledLabel dResNone"/>
              </div>
            </Col>
 
@@ -97,11 +97,13 @@ const MasarefLED = () => {
           </div>
 
         </Col>
-      <Col md={2}>
+      <Col md={2} xs={12} className="resTaCenter">
       <LedButton className="d-block ledbuttonIcon"></LedButton>
-      <Button className="ledButton d-block"  onClick={()=>  history.push("/greenshop")}>فروشگاه سبز</Button>
+      <Button onClick={()=>  history.push("/GreenShop")} className="ledButton d-block">فروشگاه سبز</Button>
       </Col>
+    
       </Row>
+    
    <div className="ledWBox mgt20">
         <span className="ledTitle">مصارف نوین لامپ های LED</span>
 
@@ -304,10 +306,10 @@ const MasarefLED = () => {
             <Col md={3}>
             <div className="techWhite h10">
             <Row className="alignCenter">
-                <Col md={6} className="ta-center" onClick={()=>  history.push("/greenshop/1")}>
+                <Col md={6} xs={6} className="ta-center" onClick={()=>  history.push("/greenshop/1")}>
                     <span className="desP">دکوراتیو</span>
                 </Col>
-                <Col md={6}>
+                <Col md={6} xs={6}>
                     <Decorative/>
                 </Col>
             </Row>
@@ -316,10 +318,10 @@ const MasarefLED = () => {
             <Col md={3}>
             <div className="techWhite h10">
             <Row className="alignCenter">
-                <Col md={6} className="ta-center"  onClick={()=>  history.push("/greenshop/1")}>
+                <Col md={6} xs={6} className="ta-center"  onClick={()=>  history.push("/greenshop/1")}>
                     <span className="desP">تزئینی</span>
                 </Col>
-                <Col md={6}>
+                <Col md={6} xs={6}>
                     <Tazein/>
                 </Col>
             </Row>
@@ -328,10 +330,10 @@ const MasarefLED = () => {
             <Col md={3}>
             <div className="techWhite h10" onClick={()=>  history.push("/greenshop/1")}>
             <Row className="alignCenter">
-                <Col md={6} className="ta-center">
+                <Col md={6} xs={6} className="ta-center">
                     <span className="desP">دیمرپذیر</span>
                 </Col>
-                <Col md={6}>
+                <Col md={6} xs={6}>
                     <Dimer/>
                 </Col>
             </Row>
@@ -340,10 +342,10 @@ const MasarefLED = () => {
             <Col md={3}>
             <div className="techWhite h10" onClick={()=>  history.push("/greenshop/1")}>
             <Row className="alignCenter">
-                <Col md={6} className="ta-center">
+                <Col md={6} xs={6} className="ta-center">
                     <span className="desP">اضطراری</span>
                 </Col>
-                <Col md={6}>
+                <Col md={6} xs={6}>
                     <Emergency/>
                 </Col>
             </Row>

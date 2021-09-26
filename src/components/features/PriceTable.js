@@ -103,47 +103,52 @@ const PriceTable = () => {
        لیست محصولات {brand.BrandName}
         </h3>
     </div>
-    <div className="tableWhiteBox">
+    <div className="tableWhiteBox "> 
         <div className="tableBorder">
-            <Row style={{marginRight:"0px",marginLeft:"0px",paddingTop:"15px",paddingBottom:"15px"}} className="bBottomC">
-                <Col md={1} className="ta-center">
+           <div className="resOver">
+           <Row style={{marginRight:"0px",marginLeft:"0px",paddingTop:"15px",paddingBottom:"15px"}} className="bBottomC j1">
+                <Col md={1} xs={1} className="ta-center">
                     <span className="tableHeader">ردیف</span>
                 </Col>
-                <Col md={2} className="ta-center">
+                <Col md={2} xs={3} className="ta-center">
                     <span className="tableHeader">تصویر محصول</span>
                 </Col>
-                <Col md={5} className="ta-right">
+                <Col md={5} xs={4} className="ta-right">
                     <span className="tableHeader">نام محصول</span>
                 </Col>
-                <Col md={2} className="ta-center">
+                <Col md={2} xs={2} className="ta-center">
                     <span className="tableHeader">قیمت تکی</span>
                 </Col>
-                <Col md={2} className="ta-center">
+                <Col md={2} xs={2} className="ta-center">
                     <span className="tableHeader">قیمت باکس</span>
                 </Col>
             </Row>
+           
+           </div>
+
             {
 
 product?.map((item, i) => {
   return (
           <>
+          <div className="resOver">
             <Row style={{marginRight:"0px",marginLeft:"0px"}} className="bBottomC">
-                <Col md={1} className="ta-center">
+                <Col md={1} xs={1} className="ta-center">
                     <span className="tableHeader">{i+1}</span>
                 </Col>
-                <Col md={2} className="ta-center">
+                <Col md={2} xs={3} className="ta-center">
                     <img src={apiAsset+item.Pic1} className="cImgT"/>
                 </Col>
-                <Col md={5} className="ta-right">
+                <Col md={5} xs={4} className="ta-right">
                     <span className="tablePName">{item.ProductName}</span>
                 </Col>
-                <Col md={2} className="ta-center">
+                <Col md={2} xs={2} className="ta-center">
                     <span className="tablePries">{item.Cost} تومان</span>
                 </Col>
-                <Col md={2} className="ta-center">
+                <Col md={2} xs={2} className="ta-center">
                     <span className="tablePries">{item.Cost} تومان</span>
                 </Col>
-            </Row>
+            </Row></div>
             </>
                     );
 

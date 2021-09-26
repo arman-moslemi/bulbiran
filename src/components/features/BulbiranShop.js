@@ -246,7 +246,7 @@ const newest=()=>{
     </Row>
     <div className="gRow">
     <div>
-    <ShopLogo className="d-block ledbuttonIcon mgr30"/>
+    <ShopLogo className="d-block ledbuttonIcon2 mgr30"/>
     </div>
     <div>
         <span className="gTitle">فروشگاه بالبیران</span>

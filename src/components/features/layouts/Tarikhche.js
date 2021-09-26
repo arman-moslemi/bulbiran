@@ -31,7 +31,7 @@ console.log(data)
             <Row className="pardazeshProductRow">
             {item?.map((items, i) => {
   return (
-                <Col md={1}>
+                <Col md={1} xs={6}>
                     <div className="pardazeshProductDiv">
                         <img src={apiAsset+items.Pic1}/>
                         <p>{items.ProductName}</p>

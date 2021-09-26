@@ -80,7 +80,7 @@ const BrandShop = () => {
   return (
           <>
           <Link  onClick={()=>  history.push("/brandsecond/"+item.BrandID)}>
-            <Col md={3}>
+            <Col md={3} xs={6}>
                 <div className="whiteBrandBox">
                     <img src={apiAsset+item.BrandLogo}/>
                     <div className="grayBox" >
