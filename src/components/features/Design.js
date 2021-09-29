@@ -156,7 +156,7 @@ alert("با موفقیت انجام شد")
                     {item?.map((items, i) => {
   return (
           <>
-                        <Col md={4}>
+                        <Col md={4} xs={6}>
                             <img src={apiAsset+items.HistoryDesignLogo} className="projectImg"/>
                             <span className="projectName ta-right">
                             {items.HistoryDesignName}
@@ -268,17 +268,17 @@ alert("با موفقیت انجام شد")
        <Col md={12}>
        <div className="whiteBox" style={{paddingTop:'5',paddingRight:'0',paddingLeft:'0'}}>
       <Row style={{margin:"0px"}}>
-        <Col md={1}>
-          <FormIcon/>
+        <Col md={1} xs={3}>
+          <FormIcon className="wRes100"/>
         </Col>
-        <Col md={11} className="ta-right pd0">
+        <Col md={11} xs={9}className="ta-right pd0">
         <p className="gTitle" style={{marginRight:'0',marginTop:'5'}} >فرم درخواست خدمات روشنایی و طراحی</p>
       <p className="shortDescription">برای آگاهی از شرایط گارانتی فرم زیر را تکمیل نمایید</p>
         </Col>
         </Row>
         <hr></hr>
         <Row style={{margin:"0"}}>
-          <Col md={5} className="ta-right">
+          <Col md={5} className="ta-right" id="secondOrder">
           <form className="serviceForm">
             <div className="cFormDiv">
            <span>نام و نام خانوادگی</span><FaStar/>
@@ -314,7 +314,7 @@ alert("با موفقیت انجام شد")
           </form>
 
           </Col>
-          <Col md={7} className="ta-center">
+          <Col md={7} className="ta-center" id="firstOrder">
             <img src={MailForm} className="w90"/>
           </Col>
         </Row>

@@ -40,7 +40,7 @@ alert("شماره شما با موفقیت اضافه شد")
       <>
      <Container fluid className="social-row">
          <Row>
-             <Col md={6} className="ta-right">
+             <Col md={6} className="ta-right resTaCenter">
              <p className="email-title">بالبیران را در شبکه های اجتماعی دنبال کنید</p>
              <div className="d-inline-block socialIcons">
                  <Instagram></Instagram>
@@ -55,7 +55,7 @@ alert("شماره شما با موفقیت اضافه شد")
                  <Linkdin></Linkdin>
                  </div>
              </Col>
-             <Col md={6} className="ta-left">
+             <Col md={6} className="ta-left resTaCenter">
                  <p className="email-title">جهت آگاهی از تخفیف های ویژه،عضو باشگاه مشتریان شوید</p>
                 <div className="emailBox">
                     <form>

@@ -19,27 +19,27 @@ const IconRow = () => {
       <>
     <Container fluid>
         <Row  className="iconRow">
-            <Col md={2} className="ta-center">
+            <Col md={2} xs={2} className="ta-center">
                 <Moshavere className="footerIcon"></Moshavere>
                 <p className="iconTitle">مشاوره رایگان</p>
             </Col>
-            <Col md={2} className="ta-center">
+            <Col md={2} xs={2} className="ta-center">
                 <Pardakht className="footerIcon"></Pardakht>
                 <p className="iconTitle">پرداخت امن و آسان</p>
             </Col>
-            <Col md={2} className="ta-center">
+            <Col md={2} xs={2} className="ta-center">
                 <Zemanat className="footerIcon"> </Zemanat>
                 <p className="iconTitle">ضمانت اصل بودن کالا</p>
             </Col>
-            <Col md={2} className="ta-center">
+            <Col md={2} xs={2} className="ta-center">
                 <Ersal className="footerIcon"></Ersal>
                 <p className="iconTitle">ارسال و پیگیری</p>
             </Col>
-            <Col md={2} className="ta-center">
+            <Col md={2} xs={2} className="ta-center">
                 <Garantee className="footerIcon"></Garantee>
                 <p className="iconTitle">خدمات پس از فروش</p>
             </Col>
-            <Col md={2} className="ta-center">
+            <Col md={2}  xs={2} className="ta-center">
                 <Price className="footerIcon"></Price>
                 <p className="iconTitle">قیمت کارخانه</p>
             </Col>

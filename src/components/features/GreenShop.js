@@ -252,7 +252,7 @@ console.log(check.length)
     </Row>
     <div className="gRow">
     <div>
-    <GreenShopLogo className="d-block ledbuttonIcon mgr30"/>
+    <GreenShopLogo className="d-block ledbuttonIcon2 mgr30"/>
     </div>
     <div>
         <span className="gTitle">فروشگاه سبز</span>
@@ -264,7 +264,7 @@ console.log(check.length)
           </div>
       </Container>
     <Container fluid className="bulbiranContainer">
-    <Row style={{margin:"0px",marginTop:"-7%"}}>
+    <Row className="u3"style={{margin:"0px",marginTop:"-7%"}}>
         <Col md={12}>
             <div className="categoryBox2">
             <h4 className="circumstanceTitle ta-right">دسته بندی ها</h4>
@@ -380,7 +380,7 @@ console.log(check.length)
                 {product?.map((item, i) => {
   return (
           <>
-                <Col md={3} className="pd0">
+                <Col md={3} xs={6} className="pd0">
             <Link
           to={`/singleProduct/${item.ProductID}`}
         >

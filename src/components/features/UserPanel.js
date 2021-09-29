@@ -6,7 +6,7 @@ import IconRow from './layouts/IconRow'
 import Footer from './layouts/Footer'
 import ImageGallery from 'react-image-gallery';
 import {Container,Row,Col,Button, Table} from 'react-bootstrap'
-import { FaRegStar, FaStar, FaAlignRight} from 'react-icons/fa';
+import { FaRegStar, FaStar, FaAlignRight,FaEyeSlash} from 'react-icons/fa';
 import Select from "react-dropdown-select";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ReactDOM from 'react-dom';
@@ -25,6 +25,48 @@ import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import {useParams } from "react-router-dom";
 import { PanoramaFishEyeSharp } from '@material-ui/icons'
   const UserPanel=() => {
+    const customStyles = {
+      content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+      },
+    };
+    const customStyles2 = {
+      content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+      },
+    };
+    let subtitle;
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [modalIsOpen2, setIsOpen2] = React.useState(false);
+
+    function openModal() {
+      setIsOpen(true);
+    }
+    function openModal2() {
+      setIsOpen2(true);
+    }
+
+    function afterOpenModal() {
+      // references are now sync'd and can be accessed.
+      subtitle.style.color = '#f00';
+    }
+
+    function closeModal() {
+      setIsOpen(false);
+    }
+    function closeModal() {
+      setIsOpen2(false);
+    }
     const [product,setProduct]=useState([])
     const [total,setTotal]=useState(0)
     const [date,setDate]=useState(0)
@@ -101,7 +143,7 @@ console.log(UserID)
       <div className="singleBox">
         <Row style={{marginRight:"0px",marginLeft:"0px",alignItems:"center"}}>
             <Col md={2}>
-                <Poshtibani/>
+                <Poshtibani className="wRes100 mresbottom20"/>
             </Col>
             <Col md={7} className="ta-right o1">
                 <span className="poshtibaniTitle ta-right">
@@ -155,7 +197,32 @@ console.log(UserID)
                     <p className="uAddress ta-right">{userdata.Address}</p>
                 </Col>
                 <Col md={3} className="ta-left">
-                <Button className="factorBTN">ویرایش آدرس</Button>
+                <Button className="factorBTN" onClick={openModal} >ویرایش آدرس</Button>
+                <Modal
+        isOpen={modalIsOpen}
+      className="commentModal"
+        style={customStyles}
+       
+        contentLabel="Example Modal"
+      >
+ 
+ 
+      <Row style={{margin:"0px"}}>
+          <Col md={12}>
+          <div className="cFormDiv3 ta-right" style={{margin:"0px !important"}}>
+           <span>آدرس خود را وارد کنید : </span>
+           <br/>
+           <input placeholder="آدرس ..." type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
+            </div>
+          </Col>
+      </Row>
+      <Button className="modalSubmit">ویرایش آدرس</Button>
+
+        <Button onClick={closeModal} className="closeModal">بستن</Button>
+
+
+      </Modal>
+   
                 <Button className="factorBTN" id="dAddress">حذف</Button>
 
                 </Col>
@@ -173,7 +240,62 @@ console.log(UserID)
                 </Row>
                 <Row style={{margin:"0px",padding:"15px"}}>
                    <Col md={12} className="ta-left">
-                       <Button className="addressadd">+ افزودن آدرس جدید</Button>
+                      
+                       <Button className="addressadd" onClick={openModal} >+ افزودن آدرس جدید</Button>
+                <Modal
+        isOpen={modalIsOpen}
+      className="commentModal"
+        style={customStyles}
+       
+        contentLabel="Example Modal"
+      >
+ 
+ <Row style={{margin:"0px"}}>
+        <Col md={6}>
+        <div className="serviceForm pd0">
+            <div className="cFormDiv3 ta-right">
+           <span>کد پستی : </span>
+           
+           <input placeholder="کد پستی خود را وارد کنید" type='text' style={{float:"right !important"}}/>
+            </div>
+            </div>
+        </Col>
+       
+        <Col md={6}>
+        <div className="serviceForm pd0">
+            <div className="cFormDiv3 ta-right">
+           <span>شماره تماس : </span>
+      
+           <input placeholder="شماره تماس را وارد کنید" type='text' style={{float:"right !important"}}/>
+            </div>
+            </div>
+        </Col>
+        <Col md={6} style={{margin:"20px !important"}}>
+        <div className="serviceForm pd0">
+            <div className="cFormDiv3 ta-right"  style={{marginTop:"20px"}}>
+           <span>نام تحویل گیرنده : </span>
+         
+           <input placeholder="نام تحویل گیرنده را وارد کنید" type='text' style={{float:"right !important"}}/>
+            </div>
+            </div>
+        </Col>
+        </Row>
+      <Row style={{margin:"0px",marginTop:"20px !important"}}>
+          <Col md={12} style={{marginTop:"20px"}}>
+          <div className="cFormDiv3 ta-right" style={{margin:"20px !important"}}>
+           <span style={{margin:"20px !important"}}>آدرس خود را وارد کنید : </span>
+           <br/>
+           <input placeholder="آدرس ..." type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
+            </div>
+          </Col>
+      </Row>
+      <Button className="modalSubmit">ویرایش آدرس</Button>
+
+        <Button onClick={closeModal} className="closeModal">بستن</Button>
+
+
+      </Modal>
+   
                    </Col>
                     </Row>
       </div>
@@ -211,7 +333,197 @@ null
     }
 
         </TabPanel>
-        <TabPanel></TabPanel>
+        <TabPanel>
+        <div className="pardazeshBox">
+          <Row style={{margin:"0px"}}>
+          <Col md={6} className="ta-right">
+              <p className="pardazeshPrice" style={{marginTop:"20px",marginRight:"10%"}}>پیام های من</p>
+          </Col>
+          <Col md={6} className="ta-left k2">
+          <Button type="button" className="" style={{marginLeft:"10%",marginTop:"20px"}} onClick={openModal} >+ پیام جدید</Button>
+          <Modal
+        isOpen={modalIsOpen}
+      className="commentModal"
+        style={customStyles}
+       
+        contentLabel="Example Modal"
+      >
+ 
+ <Row style={{margin:"0px"}}>
+       
+       
+     
+      <Col md={12} style={{margin:"20px !important"}}>
+        <div className="serviceForm pd0">
+            <div className="cFormDiv3 ta-right"  style={{marginTop:"20px"}}>
+           <span>عنوان پیام : </span>
+         
+           <input placeholder="عنوان پیام خود را وارد کنید" type='text' style={{float:"right !important"}}/>
+            </div>
+            </div>
+        </Col>
+        </Row>
+      <Row style={{margin:"0px",marginTop:"20px !important"}}>
+          <Col md={12} style={{marginTop:"20px"}}>
+          <div className="cFormDiv3 ta-right" style={{margin:"20px !important"}}>
+           <span style={{margin:"20px !important"}}>متن پیام : </span>
+           
+           <input placeholder="متن پیام خود را وارد کنید" type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
+            </div>
+          </Col>
+      </Row>
+      <Button className="modalSubmit">ارسال پیام</Button>
+
+        <Button onClick={closeModal} className="closeModal">بستن</Button>
+
+
+      </Modal>
+   
+          </Col>
+          </Row>
+          <div className="ticketBox">
+              <Row style={{margin:"0px"}}>
+                <Col md={2}>
+                  <p className="row-title">بخش</p>
+                </Col>
+                <Col md={4}>
+                <p className="row-title">موضوع</p>
+                </Col>
+                <Col md={3}>
+                <p className="row-title">وضعیت</p>
+                </Col>
+                <Col md={2}>
+                <p className="row-title">آخرین به روز رسانی</p>
+                </Col>
+                <Col md={1}>
+                <p className="row-title">مشاهده</p>
+                </Col>
+              </Row>
+              <div className="addIn">
+              <Row style={{margin:"0px"}}>
+                <Col md={2}>
+                  <p className="row-title">پشتیبانی فنی</p>
+                </Col>
+                <Col md={4}>
+                <p className="row-title">عدم توانایی در برداشت وجه</p>
+                </Col>
+                <Col md={3}>
+                <p className="row-title bastenashode">فعال</p>
+                </Col>
+                <Col md={2}>
+                <p className="row-title">22/03/1400 (12:30)</p>
+                </Col>
+                <Col md={1}>
+                <p className="row-title">مشاهده</p>
+                </Col>
+              </Row>
+                </div>
+          
+                <div className="addIn">
+              <Row style={{margin:"0px"}}>
+                <Col md={2}>
+                  <p className="row-title">پشتیبانی فنی</p>
+                </Col>
+                <Col md={4}>
+                <p className="row-title">عدم توانایی در برداشت وجه</p>
+                </Col>
+                <Col md={3}>
+                <p className="row-title baste-shode">بسته شده</p>
+                </Col>
+                <Col md={2}>
+                <p className="row-title">22/03/1400 (12:30)</p>
+                </Col>
+                <Col md={1}>
+                <p className="row-title">مشاهده</p>
+                </Col>
+              </Row>
+                </div>
+                <div className="addIn">
+              <Row style={{margin:"0px"}}>
+                <Col md={2}>
+                  <p className="row-title">پشتیبانی فنی</p>
+                </Col>
+                <Col md={4}>
+                <p className="row-title">عدم توانایی در برداشت وجه</p>
+                </Col>
+                <Col md={3}>
+                <p className="row-title etela">اطلاعیه</p>
+                </Col>
+                <Col md={2}>
+                <p className="row-title">22/03/1400 (12:30)</p>
+                </Col>
+                <Col md={1}>
+                <Button type="button" className="moshahede" style={{marginLeft:"10%",marginTop:"20px"}} onClick={openModal2} >مشاهده</Button>
+          <Modal
+        isOpen={modalIsOpen2}
+      className="commentModal w801"
+        style={customStyles2}
+       
+        contentLabel="Example Modal"
+      >
+ 
+ 
+        <Row style={{margin:"0px"}}>
+       
+       
+     
+       <Col md={12} style={{margin:"20px !important"}} className="ta-right">
+       <div class="ticket-box pd0" id="question-box">
+       <Row className="b-box" style={{margin:"0px !important"}}>
+ 
+       <Col md={6} className="ticket-title">کارشناس فنی شماره یک</Col>
+       <Col md={6} className="ticket-data">(21:30) 1399/05/12</Col>
+       </Row>
+       <Row>
+                     <Col md={12}>
+                       <p class="ticket-text">
+                      g
+                       </p>
+                     </Col>
+
+                   </Row>
+ </div>
+     
+         </Col>
+        
+         </Row>
+   
+         <Row style={{margin:"0px"}}>
+       
+       
+     
+       <Col md={12} style={{margin:"20px !important"}} className="ta-right">
+       <div class="ticket-box pd0" id="answer-box">
+       <Row className="b-box2" style={{margin:"0px !important"}}>
+ 
+       <Col md={6} className="ticket-title">کارشناس فنی شماره یک</Col>
+       <Col md={6} className="ticket-data">(21:30) 1399/05/12</Col>
+       </Row>
+       <Row >
+                     <Col md={12}>
+                     <input placeholder="آدرس ..." type='text' style={{float:"right !important",width:"90% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
+           
+                     </Col>
+
+                   </Row>
+ </div>
+     
+         </Col>
+        
+         </Row>
+      <Button className="modalSubmit">ارسال پیام</Button>
+
+        <Button onClick={closeModal} className="closeModal">بستن</Button>
+
+
+      </Modal>
+   
+                </Col>
+              </Row>
+                </div>
+          </div>
+          </div>
+       </TabPanel>
  </Tabs>
         </div>
       </div>

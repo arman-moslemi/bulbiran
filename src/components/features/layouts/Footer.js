@@ -16,7 +16,7 @@ const Footer = () => {
       <>
       <Container fluid>
           <Row className="footerRow">
-             <Col md={2} className="ta-right">
+             <Col md={2} xs={6} className="ta-right">
                  <p className="footerTitle">درباره بالبیران</p>
                <ul className="footerList">
                  <li>
@@ -39,6 +39,12 @@ const Footer = () => {
 
                  </Col>
             {/* <Col md={2} className="ta-right">
+=======
+               
+               
+                 </Col> 
+            <Col md={2} xs={6} className="ta-right">
+>>>>>>> 6873bfcd9d3b18744d9751ba8eca75d9f7b5386e
             <p className="footerTitle">فروشگاه بالبیران</p>
             <ul className="footerList">
                  <li>
@@ -48,8 +54,11 @@ const Footer = () => {
                  <a href="#" className="footerLink">لینک دو</a>
                  </li>
                  </ul>
+<<<<<<< HEAD
             </Col> */}
             <Col md={2} className="ta-right">
+            </Col>
+            <Col md={2} xs={6} className="ta-right">
             <p className="footerTitle">خدمات بالبیران</p>
             <ul className="footerList">
                  <li>
@@ -67,6 +76,8 @@ const Footer = () => {
                  </ul>
             </Col>
             {/* <Col md={2} className="ta-right">
+            <Col md={2} xs={6} className="ta-right">
+>>>>>>> 6873bfcd9d3b18744d9751ba8eca75d9f7b5386e
             <p className="footerTitle">خدمات مشتریان</p>
             <ul className="footerList">
                  <li>
@@ -84,8 +95,11 @@ const Footer = () => {
 
                  </ul>
 
+<<<<<<< HEAD
                  </Col>  */}
             <Col md={2} className="ta-right">
+                 </Col> 
+            <Col md={2} xs={6} className="ta-right">
             <p className="footerTitle">مجله بالبیران</p>
                     <ul className="footerList">
                  <li>
@@ -101,7 +115,7 @@ const Footer = () => {
 
                  </ul>
             </Col>
-            <Col md={2}>
+            <Col md={2} xs={12}>
               <div className="footerImg d-inline-block float-right">
                 <img src={Enamad}/>
               </div>

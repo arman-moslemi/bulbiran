@@ -163,11 +163,11 @@ console.log(error);
       <Header/>
     <Container fluid className="bulbiranContainer">
       <Row className="heroBanner">
-        <Col md={10}>
+        <Col md={10}  sm={12}>
           <div >
             <p className="heroText">عمر بیشتر ، نور بیشتر مصرف کمتر با محصولات LED</p>
-         <Row>
-           <Col md={12} className="ta-right">
+         <Row className="resMargin0">
+           <Col md={12} className="ta-right resTaCenter">
              <div className="whiteBorder d-inline-block">
              <div className="heroIcons ta-center" id="degree">
 
@@ -211,7 +211,7 @@ console.log(error);
              </div>
              </div>
              <div className="d-inline-block">
-               <LED className="ledLabel"/>
+               <LED className="ledLabel dResNone"/>
              </div>
            </Col>
 
@@ -219,10 +219,11 @@ console.log(error);
           </div>
 
         </Col>
-      <Col md={2}>
+      <Col md={2} xs={12} className="resTaCenter">
       <LedButton className="d-block ledbuttonIcon"></LedButton>
       <Button onClick={()=>  history.push("/GreenShop")} className="ledButton d-block">فروشگاه سبز</Button>
       </Col>
+    
       </Row>
       <Row className="mgt20">
         <Col md={8} className="pdl0">
@@ -252,38 +253,38 @@ console.log(error);
         </Col>
       </Row>
     <Row className="mgt20 categoryRow">
-      <Col md={2} className="pd10">
+      <Col md={2} xs={6} className="pd10">
         <a href="#" className="categoryBox" onClick={()=>  history.push("/indoorlighting/1")} >
       <img src={Lamp}/>
       <p className="categoryName">لامپ</p>
         </a>
       </Col>
 
-      <Col md={2} className="pd10">
+      <Col md={2} xs={6} className="pd10">
         <a href="#" className="categoryBox" onClick={()=>  history.push("/indoorlighting/2")} >
       <img src={Inner}/>
       <p className="categoryName">روشنایی داخلی</p>
         </a>
       </Col>
-      <Col md={2} className="pd10">
+      <Col md={2} xs={6} className="pd10">
         <a href="#" className="categoryBox" onClick={()=>  history.push("/indoorlighting/3")} >
       <img src={Outdoor}/>
       <p className="categoryName">روشنایی بیرونی</p>
         </a>
       </Col>
-      <Col md={2} className="pd10">
+      <Col md={2} xs={6} className="pd10">
         <a href="#" className="categoryBox" onClick={()=>  history.push("/indoorlighting/4")} >
       <img src={Tazein}/>
       <p className="categoryName">روشنایی تزئینی</p>
         </a>
       </Col>
-      <Col md={2} className="pd10">
+      <Col md={2}  xs={6} className="pd10">
         <a href="#" className="categoryBox" onClick={()=>  history.push("/indoorlighting/5")} >
       <img src={Rise}/>
       <p className="categoryName">روشنایی خاص</p>
         </a>
       </Col>
-      <Col md={2} className="pd10">
+      <Col md={2} xs={6} className="pd10">
         <a href="#" className="categoryBox" onClick={()=>  history.push("/indoorlighting/6")} >
       <img src={Lavazem}/>
       <p className="categoryName">لوازم جانبی</p>
@@ -299,10 +300,10 @@ console.log(error);
           <p className="wBoxDescription">
           این لامپ‌ها دارای کارایی و طول عمر و بازده انرژی بالا چند برابر لامپ‌های رشته‌ای هستند و به شکل قابل ملاحظه ای از کارآمدی بالاتری نسبت به دیگر لامپ‌های فلورسنت برخوردارند.
           </p>
-          <Button className="readMoreBtn" onClick={()=>  history.push("/brandshop")}>بازار روشنایی</Button>
+          <Button className="readMoreBtn dResNone" onClick={()=>  history.push("/brandshop")}>بازار روشنایی</Button>
         </Col>
         <Col md={7}>
-          {
+           {
 
             brand?.map((item, i) => {
               return (
@@ -314,8 +315,14 @@ console.log(error);
                     );
 
             })
-          }
-
+          } 
+        
+        </Col>
+      </Row>
+      <Row className="disNone">
+        <Col xs={12} className="ta-center">
+        <Button className="readMoreBtn" onClick={()=>  history.push("/brandshop")}>بازار روشنایی</Button>
+       
         </Col>
       </Row>
     </div>
@@ -525,7 +532,7 @@ console.log(error);
         <div className="lightBorder">
 
         </div>
-        <div className="cPadding">
+        <div className="cPadding resCpadding">
         <BrandSlider/>
         </div>
         </div>

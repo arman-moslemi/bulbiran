@@ -71,7 +71,7 @@ else{
         در پروژه‌های تجاری دو بخش روشنایی عمومی و نورپردازی ویژه بخصوص در نمای ساختمان حائز اهمیت می‌باشد. ویترین مغازه‌ها، فروشگاه‌ها، نحوه نمایش محصولات و نورپردازی نمای بیرونی از اجزاء اصلی در روشنایی مکان‌های تجاری است. در این مکان‌ها انتخاب درست سیستم روشنایی و نورپردازی می‌تواند عامل اصلی بالا رفتن فروش و جذب مشتری باشد. نورپردازی صحیح می‌تواند با مشتری ارتباط برقرار کرده و او را به درون فضا دعوت کند. همچنین محصولات را  دیدنی و جذاب نشان داده و باعث رونق خرید و فروش شود. رنگ، کنتراست و تعادل مناسب بین سطوح نورپردازی شده از مهمترین ویژگی‌های نورپردازی مکان‌های تجاری است.
         </p>
         <Row style={{margin:"0",marginTop:"60px"}}>
-          <Col md={5} className="ta-right pdr0">
+          <Col md={5} className="ta-right pdr0" id="secondOrder">
           <p className="gTitle" style={{marginRight:"0px"}}>ثبت درخواست استعلام قیمت</p>
           <form className="serviceForm">
             <div className="cFormDiv">
@@ -102,8 +102,8 @@ else{
           </form>
 
           </Col>
-          <Col md={7} className="ta-center">
-           <Khadamat3 style={{marginTop:"100px"}}/>
+          <Col md={7} className="ta-center" id="firstOrder">
+           <Khadamat3 style={{marginTop:"100px"}} className="wRes100 mgtres0"/>
           </Col>
         </Row>
 

@@ -72,7 +72,7 @@ history.push("/verification")
       <Container fluid className="bulbiranContainer">
       <div className="whiteBox pd0 loginBox">
     <Row>
-        <Col md={6}>
+        <Col md={6} id="secondOrder">
         <div className="lBox ta-center w100">
           <h4>ثبت نام</h4>
 
@@ -95,7 +95,7 @@ history.push("/verification")
             </Col>
             <Col md={6}>
             <label className="cLabel mgt20">نوع کاربر</label>
-            <Dropdown className="cInput mgt10" options={options} value={defaultOption} placeholder="Select an option" />;
+            <Dropdown className="cInput mgt10" options={options} value={defaultOption} placeholder="Select an option" />
             </Col>
             <Col md={6}>
             <label className="cLabel mgt20">رمز عبور</label>
@@ -135,8 +135,8 @@ history.push("/verification")
         </div>
         </div>
         </Col>
-        <Col md={6} className="colBackground ta-center">
-            <RegisterSvg/>
+        <Col md={6} className="colBackground ta-center" id="firstOrder">
+            <RegisterSvg className="wRes85"/>
             </Col>
     </Row>
      </div>

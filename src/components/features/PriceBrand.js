@@ -74,7 +74,7 @@ const PriceBrand = () => {
                 </p>
             </Col>
             <Col md={4}>
-            <GetPrice/>
+            <GetPrice className="resW100"/>
             </Col>
         </Row>
     </div>
@@ -90,7 +90,7 @@ const PriceBrand = () => {
   return (
           <>
           <Link  onClick={()=>  history.push("/pricetable/"+item.BrandID)}>
-            <Col md={3}>
+            <Col md={3} xs={4}>
                 <div className="whiteBrandBox" onClick={()=>  history.push("/pricetable")}>
                 <img src={apiAsset+item.BrandLogo}/>
                     <div className="grayBox">

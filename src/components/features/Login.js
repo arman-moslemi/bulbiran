@@ -56,7 +56,7 @@ history.push("/userpanel/"+response.data.Data[0].CustomerID)
       <Container fluid className="bulbiranContainer">
       <div className="whiteBox pd0 loginBox">
     <Row>
-        <Col md={6}>
+        <Col md={6} id="secondOrder">
         <div className="lBox ta-center">
           <h4>ورود</h4>
 
@@ -99,8 +99,8 @@ history.push("/userpanel/"+response.data.Data[0].CustomerID)
 
         </div>
         </Col>
-        <Col md={6} className="colBackground ta-center">
-            <LoginSvg/>
+        <Col md={6} className="colBackground ta-center" id="firstOrder">
+            <LoginSvg className="wRes85"/>
             </Col>
     </Row>
      </div>

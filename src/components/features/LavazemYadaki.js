@@ -127,7 +127,7 @@ console.log(product)
         </p>
             </Col>
             <Col md={6}>
-            <Khadamat5/>
+            <Khadamat5 className="wRes100"/>
           </Col>
         </Row>
 

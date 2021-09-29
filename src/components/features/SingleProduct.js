@@ -1,4 +1,7 @@
 import React,{useEffect,useState} from 'react'
+import ReactStars from "react-rating-stars-component";
+
+
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -6,7 +9,7 @@ import IconRow from './layouts/IconRow'
 import Footer from './layouts/Footer'
 import ImageGallery from 'react-image-gallery';
 import {Container,Row,Col,Button, Table} from 'react-bootstrap'
-import { FaRegStar, FaStar, FaAlignRight} from 'react-icons/fa';
+import { FaRegStar, FaStar, FaAlignRight,FaStarHalfAlt} from 'react-icons/fa';
 import Select from "react-dropdown-select";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ReactDOM from 'react-dom';
@@ -48,6 +51,21 @@ import { Link, useHistory,useParams } from "react-router-dom";
 
 
   const SingleProduct=() => {
+    const secondExample = {
+        size: 25,
+        count: 5,
+        color: "#bebebe",
+        activeColor: "#ffb921",
+        value: 2.5,
+        a11y: true,
+        isHalf: true,
+
+        emptyIcon: <FaRegStar/>,
+        halfIcon: <FaStarHalfAlt/>,
+        filledIcon: <FaStar/>,
+        onChange: newValue => {
+          console.log(`Example 2: new value is ${newValue}`);
+        }};
     const images = [];
     const  Colors=[];
     const [product,setProduct]=useState([])
@@ -58,7 +76,7 @@ import { Link, useHistory,useParams } from "react-router-dom";
     const [property,setProperty]=useState([])
     const [rate,setRate]=useState(0)
     const [rateCount,setRateCount]=useState(0)
-    const [count,setCount]=useState(0)
+    const [count,setCount]=useState(1)
 	const params = useParams().id;
    const increment = () => {
     setCount(count+1)
@@ -888,13 +906,41 @@ null
       <button onClick={openModal} className="openModal">افزودن دیدگاه</button>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
+      className="commentModal"
         style={customStyles}
+
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-        <button onClick={closeModal}>close</button>
+
+        <Row style={{margin:"0px"}}>
+        <Col md={6}>
+        <div className="serviceForm pd0">
+            <div className="cFormDiv3 ta-right">
+           <span>عنوان نظر : </span>
+           <br/>
+           <input placeholder="عنوان نظر خود را اینجا بنویسید" type='text' style={{float:"right !important"}}/>
+            </div>
+            </div>
+        </Col>
+        <Col md={6}>
+        <div className="cFormDiv3 ta-right">
+           <span>امتیاز شما : </span>
+           <ReactStars {...secondExample} className="d-inline-block"/>
+           </div>
+        </Col>
+      </Row>
+      <Row style={{margin:"0px"}}>
+          <Col md={12}>
+          <div className="cFormDiv3 ta-right" style={{margin:"0px !important"}}>
+           <span>متن نظر : </span>
+           <br/>
+           <input placeholder="متن نظر خود را اینجا بنویسید" type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
+            </div>
+          </Col>
+      </Row>
+      <Button className="modalSubmit">ثبت نظر</Button>
+
+        <Button onClick={closeModal} className="closeModal">بستن</Button>
 
 
       </Modal>

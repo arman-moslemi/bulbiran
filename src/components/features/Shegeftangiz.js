@@ -168,7 +168,7 @@ const newest=()=>{
             {product?.map((item, i) => {
   return (
           <>
-                <Col md={2} className="pd0">
+                <Col md={2} xs={6} className="pd0">
               <Link
           to={`/singleProduct/${item.ProductID}`}
         >

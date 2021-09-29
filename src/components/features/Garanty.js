@@ -114,7 +114,7 @@ alert("با موفقیت انجام شد")
             </ul>
           </Col>
           <Col md={6}>
-            <Khadamat3/>
+            <Khadamat3 className="wRes100"/>
           </Col>
         </Row>
         <Row className="mgt20">
@@ -212,17 +212,17 @@ alert("با موفقیت انجام شد")
     </div>
     <div className="whiteBox" style={{paddingTop:'5',paddingRight:'0',paddingLeft:'0'}}>
       <Row>
-        <Col md={1}>
+        <Col md={1} xs={3}>
           <FormIcon/>
         </Col>
-        <Col md={11} className="ta-right pd0">
+        <Col md={11}  xs={9} className="ta-right pd0">
         <p className="gTitle" style={{marginRight:'0',marginTop:'5'}} >فرم درخواست استفاده از گارانتی</p>
       <p className="shortDescription">برای آگاهی از شرایط گارانتی فرم زیر را تکمیل نمایید</p>
         </Col>
         </Row>
         <hr></hr>
         <Row style={{margin:"0"}}>
-          <Col md={5} className="ta-right">
+          <Col md={5} className="ta-right" id="secondOrder">
           <form className="serviceForm">
             <div className="cFormDiv">
            <span>نام و نام خانوادگی</span><FaStar/>
@@ -258,7 +258,7 @@ alert("با موفقیت انجام شد")
           </form>
 
           </Col>
-          <Col md={7} className="ta-center">
+          <Col md={7} className="ta-center" id="firstOrder">
             <img src={MailForm} className="w90"/>
           </Col>
         </Row>

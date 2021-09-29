@@ -91,12 +91,12 @@ console.log(error);
         <TopBar/>
         <Header/>
       <Container fluid className="bulbiranContainer">
-        <IndoorSlider img1={img1}img2={img2}/>
+        <IndoorSlider img1={img1}img2={img2} className="heightResCustom"/>
         <Row style={{margin:"0px"}}>
         {product?.map((item, i) => {
   return (
           <>
-        <Col md={4}>
+        <Col md={4} xs={6} className="pdResCustom">
        <div className="miniBox">
           <img className="w100" src={apiAsset+item.Photo}/>
           <div className="indoorBox">

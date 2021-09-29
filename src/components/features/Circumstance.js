@@ -53,7 +53,7 @@ const Circumstance = () => {
                 </p>
             </Col>
             <Col md={4}>
-            <CircumstanceB/>
+            <CircumstanceB className="resW100"/>
             </Col>
         </Row>
     </div>
@@ -65,210 +65,235 @@ const Circumstance = () => {
 
     <div className="brandShopBox">
    <Row className="t1">
-   <Link
+ 
+       <Col md={2} xs={4} className="ta-center">
+       <Link
           to={`/CircumstanceSecond/4`}
         >
-       <Col md={2} className="ta-center">
            <div className="cBox">
               <C1/>
                <p>تعمیرگاه</p>
            </div>
-       </Col>
-       </Link>
-       <Link
+       </Link> </Col>
+      
+      
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/5`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C2/>
                <p>کسب و کار کوچک</p>
            </div>
-           </Col>
-         </Link>
-       <Link
+              </Link> </Col>
+     
+   
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/6`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C3/>
                <p>مذهبی</p>
            </div>
+           </Link>
        </Col>
-       </Link>
+       
 
-       <Link
+     
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/7`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C4/>
                <p>مراکز درمانی</p>
            </div>
+           </Link>
          </Col>
-         </Link>
-       <Link
+        
+   
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/8`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C5/>
                <p>آموزش</p>
            </div>
+           </Link>
          </Col>
-         </Link>
-       <Link
+      
+      
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/9`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C6/>
                <p>رستوران</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link></Col>
+    
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/10`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C7/>
                <p>انبار</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link> </Col>
+     
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/11`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C8/>
                <p>ساخت و ساز</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link></Col>
+    
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/12`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C9/>
                <p>مشاوره مسکن</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link> </Col>
+      
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/13`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C10/>
                <p>هتل</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link></Col>
+   
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/14`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C11/>
                <p>خرده فروشی</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link></Col>
+  
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/15`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C12/>
-               <p>تنمای ساختمان</p>
+               <p>نمای ساختمان</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link></Col>
+       
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/16`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C13/>
                <p>فروشگاه و پاساژ</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link>   </Col>
+    
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/17`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C14/>
                <p>اداره</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link>    </Col>
+       
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/18`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C15/>
                <p>استخر</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link> </Col>
+    
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/19`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C16/>
                <p>پالایشگاه</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link></Col>
+     
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/20`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C17/>
                <p>پارک و باغ</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link> </Col>
+      
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/21`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C18/>
                <p>کارخانه</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link> </Col>
+      
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/22`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C19/>
                <p>دام و طیور</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link> </Col>
+     
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/23`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C20/>
                <p>گلخانه</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link> </Col>
+     
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/24`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C21/>
                <p>تبلیغات</p>
            </div>
-         </Col></Link>
-       <Link
+           </Link></Col>
+     
+          <Col md={2} xs={4} className="ta-center">
+          <Link
           to={`/CircumstanceSecond/25`}
         >
-          <Col md={2} className="ta-center">
            <div className="cBox">
               <C22/>
                <p>خیابان</p>
            </div>
-         </Col></Link>
+           </Link>  </Col>
 
    </Row>
    </div>
