@@ -42,12 +42,12 @@ console.log(data)
 })
 }
            </Row>
-            <Row className="factorRow">
+            {/* <Row className="factorRow">
                 <Col md={12} className="ta-left">
                     <Button className="factorBTN">مشاهده فاکتور</Button>
                 </Col>
 
-            </Row>
+            </Row> */}
         </div>
 
 

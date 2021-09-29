@@ -108,7 +108,7 @@ data?.map((item, i) => {
 }
 
     </Slider>
-    <Slider {...settings2} className="amazingSlider">
+    <Slider {...settings2} className="amazingSlider desktopNone">
           {
 
 data?.map((item, i) => {
@@ -190,8 +190,8 @@ data?.map((item, i) => {
 }
 
     </Slider>
- 
- 
+
+
  </>
  );
 }

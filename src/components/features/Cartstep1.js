@@ -38,8 +38,9 @@ const CartStep1=() => {
         // references are now sync'd and can be accessed.
         subtitle.style.color = '#f00';
       }
-  
+
       function closeModal() {
+        // InserAddress();
         setIsOpen(false);
       }
     const [count,setCount]=useState(0)
@@ -47,6 +48,10 @@ const CartStep1=() => {
     const [product,setProduct]=useState([])
     const [userdata,setUserData]=useState([])
     const [total,setTotal]=useState(0)
+    const [address,setAddress]=useState('')
+    const [name,setName]=useState('')
+    const [phone,setPhone]=useState('')
+    const [codeposti,setCodePosti]=useState('')
     const history = useHistory();
 
    const increment = (id,num) => {
@@ -69,11 +74,17 @@ console.log(params)
             if (response.data.result == "true") {
 var ss=0
                 setProduct(response.data.Data)
+                console.log(4156)
+                console.log(response.data.Data)
                 response.data.Data?.map((item, i) => {
-
+                  setAddress(item?.Address)
+                  setPhone(item?.Phone)
+setCodePosti(item?.CodePosti)
+setName(item?.Name)
 ss+=(item.Cost*item.Number)
                 })
                 setTotal(ss)
+
                 }
           else{
             console.log(response.data.result)
@@ -160,6 +171,96 @@ else{
             })
                                 setTotal(ss)
              alert("محصول با موفقیت حذف شد.")
+
+}})
+          .catch(function (error) {
+            console.log(error);
+          });
+        }
+      }
+
+      const DeleteAddress=(id)=>{
+        const axios = require("axios");
+        const UserID= localStorage.getItem("user_id");
+        console.log(22)
+        console.log(UserID)
+               if(UserID==null ||UserID=="" ){
+alert("ابتدا وارد شوید")               }
+else{
+    console.log(55)
+
+
+          axios.post(apiUrl + "DeleteAddressBasket",{CustomerID:UserID})
+        //   .get(apiUrl + "Blog")
+          .then(function (response) {
+              console.log(475)
+              console.log(response)
+            if (response.data.result == "true") {
+             console.log(44)
+             console.log(response.data.result)
+             console.log(response.data.Data)
+             setAddress("")
+             setPhone("")
+setCodePosti("")
+setName("")
+             setProduct(response.data?.Data)
+
+
+}})
+          .catch(function (error) {
+            console.log(error);
+          });
+        }
+      }
+      const InsertAddress=()=>{
+        const axios = require("axios");
+        const UserID= localStorage.getItem("user_id");
+
+
+    console.log(55)
+
+
+          axios.post(apiUrl + "InsertAddressBasket",{CustomerID:UserID,Address:address,Name:name,Phone:phone,CodePosti:codeposti})
+        //   .get(apiUrl + "Blog")
+          .then(function (response) {
+              console.log(475)
+              console.log(response)
+            if (response.data.result == "true") {
+             console.log(44)
+             console.log(response.data.result)
+             alert("آدرس با موفقیت ثبت شد")
+
+
+}})
+          .catch(function (error) {
+            console.log(error);
+          });
+
+      }
+
+      const InsertFactor=(id,num)=>{
+        const axios = require("axios");
+        const UserID= localStorage.getItem("user_id");
+        console.log(22)
+        console.log(UserID)
+               if(address==null ||address=="" ){
+alert("آدرس را وارد نمایید")               }
+else{
+    console.log(55)
+
+
+          axios.post(apiUrl + "InsertFactor",{CustomerID:UserID})
+        //   .get(apiUrl + "Blog")
+          .then(function (response) {
+              console.log(475)
+              console.log(response)
+            if (response.data.result == "true") {
+             console.log(99)
+             console.log(response.data.result)
+             console.log(response.data.result)
+
+             alert(response.data.FactorNum+"محصولات با موفقیت به فاکتور اضافه شد.منظر تائید بمانید شماره فاکتور")
+             history.push("/userpanel/"+UserID)
 
 }})
           .catch(function (error) {
@@ -278,68 +379,74 @@ console.log(UserID)
           */}
             </div>
         </div>
+
         <div className="tableWhiteBox" style={{marginTop:"40px"}}>
             <h3 className="ersalWay">انتخاب آدرس</h3>
 
             <div className="eAddBox">
+            {
+                       address ?
 
-                {userdata.Address?
             <div className="pardazeshBox">
                   <Row style={{margin:"0px",padding:"15px"}}>
                 <Col md={9}>
-                    <p className="uAddress ta-right">{userdata.Address}</p>
+                    <p className="uAddress ta-right">{address}</p>
                 </Col>
                 <Col md={3} className="ta-left">
-                <Button className="factorBTN">ویرایش آدرس</Button>
-                <Button className="factorBTN" id="dAddress">حذف</Button>
+                <Button onClick={openModal} className="factorBTN">ویرایش آدرس</Button>
+                <Button onClick={()=>DeleteAddress()} className="factorBTN" id="dAddress">حذف</Button>
 
                 </Col>
             </Row>
             <Row style={{margin:"0px",padding:"15px"}}>
                 <Col md={4} className="ta-right">
-                    <p className="adddetail">کد پستی : 1669148569</p>
+                    <p className="adddetail">کد پستی : {codeposti}</p>
                 </Col>
                 <Col md={4} className="ta-center">
-                <p className="adddetail">نام گیرنده : {userdata.NameFamily}</p>
+                <p className="adddetail">نام گیرنده : {name}</p>
                     </Col>
                     <Col md={4} className="ta-left">
-                    <p className="adddetail">شماره تماس گیرنده : {userdata.Mobile}</p>
+                    <p className="adddetail">شماره تماس گیرنده : {phone}</p>
                     </Col>
                 </Row>
 
       </div>
-                :
-                null
-                }
 
+:
+null}
       <Row style={{margin:"0px",padding:"15px"}}>
                    <Col md={12} className="ta-left">
-                   <Button className="addressadd" onClick={openModal} >+ افزودن آدرس جدید</Button>
+                     {
+                       !address?
+                       <Button className="addressadd" onClick={openModal} >+ افزودن آدرس جدید</Button>
+                       :
+                       null
+                     }
                 <Modal
         isOpen={modalIsOpen}
       className="commentModal"
         style={customStyles}
-       
+
         contentLabel="Example Modal"
       >
- 
+
  <Row style={{margin:"0px"}}>
         <Col md={6}>
         <div className="serviceForm pd0">
             <div className="cFormDiv3 ta-right">
            <span>کد پستی : </span>
-           
-           <input placeholder="کد پستی خود را وارد کنید" type='text' style={{float:"right !important"}}/>
+
+           <input onChange={(event)=>setCodePosti(event.target.value)} value={codeposti} placeholder="کد پستی خود را وارد کنید" type='text' style={{float:"right !important"}}/>
             </div>
             </div>
         </Col>
-       
+
         <Col md={6}>
         <div className="serviceForm pd0">
             <div className="cFormDiv3 ta-right">
            <span>شماره تماس : </span>
-      
-           <input placeholder="شماره تماس را وارد کنید" type='text' style={{float:"right !important"}}/>
+
+           <input  onChange={(event)=>setPhone(event.target.value)} value={phone} placeholder="شماره تماس را وارد کنید" type='text' style={{float:"right !important"}}/>
             </div>
             </div>
         </Col>
@@ -347,8 +454,8 @@ console.log(UserID)
         <div className="serviceForm pd0">
             <div className="cFormDiv3 ta-right"  style={{marginTop:"20px"}}>
            <span>نام تحویل گیرنده : </span>
-         
-           <input placeholder="نام تحویل گیرنده را وارد کنید" type='text' style={{float:"right !important"}}/>
+
+           <input onChange={(event)=>setName(event.target.value)} value={name} placeholder="نام تحویل گیرنده را وارد کنید" type='text' style={{float:"right !important"}}/>
             </div>
             </div>
         </Col>
@@ -358,17 +465,17 @@ console.log(UserID)
           <div className="cFormDiv3 ta-right" style={{margin:"20px !important"}}>
            <span style={{margin:"20px !important"}}>آدرس خود را وارد کنید : </span>
            <br/>
-           <input placeholder="آدرس ..." type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
+           <input onChange={(event)=>setAddress(event.target.value)} value={address} placeholder="آدرس ..." type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
             </div>
           </Col>
       </Row>
-      <Button className="modalSubmit">افزودن آدرس</Button>
+      <Button onClick={()=>InsertAddress()} className="modalSubmit">افزودن آدرس</Button>
 
         <Button onClick={closeModal} className="closeModal">بستن</Button>
 
 
       </Modal>
-   
+
                    </Col>
                     </Row>
             </div>
@@ -433,7 +540,7 @@ console.log(UserID)
                             {total} تومان
                             </span>
                         </div>
-                        <Button className="addToCart">
+                        <Button onClick={()=>InsertFactor()} className="addToCart">
                             ادامه فرایند خرید
                         </Button>
                     </div>

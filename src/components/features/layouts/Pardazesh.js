@@ -66,6 +66,10 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
                     <p className="pricePish">
                         {item.Cost} تومان
                     </p>
+                    <br/>
+                    <p>شماره فاکتور : {item.FactorNumber}</p>
+                    <br/>
+                    <p>تعداد : {item.Number}</p>
 
                 </Col>
             </Row>

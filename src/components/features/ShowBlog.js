@@ -11,7 +11,7 @@ import H from './assets/img/h.jpg';
 import { FaAngleLeft,FaAlignRight ,FaCheck ,FaTimes,FaAngleDoubleLeft,FaRegClock} from 'react-icons/fa';
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import { Link, useHistory,useParams } from "react-router-dom";
-
+import Parser from 'html-react-parser';
 
 const ShowBlog=() =>{
     const [product,setProduct]=useState([])
@@ -146,7 +146,7 @@ console.log(role)
                     <Col md={12}>
                         <img src={apiAsset+blog.Pic} className="blogImg1"/>
                         <p className="blogText">
-                      {blog.Text}
+                      {Parser(blog.Text)}
                         </p>
                         {/* <p className="blogText">
                         این گیاه با ساقه‌های محکم و برگ‌های براق و زیبا یکی از گیاهان آپارتمانی محبوب و نسبتا مقاوم است. اگر پنجره‌ای رو به آفتاب دارید یا مثل خانه‌های قدیمی فضایی شبیه گلخانه دارید، این گیاه را می‌توانید بدون دردسر نگهداری کنید. کراسولا هر روز به حداقل ۴ ساعت نور آفتاب نیاز دارد در نتیجه پنجره‌ی روبه‌جنوب برای آن مناسب است. در ضمن کراسولا نوعی گیاه ساکولنت یا گیاه گوشتی است یعنی در برگ‌ها یا ساقه‌های خود می‌تواند آب را ذخیره کند. به همین‌ خاطر در برابر خشکی هم تحمل بالایی دارد.

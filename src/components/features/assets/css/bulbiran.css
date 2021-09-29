@@ -3813,7 +3813,10 @@ display: block;
   margin-right: auto !important;
   margin-left: auto !important;
   display: block;
-  
+
+}
+.desktopNone{
+  display: none;
 }
 @media only screen and (max-width: 768px) {
   /* For Tablet */
@@ -3826,6 +3829,15 @@ display: block;
 }
 @media only screen and (max-width: 414px) {
   /* For Mobile: */
+  .desktopNone{
+    display:block !important;
+  }
+  .bigSlider{
+    margin-bottom: 15px !important;
+  }
+  .sliderCard{
+    width: 90% !important;
+  }
  .gray-row {
    display: none !important;
  }
@@ -3842,7 +3854,7 @@ display: block;
     background-repeat: no-repeat;
     margin-right: 0px !important;
     margin-left: 0px !important;
- 
+
 }
 .heroBanner .col-md-10{
   padding: 0px !important;
@@ -3922,7 +3934,7 @@ padding: 2px !important;
 .centerSearch2{
   width:107px !important;
   height: auto !important;
-  
+
 }
 .centerSearch2 .cInput {
   height: 45px !important;
@@ -4013,8 +4025,8 @@ padding: 5px !important;
   width:75% !important;
 }
 .whiteBand {
- 
- 
+
+
   width: 380px !important;
   overflow-x: auto;
   white-space: nowrap;
@@ -4286,7 +4298,7 @@ border-bottom: none !important;
   font-size: 16px !important;
 }
 .poshtibaniDescription {
-  
+
   line-height: 2.5rem !important;
   font-size: 12px !important;
 }

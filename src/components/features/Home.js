@@ -49,12 +49,40 @@ import BulbsImg from './assets/img/bulbs.png';
 import ProductSlider from './layouts/Productslider';
 import BrandSlider from './layouts/BrandSlider';
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+import { SettingsBackupRestoreRounded } from '@material-ui/icons';
 
 const options=[
-  'نورلامپ',
-  'شکل لامپ'
+
+    {value:1,label:'نوع یک'},
+    {value:2,label:'نوع دو'},
+    {value:3,label:'نوع سه'},
+    {value:4,label:'نوع چهار'},
+    {value:5,label:'نوع پنج'},
+    {value:6,label:'نوع شش'},
+    {value:7,label:'نوع هفت'},
+    {value:8,label:'نوع هشت'},
+
+
 ]
 const defaultOption = options[0];
+const optionsBase=[
+
+  {value:1,label:'پایه یک'},
+  {value:2,label:'پایه دو'},
+  {value:3,label:'پایه سه'},
+  {value:4,label:'پایه چهار'},
+  {value:5,label:'پایه پنج'}
+
+]
+const defaultOptionBase = optionsBase[0];
+const optionsColor=[
+
+  {value:1,label:'مهتابی'},
+  {value:2,label:'آفتابی'},
+
+
+]
+const defaultOptionColor = optionsColor[0];
 const Home = () => {
 const [img1,setimg1]=useState('')
 const [img2,setimg2]=useState('')
@@ -66,6 +94,15 @@ const [brand,setBrand]=useState([])
 const [product,setProduct]=useState([])
 
 const [amazing,setAmazing]=useState([])
+
+
+const [base,setBase]=useState(0)
+    const [tech,setTech]=useState(0)
+    const [type,setType]=useState(0)
+    const [color,setColor]=useState(0)
+    const [light,setLight]=useState(0)
+    const [count,setCount]=useState(0)
+    const [hobab,setHobab]=useState(0)
 const mainSlider=()=>{
   const axios = require("axios");
   axios
@@ -223,7 +260,7 @@ console.log(error);
       <LedButton className="d-block ledbuttonIcon"></LedButton>
       <Button onClick={()=>  history.push("/GreenShop")} className="ledButton d-block">فروشگاه سبز</Button>
       </Col>
-    
+
       </Row>
       <Row className="mgt20">
         <Col md={8} className="pdl0">
@@ -315,14 +352,14 @@ console.log(error);
                     );
 
             })
-          } 
-        
+          }
+
         </Col>
       </Row>
       <Row className="disNone">
         <Col xs={12} className="ta-center">
         <Button className="readMoreBtn" onClick={()=>  history.push("/brandshop")}>بازار روشنایی</Button>
-       
+
         </Col>
       </Row>
     </div>
@@ -336,6 +373,18 @@ console.log(error);
       <Col md={9} className="pd0">
       <div className="centerSearch">
       <div className="centerSearch2">
+      <Dropdown className="cInput mgt10" options={options} onChange={(event)=>setType(event.value)}  placeholder="نوع" />
+
+      </div>
+     <div className="centerSearch2">
+      <Dropdown className="cInput mgt10" options={optionsBase} onChange={(event)=>setBase(event.value)} placeholder="پایه" />
+
+      </div>
+      <div className="centerSearch2">
+      <Dropdown className="cInput mgt10" options={optionsColor} onChange={(event)=>setColor(event.value)} placeholder="رنگ" />
+
+      </div>
+      {/* <div className="centerSearch2">
       <Dropdown className="cInput mgt10" options={options} value={defaultOption} placeholder="Select an option" />
 
       </div>
@@ -346,24 +395,12 @@ console.log(error);
       <div className="centerSearch2">
       <Dropdown className="cInput mgt10" options={options} value={defaultOption} placeholder="Select an option" />
 
-      </div>
-      <div className="centerSearch2">
-      <Dropdown className="cInput mgt10" options={options} value={defaultOption} placeholder="Select an option" />
-
-      </div>
-      <div className="centerSearch2">
-      <Dropdown className="cInput mgt10" options={options} value={defaultOption} placeholder="Select an option" />
-
-      </div>
-      <div className="centerSearch2">
-      <Dropdown className="cInput mgt10" options={options} value={defaultOption} placeholder="Select an option" />
-
-      </div>
+      </div> */}
       </div>
       </Col>
       <Col md={2} className="pd0">
       <div className="searchIBtn">
-        <Button className="searchIBtn2" onClick={()=>  history.push("/searchresult")}>جستجو</Button>
+        <Button className="searchIBtn2" onClick={()=>  history.push("/searchresultFinder/"+base+"/"+type+"/"+tech+"/"+color+"/"+light+"/"+hobab)}> جستجو سریع</Button>
       </div>
       </Col>
     </Row>
@@ -411,9 +448,9 @@ console.log(error);
     <Row>
       <Col md={3}>
       <div className="innerSlider ta-center">
-        <p>محصولات شگفت انگیز بالبیران</p>
-        <img src={BulbsImg}/>
-        <Button onClick={()=>  history.push("/Shegeftangiz")}>
+        <p >محصولات شگفت انگیز بالبیران</p>
+        <img src={BulbsImg} className="responsiveNone"/>
+        <Button onClick={()=>  history.push("/Shegeftangiz")} style={{marginBottom:"10px"}}>
           مشاهده ی همه
           <FaAngleLeft/>
         </Button>

@@ -40,9 +40,9 @@ const Footer = () => {
                  </Col>
             {/* <Col md={2} className="ta-right">
 =======
-               
-               
-                 </Col> 
+
+
+                 </Col>
             <Col md={2} xs={6} className="ta-right">
 >>>>>>> 6873bfcd9d3b18744d9751ba8eca75d9f7b5386e
             <p className="footerTitle">فروشگاه بالبیران</p>
@@ -98,7 +98,7 @@ const Footer = () => {
 <<<<<<< HEAD
                  </Col>  */}
             <Col md={2} className="ta-right">
-                 </Col> 
+                 </Col>
             <Col md={2} xs={6} className="ta-right">
             <p className="footerTitle">مجله بالبیران</p>
                     <ul className="footerList">
