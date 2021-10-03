@@ -12,17 +12,17 @@ const Header = () => {
       <>
       <Container fluid className="menuContainer">
         <Row className="menuBar">
-        <Col md={2} className="pd0">
+        <Col md={2} xs={6} className="pd0" id="firstOrder">
         <img src={Logo} className="logo"/>
 
         </Col>
-        <Col md={5}>
+        <Col md={5} xs={12} id="thirdOrder">
             <SearchBar></SearchBar>
         </Col>
         <Col md={2}>
-          <FaMapMarkerAlt color="#ffd200" fontSize="2rem"/>
+          <FaMapMarkerAlt color="#ffd200" fontSize="2rem" style={{display:"none"}}/>
         </Col>
-        <Col md={3}>
+        <Col md={3} xs={6} id="secondOrder">
       <p className="number-menu">021-33904900</p>
       <p className="number-detail">هر روز به جز ایام تعطیل</p>
 

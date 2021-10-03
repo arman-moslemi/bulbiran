@@ -37,6 +37,8 @@ body{
 p{
     font-family: 'IRANYekan-Medium';
 }
+
+
 .alert-row{
     background-color: #003586;
     height: auto;
@@ -3820,14 +3822,10 @@ display: block;
 }
 @media only screen and (max-width: 768px) {
   /* For Tablet */
- .menuContainer {
-   display: none;
- }
- .gray-row {
-  display: none !important;
-}
+
 }
 @media only screen and (max-width: 414px) {
+
   /* For Mobile: */
   .desktopNone{
     display:block !important;
@@ -3838,13 +3836,16 @@ display: block;
   .sliderCard{
     width: 90% !important;
   }
- .gray-row {
+ .topbar-btn p{
    display: none !important;
  }
- .menuContainer {
-   display: none;
+ .topbar-btn{
+   padding: 0px !important;
+   margin:5px !important;
  }
-
+ .gray-row{
+   padding: 10px 0% !important;
+ }
 .heroBanner {
   background-image: url('../img/herobanner-responsive.png') !important;
     height: auto !important;
@@ -3991,7 +3992,9 @@ color: #142b6f !important;
   text-align: center !important;
 }
 .emailBox{
-  width:100% !important;
+  width: 100% !important;
+  padding: 6px;
+  margin-bottom: 10px;
 }
 .mobileInput{
   width: 64% !important;
@@ -4152,6 +4155,9 @@ padding: 5px !important;
 }
 #secondOrder{
   order:2 !important;
+}
+#thirdOrder{
+  order:3 !important;
 }
 .servicesButton{
   width:100% !important;
@@ -4326,5 +4332,140 @@ height: 50px !important;
 .uAddress{
   font-family: 'IRANYekan-Bold' !important;
   font-size: 12px !important;
+}
+.container-fluid{
+  padding: 0px !important;
+}
+.row{
+  margin-right:0px;
+  margin-left: 0px;
+}
+.number-menu{
+  font-size: 15px !important;
+}
+.number-detail{
+  font-size: 12px !important;
+  margin-left: 0px !important;
+}
+.menuBar {
+  padding: 0px 0px 15px 0px !important;
+}
+.search-bar{
+  margin-right: 0px !important;
+}
+.resMen{
+  display: inline-block !important;
+  width: 150px;
+}
+.y9{
+  height: auto;
+  width: 100%;
+  overflow: auto;
+  white-space: nowrap;
+  padding:10px;
+}
+.menuContainer{
+  height: auto !important;
+}
+small {
+  display: block;
+}
+nav .navbar-collapse {
+  position: fixed;
+  top: 0px;
+  z-index: 10000;
+  background: #142b6f;
+  right: -100%;
+  width: 70vw;
+  height: 100vh;
+  display: block;
+  transition: right 0.3s ease;
+}
+
+nav .navbar-collapse.show {
+  right: 0;
+}
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: right;
+  justify-content: right;
+  padding: .5rem 1rem;
+}
+.closeNav .navbar-toggler-icon{
+background-image:url("../icons/close.png") !important;
+}
+.closeNav{
+  text-align: right !important;
+  border:none !important;
+}
+.myPd{
+  padding: 20px;
+}
+.navbar-nav .nav-link {
+  padding-right: 0;
+  padding-left: 0;
+  font-family: 'IRANYekan-Bold';
+  color: #fff !important;
+  text-align: right;
+  padding: 5px 10px;
+  font-size: 15px;
+}
+.nav-item .dropdown-menu{
+
+
+
+list-style: none;
+background-color: transparent !important;
+background-clip: none !important;
+
+border-radius: .25rem;
+box-shadow: none !important;
+border: none !important;
+text-align: right !important;
+color: #fff !important;
+padding-right: 15px;
+}
+.nav-item .dropdown-menu .dropdown-item{
+  color:#fff !important;
+  font-family: 'IRANYekan-Bold' !important;
+}
+.nav-item .dropdown-toggle {
+  font-size: 13px !important;
+}
+.bigSlider{
+  height: 92% !important;
+}
+.navbar{
+  margin-bottom: 0px !important;
+}
+.grayBox2{
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+.ruleImg{
+  display: block;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+.whiteBox{
+  margin-bottom: 15px;
+}
+.contactTitle{
+  font-family: 'IRANYekan-Bold' !important;
+  font-size: 18px !important;
+}
+.boldText{
+  font-size: 15px !important;
+}
+.contactText{
+  font-size: 13px !important;
+}
+.contactDescription{
+  font-size: 13px !important;
+}
+.projectImg{
+  height: 100px !important;
 }
 }

@@ -23,7 +23,7 @@ const ForgetPassword = () => {
       <Container fluid className="bulbiranContainer"> 
       <div className="whiteBox pd0 loginBox">
     <Row>
-        <Col md={6}>
+        <Col md={6}  id="secondOrder">
         <div className="lBox ta-center">
           <h4 className="w100">فراموشی رمز عبور</h4>
 
@@ -59,8 +59,8 @@ const ForgetPassword = () => {
         </div>
         </div>
         </Col>
-        <Col md={6} className="colBackground ta-center">
-            <ForgetPassSvg/>
+        <Col md={6} className="colBackground ta-center"  id="firstOrder">
+            <ForgetPassSvg className="wRes85"/>
             </Col>
     </Row>
      </div>

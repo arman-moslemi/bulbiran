@@ -37,7 +37,7 @@ export default function SimpleMap(){
                 بالبیران اولین مرکز روشنایی در ایران</p>
             </Col>
             <Col md={6}>
-                <Contact/>
+                <Contact className="wRes85 ruleImg"/>
             </Col>
         </Row>
     </div>

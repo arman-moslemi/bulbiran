@@ -1,4 +1,5 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,ReactDOM} from 'react'
+import { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/bulbiran.css'
 import { Link, useHistory } from "react-router-dom";
@@ -32,7 +33,7 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 
 
 import { required } from 'glamor';
-
+import ResponsiveMenu from '../layouts/ResponsiveMenu';
 const Menu = () => {
     const history = useHistory();
     const [pic,setpic]=useState(Lamp)
@@ -1312,8 +1313,9 @@ const Menu = () => {
     return (
       <>
       <Container fluid>
-          <Row className="menu-row">
-              <Col md="auto" className="ta-center flex-1">
+         
+         <Row className="menu-row responsiveNone">
+              <Col md="auto" xs="2" className="ta-center flex-1">
               {/*  */}
       <Dropdown>
         <Dropdown.Toggle className="menuDropDown">
@@ -1332,7 +1334,7 @@ const Menu = () => {
         </Dropdown>
 
               </Col>
-              <Col md="auto" className="ta-center flex-1">
+              <Col md="auto" xs="2" className="ta-center flex-1">
               <Dropdown>
         <Dropdown.Toggle className="menuDropDown">
         <p className="menu-items d-inline-block">بازار روشنایی</p>
@@ -1414,7 +1416,7 @@ brand?.map((item, i) => {
         </Dropdown>
 
              </Col>
-              <Col md="auto" className="ta-center flex-1">
+              <Col md="auto" xs="2" className="ta-center flex-1">
               <Dropdown>
         <Dropdown.Toggle className="menuDropDown">
         <p className="menu-items d-inline-block">فروشگاه سبز</p>
@@ -1432,7 +1434,7 @@ brand?.map((item, i) => {
         </Dropdown>
 
              </Col>
-              <Col md="auto" className="ta-center flex-1">
+              <Col md="auto" xs="2" className="ta-center flex-1">
               <Dropdown>
         <Dropdown.Toggle className="menuDropDown">
         <p className="menu-items d-inline-block">لامپ یاب</p>
@@ -1497,7 +1499,7 @@ brand?.map((item, i) => {
         </Row>
         </Dropdown.Menu>
         </Dropdown> </Col>
-              <Col md="auto" className="ta-center flex-1">
+              <Col md="auto"  xs="2" className="ta-center flex-1">
               <Dropdown>
         <Dropdown.Toggle className="menuDropDown">
         <p className="menu-items d-inline-block">خدمات بالبیران</p>
@@ -1519,7 +1521,7 @@ brand?.map((item, i) => {
         </Dropdown.Menu>
         </Dropdown>
              </Col>
-              <Col md="auto" className="ta-center flex-1">
+              <Col md="auto" xs="2" className="ta-center flex-1">
               <Dropdown>
   <Dropdown.Toggle className="menuDropDown">
   <p className="menu-items d-inline-block">مجله بالبیران</p>
@@ -1541,7 +1543,7 @@ brand?.map((item, i) => {
   </Dropdown.Menu>
 </Dropdown>
               </Col>
-              <Col md="auto" className="ta-center flex-1">
+              <Col md="auto" xs="2"  className="ta-center flex-1">
               <Dropdown>
   <Dropdown.Toggle className="menuDropDown">
   <p className="menu-items d-inline-block">پیشنهادات بالبیران</p>
@@ -1558,7 +1560,7 @@ brand?.map((item, i) => {
     </Dropdown>
 
               </Col>
-              <Col md="auto" className="ta-center flex-1">
+              <Col md="auto" xs="2" className="ta-center flex-1">
               <Dropdown>
   <Dropdown.Toggle className="menuDropDown">
   <p className="menu-items d-inline-block">استعلام قیمت</p>
@@ -1573,7 +1575,14 @@ brand?.map((item, i) => {
     </Dropdown>
             </Col>
           </Row>
+         
+     
       </Container>
+   
       </>
-    );};
+    
+    );
+  
+   
+};
     export default Menu

@@ -26,7 +26,7 @@ const Rules = () => {
            
             </Col>
             <Col md={5} className="ta-left">
-                <RulesSvg/>
+                <RulesSvg className="wRes85 ruleImg"/>
             </Col>
         </Row>
         <Row>
