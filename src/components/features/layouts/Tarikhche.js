@@ -20,11 +20,11 @@ console.log(data)
             <Row className="topRow">
                 <Col md={6} className="ta-right">
                 <span className="sefareshDate">
-                    تاریخ ثبت سفارش : {item[i].Date}
+                    تاریخ ثبت سفارش : {item[i]?.Date}
                 </span>
                 </Col>
                 <Col md={6} className="ta-left">
-                <p className="pardazeshPrice">مبلغ کل : {item[i].TotalCost} تومان</p>
+                <p className="pardazeshPrice">مبلغ کل : {item[i]?.TotalCost} تومان</p>
 
                 </Col>
             </Row>

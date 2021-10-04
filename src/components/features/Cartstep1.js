@@ -54,13 +54,15 @@ const CartStep1=() => {
     const [codeposti,setCodePosti]=useState('')
     const history = useHistory();
 
-   const increment = (id,num) => {
-    InserBasket(id,num+1)
+   const increment = (id,num,cc) => {
+     console.log(471)
+     console.log(id)
+    InserBasket(id,num+1,cc)
 
       }
 
-      const   decrement = (id,num) => {
-        InserBasket(id,num-1)
+      const   decrement = (id,num,cc) => {
+        InserBasket(id,num-1,cc)
 
       }
 
@@ -108,7 +110,7 @@ ss+=(item.Cost*item.Number)
         console.log(error);
       });
       }
-      const InserBasket=(id,num)=>{
+      const InserBasket=(id,num,cost)=>{
         const axios = require("axios");
         const UserID= localStorage.getItem("user_id");
         console.log(22)
@@ -118,23 +120,25 @@ alert("ابتدا وارد شوید")               }
 else{
     console.log(55)
 
-    const totals=product.SpecialCost?product.SpecialCost:product.Cost;
-
-          axios.post(apiUrl + "InsertShopBasket",{CustomerID:UserID,ProductID:id,Number:num,Cost:totals})
+    // const totals=product.SpecialCost?product.SpecialCost:product.Cost;
+// console.log(totals)
+          axios.post(apiUrl + "InsertShopBasket",{CustomerID:UserID,ProductID:id,Number:num,Cost:cost})
         //   .get(apiUrl + "Blog")
           .then(function (response) {
               console.log(475)
               console.log(response)
             if (response.data.result == "true") {
              console.log(44)
-             console.log(response.data.result)
+             console.log(response.data.Data)
              setProduct(response.data?.Data)
              var ss=0;
              response.data.Data?.map((item, i) => {
 
                 ss+=(item.Cost*item.Number)
             })
-                                setTotal(ss)
+            console.log(458)
+
+            setTotal(ss)
              alert("محصول با موفقیت به سبد خرید اضافه شد.")
 
 }})
@@ -329,9 +333,9 @@ console.log(UserID)
                     </Col>
                     <Col md={1} className="ta-center pd0">
                     <div className="counterDiv">
-              <button onClick={()=>decrement(item.ProductID,item.Number)} className="decBTN">-</button>
+              <button onClick={()=>decrement(item.ProductID,item.Number,item.Cost)} className="decBTN">-</button>
               <span>{item.Number}</span>
-              <button onClick={()=>increment(item.ProductID,item.Number)} className="inBTN">+</button>
+              <button onClick={()=>increment(item.ProductID,item.Number,item.Cost)} className="inBTN">+</button>
             </div>
                     </Col>
                     <Col md={2} className="ta-center">

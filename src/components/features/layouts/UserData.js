@@ -1,4 +1,4 @@
-import React , {useState,useRef}from 'react'
+import React , {useState,useRef,useEffect}from 'react'
 import {Container,Row,Col,Button, Table} from 'react-bootstrap'
 import { FaRegStar, FaStar, FaAlignRight,FaEye,FaEyeSlash,FaCheck} from 'react-icons/fa';
 import Modal from 'react-modal';
@@ -8,7 +8,7 @@ import 'react-tabs/style/react-tabs.css';
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 
 
-  const UserData=({data}) => {
+  const UserData=({data,par}) => {
     let inputRef = useRef();
     const showIcon = () =><FaEye></FaEye>;
     const hideIcon = () => <FaEyeSlash></FaEyeSlash>;
@@ -26,9 +26,9 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
       // console.log(des)
       // console.log(subject)
       if(pass==passAgain){
-      if(name!=""&&productname!=""&&phone!=""&&pass!=""){
+      if(name!=""&&email!=""&&phone!=""){
         axios
-        .post(apiUrl + "EditCustomerFull",{NameFamily:name,ProductName:productname,Mobile:phone,Email:email,Password:pass})
+        .post(apiUrl + "EditCustomerFull",{NameFamily:name,Mobile:phone,Email:email,Password:pass,CustomerID:par})
     .then(function (response) {
       if (response.data.result == "true") {
           console.log(22)
@@ -58,7 +58,11 @@ else{
 
 }
     }
-
+useEffect(() => {
+  setName(data.NameFamily)
+  setEmail(data.Email)
+  setPhone(data.Mobile)
+}, [])
       return(
 
       <>

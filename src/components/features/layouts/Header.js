@@ -6,6 +6,8 @@ import Menu from './Menu'
 import SearchBar from './SearchBar'
 import Logo from '../assets/img/logo2.png';
 import { FaSearch,FaMapMarkerAlt } from 'react-icons/fa';
+import { Link, useHistory } from "react-router-dom";
+
 const Header = () => {
 
     return (
@@ -13,8 +15,11 @@ const Header = () => {
       <Container fluid className="menuContainer">
         <Row className="menuBar">
         <Col md={2} className="pd0">
+        <Link to={"/"}>
+
         <img src={Logo} className="logo"/>
 
+        </Link>
         </Col>
         <Col md={5}>
             <SearchBar></SearchBar>
