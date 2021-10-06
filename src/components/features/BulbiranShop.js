@@ -158,7 +158,21 @@ const newest=()=>{
       //  check = check.concat(id+",");
       check.push(id+",")
       console.log(check)
+      axios
+      .post(apiUrl + "GetProductPropertyFilter",{id:check.toString()})
+  .then(function (response) {
+    if (response.data.result == "true") {
 
+        setProduct(response.data.Data)
+
+  }
+  else{
+    console.log(response.data.result)
+
+  }})
+  .catch(function (error) {
+    console.log(error);
+  });
    }
    else{
     // setPropertySel(propertySel.filter(c => c != id));
@@ -169,12 +183,15 @@ const newest=()=>{
     })
     if(check.length==0){
       console.log(88)
+      console.log(params)
 
       const axios = require("axios");
 
       axios
-          .get(apiUrl + "CategoryGreenShop/"+params)
+          .get(apiUrl + "CategoryProduct/"+params)
       .then(function (response) {
+        console.log(response)
+
         if (response.data.result == "true") {
 
             setProduct(response.data.Data)
@@ -190,21 +207,7 @@ const newest=()=>{
     }
    }
 
-      axios
-          .post(apiUrl + "GetProductPropertyFilter",{id:check.toString()})
-      .then(function (response) {
-        if (response.data.result == "true") {
 
-            setProduct(response.data.Data)
-
-      }
-      else{
-        console.log(response.data.result)
-
-      }})
-      .catch(function (error) {
-        console.log(error);
-      });
 
   }
 

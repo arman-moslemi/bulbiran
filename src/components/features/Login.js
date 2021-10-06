@@ -33,6 +33,7 @@ const Login = () => {
     console.log(response.data.Data)
     console.log(response.data.Data[0].UserID)
     localStorage.setItem("user_id", response.data.Data[0].CustomerID);
+    localStorage.setItem("user_name", response.data.Data[0].NameFamily);
 // alert("عملیات موفقیت آمیز بود")
 history.push("/userpanel/"+response.data.Data[0].CustomerID)
 

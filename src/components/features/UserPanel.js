@@ -47,12 +47,21 @@ import { PanoramaFishEyeSharp } from '@material-ui/icons'
     };
     let subtitle;
     const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [modalIsOpenEd1, setIsOpenEd1] = React.useState(false);
+    const [modalIsOpenEd2, setIsOpenEd2] = React.useState(false);
     const [modalIsOpen2, setIsOpen2] = React.useState(false);
 
     function openModal() {
       setIsOpen(true);
     }
-    function openModal2() {
+    function openModalEd1() {
+      setIsOpenEd1(true);
+    }
+    function openModalEd2() {
+      setIsOpenEd2(true);
+    }
+    function openModal2(id) {
+       GetSubSupport(id);
       setIsOpen2(true);
     }
 
@@ -64,13 +73,25 @@ import { PanoramaFishEyeSharp } from '@material-ui/icons'
     function closeModal() {
       setIsOpen(false);
     }
+    function closeModalEd1() {
+      setIsOpenEd1(false);
+    }
+    function closeModalEd2() {
+      setIsOpenEd2(false);
+    }
     function closeModal2() {
       setIsOpen2(false);
     }
     const [product,setProduct]=useState([])
     const [support,setSupport]=useState([])
+    const [subSupport,setSubSupport]=useState([])
     const [total,setTotal]=useState(0)
     const [date,setDate]=useState(0)
+    const [address,setAddress]=useState('')
+    const [code,setCode]=useState('')
+    const [textSup,setTextSup]=useState('')
+    const [textSupMain,setTextSupMain]=useState('')
+    const [title,setTitle]=useState('')
     const params = useParams().id;
     const [group,setGroup]=useState([])
     const [userdata,setUserData]=useState([])
@@ -104,7 +125,8 @@ setDate( response.data.Data[0].Date);
           .post(apiUrl + "FactorGroup",{CustomerID:params,Payment:true})
       .then(function (response) {
         if (response.data.result == "true") {
-
+console.log(11)
+console.log(response.data.Data)
             setGroup(response.data.Data)
 
       }
@@ -145,6 +167,128 @@ setDate( response.data.Data[0].Date);
       .catch(function (error) {
         console.log(error);
       });
+      }
+      const GetSubSupport=(id)=>{
+        console.log(777)
+        const axios = require("axios");
+
+
+      axios
+          .post(apiUrl + "GetSubSupport",{SupportID:id})
+      .then(function (response) {
+        if (response.data.result == "true") {
+console.log(1423)
+console.log(response.data.Data)
+            setSubSupport(response.data.Data)
+
+      }
+      else{
+        console.log(response.data.result)
+
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+      }
+      const InsertSubSupport=(supid)=>{
+        const axios = require("axios");
+
+          axios
+              .post(apiUrl + "InsertSubSupport",{CustomerID:params,SupportID:supid,Text:textSup})
+          .then(function (response) {
+            if (response.data.result == "true") {
+              setSubSupport(response.data.Data)
+              closeModal()
+alert("با موفقیت اضافه شد")
+window.location.reload();
+          }
+          else{
+            console.log(response.data.result)
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+
+      }
+      const InsertSupport=()=>{
+        const axios = require("axios");
+
+          axios
+              .post(apiUrl + "InsertSupport",{CustomerID:params,Text:textSupMain,Title:title})
+          .then(function (response) {
+            if (response.data.result == "true") {
+              setSupport(response.data.Data)
+              closeModal()
+alert("با موفقیت اضافه شد")
+// window.location.reload();
+          }
+          else{
+            console.log(response.data.result)
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+
+      }
+      const InsertAddress=()=>{
+        const axios = require("axios");
+
+          axios
+              .post(apiUrl + "InsertAddress",{CustomerID:params,Address:address,CodePosti:code})
+          .then(function (response) {
+            if (response.data.result == "true") {
+              setUserData(response.data.Data)
+              closeModal()
+alert("با موفقیت اضافه شد")
+window.location.reload();
+          }
+          else{
+            console.log(response.data.result)
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+
+      }
+      const DeleteAddress=()=>{
+        const axios = require("axios");
+
+          axios
+              .post(apiUrl + "DeleteAddress",{CustomerID:params})
+          .then(function (response) {
+            if (response.data.result == "true") {
+              setUserData(response.data.Data)
+              closeModal()
+              alert("با موفقیت حذف شد")
+              window.location.reload();
+          }
+          else{
+            console.log(response.data.result)
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+
+      }
+      const DeleteAddress2=()=>{
+        const axios = require("axios");
+
+          axios
+              .post(apiUrl + "DeleteAddress2",{CustomerID:params})
+          .then(function (response) {
+            if (response.data.result == "true") {
+              setUserData(response.data.Data)
+              closeModal()
+              alert("با موفقیت حذف شد")
+              window.location.reload();
+          }
+          else{
+            console.log(response.data.result)
+          }})
+          .catch(function (error) {
+            console.log(error);
+          });
+
       }
       useEffect(() => {
        const UserID= localStorage.getItem("user_id");
@@ -211,7 +355,7 @@ console.log(UserID)
             <Tarikhche data={group}/>
         </TabPanel>
         <TabPanel>
-            <UserData data={userdata}/>
+            <UserData data={userdata}par={params}/>
         </TabPanel>
         <TabPanel>
         <div className="pardazeshBox">
@@ -220,9 +364,13 @@ console.log(UserID)
                     <p className="uAddress ta-right">{userdata.Address}</p>
                 </Col>
                 <Col md={3} className="ta-left">
-                <Button className="factorBTN" onClick={openModal} >ویرایش آدرس</Button>
-                <Modal
-        isOpen={modalIsOpen}
+                {/* <Button className="factorBTN" onClick={openModalEd1} >ویرایش آدرس</Button> */}
+
+                <Button onClick={()=>DeleteAddress()} className="factorBTN" id="dAddress">حذف</Button>
+
+                </Col>
+                {/* <Modal
+        isOpen={modalIsOpenEd1}
       className="commentModal"
         style={customStyles}
 
@@ -235,24 +383,21 @@ console.log(UserID)
           <div className="cFormDiv3 ta-right" style={{margin:"0px !important"}}>
            <span>آدرس خود را وارد کنید : </span>
            <br/>
-           <input placeholder="آدرس ..." type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
+           <input placeholder="آدرس ..." value={userdata.Address} type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
             </div>
           </Col>
       </Row>
       <Button className="modalSubmit">ویرایش آدرس</Button>
 
-        <Button onClick={closeModal} className="closeModal">بستن</Button>
+        <Button onClick={closeModalEd1} className="closeModal">بستن</Button>
 
 
-      </Modal>
+      </Modal> */}
 
-                <Button className="factorBTN" id="dAddress">حذف</Button>
-
-                </Col>
             </Row>
             <Row style={{margin:"0px",padding:"15px"}}>
                 <Col md={4} className="ta-right">
-                    <p className="adddetail">کد پستی : 1669148569</p>
+                    <p className="adddetail">کد پستی : {userdata.CodePosti}</p>
                 </Col>
                 <Col md={4} className="ta-center">
                 <p className="adddetail">نام گیرنده : {userdata.NameFamily}</p>
@@ -263,9 +408,22 @@ console.log(UserID)
                 </Row>
                 <Row style={{margin:"0px",padding:"15px"}}>
                    <Col md={12} className="ta-left">
+                     {userdata.Address2?
 
-                       <Button className="addressadd" onClick={openModal} >+ افزودن آدرس جدید</Button>
-                <Modal
+null
+                    :
+<Button className="addressadd" onClick={openModal} >+ افزودن آدرس جدید</Button>
+                    }
+
+
+                   </Col>
+
+                    </Row>
+
+      </div>
+
+
+      <Modal
         isOpen={modalIsOpen}
       className="commentModal"
         style={customStyles}
@@ -279,64 +437,46 @@ console.log(UserID)
             <div className="cFormDiv3 ta-right">
            <span>کد پستی : </span>
 
-           <input placeholder="کد پستی خود را وارد کنید" type='text' style={{float:"right !important"}}/>
+           <input onChange={(event)=>setCode(event.target.value)} placeholder="کد پستی خود را وارد کنید" type='text' style={{float:"right !important"}}/>
             </div>
             </div>
         </Col>
 
-        <Col md={6}>
-        <div className="serviceForm pd0">
-            <div className="cFormDiv3 ta-right">
-           <span>شماره تماس : </span>
-
-           <input placeholder="شماره تماس را وارد کنید" type='text' style={{float:"right !important"}}/>
-            </div>
-            </div>
-        </Col>
-        <Col md={6} style={{margin:"20px !important"}}>
-        <div className="serviceForm pd0">
-            <div className="cFormDiv3 ta-right"  style={{marginTop:"20px"}}>
-           <span>نام تحویل گیرنده : </span>
-
-           <input placeholder="نام تحویل گیرنده را وارد کنید" type='text' style={{float:"right !important"}}/>
-            </div>
-            </div>
-        </Col>
-        </Row>
+      </Row>
       <Row style={{margin:"0px",marginTop:"20px !important"}}>
           <Col md={12} style={{marginTop:"20px"}}>
           <div className="cFormDiv3 ta-right" style={{margin:"20px !important"}}>
            <span style={{margin:"20px !important"}}>آدرس خود را وارد کنید : </span>
            <br/>
-           <input placeholder="آدرس ..." type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
+           <input onChange={(event)=>setAddress(event.target.value)} placeholder="آدرس ..." type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
             </div>
           </Col>
       </Row>
-      <Button className="modalSubmit">ویرایش آدرس</Button>
+      <Button onClick={()=>InsertAddress()} className="modalSubmit">اضافه کردن آدرس</Button>
 
-        <Button onClick={closeModal} className="closeModal">بستن</Button>
+        <Button onClick={()=>{closeModal()}} className="closeModal">بستن</Button>
 
 
       </Modal>
 
-                   </Col>
-                    </Row>
-      </div>
+
+
+
       {userdata.Address2?
     <div className="pardazeshBox">
             <Row style={{margin:"0px",padding:"15px"}}>
                 <Col md={9}>
-                    <p className="uAddress ta-right">{userdata.Address}</p>
+                    <p className="uAddress ta-right">{userdata.Address2}</p>
                 </Col>
                 <Col md={3} className="ta-left">
-                <Button className="factorBTN">ویرایش آدرس</Button>
-                <Button className="factorBTN" id="dAddress">حذف</Button>
+                {/* <Button className="factorBTN">ویرایش آدرس</Button> */}
+                <Button onClick={()=>DeleteAddress2()} className="factorBTN" id="dAddress">حذف</Button>
 
                 </Col>
             </Row>
             <Row style={{margin:"0px",padding:"15px"}}>
                 <Col md={4} className="ta-right">
-                    <p className="adddetail">کد پستی : 1669148569</p>
+                    <p className="adddetail">کد پستی : {userdata.CodePosti2}</p>
                 </Col>
                 <Col md={4} className="ta-center">
                 <p className="adddetail">نام گیرنده : {userdata.NameFamily}</p>
@@ -345,11 +485,11 @@ console.log(UserID)
                     <p className="adddetail">شماره تماس گیرنده : {userdata.Mobile}</p>
                     </Col>
                 </Row>
-                <Row style={{margin:"0px",padding:"15px"}}>
+                {/* <Row style={{margin:"0px",padding:"15px"}}>
                    <Col md={12} className="ta-left">
                        <Button className="addressadd">+ افزودن آدرس جدید</Button>
                    </Col>
-                    </Row>
+                    </Row> */}
       </div>
 :
 null
@@ -381,7 +521,7 @@ null
             <div className="cFormDiv3 ta-right"  style={{marginTop:"20px"}}>
            <span>عنوان پیام : </span>
 
-           <input placeholder="عنوان پیام خود را وارد کنید" type='text' style={{float:"right !important"}}/>
+           <input  onChange={(event)=>setTitle(event.target.value)} placeholder="عنوان پیام خود را وارد کنید" type='text' style={{float:"right !important"}}/>
             </div>
             </div>
         </Col>
@@ -391,11 +531,11 @@ null
           <div className="cFormDiv3 ta-right" style={{margin:"20px !important"}}>
            <span style={{margin:"20px !important"}}>متن پیام : </span>
 
-           <input placeholder="متن پیام خود را وارد کنید" type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
+           <input  onChange={(event)=>setTextSupMain(event.target.value)} placeholder="متن پیام خود را وارد کنید" type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
             </div>
           </Col>
       </Row>
-      <Button className="modalSubmit">ارسال پیام</Button>
+      <Button onClick={()=>InsertSupport()} className="modalSubmit">ارسال پیام</Button>
 
         <Button onClick={closeModal} className="closeModal">بستن</Button>
 
@@ -487,7 +627,7 @@ null
                 <p className="row-title">{item.Date} {item.Time}</p>
                 </Col>
                 <Col md={1}>
-                <Button type="button" className="moshahede" style={{marginLeft:"10%",marginTop:"20px"}} onClick={openModal2} >مشاهده</Button>
+                <Button type="button" className="moshahede" style={{marginLeft:"10%",marginTop:"20px"}} onClick={()=>{openModal2(item.SupportID)}} >مشاهده</Button>
           <Modal
         isOpen={modalIsOpen2}
       className="commentModal w801"
@@ -495,8 +635,10 @@ null
 
         contentLabel="Example Modal"
       >
-
-
+  { subSupport?.map((items, i) => {
+    console.log(items.isAdmin)
+             return (
+items.isAdmin?
         <Row style={{margin:"0px"}}>
 
 
@@ -505,13 +647,13 @@ null
        <div class="ticket-box pd0" id="question-box">
        <Row className="b-box" style={{margin:"0px !important"}}>
 
-       <Col md={6} className="ticket-title">کارشناس فنی شماره یک</Col>
-       <Col md={6} className="ticket-data">(21:30) 1399/05/12</Col>
+       <Col md={6} className="ticket-title">ادمین</Col>
+       <Col md={6} className="ticket-data">({items.Time}) {items.Date}</Col>
        </Row>
        <Row>
                      <Col md={12}>
                        <p class="ticket-text">
-                      g
+                      {items.Text}
                        </p>
                      </Col>
 
@@ -522,6 +664,8 @@ null
 
          </Row>
 
+
+:
          <Row style={{margin:"0px"}}>
 
 
@@ -530,26 +674,38 @@ null
        <div class="ticket-box pd0" id="answer-box">
        <Row className="b-box2" style={{margin:"0px !important"}}>
 
-       <Col md={6} className="ticket-title">کارشناس فنی شماره یک</Col>
-       <Col md={6} className="ticket-data">(21:30) 1399/05/12</Col>
+       <Col md={6} className="ticket-title">کاربر</Col>
+       <Col md={6} className="ticket-data">({items.Time}) {items.Date}</Col>
        </Row>
        <Row >
-                     <Col md={12}>
-                     <input placeholder="آدرس ..." type='text' style={{float:"right !important",width:"90% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
 
+  <Col md={12}>
+                       <p class="ticket-text">
+                      {items.Text}
+                       </p>
                      </Col>
-
                    </Row>
  </div>
 
          </Col>
 
          </Row>
-      <Button className="modalSubmit">ارسال پیام</Button>
-
-        <Button onClick={closeModal2} className="closeModal">بستن</Button>
 
 
+
+
+
+        );
+
+})
+}
+<Col md={12}>
+                     <input placeholder="پیام ..." type='text' onChange={(event)=>setTextSup(event.target.value)} style={{float:"right !important",width:"90% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
+
+                     </Col>
+<Button onClick={()=>InsertSubSupport(item.SupportID)} className="modalSubmit">ارسال پیام</Button>
+
+<Button onClick={closeModal2} className="closeModal">بستن</Button>
       </Modal>
 
                 </Col>

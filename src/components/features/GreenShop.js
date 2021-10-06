@@ -175,7 +175,7 @@ console.log(check.length)
       const axios = require("axios");
 
       axios
-          .get(apiUrl + "CategoryGreenShop/"+params)
+          .get(apiUrl + "CategoryProduct/"+params)
       .then(function (response) {
         if (response.data.result == "true") {
 
