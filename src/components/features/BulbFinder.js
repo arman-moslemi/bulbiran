@@ -136,81 +136,84 @@ const BulbFinders=() =>{
             </Col>
         </Row>
     </div>
-    <div className="bRow">
+  <div className="bMother">
+  <div className="bRow">
 
-        {/* <div className="bRowDiv" id="ff1">
-            <F1 className="bRowDivIcon"/>
-            <span className="bRowDvText">حبابی</span>
-            <Button className="bRowBtn">
-                <FaTimes/>
-            </Button>
-        </div> */}
-        {
-        base!=0?
+{/* <div className="bRowDiv" id="ff1">
+    <F1 className="bRowDivIcon"/>
+    <span className="bRowDvText">حبابی</span>
+    <Button className="bRowBtn">
+        <FaTimes/>
+    </Button>
+</div> */}
+{
+base!=0?
 
-        <div className="bRowDiv mgr5" >
-            <F2 className="bRowDivIcon"/>
-            <span className="bRowDvText">پایه</span>
-            <Button onClick={()=>setBase(0)} className="bRowBtn">
-                <FaTimes/>
-            </Button>
-        </div>
-        :null
-      }
-      {
-        color!=""?
-        <div className="bRowDiv mgr5">
-            <F3 className="bRowDivIcon"/>
-            <span className="bRowDvText">رنگ</span>
-            <Button onClick={()=>setColor(0)} className="bRowBtn">
-                <FaTimes/>
-            </Button>
-        </div>
-        :
-        null
-        }
-        {
-        light!=0?
-        <div className="bRowDiv mgr5" >
-            <F4 className="bRowDivIcon"/>
-            <span className="bRowDvText">روشنایی</span>
-            <Button onClick={()=>setLight(0)} className="bRowBtn">
-                <FaTimes/>
-            </Button>
-        </div>
-        :
-        null
-        }
-        {
-        hobab!=0?
-        <div className="bRowDiv mgr5" >
-            <F5 className="bRowDivIcon"/>
-            <span className="bRowDvText">حباب</span>
-            <Button onClick={()=>setHobab(0)} className="bRowBtn">
-                <FaTimes/>
-            </Button>
-        </div>
-        :
-        null}
-          {
-        tech!=0?
-        <div className="bRowDiv mgr5" >
-            <F6 className="bRowDivIcon"/>
-            <span className="bRowDvText">تکنولوژی</span>
-            <Button onClick={()=>setTech(0)} className="bRowBtn">
-                <FaTimes/>
-            </Button>
-        </div>
-        :
-        null
-        }
-        {
+<div className="bRowDiv mgr5" >
+    <F2 className="bRowDivIcon"/>
+    <span className="bRowDvText">پایه</span>
+    <Button onClick={()=>setBase(0)} className="bRowBtn">
+        <FaTimes/>
+    </Button>
+</div>
+:null
+}
+{
+color!=""?
+<div className="bRowDiv mgr5">
+    <F3 className="bRowDivIcon"/>
+    <span className="bRowDvText">رنگ</span>
+    <Button onClick={()=>setColor(0)} className="bRowBtn">
+        <FaTimes/>
+    </Button>
+</div>
+:
+null
+}
+{
+light!=0?
+<div className="bRowDiv mgr5" >
+    <F4 className="bRowDivIcon"/>
+    <span className="bRowDvText">روشنایی</span>
+    <Button onClick={()=>setLight(0)} className="bRowBtn">
+        <FaTimes/>
+    </Button>
+</div>
+:
+null
+}
+{
+hobab!=0?
+<div className="bRowDiv mgr5" >
+    <F5 className="bRowDivIcon"/>
+    <span className="bRowDvText">حباب</span>
+    <Button onClick={()=>setHobab(0)} className="bRowBtn">
+        <FaTimes/>
+    </Button>
+</div>
+:
+null}
+  {
+tech!=0?
+<div className="bRowDiv mgr5" >
+    <F6 className="bRowDivIcon"/>
+    <span className="bRowDvText">تکنولوژی</span>
+    <Button onClick={()=>setTech(0)} className="bRowBtn">
+        <FaTimes/>
+    </Button>
+</div>
+:
+null
+}
+{
 base==0&& tech==0&&color==0&& hobab==0?
 null:
-        <Button onClick={()=>{setBase(0);setColor(0);setLight(0);setTech(0);setHobab(0)}} className="deleteRow">
-            پاک کردن
-        </Button>
-        }
+<Button onClick={()=>{setBase(0);setColor(0);setLight(0);setTech(0);setHobab(0)}} className="deleteRow">
+    پاک کردن
+</Button>
+}
+</div>
+
     </div>
     <div className="bulbFinderWBox mgt40 ta-right paddingC">
     <Tabs dir={'rtl'}>
@@ -246,7 +249,7 @@ null:
           </span>
        </Tab>
     </TabList>
-    <div className="nn">
+    <div className="nn responsiveNone">
         <div>
             <span className="natije">{count} لامپ پیدا شد</span>
             <a href="#" className="moshahedeN" onClick={()=>  history.push("/searchresultFinder/"+base+"/"+params+"/"+tech+"/"+color+"/"+light+"/"+hobab)}>مشاهده نتایج <FaAngleDoubleLeft/></a>
@@ -506,7 +509,7 @@ onClick={()=>{setBase(item.BulbFindBaseID) ;mainCat()}}
         </Row>
         <p className="tabFDes mgt40">
      جدول زیر می تواند به شما کمک کند  </p>
-     <img src={Table}/>
+     <img src={Table} className="imgTable"/>
     </TabPanel>
 
         {/* <TabPanel>
@@ -632,7 +635,13 @@ onClick={()=>{setBase(item.BulbFindBaseID) ;mainCat()}}
         </TabPanel> */}
  </Tabs>
 
-
+ <div className="nn desktopNone">
+        <div>
+            <span className="natije">{count} لامپ پیدا شد</span>
+            <a href="#" className="moshahedeN" onClick={()=>  history.push("/searchresultFinder/"+base+"/"+params+"/"+tech+"/"+color+"/"+light+"/"+hobab)}>مشاهده نتایج <FaAngleDoubleLeft/></a>
+            <p className="moshahedeP">این فرایند را ادامه دهید تا نتایج بهتر را مشاهده کنید</p>
+        </div>
+    </div>
     </div>
    </Container>
     <SocialRow/>

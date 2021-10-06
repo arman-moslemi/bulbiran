@@ -4584,4 +4584,59 @@ padding-right: 15px;
 .res95{
   width: 176px !important;
 }
+.bulbFinder1 div {
+  display: inline-block;
+  width: 26% !important;
+  margin: 10px !important;
+}
+.finderTitle {
+  font-family: 'IRANSans-Bold';
+  color: #18206b;
+  font-size: 25px !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  display: block !important;
+  text-align: center !important;
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+}
+.bFinderTab{
+  padding-right: 0px !important;
+  width:100% !important;
+}
+.bFinderTab li{
+  width:70px !important;
+}
+.nn{
+  float:none !important;
+}
+.Tblock{
+  width:100% !important;
+}
+.bulbFinder2 a {
+  display: inline-block;
+  width: 25% !important;
+  margin: 8px !important;
+}
+.bulbFinder2{
+  width: 100% !important;
+}
+.tabspan{
+  font-size: 12px !important;
+}
+.bulbFinder2 a span{
+  font-size: 13px !important;
+}
+.roomImg{
+  width:100% !important;
+}
+.opp{
+  width:100% !important;
+}
+.imgTable{
+  width: 100% !important;
+}
+.bMother{
+  
+}
 }
