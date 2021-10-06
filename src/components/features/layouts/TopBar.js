@@ -7,11 +7,11 @@ import Truck from'../assets/icons/TruckSvg'
 import Percent from '../assets/icons/Percent'
 import User from '../assets/icons/User'
 import Cart from '../assets/icons/Cart'
-<<<<<<< HEAD
+
 import ResponsiveMenu from '../layouts/ResponsiveMenu';
-=======
+
 import Exit from '../assets/icons/Exit'
->>>>>>> 05e25139eaf04776c7393dea354502cee1c16e2c
+
 const TopBar = () => {
   const history = useHistory();
   const UserID= localStorage.getItem("user_id");
@@ -45,25 +45,21 @@ const TopBar = () => {
 
   </Row>
   <Row className="gray-row">
-<<<<<<< HEAD
-    <Col xs={12} md={6} className="ta-right">
-=======
-    <Col xs={3} md={4} className="ta-right">
->>>>>>> 05e25139eaf04776c7393dea354502cee1c16e2c
+
+    <Col xs={12} md={4} className="ta-right">
+
       <Truck className="d-inline-block"></Truck>
       <p className="d-inline-block f-bold send-text">ارسال آسان،سریع و مطمئن</p>
 
     </Col>
-<<<<<<< HEAD
+
     <Col xs={6} md={6} className="desktopNone">
     <ResponsiveMenu className="desktopNone"/>
       </Col>
-    <Col xs={6} md={6}>
-      <Button className="topbar-btn"onClick={()=>  history.push("/pishnahadvijhe")}>
-=======
-    <Col xs={3} md={8}>
-      <Button className="topbar-btn">
->>>>>>> 05e25139eaf04776c7393dea354502cee1c16e2c
+  
+    <Col xs={6} md={8}>
+    <Button className="topbar-btn"onClick={()=>  history.push("/pishnahadvijhe")}>
+
       <Percent className="d-inline-block"></Percent>
       <p className="d-inline-block" >تخفیفات امروز</p>
       </Button>
@@ -72,9 +68,9 @@ const TopBar = () => {
 
     <Button className="topbar-btn" onClick={()=>  history.push("/login")}>
       <User className="d-inline-block"></User>
-<<<<<<< HEAD
+
       <p className="d-inline-block" >حساب کاربری</p>
-=======
+
       {
           UserID==null ||UserID==""?
 
@@ -83,7 +79,7 @@ const TopBar = () => {
           <p className="d-inline-block" onClick={()=>  history.push("/login")}>{UserName}</p>
 
       }
->>>>>>> 05e25139eaf04776c7393dea354502cee1c16e2c
+
       </Button>
 
 

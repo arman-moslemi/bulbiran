@@ -64,7 +64,7 @@ const BrandShop = () => {
                 </p>
             </Col>
             <Col md={4}>
-            <BrandShopSvg/>
+            <BrandShopSvg className="w95"/>
             </Col>
         </Row>
     </div>
@@ -79,16 +79,18 @@ const BrandShop = () => {
         brand?.map((item, i) => {
   return (
           <>
-          <Link  onClick={()=>  history.push("/brandsecond/"+item.BrandID)}>
+          
             <Col md={3} xs={6}>
+            <Link  onClick={()=>  history.push("/brandsecond/"+item.BrandID)}>
                 <div className="whiteBrandBox">
                     <img src={apiAsset+item.BrandLogo}/>
-                    <div className="grayBox" >
+                    <div className="grayBox res95" >
                         <p>{item.BrandName}</p>
                     </div>
                 </div>
+                </Link>
             </Col>
-            </Link>
+           
             </>
         );
 

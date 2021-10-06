@@ -2265,6 +2265,15 @@ a:hover{
   text-decoration: none !important;
   cursor: grab;
 }
+.masrafBox:hover{
+  cursor: grab;
+}
+.techWhite:hover{
+  cursor: grab;
+}
+.brandIconBox:hover{
+  cursor: grab;
+}
 .w80{
   width: 80%;
 }
@@ -3264,7 +3273,7 @@ color: #fff;
   background-color: #fff;
 }
 .centerSearch2{
-  width: 150px;
+  width: 30%;
   margin-right: 7px;
   margin-left: 7px;
   display: inline-block;
@@ -3820,6 +3829,78 @@ display: block;
 .desktopNone{
   display: none;
 }
+.PopUp{
+  width:25% !important;
+  background-color: #cd191e;
+  border-radius: 5px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 15%;
+  padding: 5px 15px 25px 15px;
+  text-align: right;
+}
+.PopUp .firstText{
+  font-family: 'IRANSans' !important;
+  color:#fff !important;
+  font-size: 20px;
+  text-align: center;
+}
+.PopUp .SecondText{
+  font-family: 'IRANSans-Bold';
+  font-size: 30px;
+  text-align: center;
+  color:#fff !important;
+}
+.PopUpClose{
+  background-color: transparent !important;
+  background-image: none !important;
+  text-shadow: none !important;
+  color:#fff !important;
+  border:none !important;
+}
+.PopUp input{
+  width:90% !important;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  background-color: #fff;
+  border-radius: 5px;
+  height: 35px;
+  color:#142b6f !important;
+  font-family: 'IRANYekan-Medium';
+  border:none !important;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+  padding:5px;
+}
+.PopUp .submitPopUp{
+  color:#fff !important;
+  background-color: #142b6f !important;
+  border:none !important;
+  font-family: 'IRANYekan-Bold' !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  display: block !important;
+  margin-top: 15px;
+  width: 90px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  justify-content: center;
+  background-image: none !important;
+
+}
+.miniBox img{
+  height: 200px !important;
+}
+.nBoxW25{
+  width: 25% !important;
+}
+.PopUp a{
+  font-family: 'IRANYekan-Medium';
+  color:#fff !important;
+  border-bottom: 1px dashed #fff;
+  text-align: right;
+ 
+}
 @media only screen and (max-width: 768px) {
   /* For Tablet */
 
@@ -3827,6 +3908,26 @@ display: block;
 @media only screen and (max-width: 414px) {
 
   /* For Mobile: */
+  .responsiveNews{
+    display: block !important;
+  }
+  .newsBox2{
+    width: 88% !important;
+  }
+  .mPic{
+    height: 270px !important;
+  }
+  .responsiveNewsWhite{
+    width:95% !important;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .dresBlock{
+    display: block !important;
+  }
+  .nBoxW25{
+    width: 100% !important;
+  }
   .desktopNone{
     display:block !important;
   }
@@ -4467,5 +4568,20 @@ padding-right: 15px;
 }
 .projectImg{
   height: 100px !important;
+}
+.PopUp {
+  width: 95% !important;
+  background-color: #cd191e;
+
+  margin-top: 60% !important;
+  padding: 5px 15px 25px 15px;
+  text-align: right;
+  z-index: 2000000;
+}
+.whiteBrandBox{
+  height: 185px !important;
+}
+.res95{
+  width: 176px !important;
 }
 }

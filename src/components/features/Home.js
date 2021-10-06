@@ -6,6 +6,7 @@ import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
 import IconRow from './layouts/IconRow'
 import Footer from './layouts/Footer'
+import Modal from 'react-modal';
 import {Container,Row,Col,Button} from 'react-bootstrap'
 import APlus from './assets/icons/APlus'
 import Clock from './assets/icons/Clock'
@@ -21,7 +22,7 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import CircumstanceBanner from './assets/icons/CircumstanceBanner'
 import LedBanner from './assets/icons/LedBanner'
-import { FaAngleLeft ,FaSearch} from 'react-icons/fa';
+import { FaAngleLeft ,FaSearch ,FaTimes} from 'react-icons/fa';
 import Slide1 from './assets/img/slide1.jpg';
 import Lamp from './assets/img/lamp.png';
 import Rise from './assets/img/rise.png';
@@ -190,15 +191,61 @@ console.log(error);
 }
   useEffect(() => {
     mainSlider();
-
+    openModal();
   }, []);
 
   const history = useHistory();
+  const customStyles = {
+    content: {
+    
+    },
+  };
+  
+
+
+    let subtitle;
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+  
+    function openModal() {
+      setIsOpen(true);
+    }
+  
+    function afterOpenModal() {
+     
+    }
+  
+    function closeModal() {
+      setIsOpen(false);
+    }
   return (
     <>
+    
       <TopBar/>
       <Header/>
     <Container fluid className="bulbiranContainer">
+  
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+        className="PopUp"
+      >
+       
+        <button onClick={closeModal} className="PopUpClose">
+          <FaTimes/>
+        </button>
+        <p className="firstText">
+          آیا مایل هستید
+        </p>
+        <p className="SecondText">اولین نفر</p> 
+        <p className="firstText">
+          از تخفیف های بالبیران مطلع شوید؟</p>  
+          <input  placeholder="شماره تلفن همراه خود را وارد نمایید" type='text' style={{float:"right !important"}}/>
+               <Button className="submitPopUp">عضویت</Button>
+          <a href="" >تمایلی به عضویت ندارم</a>     
+      </Modal>
       <Row className="heroBanner">
         <Col md={10}  sm={12}>
           <div >
@@ -262,6 +309,7 @@ console.log(error);
       </Col>
 
       </Row>
+    
       <Row className="mgt20">
         <Col md={8} className="pdl0">
         <Slider img1={img1}img2={img2}img3={img3}img4={img4}img5={img5}img6={img6}/>
@@ -370,7 +418,7 @@ console.log(error);
         <FaSearch/>
       </div>
       </Col>
-      <Col md={9} className="pd0">
+      <Col md={9} className="pd0 ta-center">
       <div className="centerSearch">
       <div className="centerSearch2">
       <Dropdown className="cInput mgt10" options={options} onChange={(event)=>setType(event.value)}  placeholder="نوع" />

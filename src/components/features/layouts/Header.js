@@ -14,13 +14,11 @@ const Header = () => {
       <>
       <Container fluid className="menuContainer">
         <Row className="menuBar">
-<<<<<<< HEAD
+
         <Col md={2} xs={6} className="pd0" id="firstOrder">
-=======
-        <Col md={2} className="pd0">
         <Link to={"/"}>
 
->>>>>>> 05e25139eaf04776c7393dea354502cee1c16e2c
+
         <img src={Logo} className="logo"/>
 
         </Link>
