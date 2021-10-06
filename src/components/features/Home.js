@@ -104,6 +104,32 @@ const [base,setBase]=useState(0)
     const [light,setLight]=useState(0)
     const [count,setCount]=useState(0)
     const [hobab,setHobab]=useState(0)
+    const [mobile,setMobile]=useState('')
+    const [pass,setPass]=useState('')
+
+    const loginto=()=>{
+        console.log(mobile)
+        console.log(pass)
+        const axios = require("axios");
+        axios
+        .post(apiUrl + "InsertCustomer",{Mobile:mobile.toString()})
+    .then(function (response) {
+      if (response.data.result == "true") {
+        console.log(response.data.Data)
+alert("شماره شما با موفقیت اضافه شد")
+    } else if (response.data.result == "duplicate"){
+      alert("این شماره موبایل وجود دارد")
+    }
+     else{
+      console.log(response.data.result)
+      alert("عملیات با خطا روبرو شد")
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+    // console.log(159876)
+      }
 const mainSlider=()=>{
   const axios = require("axios");
   axios
@@ -197,33 +223,33 @@ console.log(error);
   const history = useHistory();
   const customStyles = {
     content: {
-    
+
     },
   };
-  
+
 
 
     let subtitle;
     const [modalIsOpen, setIsOpen] = React.useState(false);
-  
+
     function openModal() {
       setIsOpen(true);
     }
-  
+
     function afterOpenModal() {
-     
+
     }
-  
+
     function closeModal() {
       setIsOpen(false);
     }
   return (
     <>
-    
+
       <TopBar/>
       <Header/>
     <Container fluid className="bulbiranContainer">
-  
+
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -232,19 +258,19 @@ console.log(error);
         contentLabel="Example Modal"
         className="PopUp"
       >
-       
+
         <button onClick={closeModal} className="PopUpClose">
           <FaTimes/>
         </button>
         <p className="firstText">
           آیا مایل هستید
         </p>
-        <p className="SecondText">اولین نفر</p> 
+        <p className="SecondText">اولین نفر</p>
         <p className="firstText">
-          از تخفیف های بالبیران مطلع شوید؟</p>  
-          <input  placeholder="شماره تلفن همراه خود را وارد نمایید" type='text' style={{float:"right !important"}}/>
-               <Button className="submitPopUp">عضویت</Button>
-          <a href="" >تمایلی به عضویت ندارم</a>     
+          از تخفیف های بالبیران مطلع شوید؟</p>
+          <input onChange={(event)=>setMobile(event.target.value)}   placeholder="شماره تلفن همراه خود را وارد نمایید" type='text' style={{float:"right !important"}}/>
+               <Button  onClick={()=>loginto()} className="submitPopUp">عضویت</Button>
+          <a onClick={closeModal}  >تمایلی به عضویت ندارم</a>
       </Modal>
       <Row className="heroBanner">
         <Col md={10}  sm={12}>
@@ -309,7 +335,7 @@ console.log(error);
       </Col>
 
       </Row>
-    
+
       <Row className="mgt20">
         <Col md={8} className="pdl0">
         <Slider img1={img1}img2={img2}img3={img3}img4={img4}img5={img5}img6={img6}/>

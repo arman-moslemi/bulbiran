@@ -56,7 +56,7 @@ const TopBar = () => {
     <Col xs={6} md={6} className="desktopNone">
     <ResponsiveMenu className="desktopNone"/>
       </Col>
-  
+
     <Col xs={6} md={8}>
     <Button className="topbar-btn"onClick={()=>  history.push("/pishnahadvijhe")}>
 
@@ -69,7 +69,6 @@ const TopBar = () => {
     <Button className="topbar-btn" onClick={()=>  history.push("/login")}>
       <User className="d-inline-block"></User>
 
-      <p className="d-inline-block" >حساب کاربری</p>
 
       {
           UserID==null ||UserID==""?

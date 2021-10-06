@@ -89,16 +89,18 @@ const PriceBrand = () => {
         brand?.map((item, i) => {
   return (
           <>
-          <Link  onClick={()=>  history.push("/pricetable/"+item.BrandID)}>
-            <Col md={3} xs={4}>
+
+            <Col md={3} xs={6}>
+            <Link  onClick={()=>  history.push("/pricetable/"+item.BrandID)}>
                 <div className="whiteBrandBox" onClick={()=>  history.push("/pricetable")}>
                 <img src={apiAsset+item.BrandLogo}/>
-                    <div className="grayBox">
+                    <div className="grayBox res95">
                         <p>{item.BrandName}</p>
                     </div>
                 </div>
+                </Link>
             </Col>
-            </Link>
+
             </>
         );
 

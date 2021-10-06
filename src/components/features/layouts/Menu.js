@@ -1313,7 +1313,7 @@ const Menu = () => {
     return (
       <>
       <Container fluid>
-         
+
          <Row className="menu-row responsiveNone">
               <Col md="auto" xs="2" className="ta-center flex-1">
               {/*  */}
@@ -1396,7 +1396,7 @@ brand?.map((item, i) => {
 
 <div className="bMegaLi">
                     <img src={apiAsset+item.BrandLogo}/>
-                    <a onClick={()=>  history.push("/brandsecond/4")}>{item.BrandName}</a>
+                    <a onClick={()=>  history.push("/brandsecond/"+item.BrandID)}>{item.BrandName}</a>
                 </div>
           </>
           :null
@@ -1575,14 +1575,14 @@ brand?.map((item, i) => {
     </Dropdown>
             </Col>
           </Row>
-         
-     
+
+
       </Container>
-   
+
       </>
-    
+
     );
-  
-   
+
+
 };
     export default Menu
