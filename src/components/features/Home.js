@@ -117,6 +117,8 @@ const [base,setBase]=useState(0)
       if (response.data.result == "true") {
         console.log(response.data.Data)
 alert("شماره شما با موفقیت اضافه شد")
+closeModal()
+
     } else if (response.data.result == "duplicate"){
       alert("این شماره موبایل وجود دارد")
     }
@@ -190,7 +192,8 @@ axios
 if (response.data.result == "true") {
 
 setProduct(response.data.Data)
-//  console.log(response.data.Data)
+  console.log(11)
+  console.log(response.data.Data[0])
 }
 else{
 console.log(response.data.result)
@@ -331,7 +334,7 @@ console.log(error);
         </Col>
       <Col md={2} xs={12} className="resTaCenter">
       <LedButton className="d-block ledbuttonIcon"></LedButton>
-      <Button onClick={()=>  history.push("/GreenShop")} className="ledButton d-block">فروشگاه سبز</Button>
+      <Button onClick={()=>  history.push("/GreenShop/1")} className="ledButton d-block">فروشگاه سبز</Button>
       </Col>
 
       </Row>
