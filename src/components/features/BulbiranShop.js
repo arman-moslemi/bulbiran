@@ -18,18 +18,9 @@ import Checkbox from "react-custom-checkbox";
 import ReactPaginate from 'react-paginate';
 import 'react-accessible-accordion/dist/fancy-example.css';
 import { FaAngleLeft,FaAlignRight ,FaCheck } from 'react-icons/fa';
-import CircumstanceB from './assets/icons/CircumstanceB';
-import LedButton from './assets/icons/LedButton';
-import Pool from './assets/icons/Pool';
-import Lamp from './assets/img/lamp.png';
-import Cheragh from './assets/img/cheragh.png';
-import Panel from './assets/img/panel.png';
-import Loster from './assets/img/loster.png';
-import Janebi from './assets/img/janebi.png';
 
-import Noorafkan from './assets/img/noorafkan.png';
-import Chain from './assets/img/chain.png';
-import GreenShopLogo from './assets/icons/GreenShopLogo';
+
+
 import ShopLogo from './assets/icons/ShopLogo';
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import {useParams } from "react-router-dom";

@@ -43,7 +43,6 @@ import BlogSecond from '../components/features/BlogSecond';
 const MainRoutes = (props) => {
 	return (
 		<HashRouter>
-			<Switch>
 			<Route
 					exact
 					path='/'
@@ -318,7 +317,6 @@ const MainRoutes = (props) => {
 
 					</Route>
 					{/* <PrivateRoute path='/pages' /> */}
-			</Switch>
 		</HashRouter>
 	);
 };
