@@ -14,8 +14,8 @@ const Verification = () => {
   return (
       <>
         <TopBar/>
-        <Header/> 
-      <Container fluid className="bulbiranContainer"> 
+        <Header/>
+      <Container fluid className="bulbiranContainer">
       <div className="whiteBox pd0 loginBox">
     <Row>
         <Col md={6} id="secondOrder">
@@ -25,13 +25,13 @@ const Verification = () => {
           <div className="loginForm">
            <label className="cLabel mgt40">کد تایید ارسال شده را وارد کنید</label>
            <input className="cInput mgt10"  placeholder="کد تایید" type="number" ></input>
-           
-          
+
+
           <Button className="loginBtn mgt40" id="cMargintop" onClick={()=>  history.push("/forgetpass")}>تنظیم رمز عبور جدید</Button>
           <span className="d-inline-block cLabel mgt20" id="fo12">ارسال مجدد</span>
           <div className="mgt20">
             <span className="d-inline-block cLabel" id="fo12">حساب کاربری ندارید؟</span>
-          <a href="#" className="d-inline-block inLink" id="fo12">ثبت نام کنید</a>
+          <a     className="d-inline-block inLink" id="fo12">ثبت نام کنید</a>
           </div>
 
         </div>
@@ -42,7 +42,7 @@ const Verification = () => {
             </Col>
     </Row>
      </div>
-          
+
      </Container>
      <SocialRow/>
     <IconRow/>

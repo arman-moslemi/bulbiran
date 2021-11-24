@@ -115,7 +115,7 @@ const News = () => {
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista"    >
                 آخرین تخفیف ها
             </a>
         </div>
@@ -155,7 +155,7 @@ const News = () => {
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista"    >
                تبلیغات
             </a>
         </div>
@@ -192,7 +192,7 @@ const News = () => {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a href="#" onClick={()=>  history.push("/showblog")}>
+                <a     onClick={()=>  history.push("/showblog")}>
                     صنعت روشنایی در وضعیت هشدار
                 </a>
                 <div className="ta-left dq">
@@ -323,7 +323,7 @@ const News = () => {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a href="#">
+                <a    >
                     صنعت روشنایی در وضعیت هشدار
                 </a>
                 <div className="ta-left dq">
@@ -432,7 +432,7 @@ const News = () => {
             </div>
             </div>
   </div>
- 
+
  </div>
  <div className="desktopNone">
      <Row style={{margin:"0px"}}>
@@ -450,7 +450,7 @@ const News = () => {
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista"    >
                 آخرین تخفیف ها
             </a>
         </div>
@@ -490,7 +490,7 @@ const News = () => {
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista"    >
                تبلیغات
             </a>
         </div>
@@ -528,7 +528,7 @@ const News = () => {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a href="#" onClick={()=>  history.push("/showblog")}>
+                <a     onClick={()=>  history.push("/showblog")}>
                     صنعت روشنایی در وضعیت هشدار
                 </a>
                 <div className="ta-left dq">
@@ -537,7 +537,7 @@ const News = () => {
                 </div>
             </div> */}
         </div>
-     
+
          </Col>
             <Col xs={12}>
             <div className="w100 d-inline-block h100 dresBlock">
@@ -556,7 +556,7 @@ const News = () => {
             </div>
             </div>
         </div>
-     
+
     </div>
     </Col>
     <Col xs={12}>
@@ -665,7 +665,7 @@ const News = () => {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a href="#">
+                <a    >
                     صنعت روشنایی در وضعیت هشدار
                 </a>
                 <div className="ta-left dq">
@@ -675,7 +675,7 @@ const News = () => {
             </div>
        */}
         </div>
-      
+
       </Col>
       <Col xs={12}>
       <div className="newsWhiteBox h100 w100">

@@ -62,7 +62,7 @@ export default function SimpleSlider({data}) {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a href="#">
+                <a    >
                 تجزیه و تحلیل وضعیت بازار و
 روند توسعه صنعت جهانی
                 </a>
@@ -77,7 +77,7 @@ export default function SimpleSlider({data}) {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a href="#">
+                <a    >
                 تجزیه و تحلیل وضعیت بازار و
 روند توسعه صنعت جهانی
                 </a>
@@ -92,7 +92,7 @@ export default function SimpleSlider({data}) {
                 <span className="imageTag" id="colorEight">
                     مقاله
                 </span>
-                <a href="#">
+                <a    >
                 تجزیه و تحلیل وضعیت بازار و
 روند توسعه صنعت جهانی
                 </a>
@@ -107,7 +107,7 @@ export default function SimpleSlider({data}) {
                 <span className="imageTag" id="colorSix">
                     مقاله
                 </span>
-                <a href="#">
+                <a    >
                 تجزیه و تحلیل وضعیت بازار و
 روند توسعه صنعت جهانی
                 </a>
@@ -122,7 +122,7 @@ export default function SimpleSlider({data}) {
                 <span className="imageTag" id="colorFive">
                     مقاله
                 </span>
-                <a href="#">
+                <a    >
                 تجزیه و تحلیل وضعیت بازار و
 روند توسعه صنعت جهانی
                 </a>
@@ -165,7 +165,7 @@ export default function SimpleSlider({data}) {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a href="#">
+                <a    >
                 تجزیه و تحلیل وضعیت بازار و
 روند توسعه صنعت جهانی
                 </a>
@@ -180,7 +180,7 @@ export default function SimpleSlider({data}) {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a href="#">
+                <a    >
                 تجزیه و تحلیل وضعیت بازار و
 روند توسعه صنعت جهانی
                 </a>
@@ -195,7 +195,7 @@ export default function SimpleSlider({data}) {
                 <span className="imageTag" id="colorEight">
                     مقاله
                 </span>
-                <a href="#">
+                <a    >
                 تجزیه و تحلیل وضعیت بازار و
 روند توسعه صنعت جهانی
                 </a>
@@ -210,7 +210,7 @@ export default function SimpleSlider({data}) {
                 <span className="imageTag" id="colorSix">
                     مقاله
                 </span>
-                <a href="#">
+                <a    >
                 تجزیه و تحلیل وضعیت بازار و
 روند توسعه صنعت جهانی
                 </a>
@@ -225,7 +225,7 @@ export default function SimpleSlider({data}) {
                 <span className="imageTag" id="colorFive">
                     مقاله
                 </span>
-                <a href="#">
+                <a    >
                 تجزیه و تحلیل وضعیت بازار و
 روند توسعه صنعت جهانی
                 </a>
@@ -237,7 +237,7 @@ export default function SimpleSlider({data}) {
             </div>
     */}
     </Slider>
-  
+
   </>
   );
 }
