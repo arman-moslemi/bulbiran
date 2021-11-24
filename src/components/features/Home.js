@@ -368,38 +368,38 @@ console.log(error);
       </Row>
     <Row className="mgt20 categoryRow">
       <Col md={2} xs={6} className="pd10">
-        <a href="#" className="categoryBox" onClick={()=>  history.push("/indoorlighting/1")} >
+        <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/1")} >
       <img src={Lamp}/>
       <p className="categoryName">لامپ</p>
         </a>
       </Col>
 
       <Col md={2} xs={6} className="pd10">
-        <a href="#" className="categoryBox" onClick={()=>  history.push("/indoorlighting/2")} >
+        <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/2")} >
       <img src={Inner}/>
       <p className="categoryName">روشنایی داخلی</p>
         </a>
       </Col>
       <Col md={2} xs={6} className="pd10">
-        <a href="#" className="categoryBox" onClick={()=>  history.push("/indoorlighting/3")} >
+        <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/3")} >
       <img src={Outdoor}/>
       <p className="categoryName">روشنایی بیرونی</p>
         </a>
       </Col>
       <Col md={2} xs={6} className="pd10">
-        <a href="#" className="categoryBox" onClick={()=>  history.push("/indoorlighting/4")} >
+        <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/4")} >
       <img src={Tazein}/>
       <p className="categoryName">روشنایی تزئینی</p>
         </a>
       </Col>
       <Col md={2}  xs={6} className="pd10">
-        <a href="#" className="categoryBox" onClick={()=>  history.push("/indoorlighting/5")} >
+        <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/5")} >
       <img src={Rise}/>
       <p className="categoryName">روشنایی خاص</p>
         </a>
       </Col>
       <Col md={2} xs={6} className="pd10">
-        <a href="#" className="categoryBox" onClick={()=>  history.push("/indoorlighting/6")} >
+        <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/6")} >
       <img src={Lavazem}/>
       <p className="categoryName">لوازم جانبی</p>
         </a>
@@ -422,7 +422,7 @@ console.log(error);
             brand?.map((item, i) => {
               return (
                       <>
-                     <div href="#" className="brandIconBox">
+                     <div     className="brandIconBox">
             <img src={apiAsset+item.BrandLogo}/>
           </div>
                       </>

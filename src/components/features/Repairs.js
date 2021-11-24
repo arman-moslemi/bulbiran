@@ -123,64 +123,64 @@ alert("با موفقیت انجام شد")
           <p className="gTitle">برندهای طرف قرارداد با بالبیران</p>
          <Row className="mgt20">
            <Col md={12} className="cP">
-           <div href="#" className="brandIconBox">
+           <div     className="brandIconBox">
             <img src={b10}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b2}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b3}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b4}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b5}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b6}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b7}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b10}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b2}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b3}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b4}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b5}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b6}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b7}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b2}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b3}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b4}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b5}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b6}/>
           </div>
-          <div href="#" className="brandIconBox">
+          <div     className="brandIconBox">
             <img src={b7}/>
           </div>
            </Col>

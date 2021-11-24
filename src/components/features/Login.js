@@ -74,7 +74,7 @@ history.push("/userpanel/"+response.data.Data[0].CustomerID)
               hideIcon={hideIcon}
             />
           </div>
-          <a href="#" className="ta-right cLabel mgt20" id="fo12" onClick={()=>  history.push("/verification")}>فراموشی رمز عبور</a>
+          <a     className="ta-right cLabel mgt20" id="fo12" onClick={()=>  history.push("/verification")}>فراموشی رمز عبور</a>
           <div className="mgt10 checkB">
           <Checkbox
         icon={<FaCheck color="#ffb921" size={14} />}
@@ -95,7 +95,7 @@ history.push("/userpanel/"+response.data.Data[0].CustomerID)
           <Button className="loginBtn" onClick={()=>loginto()}>ورود</Button>
           <div className="mgt20">
             <span className="d-inline-block cLabel" id="fo12">حساب کاربری ندارید؟</span>
-          <a href="#" className="d-inline-block inLink" id="fo12" onClick={()=>  history.push("/register")}>ثبت نام کنید</a>
+          <a     className="d-inline-block inLink" id="fo12" onClick={()=>  history.push("/register")}>ثبت نام کنید</a>
           </div>
 
         </div>

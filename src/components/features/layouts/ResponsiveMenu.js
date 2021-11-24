@@ -176,9 +176,9 @@ export default function App() {
 
 })
 }
-            <NavDropdown.Item href="#action/3.3">برند شاپ</NavDropdown.Item>
+            <NavDropdown.Item    >برند شاپ</NavDropdown.Item>
 
-            <NavDropdown.Item href="#action/3.4">
+            <NavDropdown.Item    >
               برند یک
             </NavDropdown.Item>
           </NavDropdown>
@@ -192,9 +192,9 @@ export default function App() {
 
 })
 }
-            <NavDropdown.Item href="#action/3.3">برند شاپ</NavDropdown.Item>
+            <NavDropdown.Item    >برند شاپ</NavDropdown.Item>
 
-            <NavDropdown.Item href="#action/3.4">
+            <NavDropdown.Item    >
               برند یک
             </NavDropdown.Item>
           </NavDropdown>
@@ -208,9 +208,9 @@ export default function App() {
 
 })
 }
-            <NavDropdown.Item href="#action/3.3">برند شاپ</NavDropdown.Item>
+            <NavDropdown.Item    >برند شاپ</NavDropdown.Item>
 
-            <NavDropdown.Item href="#action/3.4">
+            <NavDropdown.Item    >
               برند یک
             </NavDropdown.Item>
           </NavDropdown>
@@ -224,9 +224,9 @@ export default function App() {
 
 })
 }
-            <NavDropdown.Item href="#action/3.3">برند شاپ</NavDropdown.Item>
+            <NavDropdown.Item    >برند شاپ</NavDropdown.Item>
 
-            <NavDropdown.Item href="#action/3.4">
+            <NavDropdown.Item    >
               برند یک
             </NavDropdown.Item>
           </NavDropdown>
@@ -240,9 +240,9 @@ export default function App() {
 
 })
 }
-            <NavDropdown.Item href="#action/3.3">برند شاپ</NavDropdown.Item>
+            <NavDropdown.Item    >برند شاپ</NavDropdown.Item>
 
-            <NavDropdown.Item href="#action/3.4">
+            <NavDropdown.Item    >
               برند یک
             </NavDropdown.Item>
           </NavDropdown>
@@ -256,9 +256,9 @@ export default function App() {
 
 })
 }
-            <NavDropdown.Item href="#action/3.3">برند شاپ</NavDropdown.Item>
+            <NavDropdown.Item    >برند شاپ</NavDropdown.Item>
 
-            <NavDropdown.Item href="#action/3.4">
+            <NavDropdown.Item    >
               برند یک
             </NavDropdown.Item>
           </NavDropdown>
@@ -272,9 +272,9 @@ export default function App() {
 
 })
 }
-            <NavDropdown.Item href="#action/3.3">برند شاپ</NavDropdown.Item>
+            <NavDropdown.Item    >برند شاپ</NavDropdown.Item>
 
-            <NavDropdown.Item href="#action/3.4">
+            <NavDropdown.Item    >
               برند یک
             </NavDropdown.Item>
           </NavDropdown>

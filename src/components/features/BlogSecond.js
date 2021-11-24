@@ -71,7 +71,7 @@ const BlogSecond = () => {
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista"    >
                 آخرین تخفیف ها
             </a>
         </div>
@@ -111,7 +111,7 @@ const BlogSecond = () => {
             </a>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="#">
+            <a className="newsLista"    >
                تبلیغات
             </a>
         </div>

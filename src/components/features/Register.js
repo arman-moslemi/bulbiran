@@ -129,7 +129,7 @@ history.push("/verification")
           <Button onClick={()=>loginto()} className="loginBtn w50 mgt40" style={{marginTop:40}}>ثبت نام</Button>
           <div className="mgt20">
             <span className="d-inline-block cLabel" id="fo12">حساب کاربری دارید؟</span>
-          <a href="#" className="d-inline-block inLink" id="fo12" onClick={()=>  history.push("/login")}>وارد شوید</a>
+          <a     className="d-inline-block inLink" id="fo12" onClick={()=>  history.push("/login")}>وارد شوید</a>
           </div>
 
         </div>

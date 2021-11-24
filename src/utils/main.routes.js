@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route,HashRouter } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import Home from '../components/features/Home';
 import BrandShop from '../components/features/BrandShop';
@@ -42,17 +42,17 @@ import Cartstep1 from '../components/features/Cartstep1';
 import BlogSecond from '../components/features/BlogSecond';
 const MainRoutes = (props) => {
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			<Switch>
 			<Route
 					exact
 					path='/'
 					name='صفحه اصلی'
-					render={(props) => <Home {...props}/>}>
+					render={(props) => <Home />}>
 
 					</Route>
 					<Route
-					exact
+
 					path='/GreenShop/:id'
 					name='فروشگاه سبز'
 					render={(props) => <GreenShop/>}>
@@ -319,7 +319,7 @@ const MainRoutes = (props) => {
 					</Route>
 					{/* <PrivateRoute path='/pages' /> */}
 			</Switch>
-		</BrowserRouter>
+		</HashRouter>
 	);
 };
 

@@ -44,7 +44,7 @@ const Design = () => {
           .catch(function (error) {
             console.log(error);
           });
-  
+
       }
       const sendReq=()=>{
         const axios = require("axios");
@@ -84,7 +84,7 @@ alert("با موفقیت انجام شد")
         alert("لطفا فیلدهای ستاره دار را کامل کنید")
     }
       }
-     
+
       useEffect(() => {
         mainSlider();
 // alert(val)
@@ -102,27 +102,27 @@ alert("با موفقیت انجام شد")
             </span>
             <ul className="aUl">
                 <li>
-                    <a href="#">
+                    <a    >
                         روشنایی مکان های مسکونی
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a    >
                         روشنایی معابر عمومی
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a    >
                         روشنایی مکان های تجاری
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a    >
                        روشنایی مکان های اداری
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a    >
                         روشنایی مکان های صنعتی
                     </a>
                 </li>

@@ -252,7 +252,7 @@ null:
     <div className="nn responsiveNone">
         <div>
             <span className="natije">{count} لامپ پیدا شد</span>
-            <a href="#" className="moshahedeN" onClick={()=>  history.push("/searchresultFinder/"+base+"/"+params+"/"+tech+"/"+color+"/"+light+"/"+hobab)}>مشاهده نتایج <FaAngleDoubleLeft/></a>
+            <a     className="moshahedeN" onClick={()=>  history.push("/searchresultFinder/"+base+"/"+params+"/"+tech+"/"+color+"/"+light+"/"+hobab)}>مشاهده نتایج <FaAngleDoubleLeft/></a>
             <p className="moshahedeP">این فرایند را ادامه دهید تا نتایج بهتر را مشاهده کنید</p>
         </div>
     </div>
@@ -285,7 +285,7 @@ onClick={()=>{setBase(item.BulbFindBaseID) ;mainCat()}}
         <TabPanel>
         <p className="tabFDes">
         دمای رنگ در کلوین اندازه گیری می شود. نشانگر زیر را بکشید و هنگامی که ظاهر مورد نظر خود را پیدا کردید روی گزینه کلیک کنید.
-        <a href="#">رد کردن این مرحله</a>
+        <a    >رد کردن این مرحله</a>
          </p>
          <Row>
              <Col md={12} className="ta-center">
@@ -398,7 +398,7 @@ onClick={()=>{setBase(item.BulbFindBaseID) ;mainCat()}}
     <TabPanel>
         <p className="tabFDes">
         دمای رنگ در کلوین اندازه گیری می شود. نشانگر زیر را بکشید و هنگامی که ظاهر مورد نظر خود را پیدا کردید روی گزینه کلیک کنید.
-        <a href="#">رد کردن این مرحله</a>
+        <a    >رد کردن این مرحله</a>
          </p>
          <Row>
              <Col md={12} className="ta-center">
@@ -514,7 +514,7 @@ onClick={()=>{setBase(item.BulbFindBaseID) ;mainCat()}}
 
         {/* <TabPanel>
         <p className="tabFDes">
-        مات ، شفاف ، آینه ای یا مات - لایه ی نهایی مورد نظر را برای لامپ خود انتخاب کنید <a href="#">رد کردن این مرحله</a>
+        مات ، شفاف ، آینه ای یا مات - لایه ی نهایی مورد نظر را برای لامپ خود انتخاب کنید <a    >رد کردن این مرحله</a>
          </p>
          <div className="bulbFinder2">
            <Link onClick={()=>{setHobab(1);mainCat()}}>
@@ -638,7 +638,7 @@ onClick={()=>{setBase(item.BulbFindBaseID) ;mainCat()}}
  <div className="nn desktopNone">
         <div>
             <span className="natije">{count} لامپ پیدا شد</span>
-            <a href="#" className="moshahedeN" onClick={()=>  history.push("/searchresultFinder/"+base+"/"+params+"/"+tech+"/"+color+"/"+light+"/"+hobab)}>مشاهده نتایج <FaAngleDoubleLeft/></a>
+            <a     className="moshahedeN" onClick={()=>  history.push("/searchresultFinder/"+base+"/"+params+"/"+tech+"/"+color+"/"+light+"/"+hobab)}>مشاهده نتایج <FaAngleDoubleLeft/></a>
             <p className="moshahedeP">این فرایند را ادامه دهید تا نتایج بهتر را مشاهده کنید</p>
         </div>
     </div>

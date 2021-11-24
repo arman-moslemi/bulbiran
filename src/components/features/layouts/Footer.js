@@ -20,19 +20,19 @@ const Footer = () => {
                  <p className="footerTitle">درباره بالبیران</p>
                <ul className="footerList">
                  <li>
-                 <a href="#" className="footerLink"onClick={()=>  history.push("/rules")}>قوانین و مقررات</a>
+                 <a   className="footerLink"onClick={()=>  history.push("/rules")}>قوانین و مقررات</a>
                  </li>
                  <li>
-                 <a href="#" className="footerLink"onClick={()=>  history.push("/contactUs")}>تماس با ما</a>
+                 <a   className="footerLink"onClick={()=>  history.push("/contactUs")}>تماس با ما</a>
                  </li>
                  {/* <li>
-                 <a href="#" className="footerLink">لینک سه</a>
+                 <a   className="footerLink">لینک سه</a>
                  </li>
                  <li>
-                 <a href="#" className="footerLink">لینک چهار</a>
+                 <a   className="footerLink">لینک چهار</a>
                  </li>
                  <li>
-                 <a href="#" className="footerLink">لینک پنج</a>
+                 <a   className="footerLink">لینک پنج</a>
                  </li> */}
                </ul>
 
@@ -48,10 +48,10 @@ const Footer = () => {
             <p className="footerTitle">فروشگاه بالبیران</p>
             <ul className="footerList">
                  <li>
-                 <a href="#" className="footerLink">لینک یک</a>
+                 <a   className="footerLink">لینک یک</a>
                  </li>
                  <li>
-                 <a href="#" className="footerLink">لینک دو</a>
+                 <a   className="footerLink">لینک دو</a>
                  </li>
                  </ul>
 <<<<<<< HEAD
@@ -62,16 +62,16 @@ const Footer = () => {
             <p className="footerTitle">خدمات بالبیران</p>
             <ul className="footerList">
                  <li>
-                 <a href="/design" className="footerLink">طراحی و دیزاین</a>
+                 <a onClick={()=>  history.push("/design")} className="footerLink">طراحی و دیزاین</a>
                  </li>
                  <li>
-                 <a href="/Garanty" className="footerLink">گارانتی و خدمات پس از فروش</a>
+                 <a  onClick={()=>  history.push("/Garanty")} className="footerLink">گارانتی و خدمات پس از فروش</a>
                  </li>
                  <li>
-                 <a href="/repairs" className="footerLink">تعمیرات</a>
+                 <a  onClick={()=>  history.push("/repairs")} className="footerLink">تعمیرات</a>
                  </li>
                  <li>
-                 <a href="/LavazemYadaki" className="footerLink">لوازم یدکی</a>
+                 <a  onClick={()=>  history.push("/LavazemYadaki")} className="footerLink">لوازم یدکی</a>
                  </li>
                  </ul>
             </Col>
@@ -81,16 +81,16 @@ const Footer = () => {
             <p className="footerTitle">خدمات مشتریان</p>
             <ul className="footerList">
                  <li>
-                 <a href="#" className="footerLink">لینک یک</a>
+                 <a   className="footerLink">لینک یک</a>
                  </li>
                  <li>
-                 <a href="#" className="footerLink">لینک دو</a>
+                 <a   className="footerLink">لینک دو</a>
                  </li>
                  <li>
-                 <a href="#" className="footerLink">لینک سه</a>
+                 <a   className="footerLink">لینک سه</a>
                  </li>
                  <li>
-                 <a href="#" className="footerLink">لینک چهار</a>
+                 <a   className="footerLink">لینک چهار</a>
                  </li>
 
                  </ul>
@@ -103,13 +103,13 @@ const Footer = () => {
             <p className="footerTitle">مجله بالبیران</p>
                     <ul className="footerList">
                  <li>
-                 <a href="/news" className="footerLink">آخرین اخبار</a>
+                 <a  onClick={()=>  history.push("/news")}  className="footerLink">آخرین اخبار</a>
                  </li>
                  <li>
-                 <a href="/news" className="footerLink">مقالات علمی</a>
+                 <a  onClick={()=>  history.push("/news")}  className="footerLink">مقالات علمی</a>
                  </li>
                  <li>
-                 <a href="/news" className="footerLink">طراحی روشنایی</a>
+                 <a  onClick={()=>  history.push("/news")}  className="footerLink">طراحی روشنایی</a>
                  </li>
 
 
