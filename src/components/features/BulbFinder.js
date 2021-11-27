@@ -419,7 +419,7 @@ onClick={()=>{setBase(item.BulbFindBaseID) ;mainCat()}}
       }}
     >
       <Range
-        values={values}
+        values={values2}
         step={STEP}
         min={MIN}
         max={MAX}
@@ -484,7 +484,7 @@ onClick={()=>{setBase(item.BulbFindBaseID) ;mainCat()}}
           </div>
         )}
       />
-      <output style={{ marginTop: '10px' }} id="output">
+      <output style={{ marginTop: '10px' }} id="output2">
         {values2[0].toFixed(1)}
       </output>
     </div>

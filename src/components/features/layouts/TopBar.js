@@ -66,20 +66,23 @@ const TopBar = () => {
 
 
 
-    <Button className="topbar-btn" onClick={()=>  history.push("/login")}>
-      <User className="d-inline-block"></User>
 
 
       {
           UserID==null ||UserID==""?
+    <Button className="topbar-btn" onClick={()=>  history.push("/login")}>
+      <User className="d-inline-block"></User>
 
           <p className="d-inline-block" onClick={()=>  history.push("/login")}>حساب کاربری</p>
+      </Button>
           :
-          <p className="d-inline-block" onClick={()=>  history.push("/login")}>{UserName}</p>
+          <Button className="topbar-btn" onClick={()=>  history.push("/userpanel/"+UserID)}>
+      <User className="d-inline-block"></User>
+          <p className="d-inline-block" onClick={()=>  history.push("/userpanel/"+UserID)}>{UserName}</p>
+          </Button>
 
       }
 
-      </Button>
 
 
     <Button className="topbar-btn" onClick={()=>  basket()}>
