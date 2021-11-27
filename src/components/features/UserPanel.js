@@ -531,7 +531,7 @@ null
           <div className="cFormDiv3 ta-right" style={{margin:"20px !important"}}>
            <span style={{margin:"20px !important"}}>متن پیام : </span>
 
-           <input  onChange={(event)=>setTextSupMain(event.target.value)} placeholder="متن پیام خود را وارد کنید" type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
+           <textarea  onChange={(event)=>setTextSupMain(event.target.value)} placeholder="متن پیام خود را وارد کنید" type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
             </div>
           </Col>
       </Row>
@@ -700,8 +700,11 @@ items.isAdmin?
 })
 }
 <Col md={12}>
-                     <input placeholder="پیام ..." type='text' onChange={(event)=>setTextSup(event.target.value)} style={{float:"right !important",width:"90% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
+  <div className="cFormDiv3">
+  <textarea placeholder="پیام ..." type='text' onChange={(event)=>setTextSup(event.target.value)} style={{float:"right !important",width:"90% !important",height:"100px",margin:"10px 0px",fontFamily:'IRANYekan-Medium',padding:5}} className="w100"/>
 
+  </div>
+                    
                      </Col>
 <Button onClick={()=>InsertSubSupport(item.SupportID)} className="modalSubmit">ارسال پیام</Button>
 

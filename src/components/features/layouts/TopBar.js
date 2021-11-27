@@ -10,7 +10,7 @@ import Cart from '../assets/icons/Cart'
 
 import ResponsiveMenu from '../layouts/ResponsiveMenu';
 
-import Exit from '../assets/icons/Exit'
+import Exit from '../assets/img/exit.png'
 
 const TopBar = () => {
   const history = useHistory();
@@ -94,7 +94,7 @@ const TopBar = () => {
      null
       :
       <Button onClick={()=>exit()} className="topbar-btn">
-      <Exit className="d-inline-block" style={{width:"25px",color:"#ffb921"}}></Exit>
+      <img src={Exit} className="aa"/>
       <p className="d-inline-block" >خروج</p>
       </Button>
       }

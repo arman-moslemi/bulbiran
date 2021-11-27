@@ -1,15 +1,17 @@
 import React  ,{ useRef,useState,useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/bulbiran.css'
-import Linkdin from '../assets/icons/Linkdin';
-import Whatsapp from '../assets/icons/WhatsApp';
-import Telegram from '../assets/icons/Telegram';
-import Instagram from '../assets/icons/Instagram';
+import Instagram from '../assets/img/instagram.png'
+import Whatsapp from '../assets/img/whatsapp.png'
+import Telegram from '../assets/img/telegram.png'
+import Linkedin from '../assets/img/linkedin.png'
 import {Container,Row,Col,Button} from 'react-bootstrap'
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { FaSearch,FaMapMarkerAlt } from 'react-icons/fa';
+import ReactTooltip from 'react-tooltip'
 
 const SocialRow = () => {
+ 
     const [mobile,setMobile]=useState('')
     const [pass,setPass]=useState('')
 
@@ -46,18 +48,22 @@ alert("شماره شما با موفقیت اضافه شد")
          <Row>
              <Col md={6} className="ta-right resTaCenter">
              <p className="email-title">بالبیران را در شبکه های اجتماعی دنبال کنید</p>
-             <div className="d-inline-block socialIcons">
-                 <Instagram></Instagram>
-                 </div>
-                 <div className="d-inline-block socialIcons">
-                 <Telegram></Telegram>
-                 </div>
-                 <div className="d-inline-block socialIcons">
-                 <Whatsapp></Whatsapp>
-                 </div>
-                 <div className="d-inline-block socialIcons">
-                 <Linkdin></Linkdin>
-                 </div>
+             <a className="d-inline-block socialIcons" href="https://instagram.com/bulb_iran">
+                 <img src={Instagram} />
+                 
+                 </a>
+                 <a className="d-inline-block socialIcons" href="https://telegram.me/@bulbiran">
+                 <img src={Telegram} />
+                
+                 </a>
+                 <a className="d-inline-block socialIcons" href="https://wa.me/+989357500057">
+                 <img src={Whatsapp} />
+                
+                 </a>
+                 <a className="d-inline-block socialIcons" href="">
+                 <img src={Linkedin} />
+                
+                 </a>
              </Col>
              <Col md={6} className="ta-left resTaCenter">
                  <p className="email-title">جهت آگاهی از تخفیف های ویژه،عضو باشگاه مشتریان شوید</p>

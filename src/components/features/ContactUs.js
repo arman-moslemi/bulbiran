@@ -16,12 +16,18 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 export default function SimpleMap(){
   const defaultProps = {
     center: {
-      lat: 10.99835602,
-      lng: 77.01502627
+      lat: 35.68129,
+      lng: 51.42302
     },
-    zoom: 11
+    zoom:15
   };
-
+  const defaultProps2 = {
+    center: {
+      lat: 35.70741,
+      lng: 51.40563
+    },
+    zoom:15
+  };
   return (
     // Important! Always set the container height explicitly
   <>
@@ -52,9 +58,10 @@ export default function SimpleMap(){
         defaultZoom={defaultProps.zoom}
       >
         <AnyReactComponent
-          lat={59.955413}
-          lng={30.337844}
-          text="My Marker"
+          lat={35.68129}
+          lng={51.42302}
+          text="مجتمع تجاری ناصرخسرو"
+          style={{fontFamily:'IRANYekan-Bold'}}
         />
       </GoogleMapReact>
     </div>
@@ -68,12 +75,13 @@ export default function SimpleMap(){
             <div className="ta-right mgt20">
                 <FaPhoneAlt className="contactIcons d-inline-block"/>
                 <p className="boldText d-inline-block">تلفن ثابت : </p>
-                <p className="contactText d-inline-block">+982133904900</p>
+                <a className="contactText d-inline-block" href="tel:+982133904900">02133904900</a>
             </div>
             <div className="ta-right mgt20">
                 <FaMobileAlt className="contactIcons d-inline-block"/>
                 <p className="boldText d-inline-block">تلفن همراه : </p>
-                <p className="contactText d-inline-block">+989357500057</p>
+                <a className="contactText d-inline-block"  href="tel:+98935750057">09357500057</a>
+                <a className="contactText d-inline-block" href="tel:+989912518500">- 09912518500</a>
             </div>
             <div className="ta-right mgt20">
                 <FaEnvelope className="contactIcons d-inline-block"/>
@@ -82,13 +90,20 @@ export default function SimpleMap(){
             </div>
             <div className="ta-right mgt20">
                 <FaTelegramPlane className="contactIcons d-inline-block"/>
-                <p className="boldText d-inline-block">تلگرام : </p>
-                <p className="contactText d-inline-block"> @telegram_id </p>
+                <p className="boldText d-inline-block">کانال تلگرام بالبیران :</p>
+                <a className="contactText d-inline-block" href="https://telegram.me/@bulbiran">@bulbiran</a>
+            </div>
+            <div className="ta-right mgt20">
+                <FaTelegramPlane className="contactIcons d-inline-block"/>
+                <p className="boldText d-inline-block">ارتباط از طریق تلگرام :</p>
+                <a className="contactText d-inline-block" href="https://telegram.me/+989357500057">09357500057</a>
+                <a className="contactText d-inline-block" href="https://telegram.me/+989912518500">- 09912518500</a>
             </div>
             <div className="ta-right mgt20">
                 <FaWhatsapp className="contactIcons d-inline-block"/>
-                <p className="boldText d-inline-block">واتساپ : </p>
-                <p className="contactText d-inline-block">+982133904900</p>
+                <p className="boldText d-inline-block">ارتباط از طریق واتساپ : </p>
+                <a className="contactText d-inline-block" href="https://wa.me/+989357500057">09357500057</a>
+                <a className="contactText d-inline-block" href="https://wa.me/+989912518500">- 09912518500</a>
             </div>
             <div className="ta-right mgt20">
                 <FaLinkedin className="contactIcons d-inline-block"/>
@@ -98,7 +113,7 @@ export default function SimpleMap(){
             <div className="ta-right mgt20">
                 <FaInstagram className="contactIcons d-inline-block"/>
                 <p className="boldText d-inline-block">اینستاگرام : </p>
-                <p className="contactText d-inline-block"> @instagram </p>
+                <a className="contactText d-inline-block" href="https://instagram.com/bulb_iran"> @bulb_iran</a>
             </div>
             </div>
            </div>
@@ -108,27 +123,32 @@ export default function SimpleMap(){
            <div style={{ height: '360px', width: '100%' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}
-        defaultCenter={defaultProps.center}
-        defaultZoom={defaultProps.zoom}
+        defaultCenter={defaultProps2.center}
+        defaultZoom={defaultProps2.zoom}
       >
         <AnyReactComponent
-          lat={59.955413}
-          lng={30.337844}
-          text="My Marker"
+          lat={35.70741}
+          lng={51.40563}
+          text="مجتمع اداری نور تهران"
         />
       </GoogleMapReact>
     </div>
             <div className="pd30">
-            <p className="contactTitle">فروشگاه مرکزی</p>
+            <p className="contactTitle">دفتر مرکزی :</p>
             <div className="ta-right mgt20">
                 <FaMapMarkerAlt className="contactIcons d-inline-block"/>
                 <p className="boldText d-inline-block">آدرس : </p>
-                <p className="contactText d-inline-block">تهران،میدان امام خمینی،خیابان ناصر خسرو،مجتمع تجاری ناصر خسرو</p>
+                <p className="contactText d-inline-block">خیابان ولی عصر ، مجتمع اداری نور تهران ، واحد 1712 ، طبقه 5 اداری</p>
             </div>
             <div className="ta-right mgt20">
                 <FaPhoneAlt className="contactIcons d-inline-block"/>
                 <p className="boldText d-inline-block">تلفن ثابت : </p>
-                <p className="contactText d-inline-block">+982133904900</p>
+                <a className="contactText d-inline-block" href="tel:+982188227310">02188227310</a>
+            </div>
+            <div className="ta-right mgt20">
+                <FaPhoneAlt className="contactIcons d-inline-block"/>
+                <p className="boldText d-inline-block">تلفن ثابت : </p>
+                <a className="contactText d-inline-block" href="tel:+98212188227311">02188227311</a>
             </div>
            </div>
 </div>
