@@ -19,7 +19,8 @@ const SocialRow = () => {
         console.log(mobile)
         console.log(pass)
         const axios = require("axios");
-        axios
+        if(mobile!="")
+        {axios
         .post(apiUrl + "InsertCustomer",{Mobile:mobile.toString()})
     .then(function (response) {
       if (response.data.result == "true") {
@@ -35,7 +36,10 @@ alert("شماره شما با موفقیت اضافه شد")
     }})
     .catch(function (error) {
       console.log(error);
-    });
+    });}
+    else{
+
+    }
     // console.log(159876)
       }
     return (
@@ -64,10 +68,10 @@ alert("شماره شما با موفقیت اضافه شد")
              <Col md={6} className="ta-left resTaCenter">
                  <p className="email-title">جهت آگاهی از تخفیف های ویژه،عضو باشگاه مشتریان شوید</p>
                 <div className="emailBox">
-                    <form>
+                    {/* <form> */}
                         <input className="mobileInput" type="text" onChange={(event)=>setMobile(event.target.value)} name="phonenumber" placeholder="شماره تلفن همراه خود را وارد کنید"></input>
                         <Button className="mobileSubmit yellowBTN"  type="submit" onClick={()=>loginto()}   >عضویت</Button>
-                    </form>
+                    {/* </form> */}
                 </div>
              </Col>
          </Row>

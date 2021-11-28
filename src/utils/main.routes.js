@@ -40,9 +40,11 @@ import BrandSecond from '../components/features/BrandSecond';
 import IndoorSecond from '../components/features/IndoorSecond';
 import Cartstep1 from '../components/features/Cartstep1';
 import BlogSecond from '../components/features/BlogSecond';
+import ScrollToTop from '../components/features/layouts/ScrollToTop';
 const MainRoutes = (props) => {
 	return (
 		<HashRouter>
+<ScrollToTop/>
 			<Route
 					exact
 					path='/'

@@ -220,7 +220,12 @@ console.log(error);
 }
   useEffect(() => {
     mainSlider();
+    const UserID= localStorage.getItem("user_id");
+    const UserName= localStorage.getItem("user_name");
+    if(UserID==null ||UserID=="" ){
+
     openModal();
+    }
   }, []);
 
   const history = useHistory();

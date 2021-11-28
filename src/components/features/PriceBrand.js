@@ -92,7 +92,7 @@ const PriceBrand = () => {
 
             <Col md={3} xs={6}>
             <Link  onClick={()=>  history.push("/pricetable/"+item.BrandID)}>
-                <div className="whiteBrandBox" onClick={()=>  history.push("/pricetable")}>
+                <div className="whiteBrandBox" >
                 <img src={apiAsset+item.BrandLogo}/>
                     <div className="grayBox res95">
                         <p>{item.BrandName}</p>
