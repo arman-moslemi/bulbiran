@@ -3817,6 +3817,13 @@ font-size: 14px;
   height: 100% !important;
   width: 100% !important;
 }
+.rulesTitle{
+  font-family: 'IRANSans-Bold';
+  font-size: 18px;
+  text-align: right;
+  color:#142b6f;
+  margin-top: 3%;
+}
 #neshan1638084187438{
   height: 100% !important;
   width: 100% !important;
