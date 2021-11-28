@@ -433,7 +433,7 @@ return(
                         <div  className="ta-center pd0 d-inline-block" style={{borderBottom:"none"}}>
                     <div className="counterDiv pd5" style={{padding:"0px !important",marginRight:"10px"}}>
               <button onClick={()=>decrement()} className="decBTN">-</button>
-              <span>{count}</span>
+              <span style={{marginRight:'0'}}>{count}</span>
               <button onClick={()=>increment()} className="inBTN">+</button>
             </div>
                     </div>

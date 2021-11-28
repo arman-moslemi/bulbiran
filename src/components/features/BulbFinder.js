@@ -267,7 +267,7 @@ null:
 onClick={()=>{setBase(item.BulbFindBaseID) ;mainCat()}}
 >
             <img src={apiAsset+item.Photo} className="kl1"/>
-            <span>{item.Title}</span>
+            <span style={base==item.BulbFindBaseID?{color:'#ffb921'}: null}>{item.Title}</span>
             </Link>
                                     );
 

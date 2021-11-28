@@ -55,7 +55,7 @@ export default function SimpleMap(){
         <Row>
             <Col md={6}>
            <div className="whiteBox pd0">
-           <div style={{ height: '360px', width: '100%' }}>
+           <div style={{ height: '100%', width: '100%' }}>
       {/* <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}
         defaultCenter={defaultProps.center}
@@ -131,7 +131,7 @@ export default function SimpleMap(){
            </Col>
             <Col md={6}>
             <div className="whiteBox pd0">
-           <div style={{ height: '360px', width: '100%' }}>
+           <div style={{ height: '100%', width: '100%' }}>
       {/* <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}
         defaultCenter={defaultProps2.center}
@@ -152,7 +152,7 @@ export default function SimpleMap(){
     />
     </div>
             <div className="pd30">
-            <p className="contactTitle">دفتر مرکزی :</p>
+            <p className="contactTitle">دفتر مرکزی </p>
             <div className="ta-right mgt20">
                 <FaMapMarkerAlt className="contactIcons d-inline-block"/>
                 <p className="boldText d-inline-block">آدرس : </p>

@@ -3813,6 +3813,17 @@ font-size: 14px;
 .cFormDiv3 {
   margin: 0px 0px;
 }
+#neshan1638084187342{
+  height: 100% !important;
+  width: 100% !important;
+}
+#neshan1638084187438{
+  height: 100% !important;
+  width: 100% !important;
+}
+.leaflet-container{
+  width: 100% !important;
+}
 .cFormDiv3 input, .cFormDiv textarea {
   font-family: 'IRANYekan-Medium';
   color: #000;
