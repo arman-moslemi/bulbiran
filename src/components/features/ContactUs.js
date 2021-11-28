@@ -11,6 +11,10 @@ import {Container,Row,Col,Button} from 'react-bootstrap'
 import { FaAngleLeft, FaMapMarkerAlt, FaMobileAlt, FaEnvelope, FaTelegramPlane, FaWhatsapp, FaInstagram, FaPhoneAlt, FaLinkedin } from 'react-icons/fa';
 import Contact from './assets/icons/Contact';
 
+
+import NeshanMap from 'react-neshan-map-leaflet'
+
+
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 export default function SimpleMap(){
@@ -52,7 +56,7 @@ export default function SimpleMap(){
             <Col md={6}>
            <div className="whiteBox pd0">
            <div style={{ height: '360px', width: '100%' }}>
-      <GoogleMapReact
+      {/* <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
@@ -63,7 +67,14 @@ export default function SimpleMap(){
           text="مجتمع تجاری ناصرخسرو"
           style={{fontFamily:'IRANYekan-Bold'}}
         />
-      </GoogleMapReact>
+      </GoogleMapReact> */}
+        <NeshanMap
+      options={{
+        key: 'web.WYApUM7cXfxCIsEOResTbsPWaqgBNLQKW42vcP9L',
+        center: [35.68129, 51.42302],
+        zoom: 13
+      }}
+    />
     </div>
             <div className="pd30">
             <p className="contactTitle">فروشگاه مرکزی</p>
@@ -121,7 +132,7 @@ export default function SimpleMap(){
             <Col md={6}>
             <div className="whiteBox pd0">
            <div style={{ height: '360px', width: '100%' }}>
-      <GoogleMapReact
+      {/* <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}
         defaultCenter={defaultProps2.center}
         defaultZoom={defaultProps2.zoom}
@@ -131,7 +142,14 @@ export default function SimpleMap(){
           lng={51.40563}
           text="مجتمع اداری نور تهران"
         />
-      </GoogleMapReact>
+      </GoogleMapReact> */}
+        <NeshanMap
+      options={{
+        key: 'web.WYApUM7cXfxCIsEOResTbsPWaqgBNLQKW42vcP9L',
+        center: [35.70741, 51.40563],
+        zoom: 13
+      }}
+    />
     </div>
             <div className="pd30">
             <p className="contactTitle">دفتر مرکزی :</p>
@@ -154,10 +172,10 @@ export default function SimpleMap(){
 </div>
           <div className="whiteBox mgt15">
               <p className="contactDescription">
-              اگر سوالی دارید، یک مشکل در وب‌سایت پیدا کرده‌اید و می‌خواهید به ما 
-اطلاع دهید، برای بالبیران پیشنهادی دارید، اگر حتی فقط قصد آشنا شدن با ما را دارید، 
-یک لحظه هم درنگ نکنید! همین حالا با ما تماس بگیرید‌ 
-توجه: وارد کردن اطلاعات تماس در فرم زیر اختیاری است. با داشتن اطلاعات تماس، 
+              اگر سوالی دارید، یک مشکل در وب‌سایت پیدا کرده‌اید و می‌خواهید به ما
+اطلاع دهید، برای بالبیران پیشنهادی دارید، اگر حتی فقط قصد آشنا شدن با ما را دارید،
+یک لحظه هم درنگ نکنید! همین حالا با ما تماس بگیرید‌
+توجه: وارد کردن اطلاعات تماس در فرم زیر اختیاری است. با داشتن اطلاعات تماس،
 بهتر با شما در تماس خواهیم بود!
             </p>
             <form className="contactUsForm">
@@ -165,12 +183,12 @@ export default function SimpleMap(){
               <textarea placeholder="پیام شما" className="contactUsTextarea"></textarea>
            <button type="submit" className="contactBtn">ارسال پیام ! </button>
             </form>
-            
+
           </div>
             </Col>
         </Row>
     </div>
-  
+
   </Container>
   <SocialRow/>
   <IconRow/>
@@ -178,3 +196,6 @@ export default function SimpleMap(){
   </>
   );
 }
+
+
+

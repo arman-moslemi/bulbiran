@@ -49,6 +49,7 @@ const CartStep1=() => {
     const [userdata,setUserData]=useState([])
     const [total,setTotal]=useState(0)
     const [address,setAddress]=useState('')
+    const [addressFake,setAddressFake]=useState('')
     const [name,setName]=useState('')
     const [phone,setPhone]=useState('')
     const [codeposti,setCodePosti]=useState('')
@@ -139,7 +140,7 @@ else{
             console.log(458)
 
             setTotal(ss)
-             alert("محصول با موفقیت به سبد خرید اضافه شد.")
+            //  alert("محصول با موفقیت به سبد خرید اضافه شد.")
 
 }})
           .catch(function (error) {
@@ -219,12 +220,7 @@ setName("")
       const InsertAddress=()=>{
         const axios = require("axios");
         const UserID= localStorage.getItem("user_id");
-
-
-    console.log(55)
-
-
-          axios.post(apiUrl + "InsertAddressBasket",{CustomerID:UserID,Address:address,Name:name,Phone:phone,CodePosti:codeposti})
+          axios.post(apiUrl + "InsertAddressBasket",{CustomerID:UserID,Address:addressFake,Name:name,Phone:phone,CodePosti:codeposti})
         //   .get(apiUrl + "Blog")
           .then(function (response) {
               console.log(475)
@@ -232,6 +228,9 @@ setName("")
             if (response.data.result == "true") {
              console.log(44)
              console.log(response.data.result)
+             setAddress(addressFake)
+             setIsOpen(false);
+
              alert("آدرس با موفقیت ثبت شد")
 
 
@@ -469,7 +468,7 @@ null}
           <div className="cFormDiv3 ta-right" style={{margin:"20px !important"}}>
            <span style={{margin:"20px !important"}}>آدرس خود را وارد کنید : </span>
            <br/>
-           <input onChange={(event)=>setAddress(event.target.value)} value={address} placeholder="آدرس ..." type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
+           <input onChange={(event)=>setAddressFake(event.target.value)} value={addressFake} placeholder="آدرس ..." type='text' style={{float:"right !important",width:"100% !important",height:"100px",margin:"10px 0px"}} className="w100"/>
             </div>
           </Col>
       </Row>

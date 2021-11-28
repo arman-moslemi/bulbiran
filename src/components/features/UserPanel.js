@@ -704,7 +704,7 @@ items.isAdmin?
   <textarea placeholder="پیام ..." type='text' onChange={(event)=>setTextSup(event.target.value)} style={{float:"right !important",width:"90% !important",height:"100px",margin:"10px 0px",fontFamily:'IRANYekan-Medium',padding:5}} className="w100"/>
 
   </div>
-                    
+
                      </Col>
 <Button onClick={()=>InsertSubSupport(item.SupportID)} className="modalSubmit">ارسال پیام</Button>
 
