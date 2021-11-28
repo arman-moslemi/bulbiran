@@ -95,7 +95,7 @@ alert("با موفقیت انجام شد")
       <Header/>
     <Container fluid className="bulbiranContainer">
     <Row style={{marginRight:"0px",marginLeft:"0px",MarginTop:"20px"}}>
-        <Col md={3}>
+        {/* <Col md={3}>
         <div className="whiteBox ta-right">
             <span className="boldTitle">
                 طراحی و مشاوره روشنایی
@@ -128,7 +128,7 @@ alert("با موفقیت انجام شد")
                 </li>
             </ul>
         </div>
-        </Col>
+        </Col> */}
         <Col md={9}>
             <div className="whiteBox pdc ta-right">
                 <div>

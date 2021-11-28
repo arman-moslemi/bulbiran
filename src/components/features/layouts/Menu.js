@@ -1558,7 +1558,7 @@ brand?.map((item, i) => {
     <Dropdown.Item  onClick={()=>  history.push("/shegeftangiz")}>کالای شگفت انگیز</Dropdown.Item>
     <Dropdown.Item  onClick={()=>  history.push("/ShegeftGreen")}>شگفت انگیز فروشگاه سبز</Dropdown.Item>
     <Dropdown.Item  onClick={()=>  history.push("/pishnahadvijhe")}>فروش ویژه</Dropdown.Item>
-    <Dropdown.Item  onClick={()=>  history.push("/pishnahadvijhe")}>پرفروش ترین</Dropdown.Item>
+    {/* <Dropdown.Item  onClick={()=>  history.push("/pishnahadvijhe")}>پرفروش ترین</Dropdown.Item> */}
     </Dropdown.Menu>
     </Dropdown>
 
