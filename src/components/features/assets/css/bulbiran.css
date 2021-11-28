@@ -1973,7 +1973,7 @@ background-color: #fff;
   padding: 15px;
 }
 .cTabList .react-tabs__tab{
-  font-family: 'IRANYekan';
+  font-family: 'IRANYekan-Medium';
   color:#18206b;
   font-size: 15px;
   padding:10px 25px;
@@ -3825,7 +3825,7 @@ font-size: 14px;
   -o-border-radius: 5px;
   float: left;
   font-size: 13px;
-  width: 60%;
+  width: 85%;
   margin-top: -7px;
 }.cFormDiv3 textarea{
   font-family: 'IRANYekan-Medium';
