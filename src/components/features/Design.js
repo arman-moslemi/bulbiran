@@ -273,7 +273,7 @@ alert("با موفقیت انجام شد")
         </Col>
         <Col md={11} xs={9}className="ta-right pd0">
         <p className="gTitle" style={{marginRight:'0',marginTop:'5'}} >فرم درخواست خدمات روشنایی و طراحی</p>
-      <p className="shortDescription">برای آگاهی از شرایط گارانتی فرم زیر را تکمیل نمایید</p>
+      <p className="shortDescription">برای آگاهی از شرایط طراحی فرم زیر را تکمیل نمایید</p>
         </Col>
         </Row>
         <hr></hr>
