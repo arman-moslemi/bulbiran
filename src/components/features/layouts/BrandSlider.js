@@ -17,13 +17,13 @@ export default function AmazingSlider() {
     slidesToShow: 6,
     slidesToScroll: 1,
     autoplay:false,
-    
+
   };
 
-          
+
   return (
     <Slider {...settings} className="amazingSlider">
-    <div className="hamkarLogo">
+    {/* <div className="hamkarLogo">
         <img src={c1}/>
     </div>
     <div className="hamkarLogo">
@@ -40,8 +40,8 @@ export default function AmazingSlider() {
     </div>
     <div className="hamkarLogo">
         <img src={c4}/>
-    </div>
-    <div className="hamkarLogo">
+    </div> */}
+    {/* <div className="hamkarLogo">
         <img src={c3}/>
     </div>
     <div className="hamkarLogo">
@@ -49,7 +49,7 @@ export default function AmazingSlider() {
     </div>
     <div className="hamkarLogo">
         <img src={c5}/>
-    </div>
+    </div> */}
     </Slider>
   );
 }
