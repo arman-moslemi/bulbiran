@@ -423,11 +423,18 @@ console.log(error);
 
             brand?.map((item, i) => {
               return (
+                i<8?
                       <>
+
+                                  <Link  onClick={()=>  history.push("/brandsecond/"+item.BrandID)}>
+
                      <div     className="brandIconBox">
             <img src={apiAsset+item.BrandLogo}/>
           </div>
+</Link>
                       </>
+                      :
+                      null
                     );
 
             })
