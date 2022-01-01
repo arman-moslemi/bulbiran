@@ -2408,16 +2408,16 @@ text-align: right;
 a:hover{
   color: #ffb921 !important;
   text-decoration: none !important;
-  cursor: grab;
+  cursor: pointer;
 }
 .masrafBox:hover{
-  cursor: grab;
+  cursor: pointer;
 }
 .techWhite:hover{
-  cursor: grab;
+  cursor: pointer;
 }
 .brandIconBox:hover{
-  cursor: grab;
+  cursor: pointer;
 }
 .w80{
   width: 80%;
@@ -4078,11 +4078,13 @@ display: block;
   text-align: right;
  
 }
+
 @media only screen and (max-width: 768px) {
   /* For Tablet */
 
 }
 @media only screen and (max-width: 414px) {
+
 
   /* For Mobile: */
   .responsiveNews{
@@ -4816,4 +4818,61 @@ padding-right: 15px;
 .bMother{
   
 }
+}
+@media only screen and (max-width:900px) and (min-width:415px){
+  .heroText{
+    font-size: 15px !important;
+
+  }
+  .ledLabel{
+    display: none !important;
+  }
+  .topbar-btn{
+    font-size: 10px !important;
+  }
+  .number-menu{
+    font-size: 20px !important;
+  }
+  .number-detail{
+    margin-left: 0px !important;
+  }
+  .menu-items{
+    font-size: 8px !important;
+  }
+  .ledbuttonIcon{
+    margin-right: -10px !important;
+  }
+  .categoryName{
+    font-size: 10px !important;
+  }
+  .wBoxTitle{
+    font-size: 20px !important;
+  }
+  .wBoxDescription{
+    font-size: 12px !important;
+  }
+  .sIcon svg{
+    font-size: 40px !important;
+  }
+  .searchIBtn2{
+    font-size: 15px !important;
+  }
+  .bottomButton{
+    font-size: 15px !important;
+  }
+  .innerSlider p{
+    font-size: 20px !important;
+  }
+  
+}
+@media only screen and (max-width:550px){
+  .dresNone{
+    display: none !important;
+  }
+    
+ 
+  
+  .brandSliderBox{
+    margin-top: 20px !important;
+  }
 }

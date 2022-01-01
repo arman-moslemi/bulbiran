@@ -551,7 +551,7 @@ console.log(error);
    </div>
    </Container>
    <Container fluid className="bulbiranContainer">
-     <div className="homeSlider" id="bulbSlider">
+     <div className="homeSlider dresNone" id="bulbSlider">
     <Row>
       <Col md={12}>
         <div>
@@ -570,7 +570,7 @@ console.log(error);
 
     </Row>
      </div>
-     <div className="homeSlider" id="pannelSlider">
+     <div className="homeSlider dresNone" id="pannelSlider">
     <Row>
       <Col md={12}>
         <div>
@@ -589,7 +589,7 @@ console.log(error);
 
     </Row>
      </div>
-     <div className="homeSlider" id="avizSlider">
+     <div className="homeSlider dresNone" id="avizSlider">
     <Row>
       <Col md={12}>
         <div>
@@ -608,7 +608,7 @@ console.log(error);
 
     </Row>
      </div>
-     <div className="homeSlider" id="riseSlider">
+     <div className="homeSlider dresNone" id="riseSlider">
     <Row>
       <Col md={12}>
         <div>
@@ -627,7 +627,7 @@ console.log(error);
 
     </Row>
      </div>
-     <div className="homeSlider" id="noorafkanSlider">
+     <div className="homeSlider dresNone" id="noorafkanSlider">
     <Row>
       <Col md={12}>
         <div>
