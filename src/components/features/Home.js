@@ -23,25 +23,13 @@ import 'react-dropdown/style.css';
 import CircumstanceBanner from './assets/icons/CircumstanceBanner'
 import LedBanner from './assets/icons/LedBanner'
 import { FaAngleLeft ,FaSearch ,FaTimes} from 'react-icons/fa';
-import Slide1 from './assets/img/slide1.jpg';
 import Lamp from './assets/img/lamp.png';
 import Rise from './assets/img/rise.png';
 import Lavazem from './assets/img/lavazemjanebi.png';
 import Inner from './assets/img/inner.png';
 import Outdoor from './assets/img/outdoor.png';
 import Tazein from './assets/img/tazein.png';
-import b1 from './assets/img/b1.png';
-import b2 from './assets/img/b2.png';
-import b3 from './assets/img/b3.jpeg';
-import b4 from './assets/img/b4.png';
-import b5 from './assets/img/b5.png';
-import b6 from './assets/img/b6.png';
-import b7 from './assets/img/b7.png';
-import b8 from './assets/img/b8.png';
-import b9 from './assets/img/b9.png';
-import b10 from './assets/img/b10.png';
-import b11 from './assets/img/b11.png';
-import b12 from './assets/img/b12.png';
+
 import Suggestion from './assets/icons/Suggestion';
 import Services from './assets/icons/Services';
 import Magazine from './assets/icons/Magazine';
@@ -50,7 +38,6 @@ import BulbsImg from './assets/img/bulbs.png';
 import ProductSlider from './layouts/Productslider';
 import BrandSlider from './layouts/BrandSlider';
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
-import { SettingsBackupRestoreRounded } from '@material-ui/icons';
 
 const options=[
 
@@ -108,14 +95,14 @@ const [base,setBase]=useState(0)
     const [pass,setPass]=useState('')
 
     const loginto=()=>{
-        console.log(mobile)
-        console.log(pass)
+        // console.log(mobile)
+        // console.log(pass)
         const axios = require("axios");
         axios
         .post(apiUrl + "InsertCustomer",{Mobile:mobile.toString()})
     .then(function (response) {
       if (response.data.result == "true") {
-        console.log(response.data.Data)
+        // console.log(response.data.Data)
 alert("شماره شما با موفقیت اضافه شد")
 closeModal()
 
@@ -139,15 +126,13 @@ const mainSlider=()=>{
     .get(apiUrl + "FirstPage")
     .then(function (response) {
       if (response.data.result == "true") {
-       console.log(123456)
-       console.log(response.data.Data[0].Pic)
+
        setimg1(response.data.Data[0].Pic)
        setimg2(response.data.Data[0].Pic2)
        setimg3(response.data.Data[0].Pic3)
-       setimg4(response.data.Data[0].Pic4)
-       setimg5(response.data.Data[0].Pic5)
-       setimg6(response.data.Data[0].Pic6)
-       console.log(img1)
+      //  setimg4(response.data.Data[0].Pic4)
+      //  setimg5(response.data.Data[0].Pic5)
+      //  setimg6(response.data.Data[0].Pic6)
     }
     else{
       console.log(response.data.result)
@@ -192,8 +177,8 @@ axios
 if (response.data.result == "true") {
 
 setProduct(response.data.Data)
-  console.log(11)
-  console.log(response.data.Data[0])
+  // console.log(11)
+  // console.log(response.data.Data[0])
 }
 else{
 console.log(response.data.result)
@@ -221,7 +206,7 @@ console.log(error);
   useEffect(() => {
     mainSlider();
     const UserID= localStorage.getItem("user_id");
-    const UserName= localStorage.getItem("user_name");
+    // const UserName= localStorage.getItem("user_name");
     if(UserID==null ||UserID=="" ){
 
     openModal();
@@ -374,38 +359,48 @@ console.log(error);
     <Row className="mgt20 categoryRow">
       <Col md={2} xs={6} className="pd10">
         <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/1")} >
-      <img src={Lamp}/>
+      {/* <img src={Lamp}/> */}
+      <img src={apiAsset+"lamp.png"}/>
+
       <p className="categoryName">لامپ</p>
         </a>
       </Col>
 
       <Col md={2} xs={6} className="pd10">
         <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/2")} >
-      <img src={Inner}/>
+      {/* <img src={Inner}/> */}
+      <img src={apiAsset+"inner.png"}/>
+
       <p className="categoryName">روشنایی داخلی</p>
         </a>
       </Col>
       <Col md={2} xs={6} className="pd10">
         <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/3")} >
-      <img src={Outdoor}/>
+      {/* <img src={Outdoor}/> */}
+      <img src={apiAsset+"outdoor.png"}/>
+
       <p className="categoryName">روشنایی بیرونی</p>
         </a>
       </Col>
       <Col md={2} xs={6} className="pd10">
         <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/4")} >
-      <img src={Tazein}/>
+      {/* <img src={Tazein}/> */}
+      <img src={apiAsset+"tazein.png"}/>
       <p className="categoryName">روشنایی تزئینی</p>
         </a>
       </Col>
       <Col md={2}  xs={6} className="pd10">
         <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/5")} >
-      <img src={Rise}/>
+      {/* <img src={Rise}/> */}
+      <img src={apiAsset+"rise.png"}/>
       <p className="categoryName">روشنایی خاص</p>
         </a>
       </Col>
       <Col md={2} xs={6} className="pd10">
         <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/6")} >
-      <img src={Lavazem}/>
+      {/* <img src={Lavazem}/> */}
+      <img src={apiAsset+"lavazemjanebi.png"}/>
+
       <p className="categoryName">لوازم جانبی</p>
         </a>
       </Col>
@@ -428,11 +423,18 @@ console.log(error);
 
             brand?.map((item, i) => {
               return (
+                i<8?
                       <>
+
+                                  <Link  onClick={()=>  history.push("/brandsecond/"+item.BrandID)}>
+
                      <div     className="brandIconBox">
             <img src={apiAsset+item.BrandLogo}/>
           </div>
+</Link>
                       </>
+                      :
+                      null
                     );
 
             })
