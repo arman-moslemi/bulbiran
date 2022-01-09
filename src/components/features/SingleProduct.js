@@ -338,13 +338,21 @@ return(
                         <ul className="vijhegiList">
                         { property?.map((item, i) => {
              return (
-                 i<10?
+                 i<5?
           <>
+           <span className="vijhegiTitle">{item[0].TitleMain}:</span>
+
+                                {/* {item.Title} : {item.Text} */}
+                                {
+                                    item?.map((items)=>{
+                                        return (
 
 <li>
-                                {/* {item.Title} : {item.Text} */}
-                                {item.Title}
+ {items.Title}
                             </li>
+                                        )
+                                    })
+                                }
             </>
 :
 null
@@ -529,17 +537,21 @@ return(
              return (
                  i<4?
           <>
-                <Row style={{margin:"0"}} className="tableRow">
+
+               <Row style={{margin:"0"}} className="tableRow">
                     <Col md={6} className="ta-right pd0">
                         <span className="tableSpan">
-                            {item.Title}
+                        {item[0].TitleMain}:
                         </span>
                     </Col>
+                    { item?.map((items)=>{
+                        return(
                     <Col md={6} className="ta-left pd0">
                         <span className="tableSpan">
-                            {item.Text}
+                            {items.Title}
                         </span>
                     </Col>
+                       )   })}
                 </Row>
                 </>
 :
@@ -570,13 +582,23 @@ null
             <Row style={{margin:"0"}} className="pTableRow">
                 <Col md={6} className="pd0 ta-right">
                     <span className="tableTR">
-                      {item.Title}
+                      {item[0].TitleMain}
                     </span>
                 </Col>
                 <Col md={6} className="pd0 ta-right">
+                { item?.map((items,index)=>{
+                        return(
                 <span className="tableTH">
-                {item.Text}
+                    {
+index!=item.length-1?
+                 items.Title+"; "
+                :
+
+                items.Title
+                }
                     </span>
+                        )
+                })}
                     </Col>
             </Row>
             </>
