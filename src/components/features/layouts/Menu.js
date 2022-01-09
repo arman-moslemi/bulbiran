@@ -189,6 +189,33 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
           }
            </ul>
        </Col>
+       <Col md={3}>
+           <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
+               return (
+               i<19&& i>13?
+                      <>
+               <li>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
+               </li>
+               {/* <li>
+                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/3")}>لامپ کم مصرف</a>
+               </li>
+               <li>
+                   <a   onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/5")}>لامپ گازی</a>
+               </li>
+               <li>
+                   <a   onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/6")}>لامپ هالوژنی</a>
+               </li> */}
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col>
    </Row>
         </div>
 
@@ -600,6 +627,44 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
                i<13&& i>7?
+                      <>
+               <li>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+               </li>
+
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col>
+       <Col md={3}>
+           <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
+               return (
+               i<19&& i>13?
+                      <>
+               <li>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+               </li>
+
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col>
+       <Col md={3}>
+           <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
+               return (
+                i>19?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>

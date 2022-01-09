@@ -230,7 +230,7 @@ p{
   display: unset !important;
 }
 
-.tooltip-on-hover:hover + .tooltip {  
+.tooltip-on-hover:hover + .tooltip {
  display: block !important;
  opacity: 1 !important;
 }
@@ -242,9 +242,9 @@ p{
   display: inline-block;
   border-radius: 3px;
   position: absolute;
- 
+
   z-index: 200000;
- 
+
   border:none !important;
   border-radius: 0.3rem;
   opacity: 0;
@@ -260,11 +260,11 @@ p{
 }
 .tooltip2 {
   visibility: unset !important;
- 
+
    display: unset !important;
  }
- 
- .tooltip-on-hover2:hover + .tooltip2 {  
+
+ .tooltip-on-hover2:hover + .tooltip2 {
   display: block !important;
   opacity: 1 !important;
  }
@@ -276,9 +276,9 @@ p{
    display: inline-block;
    border-radius: 3px;
    position: absolute;
-  
+
    z-index: 200000;
-  
+
    border:none !important;
    border-radius: 0.3rem;
    opacity: 0;
@@ -294,11 +294,11 @@ p{
  }
  .tooltip3 {
   visibility: unset !important;
- 
+
    display: unset !important;
  }
- 
- .tooltip-on-hover3:hover + .tooltip3 {  
+
+ .tooltip-on-hover3:hover + .tooltip3 {
   display: block !important;
   opacity: 1 !important;
  }
@@ -310,9 +310,9 @@ p{
    display: inline-block;
    border-radius: 3px;
    position: absolute;
-  
+
    z-index: 200000;
-  
+
    border:none !important;
    border-radius: 0.3rem;
    opacity: 0;
@@ -328,11 +328,11 @@ p{
  }
  .tooltip4 {
   visibility: unset !important;
- 
+
    display: unset !important;
  }
- 
- .tooltip-on-hover4:hover + .tooltip4 {  
+
+ .tooltip-on-hover4:hover + .tooltip4 {
   display: block !important;
   opacity: 1 !important;
  }
@@ -344,9 +344,9 @@ p{
    display: inline-block;
    border-radius: 3px;
    position: absolute;
-  
+
    z-index: 200000;
-  
+
    border:none !important;
    border-radius: 0.3rem;
    opacity: 0;
@@ -1520,7 +1520,8 @@ background-color: rgba(254, 229, 67, 0.22);
   margin:10px;
 }
 .cateInner div img{
-  width:60%;
+  width:90px;
+  height:90px;
   margin-right: auto;
   margin-left: auto;
   display: block;
@@ -1530,6 +1531,7 @@ background-color: rgba(254, 229, 67, 0.22);
   font-size: 15px;
   text-align: center;
   margin-top: 5px;
+  color:#000;
 }
 #chain{
   height: 90px;
@@ -1685,7 +1687,8 @@ margin-top: 4px;
   margin-left: auto;
 }
 .whiteCard img{
-  width: 60%;
+  height:125px;
+  width: 125px;
   display: block;
   margin-right: auto;
   margin-left: auto;
@@ -4076,7 +4079,7 @@ display: block;
   color:#fff !important;
   border-bottom: 1px dashed #fff;
   text-align: right;
- 
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -4816,7 +4819,7 @@ padding-right: 15px;
   width: 100% !important;
 }
 .bMother{
-  
+
 }
 }
 @media only screen and (max-width:900px) and (min-width:415px){
@@ -4863,15 +4866,15 @@ padding-right: 15px;
   .innerSlider p{
     font-size: 20px !important;
   }
-  
+
 }
 @media only screen and (max-width:550px){
   .dresNone{
     display: none !important;
   }
-    
- 
-  
+
+
+
   .brandSliderBox{
     margin-top: 20px !important;
   }

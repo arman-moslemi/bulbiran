@@ -128,9 +128,10 @@ for (let index = 0; index < response.data.Data?.Color?.split(',').length; index+
 
 }
   console.log(77)
+  console.log(response.data.Data?.Color)
+  console.log(Colors)
   setColor(Colors)
     console.log(color)
-    console.log(Colors)
     setAllimg(images)
           }
           else{
@@ -159,7 +160,7 @@ for (let index = 0; index < response.data.Data?.Color?.split(',').length; index+
         //   .get(apiUrl + "Blog")
           .then(function (response) {
             if (response.data.result == "true") {
-             console.log(22)
+             console.log(123456)
              console.log(response.data.Data)
              setProperty(response.data.Data)
 
@@ -337,11 +338,12 @@ return(
                         <ul className="vijhegiList">
                         { property?.map((item, i) => {
              return (
-                 i<3?
+                 i<10?
           <>
 
 <li>
-                                {item.Title} : {item.Text}
+                                {/* {item.Title} : {item.Text} */}
+                                {item.Title}
                             </li>
             </>
 :
@@ -353,6 +355,7 @@ null
 
                     </Col>
                 </Row>
+                {color.length>0?
                 <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px"}}>
                     <Col md={12} className="pd0 ta-right">
                         <span className="vijhegiTitle">رنگ محصول : </span>
@@ -362,7 +365,7 @@ null
 return(
     <>
  <li>
-                                <Button onClick={()=>setColorSel(item)} style={{backgroundColor: item}} ></Button>
+                                <Button onClick={()=>setColorSel(item)} style={{backgroundColor: "#"+item}} ></Button>
                                 </li>
                       </>
 
@@ -372,18 +375,14 @@ return(
                                 })
                             }
 
-                                {/* <li>
-                                <Button id="color2"></Button>
-                                </li>
-                                <li>
-                                <Button id="color3"></Button>
-                                </li>
-                                <li>
-                                <Button id="color4"></Button>
-                                </li> */}
+
                         </ul>
                     </Col>
                 </Row>
+                :
+                null
+                }
+
             </Col>
             <Col md={3}>
                 <div className="grayBox2">
