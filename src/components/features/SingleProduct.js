@@ -72,6 +72,7 @@ import { Link, useHistory,useParams } from "react-router-dom";
     const [allimg,setAllimg]=useState([])
     const [color,setColor]=useState([])
     const [colorSel,setColorSel]=useState("")
+    const [brand,setBrand]=useState("")
     const [comments,setComment]=useState([])
     const [property,setProperty]=useState([])
     const [rate,setRate]=useState(0)
@@ -130,6 +131,7 @@ for (let index = 0; index < response.data.Data?.Color?.split(',').length; index+
   console.log(77)
   console.log(response.data.Data?.Color)
   console.log(Colors)
+  setBrand(response.data.Data?.BrandName)
   setColor(Colors)
     console.log(color)
     setAllimg(images)
@@ -396,7 +398,7 @@ return(
                 <div className="grayBox2">
                     <div>
                         <BGarantee/>
-                        <span>گارانتی شش ماهه بروکس</span>
+                        <span>گارانتی شش ماهه {brand}</span>
                     </div>
                     <div>
                         <Save/>
