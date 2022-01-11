@@ -109,7 +109,7 @@ const Menu = () => {
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
-                  i<4?
+                  i<6?
                       <>
                <li>
                    <Link  onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> {  history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()       }}>{item.SmallerGroup}</Link>
@@ -189,7 +189,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
           }
            </ul>
        </Col>
-       <Col md={3}>
+       {/* <Col md={3}>
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
@@ -198,15 +198,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
                </li>
-               {/* <li>
-                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/3")}>لامپ کم مصرف</a>
-               </li>
-               <li>
-                   <a   onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/5")}>لامپ گازی</a>
-               </li>
-               <li>
-                   <a   onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/6")}>لامپ هالوژنی</a>
-               </li> */}
+
                </>
 :null
 
@@ -215,7 +207,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
             })
           }
            </ul>
-       </Col>
+       </Col> */}
    </Row>
         </div>
 
@@ -233,7 +225,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==2)?.map((item, i) => {
                return (
-                  i<4?
+                  i<5?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history.push("/bulbiranshop/"+item.GroupID); window.location.reload()}   }>{item.SmallerGroup}</a>
@@ -252,7 +244,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==2)?.map((item, i) => {
                return (
-                i>3 &&  i<8?
+                i>4 &&  i<10?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
@@ -271,7 +263,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==2)?.map((item, i) => {
                return (
-               i<13&& i>7?
+               i<15&& i>9?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
@@ -374,7 +366,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==4)?.map((item, i) => {
                return (
-                  i<4?
+                  i<5?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
@@ -393,7 +385,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==4)?.map((item, i) => {
                return (
-                i>3 &&  i<8?
+                i>4 &&  i<9?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
@@ -412,7 +404,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==4)?.map((item, i) => {
                return (
-               i<13&& i>7?
+               i<14&& i>8?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
@@ -588,7 +580,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
-                  i<4?
+                  i<5?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
@@ -607,7 +599,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
-                i>3 &&  i<8?
+                i>4 &&  i<10?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
@@ -626,7 +618,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
-               i<13&& i>7?
+               i<15&& i>9?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
@@ -641,7 +633,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
           }
            </ul>
        </Col>
-       <Col md={3}>
+       {/* <Col md={3}>
            <ul className="megaUl">
            {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
@@ -659,8 +651,8 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
             })
           }
            </ul>
-       </Col>
-       <Col md={3}>
+       </Col> */}
+       {/* <Col md={3}>
            <ul className="megaUl">
            {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
@@ -678,7 +670,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
             })
           }
            </ul>
-       </Col>
+       </Col> */}
    </Row>
         </div>
 

@@ -21,19 +21,7 @@ import CircumstanceB from './assets/icons/CircumstanceB';
 
 import { Link, useHistory } from "react-router-dom"
 
-import Lamp from './assets/img/lamp.png';
-import Cheragh from './assets/img/cheragh.png';
-import Panel from './assets/img/panel.png';
-import Loster from './assets/img/loster.png';
-import Janebi from './assets/img/janebi.png';
-import rise from './assets/img/rise.png';
-import Img4 from './assets/img/Image 4.png';
-import Img5 from './assets/img/Image 5.png';
-import Img6 from './assets/img/Image 6.png';
-import Img7 from './assets/img/Image 7.png';
-import Noorafkan from './assets/img/noorafkan.png';
-import Chain from './assets/img/chain.png';
-import Reshte2 from './assets/icons/Reshte2';
+
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import {useParams } from "react-router-dom";
 const LEDTechnology = () => {

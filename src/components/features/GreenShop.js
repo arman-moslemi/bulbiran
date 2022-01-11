@@ -55,6 +55,7 @@ const GreenShop = () => {
             if (response.data.result == "true") {
 
                 setProduct(response.data.Data)
+                console.log(response.data.result)
 
           }
           else{
