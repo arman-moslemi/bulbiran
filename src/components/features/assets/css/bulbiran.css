@@ -726,8 +726,25 @@ background: radial-gradient(circle, rgba(129,219,226,1) 0%, rgba(55,167,183,1) 1
   -o-transform: translate3d(0%, 0px, 0px) !important;
 }
 .slick-slide img{
-  width:100%;
-  height: 100%;
+  width:197px !important;
+  height: 197px !important;
+}
+.bigSlider img{
+  width: 100% !important;
+  height: 100% !important;
+}
+.recentlyView{
+  text-align: right;
+  border-bottom: 2px solid #000;
+  font-size: 25px;
+  font-family: 'IRANSans-Bold';
+  margin-bottom: 10px;
+}
+.recently{
+padding:20px 0px;
+  width: 85%;
+margin-right: auto;
+margin-left: auto;
 }
 .slick-dots {
   position: absolute;
@@ -1685,6 +1702,7 @@ margin-top: 4px;
   width: 95%;
   margin-right: auto;
   margin-left: auto;
+  height:300px;
 }
 .whiteCard img{
   height:125px;
@@ -1702,6 +1720,10 @@ margin-top: 4px;
     line-height: 3rem;
     margin-top: 15px;
     font-family: 'IRANYekan-Bold';
+    height: 90px;
+}
+.ii{
+
 }
 .whiteCard span{
   color:#142b6f;

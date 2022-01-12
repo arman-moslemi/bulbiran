@@ -331,7 +331,7 @@ console.log(error);
 
       <Row className="mgt20">
         <Col md={8} className="pdl0">
-        <Slider img1={img1}img2={img2}img3={img3}img4={img4}img5={img5}img6={img6}/>
+        <Slider className="mSlider" img1={img1}img2={img2}img3={img3}img4={img4}img5={img5}img6={img6}/>
        </Col>
         <Col md={4} className="ta-left">
        <div>

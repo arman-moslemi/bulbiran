@@ -27,6 +27,7 @@ import Save from './assets/icons/Save';
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import ProductSlider from './layouts/Productslider';
 import { Link, useHistory,useParams } from "react-router-dom";
 
 // const images = [
@@ -69,6 +70,7 @@ import { Link, useHistory,useParams } from "react-router-dom";
     const images = [];
     const  Colors=[];
     const [product,setProduct]=useState([])
+    const [moshabeh,setMoshabeh]=useState([])
     const [allimg,setAllimg]=useState([])
     const [color,setColor]=useState([])
     const [colorSel,setColorSel]=useState("")
@@ -94,6 +96,23 @@ import { Link, useHistory,useParams } from "react-router-dom";
       }
     const getProduct=()=>{
         const axios = require("axios");
+
+        axios
+        .get(apiUrl + "CategoryGreenShop/"+1)
+    .then(function (response) {
+      if (response.data.result == "true") {
+
+          setMoshabeh(response.data.Data)
+          console.log(response.data.result)
+
+    }
+    else{
+      console.log(response.data.result)
+
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
         axios
           .get(apiUrl + "Products/" + params)
         //   .get(apiUrl + "Blog")
@@ -334,7 +353,7 @@ return(
                         </span>
                     </Col>
                 </Row>
-                <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px"}}>
+                {/* <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px"}}>
                     <Col md={12} className="pd0 ta-right">
                         <span className="vijhegiTitle">ویژگی های این کالا</span>
                         <ul className="vijhegiList">
@@ -344,7 +363,6 @@ return(
           <>
            <span className="vijhegiTitle">{item[0].TitleMain}:</span>
 
-                                {/* {item.Title} : {item.Text} */}
                                 {
                                     item?.map((items)=>{
                                         return (
@@ -364,11 +382,11 @@ null
                         </ul>
 
                     </Col>
-                </Row>
+                </Row> */}
                 {color.length>0?
                 <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px"}}>
                     <Col md={12} className="pd0 ta-right">
-                        <span className="vijhegiTitle">رنگ محصول : </span>
+                        <span className="vijhegiTitle">رنگ نور : </span>
                         <ul className="colorUl">
                             {
                                 color?.map((item)=>{
@@ -562,6 +580,7 @@ null
              </div>
         </Col>
         </Row>
+
     </TabPanel>
     <TabPanel>
       <div>
@@ -622,16 +641,26 @@ null
                  <>
 
 
-            <Row style={{margin:"0"}} className="pTableRow">
+<Row style={{margin:"0"}} className="pTableRow">
                 <Col md={6} className="pd0 ta-right">
                     <span className="tableTR">
-                      {item.Title}
+                      {item[0].TitleMain}
                     </span>
                 </Col>
                 <Col md={6} className="pd0 ta-right">
+                { item?.map((items,index)=>{
+                        return(
                 <span className="tableTH">
-                {item.Text}
+                    {
+index!=item.length-1?
+                 items.Title+"; "
+                :
+
+                items.Title
+                }
                     </span>
+                        )
+                })}
                     </Col>
             </Row>
             </>
@@ -651,16 +680,26 @@ null
                  <>
 
 
-            <Row style={{margin:"0"}} className="pTableRow">
+<Row style={{margin:"0"}} className="pTableRow">
                 <Col md={6} className="pd0 ta-right">
                     <span className="tableTR">
-                      {item.Title}
+                      {item[0].TitleMain}
                     </span>
                 </Col>
                 <Col md={6} className="pd0 ta-right">
+                { item?.map((items,index)=>{
+                        return(
                 <span className="tableTH">
-                {item.Text}
+                    {
+index!=item.length-1?
+                 items.Title+"; "
+                :
+
+                items.Title
+                }
                     </span>
+                        )
+                })}
                     </Col>
             </Row>
             </>
@@ -1040,6 +1079,13 @@ comments?.map((item, i) => {
   </Tabs>
         </div>
       </div>
+
+      </Container>
+      <Container fluid style={{padding:0,marginTop:20,marginBottom:20,backgroundColor:'#f4f4f4'}}>
+     <div className="recently">
+         <p className="recentlyView">محصولات مشابه</p>
+     <ProductSlider style={{display:'block'}} data={moshabeh} className="bulbSliderBox ii"/>
+     </div>
       </Container>
    <SocialRow/>
     <IconRow/>
