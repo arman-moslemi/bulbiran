@@ -117,7 +117,14 @@ const Footer = () => {
             </Col>
             <Col md={2} xs={12}>
               <div className="footerImg d-inline-block float-right">
-                <img src={Enamad}/>
+                {/* <img src={Enamad}/> */}
+
+
+<a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=252046&amp;Code=wh9eNJMPy5RlG0tr4Xfr">
+  <img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=252046&amp;Code=wh9eNJMPy5RlG0tr4Xfr" alt=""  id="wh9eNJMPy5RlG0tr4Xfr"/>
+  </a>
+
+
               </div>
               <div className="footerImg d-inline-block">
                 <img src={Samandehi}/>
