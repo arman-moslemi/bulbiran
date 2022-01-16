@@ -416,7 +416,7 @@ return(
                 <div className="grayBox2">
                     <div>
                         <BGarantee/>
-                        <span>گارانتی شش ماهه {brand}</span>
+                        <span>گارانتی 24 ماهه {brand}</span>
                     </div>
                     <div>
                         <Save/>
