@@ -17,7 +17,7 @@ import {
 import Checkbox from "react-custom-checkbox";
 import ReactPaginate from 'react-paginate';
 import 'react-accessible-accordion/dist/fancy-example.css';
-import { FaAngleLeft,FaAlignRight ,FaCheck } from 'react-icons/fa';
+import { FaAngleLeft,FaAlignRight ,FaCheck ,FaStar} from 'react-icons/fa';
 import CircumstanceB from './assets/icons/CircumstanceB';
 import LedButton from './assets/icons/LedButton';
 import Pool from './assets/icons/Pool';
@@ -387,9 +387,28 @@ console.log(check.length)
         >
                     <div className="whiteCard">
                         <img src={apiAsset+item.Pic1}/>
+                        {/* <div className='row' style={{marginTop:15}}>
+                          <Col md={12}>
+                            <div className='d-flex'>
+
+                              <FaStar size={15} color={'#ffb921'}/>
+                              <FaStar size={15} color={'#ffb921'}/>
+                              <FaStar size={15} color={'#ffb921'}/>
+                              <FaStar size={15} color={'#ffb921'}/>
+                              <FaStar size={15} color={'#ffb921'}/>
+                            </div>
+                          </Col>
+                        </div> */}
                         <p>{item.ProductName}</p>
-                        <span>{item.Cost} تومان</span>
-                    </div>
+                        <div className="row">
+  <Col md={4} style={{padding:0,textAlign:'center'}}>
+    <span className="anbar" style={{color:'red',fontSize:10}}>موجود در انبار</span>
+  </Col>
+  <Col md={8}>
+  <span>{item.Cost} تومان</span>
+
+  </Col>
+</div>                    </div>
                 </Link>
                 </Col>
                 </>

@@ -72,6 +72,8 @@ import { Link, useHistory,useParams } from "react-router-dom";
     const [product,setProduct]=useState([])
     const [moshabeh,setMoshabeh]=useState([])
     const [allimg,setAllimg]=useState([])
+    const [role,setRole]=useState()
+    const [role2,setRole2]=useState()
     const [color,setColor]=useState([])
     const [colorSel,setColorSel]=useState("")
     const [brand,setBrand]=useState("")
@@ -97,22 +99,7 @@ import { Link, useHistory,useParams } from "react-router-dom";
     const getProduct=()=>{
         const axios = require("axios");
 
-        axios
-        .get(apiUrl + "CategoryGreenShop/"+1)
-    .then(function (response) {
-      if (response.data.result == "true") {
-
-          setMoshabeh(response.data.Data)
-          console.log(response.data.result)
-
-    }
-    else{
-      console.log(response.data.result)
-
-    }})
-    .catch(function (error) {
-      console.log(error);
-    });
+var r1,r2;
         axios
           .get(apiUrl + "Products/" + params)
         //   .get(apiUrl + "Blog")
@@ -152,8 +139,54 @@ for (let index = 0; index < response.data.Data?.Color?.split(',').length; index+
   console.log(Colors)
   setBrand(response.data.Data?.BrandName)
   setColor(Colors)
-    console.log(color)
+  setRole(response.data.Data?.Role)
+  r1=response.data.Data?.Role
+  r2=response.data.Data?.Role2
+  setRole2(response.data.Data?.Role2)
+    console.log(role)
     setAllimg(images)
+
+    console.log(999);
+    console.log(role2);
+    console.log(role);
+    !role2?
+    axios
+    .get(apiUrl + "CategoryProduct/"+response.data.Data?.Role)
+.then(function (response) {
+  if (response.data.result == "true") {
+
+      setMoshabeh(response.data.Data)
+      console.log(response.data.result)
+
+}
+else{
+  console.log(response.data.result)
+
+}})
+.catch(function (error) {
+  console.log(error);
+})
+    :
+    axios
+    .get(apiUrl + "CategoryGreenShop/"+response.data.Data?.Role2)
+.then(function (response) {
+  if (response.data.result == "true") {
+
+      setMoshabeh(response.data.Data)
+      console.log(response.data.result)
+
+}
+else{
+  console.log(response.data.result)
+
+}})
+.catch(function (error) {
+  console.log(error);
+});
+
+
+
+
           }
           else{
             console.log(response.data.result)
@@ -213,6 +246,7 @@ for (let index = 0; index < response.data.Data?.Color?.split(',').length; index+
           .catch(function (error) {
             console.log(error);
           });
+
       }
       const InserBasket=()=>{
         const axios = require("axios");
@@ -595,7 +629,6 @@ null
       <Row className="mgt20" style={{margin:"0"}}>
           <Col md={4}>
          { property?.map((item, i) => {
-             console.log(i)
              return (
                  i<4?
           <>
@@ -634,7 +667,6 @@ null
 
 
  { property?.map((item, i) => {
-             console.log(i)
              return (
 
              i<8  &&  i>3 ?
@@ -673,7 +705,6 @@ null
                                                                                                                          </Col>
                                                                                                                          <Col>
                                                       { property?.map((item, i) => {
-             console.log(i)
              return (
 
            i>7 ?
