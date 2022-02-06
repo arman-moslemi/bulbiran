@@ -12,6 +12,7 @@ import Register from '../components/features/Register'
 import ForgetPass from '../components/features/ForgetPass'
 import Verification from '../components/features/Verification';
 import IndoorLighting from '../components/features/IndoorLighting';
+import IndoorLightingGreen from '../components/features/IndoorLightingGreen';
 import Circumstancesecond from '../components/features/CircumstanceSecond';
 import Garanty from '../components/features/Garanty';
 import Repairs from '../components/features/Repairs'
@@ -38,6 +39,7 @@ import SearchResult from '../components/features/SearchResult';
 import SearchResultFinder from '../components/features/SearchResultFinder';
 import BrandSecond from '../components/features/BrandSecond';
 import IndoorSecond from '../components/features/IndoorSecond';
+import IndoorSecondGreen from '../components/features/IndoorSecondGreen';
 import Cartstep1 from '../components/features/Cartstep1';
 import BlogSecond from '../components/features/BlogSecond';
 import ScrollToTop from '../components/features/layouts/ScrollToTop';
@@ -64,6 +66,13 @@ const MainRoutes = (props) => {
 					path='/indoorsecond/:id'
 					name='داخلی'
 					render={(props) => <IndoorSecond/>}>
+
+					</Route>
+					<Route
+
+					path='/indoorsecondgreen/:id'
+					name='داخلی'
+					render={(props) => <IndoorSecondGreen/>}>
 
 					</Route>
 					<Route
@@ -155,6 +164,13 @@ const MainRoutes = (props) => {
 					path='/indoorlighting/:id'
 					name='روشنایی داخلی'
 					render={(props) => <IndoorLighting/>}>
+
+					</Route>
+					<Route
+
+					path='/indoorlightingGreen/:id'
+					name='روشنایی داخلی'
+					render={(props) => <IndoorLightingGreen/>}>
 
 					</Route>
 					<Route

@@ -97,9 +97,12 @@ const Menu = () => {
           mainSlider();
 }, []);
     const LampM = () => {
-        return <div className="whiteMega">
-    <div className="whiteMegaTitle">
+        return <div className="whiteMega" >
+    <div  className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlighting/1") ; window.location.reload()       }}>
+
        لامپ
+       </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
        <Col md={3}>
@@ -109,7 +112,7 @@ const Menu = () => {
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
-                  i<6?
+                  i<5?
                       <>
                <li>
                    <Link  onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> {  history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()       }}>{item.SmallerGroup}</Link>
@@ -136,7 +139,7 @@ const Menu = () => {
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
-                i>3 &&  i<8?
+                i>4 &&  i<10?
                       <>
                <li>
                    <Link
@@ -166,7 +169,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
-               i<13&& i>7?
+               i<14&& i>9?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
@@ -214,8 +217,11 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const DakheliM = () => {
         return <div className="whiteMega">
-    <div className="whiteMegaTitle">
+    <div  className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlighting/2") ; window.location.reload()       }}>
+
       روشنایی داخلی
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -285,8 +291,11 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const KharejiM = () => {
         return <div className="whiteMega">
-    <div className="whiteMegaTitle">
+    <div  className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlighting/3") ; window.location.reload()       }}>
+
      روشنایی خارجی
+     </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -355,8 +364,11 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const TazeinM = () => {
         return <div className="whiteMega">
-    <div className="whiteMegaTitle">
+    <div  className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlighting/4") ; window.location.reload()       }}>
+
       روشنایی تزئینی
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -426,7 +438,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const KhasM = () => {
         return <div className="whiteMega">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlighting/4") ; window.location.reload()       }}>
+
       روشنایی خاص
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -496,8 +511,11 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const JanebiM = () => {
         return <div className="whiteMega">
-    <div className="whiteMegaTitle">
+    <div  className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlighting/6") ; window.location.reload()       }}>
+
       لوازم جانبی
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -570,7 +588,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const LampLED = () => {
         return <div className="whiteMega hc1">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlightingGreen/1") ; window.location.reload()       }}>
+
        لامپ
+       </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -678,7 +699,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const PanelLED = () => {
         return <div className="whiteMega hc1">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlightingGreen/2") ; window.location.reload()       }}>
+
       پنل
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -749,7 +773,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const NoorafkanLED = () => {
         return <div className="whiteMega hc1">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlightingGreen/3") ; window.location.reload()       }}>
+
      نورافکن
+     </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -820,7 +847,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const RiseLED = () => {
         return <div className="whiteMega hc1">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlightingGreen/4") ; window.location.reload()       }}>
+
     ریسه
+    </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -891,7 +921,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const CheraghLED = () => {
         return <div className="whiteMega hc1">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlightingGreen/5") ; window.location.reload()       }}>
+
       چراغ
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -962,7 +995,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const AvizLED = () => {
         return <div className="whiteMega hc1">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlightingGreen/6") ; window.location.reload()       }}>
+
       آویز
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -1033,7 +1069,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const JanebiLED = () => {
         return <div className="whiteMega hc1">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlightingGreen/7") ; window.location.reload()       }}>
+
       لوازم جانبی
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
