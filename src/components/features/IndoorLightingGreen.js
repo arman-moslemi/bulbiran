@@ -102,7 +102,8 @@ console.log(error);
           <div className="indoorBox">
           <MiniIcon className="fRight"/>
           <span className="fRight">انواع {item.SmallerGroup}</span>
-          <Button onClick={()=>  history.push("/indoorsecondgreen/"+item.GreenGroupID)}>خرید محصولات</Button>
+          {/* <Button onClick={()=>  history.push("/indoorsecondgreen/"+item.GreenGroupID)}>خرید محصولات</Button> */}
+          <Button onClick={()=>  history.push("/greenshop/"+item.GreenGroupID)}>خرید محصولات</Button>
           {/* <Button onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>خرید محصولات</Button> */}
           </div>
 
