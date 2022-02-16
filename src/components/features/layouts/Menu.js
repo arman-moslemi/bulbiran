@@ -1630,15 +1630,15 @@ brand?.map((item, i) => {
   <Dropdown.Menu className="menuDropList">
 
     <Dropdown.Item  onClick={()=>  history.push("/news")}>آخرین اخبار</Dropdown.Item>
-    {/* <Dropdown.Item  onClick={()=>  history.push("/news")}>مقالات علمی</Dropdown.Item>
-    <Dropdown.Item  onClick={()=>  history.push("/news")}>تکنولوژی روز</Dropdown.Item>
-    <Dropdown.Item    onClick={()=>  history.push("/news")}>نور</Dropdown.Item>
+     <Dropdown.Item  onClick={()=>  history.push("/news")}>مقالات علمی</Dropdown.Item>
+    <Dropdown.Item    onClick={()=>  history.push("/news")}>طراحی روشنایی</Dropdown.Item>
+    {/* <Dropdown.Item  onClick={()=>  history.push("/news")}>تکنولوژی روز</Dropdown.Item> */}
+    {/* <Dropdown.Item    onClick={()=>  history.push("/news")}>نور</Dropdown.Item>
     <Dropdown.Item    onClick={()=>  history.push("/news")}>آخرین تخفیف ها(جشنواره)</Dropdown.Item>
     <Dropdown.Item    onClick={()=>  history.push("/news")}>بهینه سازی روشنایی</Dropdown.Item>
     <Dropdown.Item    onClick={()=>  history.push("/news")}>ساخت و تولید</Dropdown.Item>
-    <Dropdown.Item    onClick={()=>  history.push("/news")}>طراحی روشنایی</Dropdown.Item>
     <Dropdown.Item    onClick={()=>  history.push("/news")}>رویدادهای روشنایی</Dropdown.Item>
-    <Dropdown.Item    onClick={()=>  history.push("/news")}>تبلیغات</Dropdown.Item> */}
+    <Dropdown.Item    onClick={()=>  history.push("/news")}>تبلیغات</Dropdown.Item>  */}
   </Dropdown.Menu>
 </Dropdown>
               </Col>

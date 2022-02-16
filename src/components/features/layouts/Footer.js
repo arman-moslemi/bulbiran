@@ -16,28 +16,7 @@ const Footer = () => {
       <>
       <Container fluid>
           <Row className="footerRow">
-             <Col md={2} xs={6} className="ta-right">
-                 <p className="footerTitle">درباره بالبیران</p>
-               <ul className="footerList">
-                 <li>
-                 <a   className="footerLink"onClick={()=>  history.push("/rules")}>قوانین و مقررات</a>
-                 </li>
-                 <li>
-                 <a   className="footerLink"onClick={()=>  history.push("/contactUs")}>تماس با ما</a>
-                 </li>
-                 {/* <li>
-                 <a   className="footerLink">لینک سه</a>
-                 </li>
-                 <li>
-                 <a   className="footerLink">لینک چهار</a>
-                 </li>
-                 <li>
-                 <a   className="footerLink">لینک پنج</a>
-                 </li> */}
-               </ul>
 
-
-                 </Col>
             {/* <Col md={2} className="ta-right">
 =======
 
@@ -56,8 +35,8 @@ const Footer = () => {
                  </ul>
 <<<<<<< HEAD
             </Col> */}
-            <Col md={2} className="ta-right">
-            </Col>
+            {/* <Col md={2} className="ta-right">
+            </Col> */}
             <Col md={2} xs={6} className="ta-right">
             <p className="footerTitle">خدمات بالبیران</p>
             <ul className="footerList">
@@ -97,8 +76,8 @@ const Footer = () => {
 
 <<<<<<< HEAD
                  </Col>  */}
-            <Col md={2} className="ta-right">
-                 </Col>
+            {/* <Col md={2} className="ta-right">
+                 </Col> */}
             <Col md={2} xs={6} className="ta-right">
             <p className="footerTitle">مجله بالبیران</p>
                     <ul className="footerList">
@@ -115,6 +94,28 @@ const Footer = () => {
 
                  </ul>
             </Col>
+            <Col md={2} xs={6} className="ta-right">
+                 <p className="footerTitle">درباره بالبیران</p>
+               <ul className="footerList">
+                 <li>
+                 <a   className="footerLink"onClick={()=>  history.push("/rules")}>قوانین و مقررات</a>
+                 </li>
+                 <li>
+                 <a   className="footerLink"onClick={()=>  history.push("/contactUs")}>تماس با ما</a>
+                 </li>
+                 {/* <li>
+                 <a   className="footerLink">لینک سه</a>
+                 </li>
+                 <li>
+                 <a   className="footerLink">لینک چهار</a>
+                 </li>
+                 <li>
+                 <a   className="footerLink">لینک پنج</a>
+                 </li> */}
+               </ul>
+
+
+                 </Col>
             <Col md={2} xs={12}>
               <div className="footerImg d-inline-block float-right">
                 {/* <img src={Enamad}/> */}

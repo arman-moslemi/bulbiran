@@ -65,57 +65,78 @@ const BlogSecond = () => {
                 دسته بندی
             </span>
            </div>
-           <div className="newsList">
-            <a className="newsLista" href="/BlogSecond/1">
-                آخرین اخبار
-            </a>
-        </div>
         <div className="newsList">
+        <Link
+          to={`/blogsecond/1`}
+          className="newsLista"
+        >
+            {/* <a className="newsLista" href="/BlogSecond/1"> */}
+                آخرین اخبار
+            {/* </a> */}
+            </Link>
+        </div>
+        {/* <div className="newsList">
             <a className="newsLista"    >
                 آخرین تخفیف ها
             </a>
+        </div> */}
+        <div className="newsList">
+        <Link
+        className="newsLista"
+          to={`/blogsecond/2`}
+        >               مقالات علمی
+</Link>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="/BlogSecond/2">
-               مقالات علمی
-            </a>
+        <Link
+        className="newsLista"
+          to={`/blogsecond/3`}
+        >               تکنولوژی روز
+            </Link>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="/BlogSecond/3">
-              تکنولوژی روز
-            </a>
+        <Link
+        className="newsLista"
+          to={`/blogsecond/4`}
+        >                نور
+            </Link>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="/BlogSecond/4">
-               نور
-            </a>
+        <Link
+        className="newsLista"
+          to={`/blogsecond/5`}
+        >               مهندسی روشنایی
+            </Link>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="/BlogSecond/5">
-              مهندسی روشنایی
-            </a>
+        <Link
+
+        className="newsLista"
+          to={`/blogsecond/6`}
+        >               ساخت و تولید
+            </Link>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="/BlogSecond/6">
-              ساخت و تولید
-            </a>
+        <Link
+        className="newsLista"
+          to={`/blogsecond/7`}
+        >              طراحی روشنایی
+            </Link>
         </div>
         <div className="newsList">
-            <a className="newsLista" href="/BlogSecond/7">
-             طراحی روشنایی
-            </a>
+        <Link
+        className="newsLista"
+          to={`/blogsecond/8`}
+        >               رویدادهای مرتبط با روشنایی
+            </Link>
         </div>
-        <div className="newsList">
-            <a className="newsLista"href="/BlogSecond/8">
-              رویدادهای مرتبط با روشنایی
-            </a>
-        </div>
-        <div className="newsList">
+        {/* <div className="newsList">
             <a className="newsLista"    >
                تبلیغات
             </a>
-        </div>
+        </div> */}
        </div>
+
 
         </div>
         </Col>

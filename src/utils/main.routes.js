@@ -322,18 +322,21 @@ const MainRoutes = (props) => {
 					</Route>
 					<Route
 
+    path='/blogsecond/:id'
+	// path='/showblog/:id'
+
+    name='بلاگ دو'
+    render={(props) => <BlogSecond/>}>
+
+                    </Route>
+					<Route
+
 					path='/Cartstep1/:id'
 					name='سبد خرید'
 					render={(props) => <Cartstep1/>}>
 
 					</Route>
-					<Route
 
-					path='/BlogSecond/:id'
-					name='بلاگ دو'
-					render={(props) => <BlogSecond/>}>
-
-					</Route>
 					{/* <PrivateRoute path='/pages' /> */}
 		</HashRouter>
 	);

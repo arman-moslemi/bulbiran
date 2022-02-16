@@ -405,7 +405,14 @@ console.log(check.length)
     <span className="anbar" style={{color:'red',fontSize:10}}>موجود در انبار</span>
   </Col>
   <Col md={8}>
+    {
+      item.Cost==0?
+  <span>با ما تماس بگیرید</span>
+
+      :
+
   <span>{item.Cost} تومان</span>
+    }
 
   </Col>
 </div>                    </div>

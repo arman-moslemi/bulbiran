@@ -503,8 +503,14 @@ product?.map((item, i) => {
     <span className="anbar" style={{color:'red',fontSize:10}}>موجود در انبار</span>
   </Col>
   <Col md={8}>
-  <span>{item.Cost} تومان</span>
+  {
+      item.Cost==0?
+  <span>با ما تماس بگیرید</span>
 
+      :
+
+  <span>{item.Cost} تومان</span>
+    }
   </Col>
 </div>
                     </div>
