@@ -48,7 +48,8 @@ const Circumstancesecond = () => {
             if (response.data.result == "true") {
 
                 setProduct(response.data.Data)
-
+console.log(888)
+console.log(response.data.Data)
           }
           else{
             console.log(response.data.result)
