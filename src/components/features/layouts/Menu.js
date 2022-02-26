@@ -1477,7 +1477,7 @@ brand?.map((item, i) => {
 
 <div className="bMegaLi">
                     <img src={apiAsset+item.BrandLogo}/>
-                    <a onClick={()=>  {history.push("/brandsecond/4"); window.location.reload() }}>{item.BrandName}</a>
+                    <a onClick={()=>  {history.push("/brandsecond/"+item.BrandID); window.location.reload() }}>{item.BrandName}</a>
                 </div>
           </>
           :null

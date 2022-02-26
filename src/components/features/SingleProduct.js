@@ -450,7 +450,7 @@ return(
                 <div className="grayBox2">
                     <div>
                         <BGarantee/>
-                        <span>گارانتی 24 ماهه {brand}</span>
+                        <span>گارانتی {product.Warranty?product.Warranty:24} ماهه {brand}</span>
                     </div>
                     <div>
                         <Save/>
