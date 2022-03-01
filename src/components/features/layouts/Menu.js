@@ -41,6 +41,9 @@ const Menu = () => {
     const [group,setGroup]=useState([])
     const [id,setID]=useState(0)
     const [greenGroup,setGreenGroup]=useState([])
+    const [show, setShow] = useState(false);
+    const [show2, setShow2] = useState(false);
+
     //   const [pic,setpic]=useState("../assets/img/lamp.png")
     const mainSlider=()=>{
         const axios = require("axios");
@@ -1378,7 +1381,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
             height: "20em",
             width: "160px",
             padding: "2px",
-            margin: "0"
+            margin: "0",
           }
         },
         contentProps: {
@@ -1390,7 +1393,8 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
           style: {
 
             padding: "2px",
-            height: "2em"
+            height: "2em",
+            
           }
         },
         menuItemSelectedProps: {
@@ -1404,7 +1408,8 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
         containerProps: {
           style: {
 
-            padding: "2px"
+            padding: "2px",
+            zIndex:1000
           }
         }
       }
@@ -1417,12 +1422,20 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
               <Col md="auto" xs="2" className="ta-center flex-1">
               {/*  */}
       <Dropdown>
-        <Dropdown.Toggle className="menuDropDown">
+        <Dropdown.Toggle onClick={()=>history.push("/BulbiranShop/2")} className="menuDropDown"
+          onMouseEnter={() =>{ setShow(true);setShow2(false)}}
+        >
         <p className="menu-items d-inline-block" >فروشگاه بالبیران</p>
                   <FaCaretDown display="inline-block" color="ffd200" fontSize="2rem"></FaCaretDown>
         </Dropdown.Toggle>
-        <Dropdown.Menu className="MegamenuDropList">
-        <div className="bMega">
+        {
+            show?
+
+         <Dropdown.Menu show={show} className="MegamenuDropList"
+        onMouseLeave={() => setShow(false)}
+        
+        >
+        <div className="bMega" >
         <ReactMegaMenu
         direction="right"
         data={data}
@@ -1430,6 +1443,9 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       />
          </div>
         </Dropdown.Menu>
+            :
+            null
+        }
         </Dropdown>
 
               </Col>
@@ -1439,7 +1455,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
         <p className="menu-items d-inline-block">بازار روشنایی</p>
                   <FaCaretDown display="inline-block" color="ffd200" fontSize="2rem"></FaCaretDown>
         </Dropdown.Toggle>
-        <Dropdown.Menu className="MegamenuDropList">
+        <Dropdown.Menu show={false} className="MegamenuDropList">
         <div className="megaBrand">
            <Row className="mBrandRow">
                <Col md={3}>
@@ -1517,12 +1533,18 @@ brand?.map((item, i) => {
              </Col>
               <Col md="auto" xs="2" className="ta-center flex-1">
               <Dropdown>
-        <Dropdown.Toggle className="menuDropDown">
+        <Dropdown.Toggle    onClick={()=>  history.push("/GreenShop/1")}    onMouseEnter={() =>{setShow(false); setShow2(true)}} className="menuDropDown">
         <p className="menu-items d-inline-block">فروشگاه سبز</p>
                   <FaCaretDown display="inline-block" color="ffd200" fontSize="2rem"></FaCaretDown>
         </Dropdown.Toggle>
-        <Dropdown.Menu className="MegamenuDropList">
-        <div className="bMega">
+        {
+            show2?
+
+         <Dropdown.Menu show={show2} className="MegamenuDropList"
+        onMouseLeave={() => setShow2(false)}
+        onMouseEnter={() =>{setShow(false); setShow2(true)}} 
+        >
+        <div className="bMega" >
         <ReactMegaMenu
         direction="right"
         data={data2}
@@ -1530,6 +1552,9 @@ brand?.map((item, i) => {
       />
          </div>
         </Dropdown.Menu>
+            :
+            null
+        }
         </Dropdown>
 
              </Col>
@@ -1539,7 +1564,7 @@ brand?.map((item, i) => {
         <p className="menu-items d-inline-block">لامپ یاب</p>
                   <FaCaretDown display="inline-block" color="ffd200" fontSize="2rem"></FaCaretDown>
         </Dropdown.Toggle>
-        <Dropdown.Menu className="bulbyabMenu">
+        <Dropdown.Menu  className="bulbyabMenu">
         <Row style={{margin:"0px"}}>
             <Col md={3} className="pd0">
                 <div className="RightCmenu">

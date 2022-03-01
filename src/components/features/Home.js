@@ -177,8 +177,8 @@ axios
 if (response.data.result == "true") {
 
 setProduct(response.data.Data)
-  // console.log(11)
-  // console.log(response.data.Data[0])
+  console.log(999)
+  console.log(response.data.Data)
 }
 else{
 console.log(response.data.result)

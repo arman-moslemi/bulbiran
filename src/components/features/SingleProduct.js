@@ -81,7 +81,8 @@ import { Link, useHistory,useParams } from "react-router-dom";
     const [property,setProperty]=useState([])
     const [rate,setRate]=useState(0)
     const [rateCount,setRateCount]=useState(0)
-    const [count,setCount]=useState(1)
+    const [count,setCount]=useState(0)
+    const [box,setBox]=useState(0)
 	const params = useParams().id;
    const increment = () => {
     setCount(count+1)
@@ -95,6 +96,18 @@ import { Link, useHistory,useParams } from "react-router-dom";
         // });
         if(count!=0)
         setCount(count-1)
+      }
+   const incrementBox = () => {
+    setBox(box+1)
+
+      }
+
+      const   decrementBox = () => {
+        // this.setState({
+        //   count: this.state.count - 1
+        // });
+        if(box!=0)
+        setBox(box-1)
       }
     const getProduct=()=>{
         const axios = require("axios");
@@ -260,7 +273,7 @@ else{
 
     const total=product?.SpecialCost?product?.SpecialCost:product.Cost;
     console.log(total)
-          axios.post(apiUrl + "InsertShopBasket",{CustomerID:UserID,ProductID:params,Cost:product.SpecialCost?product.SpecialCost:product.Cost,Number:count,TotalCost:total,Color:colorSel})
+          axios.post(apiUrl + "InsertShopBasket",{CustomerID:UserID,ProductID:params,Cost:product.SpecialCost?product.SpecialCost:product.Cost,Number:count+product?.Number*box,TotalCost:total,Color:colorSel})
         //   .get(apiUrl + "Blog")
           .then(function (response) {
               console.log(475)
@@ -450,7 +463,7 @@ return(
                 <div className="grayBox2">
                     <div>
                         <BGarantee/>
-                        <span>گارانتی {product.Warranty?product.Warranty:24} ماهه {brand}</span>
+                        <span>گارانتی {product.Warranty?product.Warranty:12} ماهه {brand}</span>
                     </div>
                     <div>
                         <Save/>
@@ -496,6 +509,19 @@ return(
               <button onClick={()=>decrement()} className="decBTN">-</button>
               <span style={{marginRight:'0'}}>{count}</span>
               <button onClick={()=>increment()} className="inBTN">+</button>
+            </div>
+                    </div>
+
+                    </div>
+                    <div>
+                    <span className="tedad d-inline-block" >
+                            جعبه :
+                        </span>
+                        <div  className="ta-center pd0 d-inline-block" style={{borderBottom:"none"}}>
+                    <div className="counterDiv pd5" style={{padding:"0px !important",marginRight:"10px"}}>
+              <button onClick={()=>decrementBox()} className="decBTN">-</button>
+              <span style={{marginRight:'0'}}>{box}</span>
+              <button onClick={()=>incrementBox()} className="inBTN">+</button>
             </div>
                     </div>
 
