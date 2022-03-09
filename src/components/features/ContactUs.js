@@ -70,7 +70,8 @@ export default function SimpleMap(){
       </GoogleMapReact> */}
         <NeshanMap
       options={{
-        key: 'web.WYApUM7cXfxCIsEOResTbsPWaqgBNLQKW42vcP9L',
+        // key: 'web.WYApUM7cXfxCIsEOResTbsPWaqgBNLQKW42vcP9L',
+        key: 'web.AembGKvsnwm744mtKrU0tAadcyCv1PYYqPc5CIet',
         center: [35.68129, 51.42302],
         zoom: 13
       }}
@@ -145,7 +146,8 @@ export default function SimpleMap(){
       </GoogleMapReact> */}
         <NeshanMap
       options={{
-        key: 'web.WYApUM7cXfxCIsEOResTbsPWaqgBNLQKW42vcP9L',
+        // key: 'web.WYApUM7cXfxCIsEOResTbsPWaqgBNLQKW42vcP9L',
+        key: 'web.AembGKvsnwm744mtKrU0tAadcyCv1PYYqPc5CIet',
         center: [35.70741, 51.40563],
         zoom: 13
       }}

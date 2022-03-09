@@ -49,7 +49,7 @@ const [amazing,setAmazing]=useState([])
         });
 
     axios
-    .get(apiUrl + "Group/"+params)
+    .get(apiUrl + "GreenGroup/"+params)
     .then(function (response) {
     if (response.data.result == "true") {
 
@@ -102,8 +102,8 @@ console.log(error);
           <div className="indoorBox">
           <MiniIcon className="fRight"/>
           <span className="fRight">انواع {item.SmallerGroup}</span>
-          {/* <Button onClick={()=>  history.push("/indoorsecond/"+item.GroupID)}>خرید محصولات</Button> */}
-          <Button onClick={()=>  history.push("/BulbiranShop/"+item.GroupID)}>خرید محصولات</Button>
+          {/* <Button onClick={()=>  history.push("/indoorsecondgreen/"+item.GreenGroupID)}>خرید محصولات</Button> */}
+          <Button onClick={()=>  history.push("/greenshop/"+item.GreenGroupID)}>خرید محصولات</Button>
           {/* <Button onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>خرید محصولات</Button> */}
           </div>
 

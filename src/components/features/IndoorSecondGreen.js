@@ -1,4 +1,4 @@
-import React , {useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -32,24 +32,29 @@ import Img6 from './assets/img/Image 6.png';
 import Img7 from './assets/img/Image 7.png';
 import Noorafkan from './assets/img/noorafkan.png';
 import Chain from './assets/img/chain.png';
-import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+import B14 from './assets/img/b14.png'
+import { Link, useHistory } from "react-router-dom";
 import {useParams } from "react-router-dom";
-const Circumstancesecond = () => {
+import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+
+const IndoorSecond = () => {
+    const history = useHistory();
     const [product,setProduct]=useState([])
     const [group,setGroup]=useState([])
+    const [subgroup,setSubGroup]=useState([])
     const [val,setVal]=useState(0)
+
     const params = useParams().id;
     const mainSlider=()=>{
         const axios = require("axios");
 
           axios
-              .get(apiUrl + "ProductbyLocation/"+params)
+              .get(apiUrl + "CategoryGreenShop/"+params)
           .then(function (response) {
             if (response.data.result == "true") {
 
                 setProduct(response.data.Data)
-console.log(888)
-console.log(response.data.Data)
+
           }
           else{
             console.log(response.data.result)
@@ -59,7 +64,7 @@ console.log(response.data.Data)
             console.log(error);
           });
           axios
-          .get(apiUrl + "LocationAbout/"+params)
+          .get(apiUrl + "singleGreenGroup/"+params)
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -73,11 +78,24 @@ console.log(response.data.Data)
       .catch(function (error) {
         console.log(error);
       });
+      axios
+      .get(apiUrl + "SubGreenGroup/"+params)
+  .then(function (response) {
+    if (response.data.result == "true") {
+
+        setSubGroup(response.data.Data)
+
+  }
+  else{
+    console.log(response.data.result)
+
+  }})
+  .catch(function (error) {
+    console.log(error);
+  });
       }
       const mainCat=(id)=>{
         const axios = require("axios");
-        console.log(486)
-        console.log(id)
         axios
         .get(apiUrl + "SubGroupProduct/"+id)
     .then(function (response) {
@@ -136,7 +154,6 @@ const newest=()=>{
           mainSlider();
 // alert(val)
         }, []);
-
     return (
     <>
           <TopBar/>
@@ -144,17 +161,17 @@ const newest=()=>{
 
     <Container fluid className="bulbiranContainer">
     <Row style={{margin:"0px"}}>
-    <Col md={4}>
+        <Col md={3}>
             <div className="whiteBox ta-center pd60 mgt0">
-                <img src={apiAsset+group.LocationLogo} className="w100"/>
+                <img src={apiAsset+group.Photo} className="w100"/>
             </div>
         </Col>
-        <Col md={8}>
+        <Col md={9}>
             <div className="whiteBox mgt0">
-                <h4 className="circumstanceTitle">روشنایی مناسب {group.LocationName}</h4>
+                <h4 className="circumstanceTitle">{group.SmallerGroup}</h4>
                 <p className="brandShopDescription w100 mgt10">
-{group.Description}
- </p>
+                    {group.Description}
+                </p>
             </div>
         </Col>
     </Row>
@@ -162,72 +179,47 @@ const newest=()=>{
         <Col md={12}>
             <div className="whiteBand">
            <div className="cTitle">
-               <p>{group.LocationName}</p>
+               <p>{group.SmallerGroup}</p>
            </div>
-           {/* <RadioGroup horizontal className="radioB">
-  <RadioButton value="لامپ" rootColor="transparent" pointColor="#ffb921">
-   لامپ
-  </RadioButton>
-  <RadioButton value="پنل" rootColor="transparent" pointColor="#ffb921">
-    پنل
-  </RadioButton>
-  <RadioButton value="نورافکن" rootColor="transparent" pointColor="#ffb921">
-  نورافکن
-  </RadioButton>
-  <RadioButton value="ریسه" rootColor="transparent" pointColor="#ffb921">
-   ریسه
-  </RadioButton>
-  <RadioButton value="چراغ" rootColor="transparent" pointColor="#ffb921">
-  چراغ
-  </RadioButton>
-  <RadioButton value="آویز لوستر" rootColor="transparent" pointColor="#ffb921">
-  آویز لوستر
-  </RadioButton>
-  <RadioButton value="لوازم جانبی" rootColor="transparent" pointColor="#ffb921">
-   لوازم جانبی
+           <RadioGroup horizontal className="radioB">
+           { subgroup?.map((item, i) => {
+  return (
+
+  <RadioButton value={item.SubGreenGroupID.toString()} rootColor="transparent"
+//    onChange={()=>mainCat(1)}
+    pointColor="#ffb921">
+  {item.Title}
   </RadioButton>
 
-</RadioGroup> */}
+                    );
+
+            })
+          }
+
+</RadioGroup>
             </div>
         </Col>
     </Row>
-    {/* <Row style={{margin:"0px"}}>
+    <Row style={{margin:"0px"}}>
         <Col md={12}>
             <div className="categoryBox2">
             <h4 className="circumstanceTitle ta-right">دسته بندی ها</h4>
             <div className="cateInner ta-center">
+            { subgroup?.map((item, i) => {
+  return (
+                <Link onClick={()=>mainCat(item.SubGroupID)}>
                 <div>
-                    <img src={Lamp}/>
-                    <p>لامپ</p>
+                    <img src={apiAsset+item.Photo}/>
+                    <p>{item.Title}</p>
                 </div>
-                <div>
-                    <img src={Panel}/>
-                    <p>پنل</p>
-                </div>
-                <div>
-                    <img src={Noorafkan}/>
-                    <p>نورافکن</p>
-                </div>
-                <div>
-                    <img src={Chain} id="chain"/>
-                    <p>ریسه</p>
-                </div>
-                <div>
-                    <img src={Cheragh}/>
-                    <p>چراغ</p>
-                </div>
-                <div>
-                    <img src={Loster}/>
-                    <p>آویز لوستر</p>
-                </div>
-                <div>
-                    <img src={Janebi}/>
-                    <p>لوازم جانبی</p>
-                </div>
-            </div>
+                </Link>
+                      );
+
+})
+} </div>
             </div>
         </Col>
-    </Row> */}
+    </Row>
     <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px"}}>
         <Col md={3}>
         <Accordion allowMultipleExpanded={true} className="cAcc">
@@ -900,20 +892,30 @@ const newest=()=>{
 product?.map((item, i) => {
   return (
           <>
-
                 <Col md={3} className="pd0">
-                <div className="whiteCard">
-                        <img src={apiAsset+item.Pic1}/>
+                <Link
+          to={`/singleProduct/${item.ProductID}`}
+        >
+                    <div className="whiteCard">
+                    <img src={apiAsset+item.Pic1}/>
                         <p>{item.ProductName}</p>
                         <span>{item.Cost} تومان</span>
                     </div>
+                    </Link>
                 </Col>
                 </>
+                    );
 
-                );
-
-})
-}
+            })
+          }
+                {/* <Col md={3} className="pd0">
+                    <div className="whiteCard">
+                        <img src={Img4}/>
+                        <p>لامپ ال ای دی45 مدل Parathom HQL led 280 پایه E27</p>
+                        <span>125000 تومان</span>
+                    </div>
+                </Col>
+              */}
             </Row>
         </Col>
     </Row>
@@ -924,4 +926,4 @@ product?.map((item, i) => {
     </>
   );
 };
-export default Circumstancesecond;
+export default IndoorSecond;

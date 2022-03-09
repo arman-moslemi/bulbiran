@@ -41,6 +41,9 @@ const Menu = () => {
     const [group,setGroup]=useState([])
     const [id,setID]=useState(0)
     const [greenGroup,setGreenGroup]=useState([])
+    const [show, setShow] = useState(false);
+    const [show2, setShow2] = useState(false);
+
     //   const [pic,setpic]=useState("../assets/img/lamp.png")
     const mainSlider=()=>{
         const axios = require("axios");
@@ -97,9 +100,12 @@ const Menu = () => {
           mainSlider();
 }, []);
     const LampM = () => {
-        return <div className="whiteMega">
-    <div className="whiteMegaTitle">
+        return <div className="whiteMega" >
+    <div  className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlighting/1") ; window.location.reload()       }}>
+
        لامپ
+       </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
        <Col md={3}>
@@ -109,7 +115,7 @@ const Menu = () => {
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
-                  i<4?
+                  i<5?
                       <>
                <li>
                    <Link  onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> {  history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()       }}>{item.SmallerGroup}</Link>
@@ -136,7 +142,7 @@ const Menu = () => {
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
-                i>3 &&  i<8?
+                i>4 &&  i<10?
                       <>
                <li>
                    <Link
@@ -166,7 +172,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
-               i<13&& i>7?
+               i<14&& i>9?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
@@ -189,14 +195,36 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
           }
            </ul>
        </Col>
+       {/* <Col md={3}>
+           <ul className="megaUl">
+           {group.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
+               return (
+               i<19&& i>13?
+                      <>
+               <li>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
+               </li>
+
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col> */}
    </Row>
         </div>
 
       }
       const DakheliM = () => {
         return <div className="whiteMega">
-    <div className="whiteMegaTitle">
+    <div  className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlighting/2") ; window.location.reload()       }}>
+
       روشنایی داخلی
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -206,7 +234,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==2)?.map((item, i) => {
                return (
-                  i<4?
+                  i<5?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history.push("/bulbiranshop/"+item.GroupID); window.location.reload()}   }>{item.SmallerGroup}</a>
@@ -225,7 +253,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==2)?.map((item, i) => {
                return (
-                i>3 &&  i<8?
+                i>4 &&  i<10?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
@@ -244,7 +272,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==2)?.map((item, i) => {
                return (
-               i<13&& i>7?
+               i<15&& i>9?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
@@ -266,8 +294,11 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const KharejiM = () => {
         return <div className="whiteMega">
-    <div className="whiteMegaTitle">
+    <div  className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlighting/3") ; window.location.reload()       }}>
+
      روشنایی خارجی
+     </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -336,8 +367,11 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const TazeinM = () => {
         return <div className="whiteMega">
-    <div className="whiteMegaTitle">
+    <div  className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlighting/4") ; window.location.reload()       }}>
+
       روشنایی تزئینی
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -347,7 +381,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==4)?.map((item, i) => {
                return (
-                  i<4?
+                  i<5?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
@@ -366,7 +400,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==4)?.map((item, i) => {
                return (
-                i>3 &&  i<8?
+                i>4 &&  i<9?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
@@ -385,7 +419,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {group.filter(t=>t.BiggerGroup==4)?.map((item, i) => {
                return (
-               i<13&& i>7?
+               i<14&& i>8?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
@@ -407,7 +441,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const KhasM = () => {
         return <div className="whiteMega">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlighting/4") ; window.location.reload()       }}>
+
       روشنایی خاص
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -477,8 +514,11 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const JanebiM = () => {
         return <div className="whiteMega">
-    <div className="whiteMegaTitle">
+    <div  className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlighting/6") ; window.location.reload()       }}>
+
       لوازم جانبی
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -551,7 +591,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const LampLED = () => {
         return <div className="whiteMega hc1">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlightingGreen/1") ; window.location.reload()       }}>
+
        لامپ
+       </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -561,7 +604,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
-                  i<4?
+                  i<5?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
@@ -580,7 +623,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
-                i>3 &&  i<8?
+                i>4 &&  i<10?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
@@ -599,7 +642,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
            <ul className="megaUl">
            {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
-               i<13&& i>7?
+               i<15&& i>9?
                       <>
                <li>
                    <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
@@ -614,6 +657,44 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
           }
            </ul>
        </Col>
+       {/* <Col md={3}>
+           <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
+               return (
+               i<19&& i>13?
+                      <>
+               <li>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+               </li>
+
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col> */}
+       {/* <Col md={3}>
+           <ul className="megaUl">
+           {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
+               return (
+                i>19?
+                      <>
+               <li>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+               </li>
+
+               </>
+:null
+
+                    );
+
+            })
+          }
+           </ul>
+       </Col> */}
    </Row>
         </div>
 
@@ -621,7 +702,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const PanelLED = () => {
         return <div className="whiteMega hc1">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlightingGreen/2") ; window.location.reload()       }}>
+
       پنل
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -692,7 +776,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const NoorafkanLED = () => {
         return <div className="whiteMega hc1">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlightingGreen/3") ; window.location.reload()       }}>
+
      نورافکن
+     </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -763,7 +850,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const RiseLED = () => {
         return <div className="whiteMega hc1">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlightingGreen/4") ; window.location.reload()       }}>
+
     ریسه
+    </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -834,7 +924,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const CheraghLED = () => {
         return <div className="whiteMega hc1">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlightingGreen/5") ; window.location.reload()       }}>
+
       چراغ
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -905,7 +998,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const AvizLED = () => {
         return <div className="whiteMega hc1">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlightingGreen/6") ; window.location.reload()       }}>
+
       آویز
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -976,7 +1072,10 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       const JanebiLED = () => {
         return <div className="whiteMega hc1">
     <div className="whiteMegaTitle">
+    <Link   onClick={()=> {   history.push("/indoorlightingGreen/7") ; window.location.reload()       }}>
+
       لوازم جانبی
+      </Link>
     </div>
    <Row style={{marginRight:"0px",marginLeft:"0px"}}>
    <Col md={3}>
@@ -1282,7 +1381,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
             height: "20em",
             width: "160px",
             padding: "2px",
-            margin: "0"
+            margin: "0",
           }
         },
         contentProps: {
@@ -1294,7 +1393,8 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
           style: {
 
             padding: "2px",
-            height: "2em"
+            height: "2em",
+            
           }
         },
         menuItemSelectedProps: {
@@ -1308,7 +1408,8 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
         containerProps: {
           style: {
 
-            padding: "2px"
+            padding: "2px",
+            zIndex:1000
           }
         }
       }
@@ -1321,12 +1422,20 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
               <Col md="auto" xs="2" className="ta-center flex-1">
               {/*  */}
       <Dropdown>
-        <Dropdown.Toggle className="menuDropDown">
+        <Dropdown.Toggle onClick={()=>history.push("/BulbiranShop/2")} className="menuDropDown"
+          onMouseEnter={() =>{ setShow(true);setShow2(false)}}
+        >
         <p className="menu-items d-inline-block" >فروشگاه بالبیران</p>
                   <FaCaretDown display="inline-block" color="ffd200" fontSize="2rem"></FaCaretDown>
         </Dropdown.Toggle>
-        <Dropdown.Menu className="MegamenuDropList">
-        <div className="bMega">
+        {
+            show?
+
+         <Dropdown.Menu show={show} className="MegamenuDropList"
+        onMouseLeave={() => setShow(false)}
+        
+        >
+        <div className="bMega" >
         <ReactMegaMenu
         direction="right"
         data={data}
@@ -1334,6 +1443,9 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       />
          </div>
         </Dropdown.Menu>
+            :
+            null
+        }
         </Dropdown>
 
               </Col>
@@ -1343,7 +1455,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
         <p className="menu-items d-inline-block">بازار روشنایی</p>
                   <FaCaretDown display="inline-block" color="ffd200" fontSize="2rem"></FaCaretDown>
         </Dropdown.Toggle>
-        <Dropdown.Menu className="MegamenuDropList">
+        <Dropdown.Menu show={false} className="MegamenuDropList">
         <div className="megaBrand">
            <Row className="mBrandRow">
                <Col md={3}>
@@ -1381,7 +1493,7 @@ brand?.map((item, i) => {
 
 <div className="bMegaLi">
                     <img src={apiAsset+item.BrandLogo}/>
-                    <a onClick={()=>  {history.push("/brandsecond/4"); window.location.reload() }}>{item.BrandName}</a>
+                    <a onClick={()=>  {history.push("/brandsecond/"+item.BrandID); window.location.reload() }}>{item.BrandName}</a>
                 </div>
           </>
           :null
@@ -1421,12 +1533,18 @@ brand?.map((item, i) => {
              </Col>
               <Col md="auto" xs="2" className="ta-center flex-1">
               <Dropdown>
-        <Dropdown.Toggle className="menuDropDown">
+        <Dropdown.Toggle    onClick={()=>  history.push("/GreenShop/1")}    onMouseEnter={() =>{setShow(false); setShow2(true)}} className="menuDropDown">
         <p className="menu-items d-inline-block">فروشگاه سبز</p>
                   <FaCaretDown display="inline-block" color="ffd200" fontSize="2rem"></FaCaretDown>
         </Dropdown.Toggle>
-        <Dropdown.Menu className="MegamenuDropList">
-        <div className="bMega">
+        {
+            show2?
+
+         <Dropdown.Menu show={show2} className="MegamenuDropList"
+        onMouseLeave={() => setShow2(false)}
+        onMouseEnter={() =>{setShow(false); setShow2(true)}} 
+        >
+        <div className="bMega" >
         <ReactMegaMenu
         direction="right"
         data={data2}
@@ -1434,6 +1552,9 @@ brand?.map((item, i) => {
       />
          </div>
         </Dropdown.Menu>
+            :
+            null
+        }
         </Dropdown>
 
              </Col>
@@ -1443,7 +1564,7 @@ brand?.map((item, i) => {
         <p className="menu-items d-inline-block">لامپ یاب</p>
                   <FaCaretDown display="inline-block" color="ffd200" fontSize="2rem"></FaCaretDown>
         </Dropdown.Toggle>
-        <Dropdown.Menu className="bulbyabMenu">
+        <Dropdown.Menu  className="bulbyabMenu">
         <Row style={{margin:"0px"}}>
             <Col md={3} className="pd0">
                 <div className="RightCmenu">
@@ -1534,15 +1655,15 @@ brand?.map((item, i) => {
   <Dropdown.Menu className="menuDropList">
 
     <Dropdown.Item  onClick={()=>  history.push("/news")}>آخرین اخبار</Dropdown.Item>
-    {/* <Dropdown.Item  onClick={()=>  history.push("/news")}>مقالات علمی</Dropdown.Item>
-    <Dropdown.Item  onClick={()=>  history.push("/news")}>تکنولوژی روز</Dropdown.Item>
-    <Dropdown.Item    onClick={()=>  history.push("/news")}>نور</Dropdown.Item>
+     <Dropdown.Item  onClick={()=>  history.push("/news")}>مقالات علمی</Dropdown.Item>
+    <Dropdown.Item    onClick={()=>  history.push("/news")}>طراحی روشنایی</Dropdown.Item>
+    {/* <Dropdown.Item  onClick={()=>  history.push("/news")}>تکنولوژی روز</Dropdown.Item> */}
+    {/* <Dropdown.Item    onClick={()=>  history.push("/news")}>نور</Dropdown.Item>
     <Dropdown.Item    onClick={()=>  history.push("/news")}>آخرین تخفیف ها(جشنواره)</Dropdown.Item>
     <Dropdown.Item    onClick={()=>  history.push("/news")}>بهینه سازی روشنایی</Dropdown.Item>
     <Dropdown.Item    onClick={()=>  history.push("/news")}>ساخت و تولید</Dropdown.Item>
-    <Dropdown.Item    onClick={()=>  history.push("/news")}>طراحی روشنایی</Dropdown.Item>
     <Dropdown.Item    onClick={()=>  history.push("/news")}>رویدادهای روشنایی</Dropdown.Item>
-    <Dropdown.Item    onClick={()=>  history.push("/news")}>تبلیغات</Dropdown.Item> */}
+    <Dropdown.Item    onClick={()=>  history.push("/news")}>تبلیغات</Dropdown.Item>  */}
   </Dropdown.Menu>
 </Dropdown>
               </Col>

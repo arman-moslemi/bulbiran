@@ -27,6 +27,7 @@ import Save from './assets/icons/Save';
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
+import ProductSlider from './layouts/Productslider';
 import { Link, useHistory,useParams } from "react-router-dom";
 
 // const images = [
@@ -69,14 +70,19 @@ import { Link, useHistory,useParams } from "react-router-dom";
     const images = [];
     const  Colors=[];
     const [product,setProduct]=useState([])
+    const [moshabeh,setMoshabeh]=useState([])
     const [allimg,setAllimg]=useState([])
+    const [role,setRole]=useState()
+    const [role2,setRole2]=useState()
     const [color,setColor]=useState([])
     const [colorSel,setColorSel]=useState("")
+    const [brand,setBrand]=useState("")
     const [comments,setComment]=useState([])
     const [property,setProperty]=useState([])
     const [rate,setRate]=useState(0)
     const [rateCount,setRateCount]=useState(0)
-    const [count,setCount]=useState(1)
+    const [count,setCount]=useState(0)
+    const [box,setBox]=useState(0)
 	const params = useParams().id;
    const increment = () => {
     setCount(count+1)
@@ -91,8 +97,22 @@ import { Link, useHistory,useParams } from "react-router-dom";
         if(count!=0)
         setCount(count-1)
       }
+   const incrementBox = () => {
+    setBox(box+1)
+
+      }
+
+      const   decrementBox = () => {
+        // this.setState({
+        //   count: this.state.count - 1
+        // });
+        if(box!=0)
+        setBox(box-1)
+      }
     const getProduct=()=>{
         const axios = require("axios");
+
+var r1,r2;
         axios
           .get(apiUrl + "Products/" + params)
         //   .get(apiUrl + "Blog")
@@ -128,10 +148,58 @@ for (let index = 0; index < response.data.Data?.Color?.split(',').length; index+
 
 }
   console.log(77)
+  console.log(response.data.Data?.Color)
+  console.log(Colors)
+  setBrand(response.data.Data?.BrandName)
   setColor(Colors)
-    console.log(color)
-    console.log(Colors)
+  setRole(response.data.Data?.Role)
+  r1=response.data.Data?.Role
+  r2=response.data.Data?.Role2
+  setRole2(response.data.Data?.Role2)
+    console.log(role)
     setAllimg(images)
+
+    console.log(999);
+    console.log(role2);
+    console.log(role);
+    !role2?
+    axios
+    .get(apiUrl + "CategoryProduct/"+response.data.Data?.Role)
+.then(function (response) {
+  if (response.data.result == "true") {
+
+      setMoshabeh(response.data.Data)
+      console.log(response.data.result)
+
+}
+else{
+  console.log(response.data.result)
+
+}})
+.catch(function (error) {
+  console.log(error);
+})
+    :
+    axios
+    .get(apiUrl + "CategoryGreenShop/"+response.data.Data?.Role2)
+.then(function (response) {
+  if (response.data.result == "true") {
+
+      setMoshabeh(response.data.Data)
+      console.log(response.data.result)
+
+}
+else{
+  console.log(response.data.result)
+
+}})
+.catch(function (error) {
+  console.log(error);
+});
+
+
+
+
           }
           else{
             console.log(response.data.result)
@@ -159,7 +227,7 @@ for (let index = 0; index < response.data.Data?.Color?.split(',').length; index+
         //   .get(apiUrl + "Blog")
           .then(function (response) {
             if (response.data.result == "true") {
-             console.log(22)
+             console.log(123456)
              console.log(response.data.Data)
              setProperty(response.data.Data)
 
@@ -191,6 +259,7 @@ for (let index = 0; index < response.data.Data?.Color?.split(',').length; index+
           .catch(function (error) {
             console.log(error);
           });
+
       }
       const InserBasket=()=>{
         const axios = require("axios");
@@ -204,7 +273,7 @@ else{
 
     const total=product?.SpecialCost?product?.SpecialCost:product.Cost;
     console.log(total)
-          axios.post(apiUrl + "InsertShopBasket",{CustomerID:UserID,ProductID:params,Cost:product.SpecialCost?product.SpecialCost:product.Cost,Number:count,TotalCost:total,Color:colorSel})
+          axios.post(apiUrl + "InsertShopBasket",{CustomerID:UserID,ProductID:params,Cost:product.SpecialCost?product.SpecialCost:product.Cost,Number:count+product?.Number*box,TotalCost:total,Color:colorSel})
         //   .get(apiUrl + "Blog")
           .then(function (response) {
               console.log(475)
@@ -331,18 +400,26 @@ return(
                         </span>
                     </Col>
                 </Row>
-                <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px"}}>
+                {/* <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px"}}>
                     <Col md={12} className="pd0 ta-right">
                         <span className="vijhegiTitle">ویژگی های این کالا</span>
                         <ul className="vijhegiList">
                         { property?.map((item, i) => {
              return (
-                 i<3?
+                 i<5?
           <>
+           <span className="vijhegiTitle">{item[0].TitleMain}:</span>
+
+                                {
+                                    item?.map((items)=>{
+                                        return (
 
 <li>
-                                {item.Title} : {item.Text}
+ {items.Title}
                             </li>
+                                        )
+                                    })
+                                }
             </>
 :
 null
@@ -352,17 +429,18 @@ null
                         </ul>
 
                     </Col>
-                </Row>
+                </Row> */}
+                {color.length>0?
                 <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px"}}>
                     <Col md={12} className="pd0 ta-right">
-                        <span className="vijhegiTitle">رنگ محصول : </span>
+                        <span className="vijhegiTitle">رنگ نور : </span>
                         <ul className="colorUl">
                             {
                                 color?.map((item)=>{
 return(
     <>
  <li>
-                                <Button onClick={()=>setColorSel(item)} style={{backgroundColor: item}} ></Button>
+                                <Button onClick={()=>setColorSel(item)} style={{backgroundColor: "#"+item}} ></Button>
                                 </li>
                       </>
 
@@ -372,24 +450,20 @@ return(
                                 })
                             }
 
-                                {/* <li>
-                                <Button id="color2"></Button>
-                                </li>
-                                <li>
-                                <Button id="color3"></Button>
-                                </li>
-                                <li>
-                                <Button id="color4"></Button>
-                                </li> */}
+
                         </ul>
                     </Col>
                 </Row>
+                :
+                null
+                }
+
             </Col>
             <Col md={3}>
                 <div className="grayBox2">
                     <div>
                         <BGarantee/>
-                        <span>گارانتی شش ماهه بروکس</span>
+                        <span>گارانتی {product.Warranty?product.Warranty:12} ماهه {brand}</span>
                     </div>
                     <div>
                         <Save/>
@@ -435,6 +509,19 @@ return(
               <button onClick={()=>decrement()} className="decBTN">-</button>
               <span style={{marginRight:'0'}}>{count}</span>
               <button onClick={()=>increment()} className="inBTN">+</button>
+            </div>
+                    </div>
+
+                    </div>
+                    <div>
+                    <span className="tedad d-inline-block" >
+                            جعبه :
+                        </span>
+                        <div  className="ta-center pd0 d-inline-block" style={{borderBottom:"none"}}>
+                    <div className="counterDiv pd5" style={{padding:"0px !important",marginRight:"10px"}}>
+              <button onClick={()=>decrementBox()} className="decBTN">-</button>
+              <span style={{marginRight:'0'}}>{box}</span>
+              <button onClick={()=>incrementBox()} className="inBTN">+</button>
             </div>
                     </div>
 
@@ -530,17 +617,21 @@ return(
              return (
                  i<4?
           <>
-                <Row style={{margin:"0"}} className="tableRow">
+
+               <Row style={{margin:"0"}} className="tableRow">
                     <Col md={6} className="ta-right pd0">
                         <span className="tableSpan">
-                            {item.Title}
+                        {item[0].TitleMain}:
                         </span>
                     </Col>
+                    { item?.map((items)=>{
+                        return(
                     <Col md={6} className="ta-left pd0">
                         <span className="tableSpan">
-                            {item.Text}
+                            {items.Title}
                         </span>
                     </Col>
+                       )   })}
                 </Row>
                 </>
 :
@@ -549,6 +640,7 @@ null
              </div>
         </Col>
         </Row>
+
     </TabPanel>
     <TabPanel>
       <div>
@@ -563,7 +655,6 @@ null
       <Row className="mgt20" style={{margin:"0"}}>
           <Col md={4}>
          { property?.map((item, i) => {
-             console.log(i)
              return (
                  i<4?
           <>
@@ -571,13 +662,23 @@ null
             <Row style={{margin:"0"}} className="pTableRow">
                 <Col md={6} className="pd0 ta-right">
                     <span className="tableTR">
-                      {item.Title}
+                      {item[0].TitleMain}
                     </span>
                 </Col>
                 <Col md={6} className="pd0 ta-right">
+                { item?.map((items,index)=>{
+                        return(
                 <span className="tableTH">
-                {item.Text}
+                    {
+index!=item.length-1?
+                 items.Title+"; "
+                :
+
+                items.Title
+                }
                     </span>
+                        )
+                })}
                     </Col>
             </Row>
             </>
@@ -592,23 +693,32 @@ null
 
 
  { property?.map((item, i) => {
-             console.log(i)
              return (
 
              i<8  &&  i>3 ?
                  <>
 
 
-            <Row style={{margin:"0"}} className="pTableRow">
+<Row style={{margin:"0"}} className="pTableRow">
                 <Col md={6} className="pd0 ta-right">
                     <span className="tableTR">
-                      {item.Title}
+                      {item[0].TitleMain}
                     </span>
                 </Col>
                 <Col md={6} className="pd0 ta-right">
+                { item?.map((items,index)=>{
+                        return(
                 <span className="tableTH">
-                {item.Text}
+                    {
+index!=item.length-1?
+                 items.Title+"; "
+                :
+
+                items.Title
+                }
                     </span>
+                        )
+                })}
                     </Col>
             </Row>
             </>
@@ -621,23 +731,32 @@ null
                                                                                                                          </Col>
                                                                                                                          <Col>
                                                       { property?.map((item, i) => {
-             console.log(i)
              return (
 
            i>7 ?
                  <>
 
 
-            <Row style={{margin:"0"}} className="pTableRow">
+<Row style={{margin:"0"}} className="pTableRow">
                 <Col md={6} className="pd0 ta-right">
                     <span className="tableTR">
-                      {item.Title}
+                      {item[0].TitleMain}
                     </span>
                 </Col>
                 <Col md={6} className="pd0 ta-right">
+                { item?.map((items,index)=>{
+                        return(
                 <span className="tableTH">
-                {item.Text}
+                    {
+index!=item.length-1?
+                 items.Title+"; "
+                :
+
+                items.Title
+                }
                     </span>
+                        )
+                })}
                     </Col>
             </Row>
             </>
@@ -1017,6 +1136,13 @@ comments?.map((item, i) => {
   </Tabs>
         </div>
       </div>
+
+      </Container>
+      <Container fluid style={{padding:0,marginTop:20,marginBottom:20,backgroundColor:'#f4f4f4'}}>
+     <div className="recently">
+         <p className="recentlyView">محصولات مشابه</p>
+     <ProductSlider style={{display:'block'}} data={moshabeh} className="bulbSliderBox ii"/>
+     </div>
       </Container>
    <SocialRow/>
     <IconRow/>

@@ -922,8 +922,14 @@ product?.map((item, i) => {
                     <div className="whiteCard">
                         <img src={apiAsset+item.Pic1}/>
                         <p>{item.ProductName}</p>
-                        <span>{item.Cost} تومان</span>
-                    </div>
+                        {
+      item.Cost==0?
+  <span>با ما تماس بگیرید</span>
+
+      :
+
+  <span>{item.Cost} تومان</span>
+    }                    </div>
                 </Link>
                 </Col>
                 </>

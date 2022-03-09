@@ -230,7 +230,7 @@ p{
   display: unset !important;
 }
 
-.tooltip-on-hover:hover + .tooltip {  
+.tooltip-on-hover:hover + .tooltip {
  display: block !important;
  opacity: 1 !important;
 }
@@ -242,9 +242,9 @@ p{
   display: inline-block;
   border-radius: 3px;
   position: absolute;
- 
+
   z-index: 200000;
- 
+
   border:none !important;
   border-radius: 0.3rem;
   opacity: 0;
@@ -260,11 +260,11 @@ p{
 }
 .tooltip2 {
   visibility: unset !important;
- 
+
    display: unset !important;
  }
- 
- .tooltip-on-hover2:hover + .tooltip2 {  
+
+ .tooltip-on-hover2:hover + .tooltip2 {
   display: block !important;
   opacity: 1 !important;
  }
@@ -276,9 +276,9 @@ p{
    display: inline-block;
    border-radius: 3px;
    position: absolute;
-  
+
    z-index: 200000;
-  
+
    border:none !important;
    border-radius: 0.3rem;
    opacity: 0;
@@ -294,11 +294,11 @@ p{
  }
  .tooltip3 {
   visibility: unset !important;
- 
+
    display: unset !important;
  }
- 
- .tooltip-on-hover3:hover + .tooltip3 {  
+
+ .tooltip-on-hover3:hover + .tooltip3 {
   display: block !important;
   opacity: 1 !important;
  }
@@ -310,9 +310,9 @@ p{
    display: inline-block;
    border-radius: 3px;
    position: absolute;
-  
+
    z-index: 200000;
-  
+
    border:none !important;
    border-radius: 0.3rem;
    opacity: 0;
@@ -328,11 +328,11 @@ p{
  }
  .tooltip4 {
   visibility: unset !important;
- 
+
    display: unset !important;
  }
- 
- .tooltip-on-hover4:hover + .tooltip4 {  
+
+ .tooltip-on-hover4:hover + .tooltip4 {
   display: block !important;
   opacity: 1 !important;
  }
@@ -344,9 +344,9 @@ p{
    display: inline-block;
    border-radius: 3px;
    position: absolute;
-  
+
    z-index: 200000;
-  
+
    border:none !important;
    border-radius: 0.3rem;
    opacity: 0;
@@ -726,8 +726,25 @@ background: radial-gradient(circle, rgba(129,219,226,1) 0%, rgba(55,167,183,1) 1
   -o-transform: translate3d(0%, 0px, 0px) !important;
 }
 .slick-slide img{
-  width:100%;
-  height: 100%;
+  width:197px !important;
+  height: 197px !important;
+}
+.bigSlider img{
+  width: 100% !important;
+  height: 100% !important;
+}
+.recentlyView{
+  text-align: right;
+  border-bottom: 2px solid #000;
+  font-size: 25px;
+  font-family: 'IRANSans-Bold';
+  margin-bottom: 10px;
+}
+.recently{
+padding:20px 0px;
+  width: 85%;
+margin-right: auto;
+margin-left: auto;
 }
 .slick-dots {
   position: absolute;
@@ -784,7 +801,8 @@ background: #fdf03f;
 }
 .sliderCard{
  width: 237px!important;
-  height: auto;
+  /* height: auto; */
+  height: 340px;
 margin-right: 10px;
 margin-left: 10px;
   padding: 10px 20px;
@@ -836,6 +854,7 @@ margin-left: 10px;
 }
 .sliderCard img{
   height: auto;
+  
 }
 .productNameSlider{
 
@@ -1520,7 +1539,8 @@ background-color: rgba(254, 229, 67, 0.22);
   margin:10px;
 }
 .cateInner div img{
-  width:60%;
+  width:90px;
+  height:90px;
   margin-right: auto;
   margin-left: auto;
   display: block;
@@ -1530,6 +1550,7 @@ background-color: rgba(254, 229, 67, 0.22);
   font-size: 15px;
   text-align: center;
   margin-top: 5px;
+  color:#000;
 }
 #chain{
   height: 90px;
@@ -1683,9 +1704,11 @@ margin-top: 4px;
   width: 95%;
   margin-right: auto;
   margin-left: auto;
+  height:325px;
 }
 .whiteCard img{
-  width: 60%;
+  height:125px;
+  width: 125px;
   display: block;
   margin-right: auto;
   margin-left: auto;
@@ -1693,12 +1716,16 @@ margin-top: 4px;
 }
 
 .whiteCard p{
-  color: #868686;
+  color: #000;
     text-align: right;
     font-size: 12px;
     line-height: 3rem;
     margin-top: 15px;
     font-family: 'IRANYekan-Bold';
+    height: 90px;
+}
+.ii{
+
 }
 .whiteCard span{
   color:#142b6f;
@@ -3513,9 +3540,10 @@ width: 180px;
   font-family: 'IRANYekan-Bold';
   background-color: #18206b;
   color: #fff !important;
-  padding: 11px 15px !important;
+  padding: 11px 5px !important;
   height: auto !important;
-  width: 160px;
+  z-index: 100;
+  /* width: 160px; */
   font-size: 12px;
   border-bottom: 1px solid #fff;
 }
@@ -3582,6 +3610,7 @@ width:750px ;
 }
 .bMegaLi{
  margin-bottom: 5px;
+ z-index: 100;
 }
 .seeAllB{
   background-color: #fff;
@@ -4076,7 +4105,7 @@ display: block;
   color:#fff !important;
   border-bottom: 1px dashed #fff;
   text-align: right;
- 
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -4816,7 +4845,7 @@ padding-right: 15px;
   width: 100% !important;
 }
 .bMother{
-  
+
 }
 }
 @media only screen and (max-width:900px) and (min-width:415px){
@@ -4863,15 +4892,15 @@ padding-right: 15px;
   .innerSlider p{
     font-size: 20px !important;
   }
-  
+
 }
 @media only screen and (max-width:550px){
   .dresNone{
     display: none !important;
   }
-    
- 
-  
+
+
+
   .brandSliderBox{
     margin-top: 20px !important;
   }
