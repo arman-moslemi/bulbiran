@@ -22,7 +22,7 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import CircumstanceBanner from './assets/icons/CircumstanceBanner'
 import LedBanner from './assets/icons/LedBanner'
-import { FaAngleLeft ,FaSearch ,FaTimes} from 'react-icons/fa';
+import { FaAngleLeft ,FaSearch ,FaTimes ,FaWhatsapp} from 'react-icons/fa';
 import Lamp from './assets/img/lamp.png';
 import Rise from './assets/img/rise.png';
 import Lavazem from './assets/img/lavazemjanebi.png';
@@ -242,7 +242,12 @@ console.log(error);
       <TopBar/>
       <Header/>
     <Container fluid className="bulbiranContainer">
-
+      <div className="whatsAppBadge">
+        <div>
+        <FaWhatsapp/>
+        <a class="text" href="https://wa.me/+989357500057">استعلام قیمت و تماس با واتساپ</a>
+        </div>
+      </div>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
