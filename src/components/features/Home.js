@@ -181,6 +181,7 @@ setProduct(response.data.Data)
   console.log(response.data.Data)
 }
 else{
+  console.log(999)
 console.log(response.data.result)
 
 }})

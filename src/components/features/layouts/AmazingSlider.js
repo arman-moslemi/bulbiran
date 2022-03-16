@@ -30,9 +30,7 @@ export default function AmazingSlider({data}) {
                   {
 data?.map((item, i) => {
     var ss=((item.Cost-item.SpecialCost)/item.Cost)*100
-    console.log(item)
-    console.log(data.length)
-    console.log(i)
+
     var mm=parseInt(data.length/2)
 
   return (
@@ -129,9 +127,7 @@ null
    {
 data?.map((item, i) => {
 var ss=((item.Cost-item.SpecialCost)/item.Cost)*100
-console.log(item)
-console.log(data.length)
-console.log(i)
+
 var mm=parseInt(data.length/2)
 
 return (
