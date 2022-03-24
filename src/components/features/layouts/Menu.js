@@ -29,6 +29,14 @@ import c5 from '../assets/img/c5.png';
 import c6 from '../assets/img/c6.png';
 import c7 from '../assets/img/c7.png';
 import c8 from '../assets/img/c8.png';
+import Cheragh from '../assets/img/cheragh.png';
+import Panel from '../assets/img/panel.png';
+import Loster from '../assets/img/loster.png';
+import Janebi from '../assets/img/janebi.png';
+import rise from '../assets/img/rise.png';
+// import Chain from './assets/img/chain.png';
+import Noorafkan from '../assets/img/noorafkan.png';
+
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 
 
@@ -101,7 +109,7 @@ const Menu = () => {
 }, []);
     const LampM = () => {
         return <div className="whiteMega" >
-    <div  className="whiteMegaTitle">
+    <div onMouseEnter={()=>setpic(apiAsset+"lamp.png")} className="whiteMegaTitle">
     <Link   onClick={()=> {   history.push("/indoorlighting/1") ; window.location.reload()       }}>
 
        لامپ
@@ -220,7 +228,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const DakheliM = () => {
         return <div className="whiteMega">
-    <div  className="whiteMegaTitle">
+    <div onMouseEnter={()=>setpic(apiAsset+"inner.png")} className="whiteMegaTitle">
     <Link   onClick={()=> {   history.push("/indoorlighting/2") ; window.location.reload()       }}>
 
       روشنایی داخلی
@@ -294,8 +302,8 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const KharejiM = () => {
         return <div className="whiteMega">
-    <div  className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlighting/3") ; window.location.reload()       }}>
+    <div  onMouseEnter={()=>setpic(apiAsset+"outdoor.png")}  className="whiteMegaTitle">
+    <Link  onClick={()=> {   history.push("/indoorlighting/3") ; window.location.reload()       }}>
 
      روشنایی خارجی
      </Link>
@@ -367,7 +375,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const TazeinM = () => {
         return <div className="whiteMega">
-    <div  className="whiteMegaTitle">
+    <div  onMouseEnter={()=>setpic(apiAsset+"tazein.png")} className="whiteMegaTitle">
     <Link   onClick={()=> {   history.push("/indoorlighting/4") ; window.location.reload()       }}>
 
       روشنایی تزئینی
@@ -440,7 +448,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const KhasM = () => {
         return <div className="whiteMega">
-    <div className="whiteMegaTitle">
+    <div onMouseEnter={()=>setpic(apiAsset+"rise.png")}className="whiteMegaTitle">
     <Link   onClick={()=> {   history.push("/indoorlighting/4") ; window.location.reload()       }}>
 
       روشنایی خاص
@@ -514,7 +522,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const JanebiM = () => {
         return <div className="whiteMega">
-    <div  className="whiteMegaTitle">
+    <div onMouseEnter={()=>setpic(apiAsset+"lavazemjanebi.png")} className="whiteMegaTitle">
     <Link   onClick={()=> {   history.push("/indoorlighting/6") ; window.location.reload()       }}>
 
       لوازم جانبی
@@ -590,8 +598,8 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       //greenshop
       const LampLED = () => {
         return <div className="whiteMega hc1">
-    <div className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlightingGreen/1") ; window.location.reload()       }}>
+    <div  onMouseEnter={()=>setpic(Lamp)} className="whiteMegaTitle">
+    <Link    onClick={()=> {   history.push("/indoorlightingGreen/1") ; window.location.reload()       }}>
 
        لامپ
        </Link>
@@ -701,7 +709,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const PanelLED = () => {
         return <div className="whiteMega hc1">
-    <div className="whiteMegaTitle">
+    <div onMouseEnter={()=>setpic(Panel)} className="whiteMegaTitle">
     <Link   onClick={()=> {   history.push("/indoorlightingGreen/2") ; window.location.reload()       }}>
 
       پنل
@@ -775,7 +783,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const NoorafkanLED = () => {
         return <div className="whiteMega hc1">
-    <div className="whiteMegaTitle">
+    <div onMouseEnter={()=>setpic(Noorafkan)} className="whiteMegaTitle">
     <Link   onClick={()=> {   history.push("/indoorlightingGreen/3") ; window.location.reload()       }}>
 
      نورافکن
@@ -849,7 +857,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const RiseLED = () => {
         return <div className="whiteMega hc1">
-    <div className="whiteMegaTitle">
+    <div onMouseEnter={()=>setpic(rise)} className="whiteMegaTitle">
     <Link   onClick={()=> {   history.push("/indoorlightingGreen/4") ; window.location.reload()       }}>
 
     ریسه
@@ -923,7 +931,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const CheraghLED = () => {
         return <div className="whiteMega hc1">
-    <div className="whiteMegaTitle">
+    <div onMouseEnter={()=>setpic(Cheragh)} className="whiteMegaTitle">
     <Link   onClick={()=> {   history.push("/indoorlightingGreen/5") ; window.location.reload()       }}>
 
       چراغ
@@ -997,7 +1005,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const AvizLED = () => {
         return <div className="whiteMega hc1">
-    <div className="whiteMegaTitle">
+    <div onMouseEnter={()=>setpic(Loster)} className="whiteMegaTitle">
     <Link   onClick={()=> {   history.push("/indoorlightingGreen/6") ; window.location.reload()       }}>
 
       آویز
@@ -1071,7 +1079,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
       }
       const JanebiLED = () => {
         return <div className="whiteMega hc1">
-    <div className="whiteMegaTitle">
+    <div onMouseEnter={()=>setpic(Janebi)} className="whiteMegaTitle">
     <Link   onClick={()=> {   history.push("/indoorlightingGreen/7") ; window.location.reload()       }}>
 
       لوازم جانبی
@@ -1433,12 +1441,12 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
 
          <Dropdown.Menu show={show} className="MegamenuDropList"
         onMouseLeave={() => setShow(false)}
-        
         >
         <div className="bMega" >
         <ReactMegaMenu
         direction="right"
         data={data}
+        onExit={(zz)=>setShow(false)}
         styleConfig={styleConf}
       />
          </div>
@@ -1531,9 +1539,9 @@ brand?.map((item, i) => {
         </Dropdown>
 
              </Col>
-              <Col md="auto" xs="2" className="ta-center flex-1">
-              <Dropdown>
-        <Dropdown.Toggle    onClick={()=>  history.push("/GreenShop/1")}    onMouseEnter={() =>{setShow(false); setShow2(true)}} className="menuDropDown">
+              <Col onMouseEnter={() =>{setShow(false); setShow2(true)}} md="auto" xs="2" className="ta-center flex-1">
+              <Dropdown >
+        <Dropdown.Toggle    onClick={()=>  history.push("/GreenShop/1")}     className="menuDropDown">
         <p className="menu-items d-inline-block">فروشگاه سبز</p>
                   <FaCaretDown display="inline-block" color="ffd200" fontSize="2rem"></FaCaretDown>
         </Dropdown.Toggle>
@@ -1548,6 +1556,8 @@ brand?.map((item, i) => {
         <ReactMegaMenu
         direction="right"
         data={data2}
+        onExit={(zz)=>setShow2(false)}
+
         styleConfig={styleConf}
       />
          </div>

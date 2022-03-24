@@ -36,6 +36,7 @@ import Chain from './assets/img/chain.png';
 import B14 from './assets/img/b14.png';
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import {useParams } from "react-router-dom";
+import {FaWhatsapp} from 'react-icons/fa';
 
 const BrandSecond = () => {
     const [product,setProduct]=useState([])
@@ -144,6 +145,12 @@ const newest=()=>{
       <Header/>
 
     <Container fluid className="bulbiranContainer">
+    <div className="whatsAppBadge">
+        <div>
+        <FaWhatsapp/>
+        <a class="text" href="https://wa.me/+989357500057">استعلام قیمت و تماس با واتساپ</a>
+        </div>
+      </div>
     <Row style={{margin:"0px"}}>
         <Col md={3}>
             <div className="whiteBox ta-center pd60 mgt0">

@@ -37,6 +37,8 @@ import GreenShopLogo from './assets/icons/GreenShopLogo';
 import ShopLogo from './assets/icons/ShopLogo';
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import {useParams } from "react-router-dom";
+import {FaWhatsapp} from 'react-icons/fa';
+
 const check=[];
 
 const GreenShop = () => {
@@ -46,6 +48,9 @@ const GreenShop = () => {
     const [group,setGroup]=useState([])
     const [property,setProperty]=useState([])
     const [propertySel,setPropertySel]=useState([])
+    const [menu,setMenu]=useState([])
+    const history = useHistory();
+
     const mainSlider=()=>{
         const axios = require("axios");
 
@@ -56,7 +61,28 @@ const GreenShop = () => {
 
                 setProduct(response.data.Data)
                 console.log(response.data.result)
-
+                axios
+                .get(apiUrl + "GreenGroup/"+response.data.Data[0]?.BiggerGroup)
+            .then(function (response) {
+              if (response.data.result == "true") {
+          
+                // var ff=[];
+                // response.data.Data.map((item,index)=>{
+                //   index<8?
+                //   ff.push(item)
+                //   :
+                //   null
+                // })
+                  setMenu(response.data.Data)
+          
+            }
+            else{
+              console.log(response.data.result)
+          
+            }})
+            .catch(function (error) {
+              console.log(error);
+            });
           }
           else{
             console.log(response.data.result)
@@ -65,12 +91,15 @@ const GreenShop = () => {
           .catch(function (error) {
             console.log(error);
           });
+      
           axios
           .get(apiUrl + "SubGreenGroup/"+params)
       .then(function (response) {
         if (response.data.result == "true") {
 
             setGroup(response.data.Data)
+            console.log(89546)
+            console.log(response.data.Data)
 
       }
       else{
@@ -208,6 +237,7 @@ console.log(check.length)
       .catch(function (error) {
         console.log(error);
       });
+ 
 
   }
         useEffect(() => {
@@ -219,6 +249,12 @@ console.log(check.length)
           <TopBar/>
       <Header/>
       <Container fluid className="pd0">
+      <div className="whatsAppBadge">
+        <div>
+        <FaWhatsapp/>
+        <a class="text" href="https://wa.me/+989357500057">استعلام قیمت و تماس با واتساپ</a>
+        </div>
+      </div>
           <div className="yellowBack">
           <Row style={{margin:"0px"}}>
         <Col md={12}>
@@ -230,14 +266,15 @@ console.log(check.length)
              onChange={ss=>mainCat(ss)}
             // value="1"
            className="radioB">
-             { group?.map((item, i) => {
+             { menu?.slice(0,9).map((item) => {
   return (
-
-  <RadioButton value={item.SubGreenGroupID.toString()} rootColor="transparent"
+    
+  <RadioButton value={item?.GreenGroupID.toString()} rootColor="transparent"
 //    onChange={()=>mainCat(1)}
     pointColor="#ffb921">
-  {item.Title}
+  {item?.SmallerGroup}
   </RadioButton>
+  
 
                     );
 
@@ -258,9 +295,9 @@ console.log(check.length)
     <div>
         <span className="gTitle">فروشگاه سبز</span>
     </div>
-    {/* <div>
-        <span className="gTitle2">انواع محصولات LED </span>
-    </div> */}
+    <div>
+        <span className="gTitle2">{group[0]?.SmallerGroup}</span>
+    </div>
     </div>
           </div>
       </Container>
@@ -270,12 +307,12 @@ console.log(check.length)
             <div className="categoryBox2">
             <h4 className="circumstanceTitle ta-right">دسته بندی ها</h4>
             <div className="cateInner ta-center">
-            { group?.map((item, i) => {
+            { menu?.map((item, i) => {
   return (
-                <Link onClick={()=>mainCat(item.SubGreenGroupID)}>
+                <Link onClick={()=>{history.push("/GreenShop/"+item.GreenGroupID);window.location.reload()}}>
                 <div>
                     <img src={apiAsset+item.Photo}/>
-                    <p>{item.Title}</p>
+                    <p>{item.SmallerGroup}</p>
                 </div>
                 </Link>
                       );

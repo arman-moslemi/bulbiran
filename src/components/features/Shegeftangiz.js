@@ -27,6 +27,7 @@ import Img6 from './assets/img/Image 6.png';
 import Img7 from './assets/img/Image 7.png';
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import { Link, useHistory } from "react-router-dom";
+import {FaWhatsapp} from 'react-icons/fa';
 
 const Shegeftangiz = () => {
     const [product,setProduct]=useState([])
@@ -125,6 +126,12 @@ const newest=()=>{
       <Header/>
 
     <Container fluid className="bulbiranContainer">
+    <div className="whatsAppBadge">
+        <div>
+        <FaWhatsapp/>
+        <a class="text" href="https://wa.me/+989357500057">استعلام قیمت و تماس با واتساپ</a>
+        </div>
+      </div>
     <Row className="mgt20">
         <Col md={8} className="pdl0">
         <img src={apiAsset+img1} className="w100 h100"/>

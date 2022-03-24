@@ -18,6 +18,7 @@ import Checkbox from "react-custom-checkbox";
 import ReactPaginate from 'react-paginate';
 import 'react-accessible-accordion/dist/fancy-example.css';
 import { FaAngleLeft,FaAlignRight ,FaCheck , FaStar} from 'react-icons/fa';
+import {FaWhatsapp} from 'react-icons/fa';
 
 
 
@@ -34,6 +35,8 @@ const BulbiranShop = () => {
     const swiper = useRef(null);
     const [val,setVal]=useState(0)
     const params = useParams().id;
+    const [menu,setMenu]=useState([])
+    const history = useHistory();
     const mainSlider=()=>{
         const axios = require("axios");
 
@@ -43,7 +46,29 @@ const BulbiranShop = () => {
             if (response.data.result == "true") {
 
                 setProduct(response.data.Data)
-
+                console.log(response.data.Data)
+                axios
+                .get(apiUrl + "Group/"+response.data.Data[0]?.BiggerGroup)
+            .then(function (response) {
+              if (response.data.result == "true") {
+          
+                // var ff=[];
+                // response.data.Data.map((item,index)=>{
+                //   index<8?
+                //   ff.push(item)
+                //   :
+                //   null
+                // })
+                  setMenu(response.data.Data)
+          
+            }
+            else{
+              console.log(response.data.result)
+          
+            }})
+            .catch(function (error) {
+              console.log(error);
+            });
           }
           else{
             console.log(response.data.result)
@@ -211,6 +236,12 @@ const newest=()=>{
           <TopBar/>
       <Header/>
       <Container fluid className="pd0">
+      <div className="whatsAppBadge">
+        <div>
+        <FaWhatsapp/>
+        <a class="text" href="https://wa.me/+989357500057">استعلام قیمت و تماس با واتساپ</a>
+        </div>
+      </div>
           <div className="yellowBack">
           <Row style={{margin:"0px"}}>
         <Col md={12}>
@@ -222,13 +253,13 @@ const newest=()=>{
              onChange={ss=>mainCat(ss)}
             // value="1"
            className="radioB">
-            { group?.map((item, i) => {
+               { menu?.slice(0,9).map((item) => {
   return (
-
-  <RadioButton value={item.SubGroupID.toString()} rootColor="transparent"
+    
+  <RadioButton value={item?.GroupID.toString()} rootColor="transparent"
 //    onChange={()=>mainCat(1)}
     pointColor="#ffb921">
-  {item.Title}
+  {item?.SmallerGroup}
   </RadioButton>
 
                     );
@@ -255,7 +286,7 @@ const newest=()=>{
         <span className="gTitle">فروشگاه بالبیران</span>
     </div>
     <div>
-        <span className="gTitle2">انواع محصولات </span>
+        <span className="gTitle2">{group[0]?.SmallerGroup} </span>
     </div>
     </div>
           </div>
@@ -266,12 +297,12 @@ const newest=()=>{
             <div className="categoryBox2">
             <h4 className="circumstanceTitle ta-right">دسته بندی ها</h4>
             <div className="cateInner ta-center">
-            { group?.map((item, i) => {
+            { menu?.map((item, i) => {
   return (
-                  <Link onClick={()=>mainCat(item.SubGroupID)}>
-    <div>
+                <Link onClick={()=>{history.push("/bulbiranshop/"+item.GroupID);window.location.reload()}}>
+                <div>
                     <img src={apiAsset+item.Photo}/>
-                    <p>{item.Title}</p>
+                    <p>{item.SmallerGroup}</p>
                 </div>
                 </Link>
                       );

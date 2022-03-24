@@ -16,6 +16,7 @@ import News3 from './assets/img/news3.png';
 import Banner1 from './assets/img/banner1.jpg';
 import { Link, useHistory } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
+import {FaWhatsapp} from 'react-icons/fa';
 
 const News = () => {
     const history = useHistory();
@@ -99,6 +100,12 @@ const News = () => {
           <TopBar/>
       <Header/>
     <Container fluid className="bulbiranContainer">
+    <div className="whatsAppBadge">
+        <div>
+        <FaWhatsapp/>
+        <a class="text" href="https://wa.me/+989357500057">استعلام قیمت و تماس با واتساپ</a>
+        </div>
+      </div>
  <div className="responsiveNone">
  <div style={{marginRight:"0px",marginLeft:"0px",marginTop:"0px",display:"flex",height:"470px"}} className="responsiveNews">
         <div className="pdr0 pdl0 w20 d-inline-block h100 responsiveNewsWhite">

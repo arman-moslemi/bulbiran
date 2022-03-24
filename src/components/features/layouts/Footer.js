@@ -116,6 +116,32 @@ const Footer = () => {
 
 
                  </Col>
+                 <Col md={4} xs={12} className="ta-right">
+                 <p className="footerTitle">آدرس</p>
+               <ul className="footerList">
+                 <li>
+                 <p   className="footerLink">تهران،میدان امام خمینی،خیابان ناصر خسرو،مجتمع تجاری ناصر خسرو</p>
+                 </li>
+                 <li>
+                 <p   className="footerLink">تلفن ثابت:02133904900 </p>
+                 </li>
+                 <li>
+                 <p   className="footerLink">موبایل:09357500057 </p>
+                 </li>
+                 
+                 {/* <li>
+                 <a   className="footerLink">لینک سه</a>
+                 </li>
+                 <li>
+                 <a   className="footerLink">لینک چهار</a>
+                 </li>
+                 <li>
+                 <a   className="footerLink">لینک پنج</a>
+                 </li> */}
+               </ul>
+
+
+                 </Col>
             <Col md={2} xs={12}>
               <div className="footerImg d-inline-block float-right">
                 {/* <img src={Enamad}/> */}
@@ -134,6 +160,7 @@ const Footer = () => {
                 <img src={Logonama}/>
               </div>
             </Col>
+          
           </Row>
       </Container>
       </>
