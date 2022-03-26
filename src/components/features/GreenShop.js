@@ -38,6 +38,7 @@ import ShopLogo from './assets/icons/ShopLogo';
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import {useParams } from "react-router-dom";
 import {FaWhatsapp} from 'react-icons/fa';
+import PaginationCustom from "./layouts/Pagination";
 
 const check=[];
 
@@ -50,17 +51,41 @@ const GreenShop = () => {
     const [propertySel,setPropertySel]=useState([])
     const [menu,setMenu]=useState([])
     const history = useHistory();
+    const [page,setPage]=useState(1)
+    const [count,setCount]=useState(1)
+
 
     const mainSlider=()=>{
         const axios = require("axios");
-
+        if(page==1){
           axios
-              .get(apiUrl + "CategoryGreenShop/"+params)
+          .get(apiUrl + "CategoryGreenShop/"+params)
+      .then(function (response) {
+        if (response.data.result == "true") {
+  
+            setCount(parseInt(response.data.Data.length/20))
+  
+            console.log(response.data.Data)
+            console.log(response.data.Data.length)
+        
+      }
+      else{
+        console.log(response.data.result)
+  
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+        }
+  
+          axios
+              .get(apiUrl + "CategoryGreenShop/"+params+"?page="+page)
           .then(function (response) {
             if (response.data.result == "true") {
 
                 setProduct(response.data.Data)
                 console.log(response.data.result)
+
                 axios
                 .get(apiUrl + "GreenGroup/"+response.data.Data[0]?.BiggerGroup)
             .then(function (response) {
@@ -469,6 +494,10 @@ console.log(check.length)
                 </Col> */}
 
             </Row>
+            <div className="paginationBox ta-center">
+
+<PaginationCustom setPage={setPage}count={count}/>
+</div>
         </Col>
     </Row>
      </Container>

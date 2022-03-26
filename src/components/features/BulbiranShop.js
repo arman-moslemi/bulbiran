@@ -19,6 +19,7 @@ import ReactPaginate from 'react-paginate';
 import 'react-accessible-accordion/dist/fancy-example.css';
 import { FaAngleLeft,FaAlignRight ,FaCheck , FaStar} from 'react-icons/fa';
 import {FaWhatsapp} from 'react-icons/fa';
+import PaginationCustom from "./layouts/Pagination";
 
 
 
@@ -31,22 +32,67 @@ const BulbiranShop = () => {
     const [product,setProduct]=useState([])
     const [group,setGroup]=useState([])
     const [property,setProperty]=useState([])
+    const [page,setPage]=useState(1)
+    const [count,setCount]=useState(1)
     const [propertySel,setPropertySel]=useState([])
     const swiper = useRef(null);
     const [val,setVal]=useState(0)
     const params = useParams().id;
     const [menu,setMenu]=useState([])
     const history = useHistory();
+    const mainSliderCount=()=>{
+      const axios = require("axios");
+      axios
+      .get(apiUrl + "CategoryProduct/"+params)
+  .then(function (response) {
+    if (response.data.result == "true") {
+
+        setCount(parseInt(response.data.Data.length/20))
+
+        console.log(response.data.Data)
+        console.log(response.data.Data.length)
+    
+  }
+  else{
+    console.log(response.data.result)
+
+  }})
+  .catch(function (error) {
+    console.log(error);
+  });
+    }
     const mainSlider=()=>{
         const axios = require("axios");
-
+        if(page==1){
           axios
-              .get(apiUrl + "CategoryProduct/"+params)
+          .get(apiUrl + "CategoryProduct/"+params)
+      .then(function (response) {
+        if (response.data.result == "true") {
+  
+            setCount(parseInt(response.data.Data.length/20))
+  
+            console.log(response.data.Data)
+            console.log(response.data.Data.length)
+        
+      }
+      else{
+        console.log(response.data.result)
+  
+      }})
+      .catch(function (error) {
+        console.log(error);
+      });
+        }
+    
+          axios
+              .get(apiUrl + "CategoryProduct/"+params+"?page="+page)
           .then(function (response) {
             if (response.data.result == "true") {
 
                 setProduct(response.data.Data)
+
                 console.log(response.data.Data)
+                console.log(response.data.Data.length)
                 axios
                 .get(apiUrl + "Group/"+response.data.Data[0]?.BiggerGroup)
             .then(function (response) {
@@ -230,7 +276,8 @@ const newest=()=>{
         useEffect(() => {
           mainSlider();
 // alert(val)
-        }, []);
+console.log(page)
+        }, [page]);
     return (
     <>
           <TopBar/>
@@ -387,6 +434,8 @@ const newest=()=>{
 
 })
 }
+
+
             {/* <AccordionItem className="accItem">
                 <AccordionItemHeading className="accHeading">
                     <AccordionItemButton className="accBtn">
@@ -560,6 +609,10 @@ product?.map((item, i) => {
                     </div>
                 </Col> */}
             </Row>
+            <div className="paginationBox ta-center">
+
+<PaginationCustom setPage={setPage} count={count}/>
+</div>
         </Col>
     </Row>
      </Container>

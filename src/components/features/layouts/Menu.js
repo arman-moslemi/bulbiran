@@ -126,16 +126,16 @@ const Menu = () => {
                   i<5?
                       <>
                <li>
-                   <Link  onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> {  history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()       }}>{item.SmallerGroup}</Link>
+                   <Link  onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> {  history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()       }}>{item.SmallerGroup}</Link>
                </li>
                {/* <li>
-                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/3")}>لامپ کم مصرف</a>
+                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/3")}>لامپ کم مصرف</a>
                </li>
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/5")}>لامپ گازی</a>
+                   <a   onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/5")}>لامپ گازی</a>
                </li>
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/6")}>لامپ هالوژنی</a>
+                   <a   onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/6")}>لامپ هالوژنی</a>
                </li> */}
                </>
 :null
@@ -154,18 +154,18 @@ const Menu = () => {
                       <>
                <li>
                    <Link
-          to={`/bulbiranshop/${item.GroupID}`}
+          to={`/BulbiranShop/${item.GroupID}`}
                    onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)} onClick={()=> {
-history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{item.SmallerGroup}</Link>
+history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{item.SmallerGroup}</Link>
                </li>
                {/* <li>
-                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/3")}>لامپ کم مصرف</a>
+                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/3")}>لامپ کم مصرف</a>
                </li>
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/5")}>لامپ گازی</a>
+                   <a   onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/5")}>لامپ گازی</a>
                </li>
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/6")}>لامپ هالوژنی</a>
+                   <a   onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/6")}>لامپ هالوژنی</a>
                </li> */}
                </>
 :null
@@ -183,16 +183,16 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<14&& i>9?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
                </li>
                {/* <li>
-                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/3")}>لامپ کم مصرف</a>
+                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/3")}>لامپ کم مصرف</a>
                </li>
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/5")}>لامپ گازی</a>
+                   <a   onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/5")}>لامپ گازی</a>
                </li>
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/bulbiranshop/6")}>لامپ هالوژنی</a>
+                   <a   onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/6")}>لامپ هالوژنی</a>
                </li> */}
                </>
 :null
@@ -210,7 +210,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<19&& i>13?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -245,7 +245,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<5?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history.push("/bulbiranshop/"+item.GroupID); window.location.reload()}   }>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history.push("/BulbiranShop/"+item.GroupID); window.location.reload()}   }>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -264,7 +264,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>4 &&  i<10?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -283,7 +283,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<15&& i>9?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -319,7 +319,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -338,7 +338,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -357,7 +357,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -392,7 +392,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<5?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -411,7 +411,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>4 &&  i<9?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -430,7 +430,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<14&& i>8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -465,7 +465,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -484,7 +484,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -503,7 +503,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/bulbiranshop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -539,7 +539,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -558,7 +558,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -577,7 +577,7 @@ history.push("/bulbiranshop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
 
                </>

@@ -165,14 +165,52 @@ for (let index = 0; index < response.data.Data?.Color?.split(',').length; index+
     console.log(999);
     console.log(role2);
     console.log(role);
-    !role2?
-    axios
-    .get(apiUrl + "CategoryProduct/"+response.data.Data?.Role)
-.then(function (response) {
-  if (response.data.result == "true") {
 
-      setMoshabeh(response.data.Data)
+    axios
+    .get(apiUrl + "ProductRelated/"+params)
+.then(function (response2) {
+  if (response2.data.result == "true") {
+      console.log(598)
+      console.log(response.data.Data)
+if(response2.data.Data!=null)
+      {setMoshabeh(response2.data.Data)
+      console.log(response2.data.result)}
+      else{
+        !role2?
+        axios
+        .get(apiUrl + "CategoryProduct/"+response.data.Data?.Role)
+    .then(function (response) {
+      if (response.data.result == "true") {
+    
+          setMoshabeh(response.data.Data)
+          console.log(response.data.result)
+    
+    }
+    else{
       console.log(response.data.result)
+    
+    }})
+    .catch(function (error) {
+      console.log(error);
+    })
+        :
+        axios
+        .get(apiUrl + "CategoryGreenShop/"+response.data.Data?.Role2)
+    .then(function (response) {
+      if (response.data.result == "true") {
+    
+          setMoshabeh(response.data.Data)
+          console.log(response.data.result)
+    
+    }
+    else{
+      console.log(response.data.result)
+    
+    }})
+    .catch(function (error) {
+      console.log(error);
+    });
+      }
 
 }
 else{
@@ -182,23 +220,7 @@ else{
 .catch(function (error) {
   console.log(error);
 })
-    :
-    axios
-    .get(apiUrl + "CategoryGreenShop/"+response.data.Data?.Role2)
-.then(function (response) {
-  if (response.data.result == "true") {
-
-      setMoshabeh(response.data.Data)
-      console.log(response.data.result)
-
-}
-else{
-  console.log(response.data.result)
-
-}})
-.catch(function (error) {
-  console.log(error);
-});
+   
 
 
 

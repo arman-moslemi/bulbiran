@@ -4950,3 +4950,11 @@ z-index: 3;
 .whatsAppBadge .text:hover{
   color:#fff !important;
 }
+.paginationBox{
+  width: 100%;
+margin-right: auto;
+margin-left: auto;
+display: flex;
+justify-content: center;
+margin-top: 20px;
+}
