@@ -9,6 +9,7 @@ import ContactUs from '../components/features/ContactUs';
 import Rules from '../components/features/Rules.js';
 import Login from '../components/features/Login';
 import Register from '../components/features/Register'
+import RegisterCompelete from '../components/features/RegisterCompelete'
 import ForgetPass from '../components/features/ForgetPass'
 import Verification from '../components/features/Verification';
 import IndoorLighting from '../components/features/IndoorLighting';
@@ -154,9 +155,16 @@ const MainRoutes = (props) => {
 					</Route>
 					<Route
 
-					path='/verification'
+					path='/verification/:id'
 					name='تایید'
 					render={(props) => <Verification/>}>
+
+					</Route>
+					<Route
+
+					path='/registerCompelete/:id'
+					name='تایید'
+					render={(props) => <RegisterCompelete/>}>
 
 					</Route>
 					<Route

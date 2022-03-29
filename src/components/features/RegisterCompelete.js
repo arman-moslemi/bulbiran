@@ -11,10 +11,10 @@ import ReactPasswordToggleIcon from 'react-password-toggle-icon';
 import Checkbox from "react-custom-checkbox";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory,useParams } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 
-const Register = () => {
+const RegisterCompelete = () => {
   const options=[
     'one',
     'two',
@@ -31,6 +31,7 @@ const Register = () => {
   const [name,setName]=useState('')
   const [email,setEmail]=useState('')
   const [rol,setRol]=useState(0)
+  const params = useParams().id;
 
   const loginto=()=>{
     console.log(mobile)
@@ -38,14 +39,14 @@ const Register = () => {
     if(pass==againPass){
     const axios = require("axios");
     axios
-    .post(apiUrl + "InsertCustomerFull",{Mobile:mobile.toString(),Password:pass.toString(),Role:rol,Email:email,NameFamily:name})
+    .post(apiUrl + "CompeleteCustomer",{Mobile:params,Password:pass.toString(),Email:email,NameFamily:name})
 .then(function (response) {
   if (response.data.result == "true") {
     console.log(response.data.Data)
     // console.log(response.data.Data[0].UserID)
     // localStorage.setItem("user_id", response.data.Data[0].CustomerID);
 alert("عملیات موفقیت آمیز بود")
-history.push("/verification")
+history.push("/login")
 
 } else if (response.data.result == "duplicate"){
   alert("این شماره موبایل وجود دارد")
@@ -65,31 +66,7 @@ history.push("/verification")
     }
 // console.log(159876)
   }
-  const verify=()=>{
-    const axios = require("axios");
-    axios
-    .post(apiUrl + "SendSms",{Mobile:mobile.toString()})
-.then(function (response) {
-  if (response.data.result == "true") {
-    console.log(response.data.Data)
-    // console.log(response.data.Data[0].UserID)
-    // localStorage.setItem("user_id", response.data.Data[0].CustomerID);
-// alert("عملیات موفقیت آمیز بود")
-localStorage.setItem("ver",response.data.code)
-history.push("/verification/"+mobile)
 
-} else if (response.data.result == "duplicate"){
-  alert("این شماره موبایل وجود دارد")
-}
- else{
-  console.log(response.data.result)
-  alert("عملیات با خطا روبرو شد")
-
-}})
-.catch(function (error) {
-  console.log(error);
-});
-  }
   return (
       <>
         <TopBar/>
@@ -97,25 +74,7 @@ history.push("/verification/"+mobile)
       <Container fluid className="bulbiranContainer">
       <div className="whiteBox pd0 loginBox">
     <Row>
-    <Col md={6} id="secondOrder">
-        <div className="lBox ta-center">
-          <h4 className="w100">ثبت نام</h4>
-
-          <div className="loginForm">
-           <label className="cLabel mgt40">شماره همراه را وارد کنید</label>
-           <input className="cInput mgt10" onChange={(event)=>setMobile(event.target.value)}  placeholder="موبایل" type="number" ></input>
-
-
-           <Button onClick={()=>verify()} className="loginBtn w50 mgt40" style={{marginTop:40}}>ثبت نام</Button>
-          <div className="mgt20">
-            <span className="d-inline-block cLabel" id="fo12">حساب کاربری دارید؟</span>
-          <a     className="d-inline-block inLink" id="fo12" onClick={()=>  history.push("/login")}>وارد شوید</a>
-          </div>
-
-        </div>
-        </div>
-        </Col>
-        {/* <Col md={6} id="secondOrder">
+ <Col md={6} id="secondOrder">
         <div className="lBox ta-center w100">
           <h4>ثبت نام</h4>
 
@@ -126,20 +85,20 @@ history.push("/verification/"+mobile)
             <input onChange={(event)=>setName(event.target.value)} className="cInput mgt10"  placeholder="نام و نام خانوادگی" ></input>
 
             </Col>
-            <Col md={6}>
+            {/* <Col md={6}>
             <label className="cLabel mgt40">شماره تلفن همراه</label>
             <input onChange={(event)=>setMobile(event.target.value)} className="cInput mgt10"  placeholder="تلفن همراه" type="number" ></input>
 
-            </Col>
+            </Col> */}
             <Col md={6}>
-            <label className="cLabel mgt20">ایمیل</label>
+            <label className="cLabel mgt40">ایمیل</label>
             <input onChange={(event)=>setEmail(event.target.value)} className="cInput mgt10"  placeholder="ایمیل" type="email" ></input>
 
             </Col>
-            <Col md={6}>
+            {/* <Col md={6}>
             <label className="cLabel mgt20">نوع کاربر</label>
             <Dropdown className="cInput mgt10" options={options} value={defaultOption} placeholder="Select an option" />
-            </Col>
+            </Col> */}
             <Col md={6}>
             <label className="cLabel mgt20">رمز عبور</label>
            <div className="col fa" style={{position:"relative",display:"block",padding:"0px"}}>
@@ -177,7 +136,7 @@ history.push("/verification/"+mobile)
 
         </div>
         </div>
-        </Col> */}
+        </Col> 
         <Col md={6} className="colBackground ta-center" id="firstOrder">
             <RegisterSvg className="wRes85"/>
             </Col>
@@ -191,4 +150,4 @@ history.push("/verification/"+mobile)
      </>
   );
 };
-export default Register;
+export default RegisterCompelete;
