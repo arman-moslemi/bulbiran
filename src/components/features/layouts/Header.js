@@ -6,7 +6,7 @@ import Menu from './Menu'
 import SearchBar from './SearchBar'
 import Logo from '../assets/img/logo2.png';
 import { FaSearch,FaMapMarkerAlt } from 'react-icons/fa';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
 

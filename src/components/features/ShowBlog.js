@@ -10,7 +10,7 @@ import {Container,Row,Col,Button} from 'react-bootstrap'
 import H from './assets/img/h.jpg';
 import { FaAngleLeft,FaAlignRight ,FaCheck ,FaTimes,FaAngleDoubleLeft,FaRegClock} from 'react-icons/fa';
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
-import { Link, useHistory,useParams } from "react-router-dom";
+import { Link, useNavigate,useParams } from "react-router-dom";
 import parse  from 'html-react-parser';
 
 const ShowBlog=() =>{

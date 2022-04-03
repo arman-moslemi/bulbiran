@@ -1,5 +1,5 @@
 import React,{useEffect,useState,useRef} from 'react'
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -39,7 +39,7 @@ const BulbiranShop = () => {
     const [val,setVal]=useState(0)
     const params = useParams().id;
     const [menu,setMenu]=useState([])
-    const history = useHistory();
+    const history = useNavigate();
     const mainSliderCount=()=>{
       const axios = require("axios");
       axios
@@ -346,7 +346,7 @@ console.log(page)
             <div className="cateInner ta-center">
             { menu?.map((item, i) => {
   return (
-                <Link onClick={()=>{history.push("/bulbiranshop/"+item.GroupID);window.location.reload()}}>
+                <Link onClick={()=>{history("/bulbiranshop/"+item.GroupID);window.location.reload()}}>
                 <div>
                     <img src={apiAsset+item.Photo}/>
                     <p>{item.SmallerGroup}</p>

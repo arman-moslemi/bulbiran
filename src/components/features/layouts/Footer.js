@@ -9,9 +9,9 @@ import {Container,Row,Col,Button} from 'react-bootstrap'
 import Enamad from '../assets/img/enamad-copy.png'
 import Samandehi from '../assets/img/samandehi.png'
 import Logonama from '../assets/img/logonama.png'
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Footer = () => {
-  const history = useHistory();
+  const history = useNavigate();
     return (
       <>
       <Container fluid>
@@ -41,16 +41,16 @@ const Footer = () => {
             <p className="footerTitle">خدمات بالبیران</p>
             <ul className="footerList">
                  <li>
-                 <a onClick={()=>  history.push("/design")} className="footerLink">طراحی و دیزاین</a>
+                 <a onClick={()=>  history("/design")} className="footerLink">طراحی و دیزاین</a>
                  </li>
                  <li>
-                 <a  onClick={()=>  history.push("/Garanty")} className="footerLink">گارانتی و خدمات پس از فروش</a>
+                 <a  onClick={()=>  history("/Garanty")} className="footerLink">گارانتی و خدمات پس از فروش</a>
                  </li>
                  <li>
-                 <a  onClick={()=>  history.push("/repairs")} className="footerLink">تعمیرات</a>
+                 <a  onClick={()=>  history("/repairs")} className="footerLink">تعمیرات</a>
                  </li>
                  <li>
-                 <a  onClick={()=>  history.push("/LavazemYadaki")} className="footerLink">لوازم یدکی</a>
+                 <a  onClick={()=>  history("/LavazemYadaki")} className="footerLink">لوازم یدکی</a>
                  </li>
                  </ul>
             </Col>
@@ -82,13 +82,13 @@ const Footer = () => {
             <p className="footerTitle">مجله بالبیران</p>
                     <ul className="footerList">
                  <li>
-                 <a  onClick={()=>  history.push("/news")}  className="footerLink">آخرین اخبار</a>
+                 <a  onClick={()=>  history("/news")}  className="footerLink">آخرین اخبار</a>
                  </li>
                  <li>
-                 <a  onClick={()=>  history.push("/news")}  className="footerLink">مقالات علمی</a>
+                 <a  onClick={()=>  history("/news")}  className="footerLink">مقالات علمی</a>
                  </li>
                  <li>
-                 <a  onClick={()=>  history.push("/news")}  className="footerLink">طراحی روشنایی</a>
+                 <a  onClick={()=>  history("/news")}  className="footerLink">طراحی روشنایی</a>
                  </li>
 
 
@@ -98,10 +98,10 @@ const Footer = () => {
                  <p className="footerTitle">درباره بالبیران</p>
                <ul className="footerList">
                  <li>
-                 <a   className="footerLink"onClick={()=>  history.push("/rules")}>قوانین و مقررات</a>
+                 <a   className="footerLink"onClick={()=>  history("/rules")}>قوانین و مقررات</a>
                  </li>
                  <li>
-                 <a   className="footerLink"onClick={()=>  history.push("/contactUs")}>تماس با ما</a>
+                 <a   className="footerLink"onClick={()=>  history("/contactUs")}>تماس با ما</a>
                  </li>
                  {/* <li>
                  <a   className="footerLink">لینک سه</a>

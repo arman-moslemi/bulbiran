@@ -14,12 +14,12 @@ import { FaAngleLeft,FaAlignRight ,FaCheck ,FaStar, FaCircle, FaRegClock} from '
 import Tabligh from './assets/img/tabligh.png'
 import News3 from './assets/img/news3.png';
 import Banner1 from './assets/img/banner1.jpg';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import {FaWhatsapp} from 'react-icons/fa';
 
 const News = () => {
-    const history = useHistory();
+    const history = useNavigate();
     const [product,setProduct]=useState([])
     const [news,setNews]=useState([])
     const [img1,setimg1]=useState('')
@@ -199,7 +199,7 @@ const News = () => {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a  onClick={()=>  history.push("/showblog/"+item.BlogID)}>
+                <a  onClick={()=>  history("/showblog/"+item.BlogID)}>
                    {item.Title}
                 </a>
                 <div className="ta-left dq">
@@ -219,7 +219,7 @@ const News = () => {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a     onClick={()=>  history.push("/showblog")}>
+                <a     onClick={()=>  history("/showblog")}>
                     صنعت روشنایی در وضعیت هشدار
                 </a>
                 <div className="ta-left dq">
@@ -276,7 +276,7 @@ const News = () => {
             <div className="iOverlay" id="colorOne">
 
             </div>
-            <a className="spanOverlay2" onClick={()=>  history.push("/showblog/"+item.BlogID)}>
+            <a className="spanOverlay2" onClick={()=>  history("/showblog/"+item.BlogID)}>
        {item.Title}
             </a>
             <span className="dateOverlay">
@@ -301,7 +301,7 @@ const News = () => {
             <div className="iOverlay"id="colorFour">
 
             </div>
-            <a className="spanOverlay2"onClick={()=>  history.push("/showblog")} >
+            <a className="spanOverlay2"onClick={()=>  history("/showblog")} >
             صنعت روشنایی در وضعیت
 هشدار
             </a>
@@ -331,7 +331,7 @@ const News = () => {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a onClick={()=>  history.push("/showblog/"+item.BlogID)}>
+                <a onClick={()=>  history("/showblog/"+item.BlogID)}>
 {item.Title}                </a>
                 <div className="ta-left dq">
                     <FaRegClock className="d-inline-block"/>
@@ -535,7 +535,7 @@ const News = () => {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a  onClick={()=>  history.push("/showblog/"+item.BlogID)}>
+                <a  onClick={()=>  history("/showblog/"+item.BlogID)}>
                    {item.Title}
                 </a>
                 <div className="ta-left dq">
@@ -555,7 +555,7 @@ const News = () => {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a     onClick={()=>  history.push("/showblog")}>
+                <a     onClick={()=>  history("/showblog")}>
                     صنعت روشنایی در وضعیت هشدار
                 </a>
                 <div className="ta-left dq">
@@ -620,7 +620,7 @@ const News = () => {
             <div className="iOverlay" id="colorOne">
 
             </div>
-            <a className="spanOverlay2" onClick={()=>  history.push("/showblog/"+item.BlogID)}>
+            <a className="spanOverlay2" onClick={()=>  history("/showblog/"+item.BlogID)}>
        {item.Title}
             </a>
             <span className="dateOverlay">
@@ -645,7 +645,7 @@ const News = () => {
             <div className="iOverlay"id="colorFour">
 
             </div>
-            <a className="spanOverlay2"onClick={()=>  history.push("/showblog")} >
+            <a className="spanOverlay2"onClick={()=>  history("/showblog")} >
             صنعت روشنایی در وضعیت
 هشدار
             </a>
@@ -673,7 +673,7 @@ const News = () => {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a onClick={()=>  history.push("/showblog/"+item.BlogID)}>
+                <a onClick={()=>  history("/showblog/"+item.BlogID)}>
 {item.Title}                </a>
                 <div className="ta-left dq">
                     <FaRegClock className="d-inline-block"/>

@@ -2,7 +2,7 @@ import React,{useState,useEffect,ReactDOM} from 'react'
 import { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/bulbiran.css'
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {Container,Row,Col,Button,Dropdown,} from 'react-bootstrap'
 import { FaCaretDown } from 'react-icons/fa';
 import ReactMegaMenu from "react-mega-menu"
@@ -43,7 +43,7 @@ import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 import { required } from 'glamor';
 import ResponsiveMenu from '../layouts/ResponsiveMenu';
 const Menu = () => {
-    const history = useHistory();
+    const history = useNavigate();
     const [pic,setpic]=useState(Lamp)
     const [brand,setBrand]=useState([])
     const [group,setGroup]=useState([])
@@ -110,7 +110,7 @@ const Menu = () => {
     const LampM = () => {
         return <div className="whiteMega" >
     <div onMouseEnter={()=>setpic(apiAsset+"lamp.png")} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlighting/1") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history("/indoorlighting/1") ; window.location.reload()       }}>
 
        لامپ
        </Link>
@@ -126,16 +126,16 @@ const Menu = () => {
                   i<5?
                       <>
                <li>
-                   <Link  onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> {  history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()       }}>{item.SmallerGroup}</Link>
+                   <Link  onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> {  history("/BulbiranShop/"+item.GroupID) ; window.location.reload()       }}>{item.SmallerGroup}</Link>
                </li>
                {/* <li>
-                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/3")}>لامپ کم مصرف</a>
+                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history("/BulbiranShop/3")}>لامپ کم مصرف</a>
                </li>
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/5")}>لامپ گازی</a>
+                   <a   onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history("/BulbiranShop/5")}>لامپ گازی</a>
                </li>
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/6")}>لامپ هالوژنی</a>
+                   <a   onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history("/BulbiranShop/6")}>لامپ هالوژنی</a>
                </li> */}
                </>
 :null
@@ -156,16 +156,16 @@ const Menu = () => {
                    <Link
           to={`/BulbiranShop/${item.GroupID}`}
                    onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)} onClick={()=> {
-history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{item.SmallerGroup}</Link>
+history("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{item.SmallerGroup}</Link>
                </li>
                {/* <li>
-                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/3")}>لامپ کم مصرف</a>
+                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history("/BulbiranShop/3")}>لامپ کم مصرف</a>
                </li>
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/5")}>لامپ گازی</a>
+                   <a   onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history("/BulbiranShop/5")}>لامپ گازی</a>
                </li>
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/6")}>لامپ هالوژنی</a>
+                   <a   onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history("/BulbiranShop/6")}>لامپ هالوژنی</a>
                </li> */}
                </>
 :null
@@ -183,16 +183,16 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<14&& i>9?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history("/BulbiranShop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
                </li>
                {/* <li>
-                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/3")}>لامپ کم مصرف</a>
+                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history("/BulbiranShop/3")}>لامپ کم مصرف</a>
                </li>
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/5")}>لامپ گازی</a>
+                   <a   onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history("/BulbiranShop/5")}>لامپ گازی</a>
                </li>
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/6")}>لامپ هالوژنی</a>
+                   <a   onMouseEnter={()=>setpic(Lamp3)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history("/BulbiranShop/6")}>لامپ هالوژنی</a>
                </li> */}
                </>
 :null
@@ -210,7 +210,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<19&& i>13?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history("/BulbiranShop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -229,7 +229,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const DakheliM = () => {
         return <div className="whiteMega">
     <div onMouseEnter={()=>setpic(apiAsset+"inner.png")} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlighting/2") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history("/indoorlighting/2") ; window.location.reload()       }}>
 
       روشنایی داخلی
       </Link>
@@ -245,7 +245,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<5?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history.push("/BulbiranShop/"+item.GroupID); window.location.reload()}   }>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history("/BulbiranShop/"+item.GroupID); window.location.reload()}   }>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -264,7 +264,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>4 &&  i<10?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/BulbiranShop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -283,7 +283,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<15&& i>9?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -303,7 +303,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const KharejiM = () => {
         return <div className="whiteMega">
     <div  onMouseEnter={()=>setpic(apiAsset+"outdoor.png")}  className="whiteMegaTitle">
-    <Link  onClick={()=> {   history.push("/indoorlighting/3") ; window.location.reload()       }}>
+    <Link  onClick={()=> {   history("/indoorlighting/3") ; window.location.reload()       }}>
 
      روشنایی خارجی
      </Link>
@@ -319,7 +319,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -338,7 +338,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -357,7 +357,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -376,7 +376,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const TazeinM = () => {
         return <div className="whiteMega">
     <div  onMouseEnter={()=>setpic(apiAsset+"tazein.png")} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlighting/4") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history("/indoorlighting/4") ; window.location.reload()       }}>
 
       روشنایی تزئینی
       </Link>
@@ -392,7 +392,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<5?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -411,7 +411,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>4 &&  i<9?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -430,7 +430,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<14&& i>8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -449,7 +449,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const KhasM = () => {
         return <div className="whiteMega">
     <div onMouseEnter={()=>setpic(apiAsset+"rise.png")}className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlighting/4") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history("/indoorlighting/4") ; window.location.reload()       }}>
 
       روشنایی خاص
       </Link>
@@ -465,7 +465,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -484,7 +484,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -503,7 +503,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -523,7 +523,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const JanebiM = () => {
         return <div className="whiteMega">
     <div onMouseEnter={()=>setpic(apiAsset+"lavazemjanebi.png")} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlighting/6") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history("/indoorlighting/6") ; window.location.reload()       }}>
 
       لوازم جانبی
       </Link>
@@ -539,7 +539,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -558,7 +558,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -577,7 +577,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -599,7 +599,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const LampLED = () => {
         return <div className="whiteMega hc1">
     <div  onMouseEnter={()=>setpic(Lamp)} className="whiteMegaTitle">
-    <Link    onClick={()=> {   history.push("/indoorlightingGreen/1") ; window.location.reload()       }}>
+    <Link    onClick={()=> {   history("/indoorlightingGreen/1") ; window.location.reload()       }}>
 
        لامپ
        </Link>
@@ -615,7 +615,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<5?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -634,7 +634,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>4 &&  i<10?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -653,7 +653,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<15&& i>9?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -672,7 +672,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<19&& i>13?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -691,7 +691,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>19?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -710,7 +710,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const PanelLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(Panel)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlightingGreen/2") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history("/indoorlightingGreen/2") ; window.location.reload()       }}>
 
       پنل
       </Link>
@@ -726,7 +726,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -745,7 +745,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -764,7 +764,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -784,7 +784,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const NoorafkanLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(Noorafkan)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlightingGreen/3") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history("/indoorlightingGreen/3") ; window.location.reload()       }}>
 
      نورافکن
      </Link>
@@ -800,7 +800,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -819,7 +819,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -838,7 +838,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -858,7 +858,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const RiseLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(rise)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlightingGreen/4") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history("/indoorlightingGreen/4") ; window.location.reload()       }}>
 
     ریسه
     </Link>
@@ -874,7 +874,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -893,7 +893,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -912,7 +912,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -932,7 +932,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const CheraghLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(Cheragh)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlightingGreen/5") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history("/indoorlightingGreen/5") ; window.location.reload()       }}>
 
       چراغ
       </Link>
@@ -948,7 +948,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -967,7 +967,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -986,7 +986,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -1006,7 +1006,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const AvizLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(Loster)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlightingGreen/6") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history("/indoorlightingGreen/6") ; window.location.reload()       }}>
 
       آویز
       </Link>
@@ -1022,7 +1022,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -1041,7 +1041,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -1060,7 +1060,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -1080,7 +1080,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const JanebiLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(Janebi)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlightingGreen/7") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history("/indoorlightingGreen/7") ; window.location.reload()       }}>
 
       لوازم جانبی
       </Link>
@@ -1096,7 +1096,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -1115,7 +1115,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -1134,7 +1134,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -1163,7 +1163,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
        <Col md={4}>
            <ul className="megaUl">
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  {history.push("/design"); window.location.reload() }}>دیزاین و طراحی</a>
+                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  {history("/design"); window.location.reload() }}>دیزاین و طراحی</a>
                </li>
                <li>
                    <a  onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ کم مصرف</a>
@@ -1206,7 +1206,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
        <Col md={4}>
            <ul className="megaUl">
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/garanty")}>گارانتی</a>
+                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history("/garanty")}>گارانتی</a>
                </li>
                <li>
                    <a   onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ کم مصرف</a>
@@ -1249,7 +1249,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
        <Col md={4}>
            <ul className="megaUl">
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/repairs")}>تعمیرات</a>
+                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history("/repairs")}>تعمیرات</a>
                </li>
                <li>
                    <a   onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)}>لامپ کم مصرف</a>
@@ -1291,7 +1291,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
        <Col md={4}>
            <ul className="megaUl">
                <li>
-                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/lavazemyadaki")}>لوازم یدکی</a>
+                   <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history("/lavazemyadaki")}>لوازم یدکی</a>
                </li>
                <li>
                    <a   onMouseEnter={()=>setpic(Lamp2)} onMouseOut={()=>setpic(Lamp)}>لامپ کم مصرف</a>
@@ -1430,7 +1430,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
               <Col md="auto" xs="2" className="ta-center flex-1">
               {/*  */}
       <Dropdown>
-        <Dropdown.Toggle onClick={()=>history.push("/BulbiranShop/2")} className="menuDropDown"
+        <Dropdown.Toggle onClick={()=>history("/BulbiranShop/2")} className="menuDropDown"
           onMouseEnter={() =>{ setShow(true);setShow2(false)}}
         >
         <p className="menu-items d-inline-block" >فروشگاه بالبیران</p>
@@ -1477,7 +1477,7 @@ brand?.map((item, i) => {
 
 <div className="bMegaLi">
                     <img src={apiAsset+item.BrandLogo}/>
-                    <a onClick={()=>  {history.push("/brandsecond/"+item.BrandID); window.location.reload() }}>{item.BrandName}</a>
+                    <a onClick={()=>  {history("/brandsecond/"+item.BrandID); window.location.reload() }}>{item.BrandName}</a>
                 </div>
           </>
           :null
@@ -1487,7 +1487,7 @@ brand?.map((item, i) => {
 }
                 {/* <div className="bMegaLi">
                     <img src={B3}/>
-                    <a onClick={()=>  history.push("/brandsecond")}>گروه صنعتی شعاع</a>
+                    <a onClick={()=>  history("/brandsecond")}>گروه صنعتی شعاع</a>
                 </div> */}
 
 
@@ -1501,7 +1501,7 @@ brand?.map((item, i) => {
 
 <div className="bMegaLi">
                     <img src={apiAsset+item.BrandLogo}/>
-                    <a onClick={()=>  {history.push("/brandsecond/"+item.BrandID); window.location.reload() }}>{item.BrandName}</a>
+                    <a onClick={()=>  {history("/brandsecond/"+item.BrandID); window.location.reload() }}>{item.BrandName}</a>
                 </div>
           </>
           :null
@@ -1519,7 +1519,7 @@ brand?.map((item, i) => {
 
 <div className="bMegaLi">
                     <img src={apiAsset+item.BrandLogo}/>
-                    <a onClick={()=>  {history.push("/brandsecond/"+item.BrandID); window.location.reload() }}>{item.BrandName}</a>
+                    <a onClick={()=>  {history("/brandsecond/"+item.BrandID); window.location.reload() }}>{item.BrandName}</a>
                 </div>
           </>
           :null
@@ -1528,7 +1528,7 @@ brand?.map((item, i) => {
 })
 }
 <div className="bMegaLi">
-                   <Button className="seeAllB" onClick={()=>  history.push("/brandshop")}> مشاهده همه برندها</Button>
+                   <Button className="seeAllB" onClick={()=>  history("/brandshop")}> مشاهده همه برندها</Button>
                 </div>
 
                </Col>
@@ -1541,7 +1541,7 @@ brand?.map((item, i) => {
              </Col>
               <Col onMouseEnter={() =>{setShow(false); setShow2(true)}} md="auto" xs="2" className="ta-center flex-1">
               <Dropdown >
-        <Dropdown.Toggle    onClick={()=>  history.push("/GreenShop/1")}     className="menuDropDown">
+        <Dropdown.Toggle    onClick={()=>  history("/GreenShop/1")}     className="menuDropDown">
         <p className="menu-items d-inline-block">فروشگاه سبز</p>
                   <FaCaretDown display="inline-block" color="ffd200" fontSize="2rem"></FaCaretDown>
         </Dropdown.Toggle>
@@ -1596,19 +1596,19 @@ brand?.map((item, i) => {
     <Row style={{margin:"0px"}} >
         <Col md={3} className="ta-center" >
         <img src={c1} className="kl1"/>
-            <a   className="kl10" onClick={()=>  history.push("/bulbfinderstart")}>دسته یک</a>
+            <a   className="kl10" onClick={()=>  history("/bulbfinderstart")}>دسته یک</a>
         </Col>
         <Col md={3} className="ta-center">
         <img src={c2} className="kl1"/>
-            <a   className="kl10" onClick={()=>  history.push("/bulbfinderstart")}>دسته دو</a>
+            <a   className="kl10" onClick={()=>  history("/bulbfinderstart")}>دسته دو</a>
         </Col>
         <Col md={3} className="ta-center">
         <img src={c3} className="kl1"/>
-            <a   className="kl10" onClick={()=>  history.push("/bulbfinderstart")}>دسته سه</a>
+            <a   className="kl10" onClick={()=>  history("/bulbfinderstart")}>دسته سه</a>
         </Col>
         <Col md={3} className="ta-center">
         <img src={c4} className="kl1"/>
-            <a   className="kl10" onClick={()=>  history.push("/bulbfinderstart")}>دسته چهار</a>
+            <a   className="kl10" onClick={()=>  history("/bulbfinderstart")}>دسته چهار</a>
         </Col>
     </Row>
     <Row style={{marginRight:"0px",marginLeft:"0px",marginTop:"20px"}}>
@@ -1648,10 +1648,10 @@ brand?.map((item, i) => {
         styleConfig={styleConf}
       />
          </div> */}
-           <Dropdown.Item  onClick={()=>  history.push("/design")}>طراحی و دیزاین</Dropdown.Item>
-    <Dropdown.Item  onClick={()=>  history.push("/Garanty")}>گارانتی و خدمات پس از فروش</Dropdown.Item>
-    <Dropdown.Item  onClick={()=>  history.push("/repairs")}>تعمیرات</Dropdown.Item>
-    <Dropdown.Item  onClick={()=>  history.push("/LavazemYadaki")}>لوازم یدکی</Dropdown.Item>
+           <Dropdown.Item  onClick={()=>  history("/design")}>طراحی و دیزاین</Dropdown.Item>
+    <Dropdown.Item  onClick={()=>  history("/Garanty")}>گارانتی و خدمات پس از فروش</Dropdown.Item>
+    <Dropdown.Item  onClick={()=>  history("/repairs")}>تعمیرات</Dropdown.Item>
+    <Dropdown.Item  onClick={()=>  history("/LavazemYadaki")}>لوازم یدکی</Dropdown.Item>
         </Dropdown.Menu>
         </Dropdown>
              </Col>
@@ -1664,16 +1664,16 @@ brand?.map((item, i) => {
 
   <Dropdown.Menu className="menuDropList">
 
-    <Dropdown.Item  onClick={()=>  history.push("/news")}>آخرین اخبار</Dropdown.Item>
-     <Dropdown.Item  onClick={()=>  history.push("/news")}>مقالات علمی</Dropdown.Item>
-    <Dropdown.Item    onClick={()=>  history.push("/news")}>طراحی روشنایی</Dropdown.Item>
-    {/* <Dropdown.Item  onClick={()=>  history.push("/news")}>تکنولوژی روز</Dropdown.Item> */}
-    {/* <Dropdown.Item    onClick={()=>  history.push("/news")}>نور</Dropdown.Item>
-    <Dropdown.Item    onClick={()=>  history.push("/news")}>آخرین تخفیف ها(جشنواره)</Dropdown.Item>
-    <Dropdown.Item    onClick={()=>  history.push("/news")}>بهینه سازی روشنایی</Dropdown.Item>
-    <Dropdown.Item    onClick={()=>  history.push("/news")}>ساخت و تولید</Dropdown.Item>
-    <Dropdown.Item    onClick={()=>  history.push("/news")}>رویدادهای روشنایی</Dropdown.Item>
-    <Dropdown.Item    onClick={()=>  history.push("/news")}>تبلیغات</Dropdown.Item>  */}
+    <Dropdown.Item  onClick={()=>  history("/news")}>آخرین اخبار</Dropdown.Item>
+     <Dropdown.Item  onClick={()=>  history("/news")}>مقالات علمی</Dropdown.Item>
+    <Dropdown.Item    onClick={()=>  history("/news")}>طراحی روشنایی</Dropdown.Item>
+    {/* <Dropdown.Item  onClick={()=>  history("/news")}>تکنولوژی روز</Dropdown.Item> */}
+    {/* <Dropdown.Item    onClick={()=>  history("/news")}>نور</Dropdown.Item>
+    <Dropdown.Item    onClick={()=>  history("/news")}>آخرین تخفیف ها(جشنواره)</Dropdown.Item>
+    <Dropdown.Item    onClick={()=>  history("/news")}>بهینه سازی روشنایی</Dropdown.Item>
+    <Dropdown.Item    onClick={()=>  history("/news")}>ساخت و تولید</Dropdown.Item>
+    <Dropdown.Item    onClick={()=>  history("/news")}>رویدادهای روشنایی</Dropdown.Item>
+    <Dropdown.Item    onClick={()=>  history("/news")}>تبلیغات</Dropdown.Item>  */}
   </Dropdown.Menu>
 </Dropdown>
               </Col>
@@ -1686,10 +1686,10 @@ brand?.map((item, i) => {
 
   <Dropdown.Menu className="menuDropList">
 
-    <Dropdown.Item  onClick={()=>  history.push("/shegeftangiz")}>کالای شگفت انگیز</Dropdown.Item>
-    <Dropdown.Item  onClick={()=>  history.push("/ShegeftGreen")}>شگفت انگیز فروشگاه سبز</Dropdown.Item>
-    <Dropdown.Item  onClick={()=>  history.push("/pishnahadvijhe")}>فروش ویژه</Dropdown.Item>
-    {/* <Dropdown.Item  onClick={()=>  history.push("/pishnahadvijhe")}>پرفروش ترین</Dropdown.Item> */}
+    <Dropdown.Item  onClick={()=>  history("/shegeftangiz")}>کالای شگفت انگیز</Dropdown.Item>
+    <Dropdown.Item  onClick={()=>  history("/ShegeftGreen")}>شگفت انگیز فروشگاه سبز</Dropdown.Item>
+    <Dropdown.Item  onClick={()=>  history("/pishnahadvijhe")}>فروش ویژه</Dropdown.Item>
+    {/* <Dropdown.Item  onClick={()=>  history("/pishnahadvijhe")}>پرفروش ترین</Dropdown.Item> */}
     </Dropdown.Menu>
     </Dropdown>
 
@@ -1703,8 +1703,8 @@ brand?.map((item, i) => {
 
   <Dropdown.Menu className="menuDropList">
 
-    <Dropdown.Item  onClick={()=>  history.push("/pricebrand")}>لیست قیمت</Dropdown.Item>
-    <Dropdown.Item onClick={()=>  history.push("/darkhastprice")}>درخواست استعلام قیمت</Dropdown.Item>
+    <Dropdown.Item  onClick={()=>  history("/pricebrand")}>لیست قیمت</Dropdown.Item>
+    <Dropdown.Item onClick={()=>  history("/darkhastprice")}>درخواست استعلام قیمت</Dropdown.Item>
     </Dropdown.Menu>
     </Dropdown>
             </Col>

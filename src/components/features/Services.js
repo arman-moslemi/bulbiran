@@ -15,10 +15,10 @@ import CreativeDesign from './assets/icons/CreativeDesign';
 import Janebi from './assets/icons/Janebi';
 import LifeTime from './assets/icons/LifeTime';
 import Repair from './assets/icons/Repair';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Services = () => {
-    const history = useHistory();
+    const history = useNavigate();
     return (
       <>
         <TopBar/>
@@ -69,7 +69,7 @@ const Services = () => {
                <p className="brandShopDescription" id="cColor">
                در پروژه‌های تجاری دو بخش روشنایی عمومی و نورپردازی ویژه بخصوص در نمای ساختمان حائز اهمیت می‌باشد. ویترین مغازه‌ها، فروشگاه‌ها، نحوه نمایش محصولات و نورپردازی نمای بیرونی از اجزاء اصلی در روشنایی مکان‌های تجاری است. در این مکان‌ها انتخاب درست سیستم روشنایی و نورپردازی می‌تواند عامل اصلی بالا رفتن فروش و جذب مشتری باشد. نورپردازی صحیح می‌تواند با مشتری ارتباط برقرار کرده و او را به درون فضا دعوت کند. همچنین محصولات را دیدنی و جذاب نشان داده و باعث رونق خرید و فروش شود. رنگ، کنتراست و تعادل مناسب بین سطوح نورپردازی شده از مهمترین ویژگی‌های نورپردازی مکان‌های تجاری است.
                </p>
-               <Button className="servicesButton" onClick={()=>  history.push("/design")}>
+               <Button className="servicesButton" onClick={()=>  history("/design")}>
                    مشاهده نمونه کارها و ثبت درخواست
                </Button>
            </Col>
@@ -90,7 +90,7 @@ const Services = () => {
                <p className="brandShopDescription" id="cColor">
                مدت گارانتی و خدمات پس از فروش کلیه کالاهای عرضه شده در سایت برای هر کالا متفاوت است که توسط شرکت وارد یا تولید کننده روی بسته بندی محصول ذکر می گردد و یا همراه کالا ارسال می شود (البته عدم درج موارد مذكور در این قسمت به معنی نداشتن گارانتی برای آن كالا می باشد). چنانچه کالای خریداری شده دارای گارانتی باشد و دچار نقص فنی گردد، خریدار می بایست طبق شرایط مندرج در کارت گارانتی نسبت به ارائه کالا و دریافت خدمات پس از فروش از شرکت گارانتی دهنده اقدام نماید.
                </p>
-               <Button className="servicesButton" onClick={()=>  history.push("/garanty")}>
+               <Button className="servicesButton" onClick={()=>  history("/garanty")}>
                    درخواست استفاده از گارانتی و مشاهده شرایط
                </Button>
            </Col>
@@ -107,7 +107,7 @@ const Services = () => {
                <p className="brandShopDescription" id="cColor">
                در مرکز تعمیرات بالبیران ، خدمات و سرویس انواع محصولات روشنایی انجام می شود. تعمیرگاه مجاز با سرلوحه قرار دادن هدف کسب رضایت مشتری و احترام به حقوق ایشان به فعالیت می پردازد . از این رو مرکز تعمیرات به تدوین و تهیه ی قوانین و مقررات تعمیرگاه مجاز روشنایی ، همت گماشته است.
                </p>
-               <Button className="servicesButton" onClick={()=>  history.push("/repairs")}>
+               <Button className="servicesButton" onClick={()=>  history("/repairs")}>
                    درخواست تعمیرات
                </Button>
            </Col>
@@ -128,7 +128,7 @@ const Services = () => {
                <p className="brandShopDescription" id="cColor">
                بالبیران به‌ عنوان یکی از فروشگاه‌‌های بزرگ اینترنتی کشور لذت یک خرید واقعی را برای شما به ارمغان می‌آورد. تمامی مردم ، همکاران ، برق کاران ، صنایع نور و روشنایی و … از سراسر ایران می‌توانند کالاهای مورد نیاز خود در حوزه نورپردازی ، مصرف خانگی و … بصورت آنلاین از فروشگاه ما تهیه و از مزایای ارسال سریع، ضمانت بهترین قیمت ، ضمانت اصالت کالا و گارانتی واقعی برخوردار شوند.
                </p>
-               <Button className="servicesButton" onClick={()=>  history.push("/lavazemyadaki")}>
+               <Button className="servicesButton" onClick={()=>  history("/lavazemyadaki")}>
                  خرید لوازم یدکی
                </Button>
            </Col>

@@ -3,7 +3,7 @@ import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
 import IconRow from './layouts/IconRow'
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from './layouts/Footer'
 import {Container,Row,Col,Button} from 'react-bootstrap'
 import { FaAngleLeft ,FaEye,FaEyeSlash,FaCheck} from 'react-icons/fa';
@@ -14,7 +14,7 @@ import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import {useParams } from "react-router-dom";
 
 const Login = () => {
-  const history = useHistory();
+  const history = useNavigate();
   let inputRef = useRef();
   const showIcon = () =><FaEye></FaEye>;
   const hideIcon = () => <FaEyeSlash></FaEyeSlash>;
@@ -35,7 +35,7 @@ const Login = () => {
     localStorage.setItem("user_id", response.data.Data[0].CustomerID);
     localStorage.setItem("user_name", response.data.Data[0].NameFamily);
 // alert("عملیات موفقیت آمیز بود")
-history.push("/userpanel/"+response.data.Data[0].CustomerID)
+history("/userpanel/"+response.data.Data[0].CustomerID)
 
 } else if (response.data.result == "duplicate"){
   alert("اطلاعات وارد شده درست نمی باشد")
@@ -74,7 +74,7 @@ history.push("/userpanel/"+response.data.Data[0].CustomerID)
               hideIcon={hideIcon}
             />
           </div>
-          <a     className="ta-right cLabel mgt20" id="fo12" onClick={()=>  history.push("/verification")}>فراموشی رمز عبور</a>
+          <a     className="ta-right cLabel mgt20" id="fo12" onClick={()=>  history("/verification")}>فراموشی رمز عبور</a>
           <div className="mgt10 checkB">
           <Checkbox
         icon={<FaCheck color="#ffb921" size={14} />}
@@ -95,7 +95,7 @@ history.push("/userpanel/"+response.data.Data[0].CustomerID)
           <Button className="loginBtn" onClick={()=>loginto()}>ورود</Button>
           <div className="mgt20">
             <span className="d-inline-block cLabel" id="fo12">حساب کاربری ندارید؟</span>
-          <a     className="d-inline-block inLink" id="fo12" onClick={()=>  history.push("/register")}>ثبت نام کنید</a>
+          <a     className="d-inline-block inLink" id="fo12" onClick={()=>  history("/register")}>ثبت نام کنید</a>
           </div>
 
         </div>

@@ -27,7 +27,7 @@ import Img6 from './assets/img/Image 6.png';
 import Img7 from './assets/img/Image 7.png';
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import {useParams } from "react-router-dom";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SearchResult = () => {
     const {id,base,tech,color,light,hobab} = useParams();

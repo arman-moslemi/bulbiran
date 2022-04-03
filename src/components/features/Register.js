@@ -11,7 +11,7 @@ import ReactPasswordToggleIcon from 'react-password-toggle-icon';
 import Checkbox from "react-custom-checkbox";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 
 const Register = () => {
@@ -24,7 +24,7 @@ const Register = () => {
   let inputRef = useRef();
   const showIcon = () =><FaEye></FaEye>;
   const hideIcon = () => <FaEyeSlash></FaEyeSlash>;
-  const history = useHistory();
+  const history = useNavigate();
   const [mobile,setMobile]=useState('')
   const [pass,setPass]=useState('')
   const [againPass,setAgainPass]=useState('')
@@ -45,7 +45,7 @@ const Register = () => {
     // console.log(response.data.Data[0].UserID)
     // localStorage.setItem("user_id", response.data.Data[0].CustomerID);
 alert("عملیات موفقیت آمیز بود")
-history.push("/verification")
+history("/verification")
 
 } else if (response.data.result == "duplicate"){
   alert("این شماره موبایل وجود دارد")
@@ -76,7 +76,7 @@ history.push("/verification")
     // localStorage.setItem("user_id", response.data.Data[0].CustomerID);
 // alert("عملیات موفقیت آمیز بود")
 localStorage.setItem("ver",response.data.code)
-history.push("/verification/"+mobile)
+history("/verification/"+mobile)
 
 } else if (response.data.result == "duplicate"){
   alert("این شماره موبایل وجود دارد")
@@ -109,7 +109,7 @@ history.push("/verification/"+mobile)
            <Button onClick={()=>verify()} className="loginBtn w50 mgt40" style={{marginTop:40}}>ثبت نام</Button>
           <div className="mgt20">
             <span className="d-inline-block cLabel" id="fo12">حساب کاربری دارید؟</span>
-          <a     className="d-inline-block inLink" id="fo12" onClick={()=>  history.push("/login")}>وارد شوید</a>
+          <a     className="d-inline-block inLink" id="fo12" onClick={()=>  history("/login")}>وارد شوید</a>
           </div>
 
         </div>
@@ -172,7 +172,7 @@ history.push("/verification/"+mobile)
           <Button onClick={()=>loginto()} className="loginBtn w50 mgt40" style={{marginTop:40}}>ثبت نام</Button>
           <div className="mgt20">
             <span className="d-inline-block cLabel" id="fo12">حساب کاربری دارید؟</span>
-          <a     className="d-inline-block inLink" id="fo12" onClick={()=>  history.push("/login")}>وارد شوید</a>
+          <a     className="d-inline-block inLink" id="fo12" onClick={()=>  history("/login")}>وارد شوید</a>
           </div>
 
         </div>

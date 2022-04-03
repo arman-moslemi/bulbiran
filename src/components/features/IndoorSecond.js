@@ -33,12 +33,12 @@ import Img7 from './assets/img/Image 7.png';
 import Noorafkan from './assets/img/noorafkan.png';
 import Chain from './assets/img/chain.png';
 import B14 from './assets/img/b14.png'
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {useParams } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 
 const IndoorSecond = () => {
-    const history = useHistory();
+    const history = useNavigate();
     const [product,setProduct]=useState([])
     const [group,setGroup]=useState([])
     const [subgroup,setSubGroup]=useState([])

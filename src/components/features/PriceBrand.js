@@ -21,11 +21,11 @@ import b10 from './assets/img/b10.png';
 import b11 from './assets/img/b11.png';
 import b12 from './assets/img/b12.png';
 import GetPrice from './assets/icons/GetPrice'
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 
 const PriceBrand = () => {
-    const history = useHistory();
+    const history = useNavigate();
     const [brand,setBrand]=useState([])
 
     const mainSlider=()=>{
@@ -84,7 +84,7 @@ const PriceBrand = () => {
           <>
 
             <Col md={3} xs={6}>
-            <Link  onClick={()=>  history.push("/pricetable/"+item.BrandID)}>
+            <Link  onClick={()=>  history("/pricetable/"+item.BrandID)}>
                 <div className="whiteBrandBox" >
                 <img src={apiAsset+item.BrandLogo}/>
                     <div className="grayBox res95">

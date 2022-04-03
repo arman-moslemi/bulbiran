@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route,HashRouter } from 'react-router-dom';
+import { BrowserRouter, Switch, Route,HashRouter,Routes } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import Home from '../components/features/Home';
 import BrandShop from '../components/features/BrandShop';
@@ -43,26 +43,26 @@ import IndoorSecond from '../components/features/IndoorSecond';
 import IndoorSecondGreen from '../components/features/IndoorSecondGreen';
 import Cartstep1 from '../components/features/Cartstep1';
 import BlogSecond from '../components/features/BlogSecond';
-import ScrollToTop from '../components/features/layouts/ScrollToTop';
+// import ScrollToTop from '../components/features/layouts/ScrollToTop';
 const MainRoutes = (props) => {
 	return (
-		<HashRouter basename={'/'}>
-<ScrollToTop/>
+<Routes>
+{/* <ScrollToTop/> */}
 			<Route
 					 exact
 					path='/'
 					name='صفحه اصلی'
-					render={(props) => <Home />}>
+					element={<Home />}>
 
 					</Route>
-					<Route
+					 <Route
 
 					path='/GreenShop/:id'
 					name='فروشگاه سبز'
-					render={(props) => <GreenShop/>}>
+					element={<GreenShop/>}>
 
 					</Route>
-					<Route
+					{/*<Route
 
 					path='/indoorsecond/:id'
 					name='داخلی'
@@ -343,10 +343,9 @@ const MainRoutes = (props) => {
 					name='سبد خرید'
 					render={(props) => <Cartstep1/>}>
 
-					</Route>
-
+					</Route> */}
 					{/* <PrivateRoute path='/pages' /> */}
-		</HashRouter>
+					</Routes>
 	);
 };
 

@@ -8,10 +8,10 @@ import {Container,Row,Col,Button} from 'react-bootstrap'
 import { FaAngleLeft ,FaEye,FaEyeSlash,FaCheck} from 'react-icons/fa';
 import ConfirmSvg from '../features/assets/icons/ConfirmSvg';
 import 'react-dropdown/style.css';
-import { Link, useHistory,useParams } from "react-router-dom";
+import { Link, useNavigate,useParams } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 const Verification = () => {
-  const history = useHistory();
+  const history = useNavigate();
   const params = useParams().id;
   const [code,setCode]=useState(0)
 
@@ -27,7 +27,7 @@ const Verification = () => {
       // localStorage.setItem("user_id", response.data.Data[0].CustomerID);
   // alert("عملیات موفقیت آمیز بود")
   localStorage.setItem("ver",response.data.code)
-  history.push("/registerCompelete/"+params)
+  history("/registerCompelete/"+params)
   
   } else if (response.data.result == "duplicate"){
     alert("این شماره موبایل وجود دارد")

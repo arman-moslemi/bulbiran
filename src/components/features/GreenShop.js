@@ -1,5 +1,5 @@
 import React , {useState,useEffect} from 'react'
-import { Link, useHistory } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -50,7 +50,7 @@ const GreenShop = () => {
     const [property,setProperty]=useState([])
     const [propertySel,setPropertySel]=useState([])
     const [menu,setMenu]=useState([])
-    const history = useHistory();
+    const history = useNavigate();
     const [page,setPage]=useState(1)
     const [count,setCount]=useState(1)
 
@@ -272,7 +272,7 @@ console.log(check.length)
     return (
     <>
           <TopBar/>
-      <Header/>
+      {/* <Header/> */}
       <Container fluid className="pd0">
       <div className="whatsAppBadge">
         <div>
@@ -334,12 +334,12 @@ console.log(check.length)
             <div className="cateInner ta-center">
             { menu?.map((item, i) => {
   return (
-                <Link onClick={()=>{history.push("/GreenShop/"+item.GreenGroupID);window.location.reload()}}>
+                // <Link onClick={()=>{history("/GreenShop/"+item.GreenGroupID);window.location.reload()}}>
                 <div>
                     <img src={apiAsset+item.Photo}/>
                     <p>{item.SmallerGroup}</p>
                 </div>
-                </Link>
+                // </Link>
                       );
 
 })

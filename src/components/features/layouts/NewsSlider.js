@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import News1 from '../assets/img/news1.jpg';
 import News2 from '../assets/img/news2.jpg';
 import { Overlay } from 'react-bootstrap';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 export default function SimpleSlider({img1,img2}) {

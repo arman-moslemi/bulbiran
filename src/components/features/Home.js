@@ -1,6 +1,6 @@
 
 import React,{useEffect,useState} from 'react'
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -214,7 +214,7 @@ console.log(error);
     }
   }, []);
 
-  const history = useHistory();
+  const history = useNavigate();
   const customStyles = {
     content: {
 
@@ -241,7 +241,7 @@ console.log(error);
     <>
 
       <TopBar/>
-      <Header/>
+      {/* <Header/> */}
     <Container fluid className="bulbiranContainer">
       <div className="whatsAppBadge">
         <div>
@@ -330,7 +330,7 @@ console.log(error);
         </Col>
       <Col md={2} xs={12} className="resTaCenter">
       <LedButton className="d-block ledbuttonIcon"></LedButton>
-      <Button onClick={()=>  history.push("/GreenShop/1")} className="ledButton d-block">فروشگاه سبز</Button>
+      <Button onClick={()=>  history("/GreenShop/1")} className="ledButton d-block">فروشگاه سبز</Button>
       </Col>
 
       </Row>
@@ -344,7 +344,7 @@ console.log(error);
        <div className="firstBanner">
             <CircumstanceBanner/>
             <div className="bottomDiv">
-              <Button onClick={()=>  history.push("/circumstance")}  className="bottomButton">مکان روشنایی
+              <Button onClick={()=>  history("/circumstance")}  className="bottomButton">مکان روشنایی
 
               </Button>
               <FaAngleLeft className="leftArrow"></FaAngleLeft>
@@ -354,7 +354,7 @@ console.log(error);
           <div className="secondBanner">
             <LedBanner/>
             <div className="bottomDiv2">
-              <Button className="bottomButton" onClick={()=>  history.push("/masarefLED")}   >مصارف LED
+              <Button className="bottomButton" onClick={()=>  history("/masarefLED")}   >مصارف LED
 
               </Button>
               <FaAngleLeft className="leftArrow"></FaAngleLeft>
@@ -364,7 +364,7 @@ console.log(error);
       </Row>
     <Row className="mgt20 categoryRow">
       <Col md={2} xs={6} className="pd10">
-        <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/1")} >
+        <a     className="categoryBox" onClick={()=>  history("/indoorlighting/1")} >
       {/* <img src={Lamp}/> */}
       <img src={apiAsset+"lamp.png"}/>
 
@@ -373,7 +373,7 @@ console.log(error);
       </Col>
 
       <Col md={2} xs={6} className="pd10">
-        <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/2")} >
+        <a     className="categoryBox" onClick={()=>  history("/indoorlighting/2")} >
       {/* <img src={Inner}/> */}
       <img src={apiAsset+"inner.png"}/>
 
@@ -381,7 +381,7 @@ console.log(error);
         </a>
       </Col>
       <Col md={2} xs={6} className="pd10">
-        <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/3")} >
+        <a     className="categoryBox" onClick={()=>  history("/indoorlighting/3")} >
       {/* <img src={Outdoor}/> */}
       <img src={apiAsset+"outdoor.png"}/>
 
@@ -389,21 +389,21 @@ console.log(error);
         </a>
       </Col>
       <Col md={2} xs={6} className="pd10">
-        <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/4")} >
+        <a     className="categoryBox" onClick={()=>  history("/indoorlighting/4")} >
       {/* <img src={Tazein}/> */}
       <img src={apiAsset+"tazein.png"}/>
       <p className="categoryName">روشنایی تزئینی</p>
         </a>
       </Col>
       <Col md={2}  xs={6} className="pd10">
-        <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/5")} >
+        <a     className="categoryBox" onClick={()=>  history("/indoorlighting/5")} >
       {/* <img src={Rise}/> */}
       <img src={apiAsset+"rise.png"}/>
       <p className="categoryName">روشنایی خاص</p>
         </a>
       </Col>
       <Col md={2} xs={6} className="pd10">
-        <a     className="categoryBox" onClick={()=>  history.push("/indoorlighting/6")} >
+        <a     className="categoryBox" onClick={()=>  history("/indoorlighting/6")} >
       {/* <img src={Lavazem}/> */}
       <img src={apiAsset+"lavazemjanebi.png"}/>
 
@@ -422,7 +422,7 @@ console.log(error);
           <br/>
           تولیدات گوناگون و سبدهای کالایی رنگارنگی در این بازار وجود دارد که بر اساس سازنده آن طبقه بندی شده است.
           </p>
-          <Button className="readMoreBtn dResNone" onClick={()=>  history.push("/brandshop")}>بازار روشنایی</Button>
+          <Button className="readMoreBtn dResNone" onClick={()=>  history("/brandshop")}>بازار روشنایی</Button>
         </Col>
         <Col md={7}>
            {
@@ -432,12 +432,12 @@ console.log(error);
                 i<8?
                       <>
 
-                                  <Link  onClick={()=>  history.push("/brandsecond/"+item.BrandID)}>
+                                  {/* <Link  onClick={()=>  history("/brandsecond/"+item.BrandID)}>
 
                      <div     className="brandIconBox">
             <img src={apiAsset+item.BrandLogo}/>
           </div>
-</Link>
+</Link> */}
                       </>
                       :
                       null
@@ -450,7 +450,7 @@ console.log(error);
       </Row>
       <Row className="disNone">
         <Col xs={12} className="ta-center">
-        <Button className="readMoreBtn" onClick={()=>  history.push("/brandshop")}>بازار روشنایی</Button>
+        <Button className="readMoreBtn" onClick={()=>  history("/brandshop")}>بازار روشنایی</Button>
 
         </Col>
       </Row>
@@ -492,7 +492,7 @@ console.log(error);
       </Col>
       <Col md={2} className="pd0">
       <div className="searchIBtn">
-        <Button className="searchIBtn2" onClick={()=>  history.push("/searchresultFinder/"+base+"/"+type+"/"+tech+"/"+color+"/"+light+"/"+hobab)}> جستجو سریع</Button>
+        <Button className="searchIBtn2" onClick={()=>  history("/searchresultFinder/"+base+"/"+type+"/"+tech+"/"+color+"/"+light+"/"+hobab)}> جستجو سریع</Button>
       </div>
       </Col>
     </Row>
@@ -503,7 +503,7 @@ console.log(error);
      <Suggestion/>
        <div className="bottomDiv3">
 
-              <Button className="bottomButton" onClick={()=>  history.push("/pishnahadvijhe")}>پیشنهادات ویژه بالبیران
+              <Button className="bottomButton" onClick={()=>  history("/pishnahadvijhe")}>پیشنهادات ویژه بالبیران
 
               </Button>
               <FaAngleLeft className="leftArrow"></FaAngleLeft>
@@ -515,7 +515,7 @@ console.log(error);
          <Services/>
          <div className="bottomDiv3">
 
-         <Button className="bottomButton" onClick={()=>  history.push("/services")}>خدمات بالبیران
+         <Button className="bottomButton" onClick={()=>  history("/services")}>خدمات بالبیران
          </Button>
          <FaAngleLeft className="leftArrow"></FaAngleLeft>
        </div>
@@ -526,7 +526,7 @@ console.log(error);
          <Magazine/>
          <div className="bottomDiv3">
 
-         <Button className="bottomButton"onClick={()=>  history.push("/news")}>مجله بالبیران
+         <Button className="bottomButton"onClick={()=>  history("/news")}>مجله بالبیران
 
          </Button>
          <FaAngleLeft className="leftArrow"></FaAngleLeft>
@@ -542,7 +542,7 @@ console.log(error);
       <div className="innerSlider ta-center">
         <p >محصولات شگفت انگیز بالبیران</p>
         <img src={BulbsImg} className="responsiveNone"/>
-        <Button onClick={()=>  history.push("/Shegeftangiz")} style={{marginBottom:"10px"}}>
+        <Button onClick={()=>  history("/Shegeftangiz")} style={{marginBottom:"10px"}}>
           مشاهده ی همه
           <FaAngleLeft/>
         </Button>

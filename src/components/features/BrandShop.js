@@ -10,11 +10,11 @@ import { FaAngleLeft } from 'react-icons/fa';
 import BrandShopSvg from './assets/icons/BrandShopSvg';
 import b1 from './assets/img/b1.png';
 
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 
 const BrandShop = () => {
-    const history = useHistory();
+    const history = useNavigate();
     const [brand,setBrand]=useState([])
 
     const mainSlider=()=>{
@@ -78,7 +78,7 @@ const BrandShop = () => {
           <>
           
             <Col md={3} xs={6}>
-            <Link  onClick={()=>  history.push("/brandsecond/"+item.BrandID)}>
+            <Link  onClick={()=>  history("/brandsecond/"+item.BrandID)}>
                 <div className="whiteBrandBox">
                     <img src={apiAsset+item.BrandLogo}/>
                     <div className="grayBox res95" >

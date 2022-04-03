@@ -15,7 +15,7 @@ import 'react-tabs/style/react-tabs.css';
 import Poshtibani from './assets/icons/Poshtiban';
 import Phone from './assets/icons/Phone';
 import Email from './assets/icons/Email';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import Pardazesh from './layouts/Pardazesh';
@@ -95,7 +95,7 @@ import { PanoramaFishEyeSharp } from '@material-ui/icons'
     const params = useParams().id;
     const [group,setGroup]=useState([])
     const [userdata,setUserData]=useState([])
-    const history = useHistory();
+    const history = useNavigate();
 
     const mainSlider=()=>{
         const axios = require("axios");
@@ -293,7 +293,7 @@ window.location.reload();
       useEffect(() => {
        const UserID= localStorage.getItem("user_id");
        if(UserID==null ||UserID=="" ){
-history.push("/Login")
+history("/Login")
 alert("ابتدا وارد شوید")
        }
 console.log(UserID)

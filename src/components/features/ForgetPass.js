@@ -9,9 +9,9 @@ import { FaAngleLeft ,FaEye,FaEyeSlash,FaCheck} from 'react-icons/fa';
 import ForgetPassSvg from './assets/icons/ForgetPassSvg';
 import ReactPasswordToggleIcon from 'react-password-toggle-icon';
 import Checkbox from "react-custom-checkbox";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const ForgetPassword = () => {
-  const history = useHistory();
+  const history = useNavigate();
   let inputRef = useRef();
   const showIcon = () =><FaEye></FaEye>;
   const hideIcon = () => <FaEyeSlash></FaEyeSlash>;
@@ -53,7 +53,7 @@ const ForgetPassword = () => {
           <Button className="loginBtn mgt40">تغییر رمز عبور</Button>
           <div className="mgt20">
             <span className="d-inline-block cLabel" id="fo12">حساب کاربری ندارید؟</span>
-          <a className="d-inline-block inLink" id="fo12"  onClick={()=>  history.push("/register")}>ثبت نام کنید</a>
+          <a className="d-inline-block inLink" id="fo12"  onClick={()=>  history("/register")}>ثبت نام کنید</a>
           </div>
 
         </div>

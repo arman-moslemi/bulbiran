@@ -15,11 +15,11 @@ import c5 from './assets/img/c5.png';
 import c6 from './assets/img/c6.png';
 import c7 from './assets/img/c7.png';
 import c8 from './assets/img/c8.png';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 
 const BulbFinderStart = () => {
-    const history = useHistory();
+    const history = useNavigate();
     const [group,setGroup]=useState([])
 
     const mainSlider=()=>{
@@ -75,7 +75,7 @@ const BulbFinderStart = () => {
   return (
             <div>
             <img src={apiAsset+item.Photo} className="kl1"/>
-            <a     onClick={()=>  history.push("/bulbfinder/"+item.BulbFindGroupID)}>{item.Title}</a>
+            <a     onClick={()=>  history("/bulbfinder/"+item.BulbFindGroupID)}>{item.Title}</a>
             </div>
                                   );
 

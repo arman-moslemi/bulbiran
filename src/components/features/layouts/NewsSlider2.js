@@ -10,7 +10,7 @@ import NewsImg from '../assets/img/bulding.jpg'
 import { FaAngleLeft,FaAlignRight ,FaCheck ,FaStar, FaCircle, FaRegClock} from 'react-icons/fa';
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SimpleSlider({data}) {
   var settings = {
@@ -27,7 +27,7 @@ export default function SimpleSlider({data}) {
     slidesToShow: 2,
     slidesToScroll: 1
   };
-  const history = useHistory();
+  const history = useNavigate();
 
   return (
    <>
@@ -41,7 +41,7 @@ export default function SimpleSlider({data}) {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a onClick={()=>  history.push("/showblog/"+item.BlogID)}>
+                <a onClick={()=>  history("/showblog/"+item.BlogID)}>
                {item.Title}
                 </a>
                 <div className="ta-left dq">
@@ -84,7 +84,7 @@ i>1?
           <span className="imageTag">
               مقاله
           </span>
-          <a onClick={()=>  history.push("/showblog/"+item.BlogID)}>
+          <a onClick={()=>  history("/showblog/"+item.BlogID)}>
          {item.Title}
           </a>
           <div className="ta-left dq">

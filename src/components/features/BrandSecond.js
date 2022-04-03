@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'

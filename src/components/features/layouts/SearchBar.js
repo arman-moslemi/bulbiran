@@ -1,22 +1,22 @@
 import React,{useState,useEffect} from "react";
 import { MDBCol} from 'mdbreact';
 import { FaSearch } from 'react-icons/fa';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
 const SearchPage = () => {
   const [search,setSearch]=useState('')
   const location = useLocation();
-  const history = useHistory();
+  const history = useNavigate();
 
   const mainSlider=()=>{
     // const axios = require("axios");
-    history.push("/searchresult/"+search);
+    history("/searchresult/"+search);
     window.location.reload()
   }
   // useEffect(() => {
     // const UserID= localStorage.getItem("user_id");
 //     if(search!=null ||search!="" ){
-// history.push("/searchresult/"+search)
+// history("/searchresult/"+search)
 // // alert("ابتدا وارد شوید")
 //     }
 //    }, [search]);

@@ -14,7 +14,7 @@ import { FaAngleLeft,FaAlignRight ,FaCheck ,FaStar, FaCircle, FaRegClock} from '
 import Tabligh from './assets/img/tabligh.png'
 import News3 from './assets/img/news3.png';
 import Banner1 from './assets/img/banner1.jpg';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import {useParams } from "react-router-dom";
 
@@ -23,7 +23,7 @@ const BlogSecond = () => {
     const [val,setVal]=useState(0)
     const params = useParams().id;
     const [group,setGroup]=useState([])
-    const history = useHistory();
+    const history = useNavigate();
 
     const mainSlider=()=>{
         const axios = require("axios");
@@ -150,7 +150,7 @@ const BlogSecond = () => {
                 <span className="imageTag">
                     مقاله
                 </span>
-                <a  onClick={()=>  history.push("/showblog/"+item.BlogID)}>
+                <a  onClick={()=>  history("/showblog/"+item.BlogID)}>
                                     {item.Title}
                                 </a>
                 <div className="ta-left dq">

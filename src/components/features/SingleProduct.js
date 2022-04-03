@@ -28,7 +28,7 @@ import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import ProductSlider from './layouts/Productslider';
-import { Link, Router, useHistory,useParams } from "react-router-dom";
+import { Link, Router, useNavigate,useParams } from "react-router-dom";
 import { FaAngleLeft ,FaSearch ,FaTimes ,FaWhatsapp} from 'react-icons/fa';
 
 // const images = [
@@ -85,7 +85,7 @@ import { FaAngleLeft ,FaSearch ,FaTimes ,FaWhatsapp} from 'react-icons/fa';
     const [count,setCount]=useState(0)
     const [box,setBox]=useState(0)
 	const params = useParams().id;
-    const history = useHistory();
+    const history = useNavigate();
 
    const increment = () => {
     setCount(count+1)
@@ -388,7 +388,7 @@ return(
                     <Col md={12} className="ta-right pd0">
                         <span className="breadCrumbs">{product.BrnadName}</span>
                         <span className="breadCrumbs">{product.Title}/</span>
-                        <span  onClick={()=>history.push("/bulbiranshop/"+product.Role)}className="breadCrumbs">{product.SmallerGroup}</span>
+                        <span  onClick={()=>history("/bulbiranshop/"+product.Role)}className="breadCrumbs">{product.SmallerGroup}</span>
                     </Col>
                 </Row>
                 <Row style={{margin:"0"}}>

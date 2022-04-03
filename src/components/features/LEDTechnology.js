@@ -19,7 +19,7 @@ import 'react-accessible-accordion/dist/fancy-example.css';
 import { FaAngleLeft,FaAlignRight ,FaCheck } from 'react-icons/fa';
 import CircumstanceB from './assets/icons/CircumstanceB';
 
-import { Link, useHistory } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";

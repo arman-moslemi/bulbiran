@@ -33,7 +33,7 @@ import Shafaf from './assets/img/shafaf.png';
 import Mate from './assets/img/mate.png';
 import Mirror from './assets/img/mirror.png';
 import Table from './assets/img/table.png';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import {useParams } from "react-router-dom";
 
@@ -41,7 +41,7 @@ const STEP = 0.1;
 const MIN = 0;
 const MAX = 100;
 const BulbFinders=() =>{
-  const history = useHistory();
+  const history = useNavigate();
     const [values, setValues] = React.useState([50]);
     const [values2, setValues2] = React.useState([50]);
     const params = useParams().id;
@@ -252,7 +252,7 @@ null:
     <div className="nn responsiveNone">
         <div>
             <span className="natije">{count} لامپ پیدا شد</span>
-            <a     className="moshahedeN" onClick={()=>  history.push("/searchresultFinder/"+base+"/"+params+"/"+tech+"/"+color+"/"+light+"/"+hobab)}>مشاهده نتایج <FaAngleDoubleLeft/></a>
+            <a     className="moshahedeN" onClick={()=>  history("/searchresultFinder/"+base+"/"+params+"/"+tech+"/"+color+"/"+light+"/"+hobab)}>مشاهده نتایج <FaAngleDoubleLeft/></a>
             <p className="moshahedeP">این فرایند را ادامه دهید تا نتایج بهتر را مشاهده کنید</p>
         </div>
     </div>
@@ -638,7 +638,7 @@ onClick={()=>{setBase(item.BulbFindBaseID) ;mainCat()}}
  <div className="nn desktopNone">
         <div>
             <span className="natije">{count} لامپ پیدا شد</span>
-            <a     className="moshahedeN" onClick={()=>  history.push("/searchresultFinder/"+base+"/"+params+"/"+tech+"/"+color+"/"+light+"/"+hobab)}>مشاهده نتایج <FaAngleDoubleLeft/></a>
+            <a     className="moshahedeN" onClick={()=>  history("/searchresultFinder/"+base+"/"+params+"/"+tech+"/"+color+"/"+light+"/"+hobab)}>مشاهده نتایج <FaAngleDoubleLeft/></a>
             <p className="moshahedeP">این فرایند را ادامه دهید تا نتایج بهتر را مشاهده کنید</p>
         </div>
     </div>

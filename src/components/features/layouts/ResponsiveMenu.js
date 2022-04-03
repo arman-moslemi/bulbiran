@@ -4,13 +4,13 @@ import { Nav, Navbar, NavDropdown, NavItem } from "react-bootstrap";
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function App() {
   const [brand,setBrand]=useState([])
   const [group,setGroup]=useState([])
   const [greenGroup,setGreenGroup]=useState([])
-  const history = useHistory();
+  const history = useNavigate();
 
   const mainSlider=()=>{
     // const [pic,setpic]=useState(Lamp)
@@ -79,7 +79,7 @@ export default function App() {
         <NavDropdown title="لامپ" id="collasible-nav-dropdown">
         {group.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
-            <NavDropdown.Item  onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>
+            <NavDropdown.Item  onClick={()=>  history("/bulbiranshop/"+item.GroupID)}>
 {item.SmallerGroup}
             </NavDropdown.Item>
 
@@ -91,7 +91,7 @@ export default function App() {
           <NavDropdown title="روشنایی داخلی" id="collasible-nav-dropdown">
         {group.filter(t=>t.BiggerGroup==2)?.map((item, i) => {
                return (
-            <NavDropdown.Item  onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>
+            <NavDropdown.Item  onClick={()=>  history("/bulbiranshop/"+item.GroupID)}>
 {item.SmallerGroup}
             </NavDropdown.Item>
 
@@ -103,7 +103,7 @@ export default function App() {
           <NavDropdown title="روشنایی خارجی" id="collasible-nav-dropdown">
         {group.filter(t=>t.BiggerGroup==3)?.map((item, i) => {
                return (
-            <NavDropdown.Item  onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>
+            <NavDropdown.Item  onClick={()=>  history("/bulbiranshop/"+item.GroupID)}>
 {item.SmallerGroup}
             </NavDropdown.Item>
 
@@ -115,7 +115,7 @@ export default function App() {
           <NavDropdown title="روشنایی تزئینی" id="collasible-nav-dropdown">
         {group.filter(t=>t.BiggerGroup==4)?.map((item, i) => {
                return (
-            <NavDropdown.Item  onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>
+            <NavDropdown.Item  onClick={()=>  history("/bulbiranshop/"+item.GroupID)}>
 {item.SmallerGroup}
             </NavDropdown.Item>
 
@@ -128,7 +128,7 @@ export default function App() {
           <NavDropdown title="روشنایی خاص" id="collasible-nav-dropdown">
         {group.filter(t=>t.BiggerGroup==5)?.map((item, i) => {
                return (
-            <NavDropdown.Item  onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>
+            <NavDropdown.Item  onClick={()=>  history("/bulbiranshop/"+item.GroupID)}>
 {item.SmallerGroup}
             </NavDropdown.Item>
 
@@ -141,7 +141,7 @@ export default function App() {
           <NavDropdown title="لوازم جانبی" id="collasible-nav-dropdown">
         {group.filter(t=>t.BiggerGroup=6)?.map((item, i) => {
                return (
-            <NavDropdown.Item  onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>
+            <NavDropdown.Item  onClick={()=>  history("/bulbiranshop/"+item.GroupID)}>
 {item.SmallerGroup}
             </NavDropdown.Item>
 
@@ -156,7 +156,7 @@ export default function App() {
         {/* <NavDropdown title="لامپ" id="collasible-nav-dropdown"> */}
         {    brand?.map((item, i) => {
   return (
-            <NavDropdown.Item onClick={()=>  history.push("/brandsecond/"+item.BrandID)}>{item.BrandName}</NavDropdown.Item>
+            <NavDropdown.Item onClick={()=>  history("/brandsecond/"+item.BrandID)}>{item.BrandName}</NavDropdown.Item>
 
    );
 
@@ -169,7 +169,7 @@ export default function App() {
         <NavDropdown title="لامپ" id="collasible-nav-dropdown">
         {greenGroup.filter(t=>t.BiggerGroup==1)?.map((item, i) => {
                return (
-                <NavDropdown.Item  onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>
+                <NavDropdown.Item  onClick={()=>  history("/GreenShop/"+item.GreenGroupID)}>
 {item.SmallerGroup}
             </NavDropdown.Item>
                   );
@@ -185,7 +185,7 @@ export default function App() {
           <NavDropdown title="پنل" id="collasible-nav-dropdown">
         {greenGroup.filter(t=>t.BiggerGroup==2)?.map((item, i) => {
                return (
-                <NavDropdown.Item  onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>
+                <NavDropdown.Item  onClick={()=>  history("/GreenShop/"+item.GreenGroupID)}>
 {item.SmallerGroup}
             </NavDropdown.Item>
                   );
@@ -201,7 +201,7 @@ export default function App() {
           <NavDropdown title="نورافکن" id="collasible-nav-dropdown">
         {greenGroup.filter(t=>t.BiggerGroup==3)?.map((item, i) => {
                return (
-                <NavDropdown.Item  onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>
+                <NavDropdown.Item  onClick={()=>  history("/GreenShop/"+item.GreenGroupID)}>
 {item.SmallerGroup}
             </NavDropdown.Item>
                   );
@@ -217,7 +217,7 @@ export default function App() {
           <NavDropdown title="ریسه" id="collasible-nav-dropdown">
         {greenGroup.filter(t=>t.BiggerGroup==4)?.map((item, i) => {
                return (
-                <NavDropdown.Item  onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>
+                <NavDropdown.Item  onClick={()=>  history("/GreenShop/"+item.GreenGroupID)}>
 {item.SmallerGroup}
             </NavDropdown.Item>
                   );
@@ -233,7 +233,7 @@ export default function App() {
           <NavDropdown title="چراغ" id="collasible-nav-dropdown">
         {greenGroup.filter(t=>t.BiggerGroup==5)?.map((item, i) => {
                return (
-                <NavDropdown.Item  onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>
+                <NavDropdown.Item  onClick={()=>  history("/GreenShop/"+item.GreenGroupID)}>
 {item.SmallerGroup}
             </NavDropdown.Item>
                   );
@@ -249,7 +249,7 @@ export default function App() {
           <NavDropdown title="آویز" id="collasible-nav-dropdown">
         {greenGroup.filter(t=>t.BiggerGroup==6)?.map((item, i) => {
                return (
-                <NavDropdown.Item  onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>
+                <NavDropdown.Item  onClick={()=>  history("/GreenShop/"+item.GreenGroupID)}>
 {item.SmallerGroup}
             </NavDropdown.Item>
                   );
@@ -265,7 +265,7 @@ export default function App() {
           <NavDropdown title="لوازم جانبی" id="collasible-nav-dropdown">
         {greenGroup.filter(t=>t.BiggerGroup==7)?.map((item, i) => {
                return (
-                <NavDropdown.Item  onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>
+                <NavDropdown.Item  onClick={()=>  history("/GreenShop/"+item.GreenGroupID)}>
 {item.SmallerGroup}
             </NavDropdown.Item>
                   );
@@ -280,18 +280,18 @@ export default function App() {
           </NavDropdown>
 
           </NavDropdown>
-           <Nav.Link onClick={()=>  history.push("/bulbfinderstart")}>
+           <Nav.Link onClick={()=>  history("/bulbfinderstart")}>
                لامپ یاب
            </Nav.Link>
            <NavDropdown title="خدمات بالبیران" id="collasible-nav-dropdown">
 
-            <NavDropdown.Item onClick={()=>  history.push("/design")}>طراحی و دیزاین</NavDropdown.Item>
-            <NavDropdown.Item onClick={()=>  history.push("/Garanty")}>
+            <NavDropdown.Item onClick={()=>  history("/design")}>طراحی و دیزاین</NavDropdown.Item>
+            <NavDropdown.Item onClick={()=>  history("/Garanty")}>
               گارانتی و خدمات پس از فروش
             </NavDropdown.Item>
-            <NavDropdown.Item onClick={()=>  history.push("/repairs")}>تعمیرات</NavDropdown.Item>
+            <NavDropdown.Item onClick={()=>  history("/repairs")}>تعمیرات</NavDropdown.Item>
 
-            <NavDropdown.Item  onClick={()=>  history.push("/LavazemYadaki")}>
+            <NavDropdown.Item  onClick={()=>  history("/LavazemYadaki")}>
               لوازم یدکی
             </NavDropdown.Item>
 
@@ -299,44 +299,44 @@ export default function App() {
           </NavDropdown>
           <NavDropdown title="مجله بالبیران" id="collasible-nav-dropdown">
 
-            <NavDropdown.Item onClick={()=>  history.push("/news")}>آخرین اخبار</NavDropdown.Item>
-            <NavDropdown.Item onClick={()=>  history.push("/news")}>
+            <NavDropdown.Item onClick={()=>  history("/news")}>آخرین اخبار</NavDropdown.Item>
+            <NavDropdown.Item onClick={()=>  history("/news")}>
              مقالات علمی
             </NavDropdown.Item>
-            <NavDropdown.Item onClick={()=>  history.push("/news")}>تکنولوژی روز</NavDropdown.Item>
+            <NavDropdown.Item onClick={()=>  history("/news")}>تکنولوژی روز</NavDropdown.Item>
 
-            <NavDropdown.Item onClick={()=>  history.push("/news")}>
+            <NavDropdown.Item onClick={()=>  history("/news")}>
               نور
             </NavDropdown.Item>
-            <NavDropdown.Item onClick={()=>  history.push("/news")}>
+            <NavDropdown.Item onClick={()=>  history("/news")}>
               آخرین تخفیف ها (جشنواره)
             </NavDropdown.Item>
-            <NavDropdown.Item onClick={()=>  history.push("/news")}>
+            <NavDropdown.Item onClick={()=>  history("/news")}>
               بهینه سازی روشنایی
             </NavDropdown.Item>
-            <NavDropdown.Item onClick={()=>  history.push("/news")}>
+            <NavDropdown.Item onClick={()=>  history("/news")}>
               ساخت و تولید
             </NavDropdown.Item>
-            <NavDropdown.Item onClick={()=>  history.push("/news")}>
+            <NavDropdown.Item onClick={()=>  history("/news")}>
               طراحی روشنایی
             </NavDropdown.Item>
-            <NavDropdown.Item onClick={()=>  history.push("/news")}>
+            <NavDropdown.Item onClick={()=>  history("/news")}>
               رویدادهای روشنایی
             </NavDropdown.Item>
-            <NavDropdown.Item onClick={()=>  history.push("/news")}>
+            <NavDropdown.Item onClick={()=>  history("/news")}>
              تبلیغات
             </NavDropdown.Item>
           </NavDropdown>
 
           <NavDropdown title="پیشنهادات بالبیران" id="collasible-nav-dropdown">
 
-            <NavDropdown.Item onClick={()=>  history.push("/shegeftangiz")}>کالای شگفت انگیز</NavDropdown.Item>
-            <NavDropdown.Item onClick={()=>  history.push("/ShegeftGreen")}>
+            <NavDropdown.Item onClick={()=>  history("/shegeftangiz")}>کالای شگفت انگیز</NavDropdown.Item>
+            <NavDropdown.Item onClick={()=>  history("/ShegeftGreen")}>
              شگفت انگیز فروشگاه سبز
             </NavDropdown.Item>
-            <NavDropdown.Item  onClick={()=>  history.push("/pishnahadvijhe")}>فروش ویژه</NavDropdown.Item>
+            <NavDropdown.Item  onClick={()=>  history("/pishnahadvijhe")}>فروش ویژه</NavDropdown.Item>
 
-            <NavDropdown.Item onClick={()=>  history.push("/pishnahadvijhe")}>
+            <NavDropdown.Item onClick={()=>  history("/pishnahadvijhe")}>
              پرفروش ترین
             </NavDropdown.Item>
           </NavDropdown>
@@ -344,8 +344,8 @@ export default function App() {
 
           <NavDropdown title="استعلام قیمت" id="collasible-nav-dropdown">
 
-        <NavDropdown.Item onClick={()=>  history.push("/pricebrand")}>لیست قیمت</NavDropdown.Item>
-        <NavDropdown.Item onClick={()=>  history.push("/darkhastprice")}>
+        <NavDropdown.Item onClick={()=>  history("/pricebrand")}>لیست قیمت</NavDropdown.Item>
+        <NavDropdown.Item onClick={()=>  history("/darkhastprice")}>
           درخواست استعلام قیمت
         </NavDropdown.Item>
 

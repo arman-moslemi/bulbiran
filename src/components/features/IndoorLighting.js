@@ -13,12 +13,12 @@ import MiniIcon from './assets/icons/MiniIcon.js';
 import AmazingSlider from './layouts/AmazingSlider';
 import BulbsImg from './assets/img/bulbs.png';
 import SliderImg from './assets/icons/SliderImg';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../commons/inFormTypes";
 import {useParams } from "react-router-dom";
 
 const Indoor = () => {
-   const history = useHistory();
+   const history = useNavigate();
    const [img1,setimg1]=useState('')
 const [img2,setimg2]=useState('')
 const params = useParams().id;
@@ -102,9 +102,9 @@ console.log(error);
           <div className="indoorBox">
           <MiniIcon className="fRight"/>
           <span className="fRight">انواع {item.SmallerGroup}</span>
-          {/* <Button onClick={()=>  history.push("/indoorsecond/"+item.GroupID)}>خرید محصولات</Button> */}
-          <Button onClick={()=>  history.push("/BulbiranShop/"+item.GroupID)}>خرید محصولات</Button>
-          {/* <Button onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>خرید محصولات</Button> */}
+          {/* <Button onClick={()=>  history("/indoorsecond/"+item.GroupID)}>خرید محصولات</Button> */}
+          <Button onClick={()=>  history("/BulbiranShop/"+item.GroupID)}>خرید محصولات</Button>
+          {/* <Button onClick={()=>  history("/bulbiranshop/"+item.GroupID)}>خرید محصولات</Button> */}
           </div>
 
        </div>
@@ -120,7 +120,7 @@ console.log(error);
           <div className="indoorBox">
           <MiniIcon className="fRight"/>
           <span className="fRight">انواع چراغ آویز</span>
-          <Button onClick={()=>  history.push("/indoorsecond")}>خرید محصولات</Button>
+          <Button onClick={()=>  history("/indoorsecond")}>خرید محصولات</Button>
           </div>
 
        </div>

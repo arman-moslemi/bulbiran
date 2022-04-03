@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import { Component } from 'react';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TopBar from './layouts/TopBar'
 import Header from './layouts/Header'
 import SocialRow from './layouts/SocialRow'
@@ -53,7 +53,7 @@ const CartStep1=() => {
     const [name,setName]=useState('')
     const [phone,setPhone]=useState('')
     const [codeposti,setCodePosti]=useState('')
-    const history = useHistory();
+    const history = useNavigate();
 
    const increment = (id,num,cc) => {
      console.log(471)
@@ -263,7 +263,7 @@ else{
              console.log(response.data.result)
 
              alert(response.data.FactorNum+"محصولات با موفقیت به فاکتور اضافه شد.منظر تائید بمانید شماره فاکتور")
-             history.push("/userpanel/"+UserID)
+             history("/userpanel/"+UserID)
 
 }})
           .catch(function (error) {
@@ -275,7 +275,7 @@ else{
        const UserID= localStorage.getItem("user_id");
        if(UserID==null ||UserID == "" ){
            alert("ابتدا وارد شوید")
-history.push("/Login")
+history("/Login")
        }
 console.log(UserID)
 

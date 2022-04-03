@@ -7,7 +7,7 @@ import Slide1 from '../assets/img/slide1.jpg';
 import Slide2 from '../assets/img/b1.png';
 import Lamp1 from '../assets/img/lamp1.png'
 import {FaClock} from 'react-icons/fa';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { apiUrl ,apiAsset} from "../../../commons/inFormTypes";
 
 export default function AmazingSlider({data}) {

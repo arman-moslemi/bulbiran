@@ -1,7 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/bulbiran.css'
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {Container,Row,Col,Button} from 'react-bootstrap'
 import Truck from'../assets/icons/TruckSvg'
 import Percent from '../assets/icons/Percent'
@@ -13,7 +13,7 @@ import ResponsiveMenu from '../layouts/ResponsiveMenu';
 import Exit from '../assets/img/exit.png'
 
 const TopBar = () => {
-  const history = useHistory();
+  const history = useNavigate();
   const UserID= localStorage.getItem("user_id");
   const UserName= localStorage.getItem("user_name");
   const basket=()=>{
@@ -21,17 +21,17 @@ const TopBar = () => {
     console.log(UserID)
            if(UserID==null ||UserID=="" ){
   alert("ابتدا وارد شوید")
-  history.push("/Login")
+  history("/Login")
 
   }
   else{
-    history.push("/Cartstep1/"+UserID)
+    history("/Cartstep1/"+UserID)
   }
   }
   const exit=()=>{
     console.log(22)
     localStorage.setItem("user_id","")
-    history.push("/")
+    history("/")
 
   }
     return (
@@ -58,7 +58,7 @@ const TopBar = () => {
       </Col>
 
     <Col xs={6} md={8}>
-    <Button className="topbar-btn"onClick={()=>  history.push("/pishnahadvijhe")}>
+    <Button className="topbar-btn"onClick={()=>  history("/pishnahadvijhe")}>
 
       <Percent className="d-inline-block"></Percent>
       <p className="d-inline-block" >تخفیفات امروز</p>
@@ -70,15 +70,15 @@ const TopBar = () => {
 
       {
           UserID==null ||UserID==""?
-    <Button className="topbar-btn" onClick={()=>  history.push("/login")}>
+    <Button className="topbar-btn" onClick={()=>  history("/login")}>
       <User className="d-inline-block"></User>
 
-          <p className="d-inline-block" onClick={()=>  history.push("/login")}>حساب کاربری</p>
+          <p className="d-inline-block" onClick={()=>  history("/login")}>حساب کاربری</p>
       </Button>
           :
-          <Button className="topbar-btn" onClick={()=>  history.push("/userpanel/"+UserID)}>
+          <Button className="topbar-btn" onClick={()=>  history("/userpanel/"+UserID)}>
       <User className="d-inline-block"></User>
-          <p className="d-inline-block" onClick={()=>  history.push("/userpanel/"+UserID)}>{UserName}</p>
+          <p className="d-inline-block" onClick={()=>  history("/userpanel/"+UserID)}>{UserName}</p>
           </Button>
 
       }

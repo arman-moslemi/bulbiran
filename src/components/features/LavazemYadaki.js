@@ -8,7 +8,7 @@ import {Container,Row,Col,Button} from 'react-bootstrap'
 import Janebi from './assets/icons/Janebi'
 import Khadamat5 from './assets/icons/Khadamat5'
 import { FaAngleLeft,FaAlignRight ,FaCheck ,FaStar} from 'react-icons/fa';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Lamp from './assets/img/lamp.png';
 import Cheragh from './assets/img/cheragh.png';

@@ -7,7 +7,7 @@ import Footer from './layouts/Footer'
 import {Container,Row,Col,Button} from 'react-bootstrap'
 import { FaAngleLeft } from 'react-icons/fa';
 import CircumstanceB from './assets/icons/CircumstanceB';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import C1 from './assets/icons/C1';
 import C2 from './assets/icons/C2';
