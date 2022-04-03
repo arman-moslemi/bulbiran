@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { BrowserRouter, Switch, Route,HashRouter } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import Home from '../components/features/Home';
@@ -44,16 +44,42 @@ import IndoorSecondGreen from '../components/features/IndoorSecondGreen';
 import Cartstep1 from '../components/features/Cartstep1';
 import BlogSecond from '../components/features/BlogSecond';
 import ScrollToTop from '../components/features/layouts/ScrollToTop';
+
 const MainRoutes = (props) => {
+	const [count,setCount]=useState(0)
+// 	const removeHashFromUrl = () => {
+// 		const url = window.location.href.replace('/#', '');
+// 		// window.location.href = url;
+// 		// setCount(1);
+// 	};
+// 	useEffect(()=>{
+		
+// 		if(count==0){
+// 			setCount(5)
+// 			console.log(111111111111111)
+// 			console.log(window.location.pathname)
+// 			const url = window.location.href.replace('/#', '');
+// 			console.log(url)
+// 			location.hash?
+			
+// 			window.location.href = url
+
+// :
+// null
+// }
+
+// 	},[])
 	return (
 		<HashRouter basename={'/'}>
 <ScrollToTop/>
 			<Route
 					 exact
-					path='/'
+					// path='/'
+					path={['/', '/index.html']}
 					name='صفحه اصلی'
-					render={(props) => <Home />}>
-
+					// render={(props) => <Home />}
+					>
+ { <Home />}
 					</Route>
 					<Route
 

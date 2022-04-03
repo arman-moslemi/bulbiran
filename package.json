@@ -56,7 +56,10 @@
     "react-tabs": "^3.2.2",
     "react-tooltip": "^4.2.21",
     "slick-carousel": "^1.8.1",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^3.11.1"
   },
   "scripts": {
     "start": "react-scripts start",
