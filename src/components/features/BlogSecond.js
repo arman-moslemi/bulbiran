@@ -67,7 +67,7 @@ const BlogSecond = () => {
            </div>
         <div className="newsList">
         <Link
-          to={`/blogsecond/1`}
+          onClick={()=>{history.push("/blogsecond/1");window.location.reload()}}
           className="newsLista"
         >
             {/* <a className="newsLista" href="/BlogSecond/1"> */}
@@ -83,28 +83,29 @@ const BlogSecond = () => {
         <div className="newsList">
         <Link
         className="newsLista"
-          to={`/blogsecond/2`}
+          // to={`/blogsecond/2`}
+          onClick={()=>{history.push("/blogsecond/2");window.location.reload()}}
         >               مقالات علمی
 </Link>
         </div>
         <div className="newsList">
         <Link
         className="newsLista"
-          to={`/blogsecond/3`}
+        onClick={()=>{history.push("/blogsecond/3");window.location.reload()}}
         >               تکنولوژی روز
             </Link>
         </div>
         <div className="newsList">
         <Link
         className="newsLista"
-          to={`/blogsecond/4`}
+        onClick={()=>{history.push("/blogsecond/5");window.location.reload()}}
         >                نور
             </Link>
         </div>
         <div className="newsList">
         <Link
         className="newsLista"
-          to={`/blogsecond/5`}
+        onClick={()=>{history.push("/blogsecond/5");window.location.reload()}}
         >               مهندسی روشنایی
             </Link>
         </div>
@@ -112,21 +113,21 @@ const BlogSecond = () => {
         <Link
 
         className="newsLista"
-          to={`/blogsecond/6`}
+        onClick={()=>{history.push("/blogsecond/6");window.location.reload()}}
         >               ساخت و تولید
             </Link>
         </div>
         <div className="newsList">
         <Link
         className="newsLista"
-          to={`/blogsecond/7`}
+        onClick={()=>{history.push("/blogsecond/7");window.location.reload()}}
         >              طراحی روشنایی
             </Link>
         </div>
         <div className="newsList">
         <Link
         className="newsLista"
-          to={`/blogsecond/8`}
+        onClick={()=>{history.push("/blogsecond/8");window.location.reload()}}
         >               رویدادهای مرتبط با روشنایی
             </Link>
         </div>

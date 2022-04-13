@@ -8,14 +8,30 @@ import { Link, useHistory } from "react-router-dom";
 
 export default function App() {
   const [brand,setBrand]=useState([])
-  const [group,setGroup]=useState([])
+  const [group,setGroups]=useState([])
   const [greenGroup,setGreenGroup]=useState([])
   const history = useHistory();
 
   const mainSlider=()=>{
     // const [pic,setpic]=useState(Lamp)
     const axios = require("axios");
+    axios
+    .get(apiUrl + "AllRoles")
+.then(function (response) {
+  if (response.data.result == "true") {
 
+      setGroups(response.data.Data)
+      console.log(1235689)
+      console.log(response.data.Data)
+
+}
+else{
+  console.log(response.data.result)
+
+}})
+.catch(function (error) {
+  console.log(error);
+});
       axios
           .get(apiUrl + "AllBrandProduct")
       .then(function (response) {
@@ -31,21 +47,7 @@ export default function App() {
       .catch(function (error) {
         console.log(error);
       });
-      axios
-      .get(apiUrl + "AllRoles")
-  .then(function (response) {
-    if (response.data.result == "true") {
-
-        setGroup(response.data.Data)
-
-  }
-  else{
-    console.log(response.data.result)
-
-  }})
-  .catch(function (error) {
-    console.log(error);
-  });
+   
       axios
       .get(apiUrl + "AllGreenGroup")
   .then(function (response) {
@@ -139,7 +141,7 @@ export default function App() {
           </NavDropdown>
 
           <NavDropdown title="لوازم جانبی" id="collasible-nav-dropdown">
-        {group.filter(t=>t.BiggerGroup=6)?.map((item, i) => {
+        {group.filter(t=>t.BiggerGroup==6)?.map((item, i) => {
                return (
             <NavDropdown.Item  onClick={()=>  history.push("/bulbiranshop/"+item.GroupID)}>
 {item.SmallerGroup}
@@ -176,11 +178,7 @@ export default function App() {
 
 })
 }
-            <NavDropdown.Item    >برند شاپ</NavDropdown.Item>
-
-            <NavDropdown.Item    >
-              برند یک
-            </NavDropdown.Item>
+          
           </NavDropdown>
           <NavDropdown title="پنل" id="collasible-nav-dropdown">
         {greenGroup.filter(t=>t.BiggerGroup==2)?.map((item, i) => {
@@ -192,11 +190,7 @@ export default function App() {
 
 })
 }
-            <NavDropdown.Item    >برند شاپ</NavDropdown.Item>
-
-            <NavDropdown.Item    >
-              برند یک
-            </NavDropdown.Item>
+          
           </NavDropdown>
           <NavDropdown title="نورافکن" id="collasible-nav-dropdown">
         {greenGroup.filter(t=>t.BiggerGroup==3)?.map((item, i) => {
@@ -208,11 +202,7 @@ export default function App() {
 
 })
 }
-            <NavDropdown.Item    >برند شاپ</NavDropdown.Item>
-
-            <NavDropdown.Item    >
-              برند یک
-            </NavDropdown.Item>
+          
           </NavDropdown>
           <NavDropdown title="ریسه" id="collasible-nav-dropdown">
         {greenGroup.filter(t=>t.BiggerGroup==4)?.map((item, i) => {
@@ -224,11 +214,7 @@ export default function App() {
 
 })
 }
-            <NavDropdown.Item    >برند شاپ</NavDropdown.Item>
-
-            <NavDropdown.Item    >
-              برند یک
-            </NavDropdown.Item>
+          
           </NavDropdown>
           <NavDropdown title="چراغ" id="collasible-nav-dropdown">
         {greenGroup.filter(t=>t.BiggerGroup==5)?.map((item, i) => {
@@ -240,11 +226,7 @@ export default function App() {
 
 })
 }
-            <NavDropdown.Item    >برند شاپ</NavDropdown.Item>
-
-            <NavDropdown.Item    >
-              برند یک
-            </NavDropdown.Item>
+           
           </NavDropdown>
           <NavDropdown title="آویز" id="collasible-nav-dropdown">
         {greenGroup.filter(t=>t.BiggerGroup==6)?.map((item, i) => {
@@ -256,11 +238,7 @@ export default function App() {
 
 })
 }
-            <NavDropdown.Item    >برند شاپ</NavDropdown.Item>
-
-            <NavDropdown.Item    >
-              برند یک
-            </NavDropdown.Item>
+           
           </NavDropdown>
           <NavDropdown title="لوازم جانبی" id="collasible-nav-dropdown">
         {greenGroup.filter(t=>t.BiggerGroup==7)?.map((item, i) => {
@@ -272,11 +250,7 @@ export default function App() {
 
 })
 }
-            <NavDropdown.Item    >برند شاپ</NavDropdown.Item>
-
-            <NavDropdown.Item    >
-              برند یک
-            </NavDropdown.Item>
+          
           </NavDropdown>
 
           </NavDropdown>

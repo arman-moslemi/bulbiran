@@ -70,7 +70,7 @@ const MainRoutes = (props) => {
 
 // 	},[])
 	return (
-		<HashRouter basename={'/'}>
+		<BrowserRouter basename={'/'}>
 <ScrollToTop/>
 			<Route
 					 exact
@@ -82,10 +82,13 @@ const MainRoutes = (props) => {
  { <Home />}
 					</Route>
 					<Route
-
+exact
 					path='/GreenShop/:id'
 					name='فروشگاه سبز'
-					render={(props) => <GreenShop/>}>
+					// render={(props) => <GreenShop/>}
+					component={GreenShop}
+					
+					>
 
 					</Route>
 					<Route
@@ -372,7 +375,7 @@ const MainRoutes = (props) => {
 					</Route>
 
 					{/* <PrivateRoute path='/pages' /> */}
-		</HashRouter>
+		</BrowserRouter>
 	);
 };
 

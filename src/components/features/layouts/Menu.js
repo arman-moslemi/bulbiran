@@ -77,7 +77,9 @@ const Menu = () => {
         if (response.data.result == "true") {
 
             setGroup(response.data.Data)
-
+            console.log(88888899999)
+            console.log(response.data.Data)
+    
       }
       else{
         console.log(response.data.result)
