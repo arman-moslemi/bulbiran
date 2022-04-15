@@ -267,6 +267,8 @@ console.log(check.length)
   }
         useEffect(() => {
           mainSlider();
+          window.scrollTo(0, 0);
+
 // alert(val)
         }, []);
     return (
@@ -295,7 +297,8 @@ console.log(check.length)
   return (
     
   <RadioButton value={item?.GreenGroupID.toString()} rootColor="transparent"
-//    onChange={()=>mainCat(1)}
+   onChange={()=>{history.push("/GreenShop/"+item.GreenGroupID);window.location.reload()}} 
+//    onChange={()=>mainCat(1)} 
     pointColor="#ffb921">
   {item?.SmallerGroup}
   </RadioButton>

@@ -275,6 +275,7 @@ const newest=()=>{
 
         useEffect(() => {
           mainSlider();
+          window.scrollTo(0, 0);
 // alert(val)
 console.log(page)
         }, [page]);
@@ -304,7 +305,8 @@ console.log(page)
   return (
     
   <RadioButton value={item?.GroupID.toString()} rootColor="transparent"
-//    onChange={()=>mainCat(1)}
+  //  onChange={()=>mainCat(1)}
+   onChange={()=>{history.push("/bulbiranshop/"+item.GroupID);window.location.reload()}}
     pointColor="#ffb921">
   {item?.SmallerGroup}
   </RadioButton>
