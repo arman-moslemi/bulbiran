@@ -37,7 +37,7 @@ data?.map((item, i) => {
 
        data.length>3?
            <Link
-          to={`/singleProduct/${item.ProductID}`}
+          to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
         >
       <div className="sliderCard">
       <img src={apiAsset+item.Pic1}/>
@@ -65,7 +65,7 @@ data?.map((item, i) => {
       {
       i<parseInt(data.length/2)?
            <Link
-          to={`/singleProduct/${item.ProductID}`}
+          to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
         >
       <div className="sliderCard">
       <img src={apiAsset+item.Pic1}/>
@@ -93,7 +93,7 @@ null
 }
       </>
       // <Link
-      //     to={`/singleProduct/${item.ProductID}`}
+      //     to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
       //   >
       // <div className="sliderCard">
       // <img src={apiAsset+item.Pic1}/>
@@ -134,7 +134,7 @@ return (
 
 data.length>3?
 <Link
-to={`/singleProduct/${item.ProductID}`}
+to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
 >
 <div className="sliderCard">
 <img src={apiAsset+item.Pic1}/>
@@ -162,7 +162,7 @@ to={`/singleProduct/${item.ProductID}`}
 {
 i<parseInt(data.length/2)?
 <Link
-to={`/singleProduct/${item.ProductID}`}
+to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
 >
 <div className="sliderCard">
 <img src={apiAsset+item.Pic1}/>
@@ -190,7 +190,7 @@ null
 }
 </>
 // <Link
-//     to={`/singleProduct/${item.ProductID}`}
+//     to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
 //   >
 // <div className="sliderCard">
 // <img src={apiAsset+item.Pic1}/>

@@ -30,16 +30,14 @@ export default function AmazingSlider({data}) {
                   {
 data?.map((item, i) => {
     var ss=((item.Cost-item.SpecialCost)/item.Cost)*100
-    console.log(item)
-    console.log(data.length)
-    console.log(i)
+
     var mm=parseInt(data.length/2)
 
   return (
 
        data.length>3?
            <Link
-          to={`/singleProduct/${item.ProductID}`}
+          to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
         >
       <div className="sliderCard">
       <img src={apiAsset+item.Pic1}/>
@@ -47,19 +45,32 @@ data?.map((item, i) => {
        {item.ProductName}
 
       </p>
+      {
+            item.SpecialCost?
       <div className="amazingPrice ta-left">
           <p className="strokeOutPrice d-inline-block">
           {item.Cost} تومان
           </p>
+       
           <p className="percentPrice d-inline-block">
           {parseInt(ss) }%
           </p>
       </div>
+          :  
+          null
+          }
+           {
+            item.SpecialCost?
       <div className="amazingPrice2 ta-left">
           <p className="price d-inline-block"> {item.SpecialCost}</p>
           <p className="vahed d-inline-block">تومان</p>
       </div>
-
+      :
+      <div className="amazingPrice2 ta-left">
+      <p className="price d-inline-block"> {item.Cost}</p>
+      <p className="vahed d-inline-block">تومان</p>
+  </div>
+}
       </div>
       </Link>
       :
@@ -67,7 +78,7 @@ data?.map((item, i) => {
       {
       i<parseInt(data.length/2)?
            <Link
-          to={`/singleProduct/${item.ProductID}`}
+          to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
         >
       <div className="sliderCard">
       <img src={apiAsset+item.Pic1}/>
@@ -95,7 +106,7 @@ null
 }
       </>
       // <Link
-      //     to={`/singleProduct/${item.ProductID}`}
+      //     to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
       //   >
       // <div className="sliderCard">
       // <img src={apiAsset+item.Pic1}/>
@@ -129,16 +140,14 @@ null
    {
 data?.map((item, i) => {
 var ss=((item.Cost-item.SpecialCost)/item.Cost)*100
-console.log(item)
-console.log(data.length)
-console.log(i)
+
 var mm=parseInt(data.length/2)
 
 return (
 
 data.length>3?
 <Link
-to={`/singleProduct/${item.ProductID}`}
+to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
 >
 <div className="sliderCard">
 <img src={apiAsset+item.Pic1}/>
@@ -166,7 +175,7 @@ to={`/singleProduct/${item.ProductID}`}
 {
 i<parseInt(data.length/2)?
 <Link
-to={`/singleProduct/${item.ProductID}`}
+to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
 >
 <div className="sliderCard">
 <img src={apiAsset+item.Pic1}/>
@@ -194,7 +203,7 @@ null
 }
 </>
 // <Link
-//     to={`/singleProduct/${item.ProductID}`}
+//     to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
 //   >
 // <div className="sliderCard">
 // <img src={apiAsset+item.Pic1}/>

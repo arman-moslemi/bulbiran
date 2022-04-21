@@ -563,7 +563,8 @@ product?.map((item, i) => {
           <>
                 <Col md={3} className="pd0">
             <Link
-          to={`/singleProduct/${item.ProductID}`}
+          // to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
+          to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
         >
                     <div className="whiteCard">
                         <img src={apiAsset+item.Pic1}/>

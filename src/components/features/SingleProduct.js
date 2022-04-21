@@ -117,7 +117,7 @@ import { FaAngleLeft ,FaSearch ,FaTimes ,FaWhatsapp} from 'react-icons/fa';
 
 var r1,r2;
         axios
-          .get(apiUrl + "Products/" + params)
+          .get(apiUrl + "ProductsbyName/" + params)
         //   .get(apiUrl + "Blog")
           .then(function (response) {
             if (response.data.result == "true") {
@@ -167,11 +167,11 @@ for (let index = 0; index < response.data.Data?.Color?.split(',').length; index+
     console.log(role);
 
     axios
-    .get(apiUrl + "ProductRelated/"+params)
+    .get(apiUrl + "ProductRelatedbyName/"+params)
 .then(function (response2) {
   if (response2.data.result == "true") {
       console.log(598)
-      console.log(response.data.Data)
+      console.log(response2.data.Data)
 if(response2.data.Data!=null)
       {setMoshabeh(response2.data.Data)
       console.log(response2.data.result)}
@@ -181,9 +181,10 @@ if(response2.data.Data!=null)
         .get(apiUrl + "CategoryProduct/"+response.data.Data?.Role)
     .then(function (response) {
       if (response.data.result == "true") {
-    
+        console.log(599)
+
+        console.log(response.data.Data)
           setMoshabeh(response.data.Data)
-          console.log(response.data.result)
     
     }
     else{
@@ -234,7 +235,7 @@ else{
             console.log(error);
           });
           axios
-          .get(apiUrl + "Comment/" + params)
+          .get(apiUrl + "CommentbyName/" + params)
         //   .get(apiUrl + "Blog")
           .then(function (response) {
             if (response.data.result == "true") {
@@ -248,7 +249,7 @@ else{
             console.log(error);
           });
           axios
-          .get(apiUrl + "ProductProperty/" + params)
+          .get(apiUrl + "ProductPropertybyName/" + params)
         //   .get(apiUrl + "Blog")
           .then(function (response) {
             if (response.data.result == "true") {
@@ -262,7 +263,7 @@ else{
             console.log(error);
           });
           axios
-          .get(apiUrl + "ProductRate/" + params)
+          .get(apiUrl + "ProductRatebyName/" + params)
         //   .get(apiUrl + "Blog")
           .then(function (response) {
             if (response.data.result == "true") {
@@ -298,7 +299,7 @@ else{
 
     const total=product?.SpecialCost?product?.SpecialCost:product.Cost;
     console.log(total)
-          axios.post(apiUrl + "InsertShopBasket",{CustomerID:UserID,ProductID:params,Cost:product.SpecialCost?product.SpecialCost:product.Cost,Number:count+product?.Number*box,TotalCost:total,Color:colorSel})
+          axios.post(apiUrl + "InsertShopBasket",{CustomerID:UserID,ProductID:product.ProductID,Cost:product.SpecialCost?product.SpecialCost:product.Cost,Number:count+product?.Number*box,TotalCost:total,Color:colorSel})
         //   .get(apiUrl + "Blog")
           .then(function (response) {
               console.log(475)

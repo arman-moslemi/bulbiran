@@ -448,7 +448,7 @@ console.log(check.length)
           <>
                 <Col md={3} xs={6} className="pd0">
             <Link
-          to={`/singleProduct/${item.ProductID}`}
+          to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
         >
                     <div className="whiteCard">
                         <img src={apiAsset+item.Pic1}/>

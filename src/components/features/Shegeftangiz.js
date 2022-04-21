@@ -177,7 +177,7 @@ const newest=()=>{
           <>
                 <Col md={2} xs={6} className="pd0">
               <Link
-          to={`/singleProduct/${item.ProductID}`}
+          to={`/singleProduct/${item.ProductName.replace(" ","_")}`}
         >
                     <div className="whiteCard">
                         <img src={Img4}/>
