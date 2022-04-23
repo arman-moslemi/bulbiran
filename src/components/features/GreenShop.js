@@ -45,8 +45,9 @@ const check=[];
 const GreenShop = () => {
     const [product,setProduct]=useState([])
     const [val,setVal]=useState(0)
-    const params = useParams().id;
-    const [group,setGroup]=useState([])
+    const uu=useParams().id;
+    const params = uu=="all"?1:uu;
+        const [group,setGroup]=useState([])
     const [property,setProperty]=useState([])
     const [propertySel,setPropertySel]=useState([])
     const [menu,setMenu]=useState([])
@@ -293,21 +294,39 @@ console.log(check.length)
              onChange={ss=>mainCat(ss)}
             // value="1"
            className="radioB">
-             { menu?.slice(0,9).map((item) => {
-  return (
-    
-  <RadioButton value={item?.GreenGroupID.toString()} rootColor="transparent"
-   onChange={()=>{history.push("/GreenShop/"+item.GreenGroupID);window.location.reload()}} 
-//    onChange={()=>mainCat(1)} 
-    pointColor="#ffb921">
-  {item?.SmallerGroup}
-  </RadioButton>
-  
-
-                    );
-
-            })
-          }
+                {
+               uu=="all"?
+                group?.map((item, i) => {
+                return (
+              
+                <RadioButton value={item.SubGreenGroupID.toString()} rootColor="transparent"
+              //    onChange={()=>mainCat(1)}
+                  pointColor="#ffb921">
+                {item.Title}
+                </RadioButton>
+              
+                                  );
+              
+                          })
+                        
+              
+               :
+                menu?.slice(0,9).map((item) => {
+                return (
+                  
+                  <RadioButton value={item?.GreenGroupID.toString()} rootColor="transparent"
+                  onChange={()=>{history.push("/GreenShop/"+item.GreenGroupID);window.location.reload()}} 
+               //    onChange={()=>mainCat(1)} 
+                   pointColor="#ffb921">
+                 {item?.SmallerGroup}
+                 </RadioButton>
+              
+                                  );
+              
+                          })
+                        
+             }
+       
   {/* <RadioButton value="2" rootColor="transparent" pointColor="#ffb921">
     پنل
   </RadioButton>
@@ -335,18 +354,36 @@ console.log(check.length)
             <div className="categoryBox2">
             <h4 className="circumstanceTitle ta-right">دسته بندی ها</h4>
             <div className="cateInner ta-center">
-            { menu?.map((item, i) => {
-  return (
-                <Link onClick={()=>{history.push("/GreenShop/"+item.GreenGroupID);window.location.reload()}}>
+            {
+            uu=="all"?
+
+            group?.map((item, i) => {
+              return (
+                              <Link onClick={()=>history.push( "/indoorlightingGreen/"+item.SubGreenGroupID)}>
                 <div>
-                    <img src={apiAsset+item.Photo}/>
-                    <p>{item.SmallerGroup}</p>
-                </div>
-                </Link>
+                                <img src={apiAsset+item.Photo}/>
+                                <p>{item.Title}</p>
+                            </div>
+                            </Link>
+                                  );
+            
+            })
+            
+            :
+            menu?.map((item, i) => {
+  return (
+    <Link onClick={()=>{history.push("/GreenShop/"+item.GreenGroupID);window.location.reload()}}>
+    <div>
+        <img src={apiAsset+item.Photo}/>
+        <p>{item.SmallerGroup}</p>
+    </div>
+    </Link>
                       );
 
 })
 }
+              
+  
            </div>
             </div>
         </Col>

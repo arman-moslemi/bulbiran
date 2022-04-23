@@ -75,7 +75,7 @@ const BulbFinderStart = () => {
   return (
             <div>
             <img src={apiAsset+item.Photo} className="kl1"/>
-            <a     onClick={()=>  history.push("/bulbfinder/"+item.BulbFindGroupID)}>{item.Title}</a>
+            <a     onClick={()=>  history.push("/bulbfinder/"+item.BulbFindGroupID)}></a>
             </div>
                                   );
 

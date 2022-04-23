@@ -1432,7 +1432,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
               <Col md="auto" xs="2" className="ta-center flex-1">
               {/*  */}
       <Dropdown>
-        <Dropdown.Toggle onClick={()=>history.push("/BulbiranShop/2")} className="menuDropDown"
+        <Dropdown.Toggle onClick={()=>history.push("/BulbiranShop/all")} className="menuDropDown"
           onMouseEnter={() =>{ setShow(true);setShow2(false)}}
         >
         <p className="menu-items d-inline-block" >فروشگاه بالبیران</p>
@@ -1543,7 +1543,7 @@ brand?.map((item, i) => {
              </Col>
               <Col onMouseEnter={() =>{setShow(false); setShow2(true)}} md="auto" xs="2" className="ta-center flex-1">
               <Dropdown >
-        <Dropdown.Toggle    onClick={()=>  history.push("/GreenShop/1")}     className="menuDropDown">
+        <Dropdown.Toggle    onClick={()=>  history.push("/GreenShop/all")}     className="menuDropDown">
         <p className="menu-items d-inline-block">فروشگاه سبز</p>
                   <FaCaretDown display="inline-block" color="ffd200" fontSize="2rem"></FaCaretDown>
         </Dropdown.Toggle>
@@ -1667,8 +1667,8 @@ brand?.map((item, i) => {
   <Dropdown.Menu className="menuDropList">
 
     <Dropdown.Item  onClick={()=>  history.push("/news")}>آخرین اخبار</Dropdown.Item>
-     <Dropdown.Item  onClick={()=>  history.push("/news")}>مقالات علمی</Dropdown.Item>
-    <Dropdown.Item    onClick={()=>  history.push("/news")}>طراحی روشنایی</Dropdown.Item>
+     {/* <Dropdown.Item  onClick={()=>  history.push("/news")}>مقالات علمی</Dropdown.Item>
+    <Dropdown.Item    onClick={()=>  history.push("/news")}>طراحی روشنایی</Dropdown.Item> */}
     {/* <Dropdown.Item  onClick={()=>  history.push("/news")}>تکنولوژی روز</Dropdown.Item> */}
     {/* <Dropdown.Item    onClick={()=>  history.push("/news")}>نور</Dropdown.Item>
     <Dropdown.Item    onClick={()=>  history.push("/news")}>آخرین تخفیف ها(جشنواره)</Dropdown.Item>
@@ -1679,7 +1679,7 @@ brand?.map((item, i) => {
   </Dropdown.Menu>
 </Dropdown>
               </Col>
-              <Col md="auto" xs="2"  className="ta-center flex-1">
+              {/* <Col md="auto" xs="2"  className="ta-center flex-1">
               <Dropdown>
   <Dropdown.Toggle className="menuDropDown">
   <p className="menu-items d-inline-block">پیشنهادات بالبیران</p>
@@ -1691,11 +1691,10 @@ brand?.map((item, i) => {
     <Dropdown.Item  onClick={()=>  history.push("/shegeftangiz")}>کالای شگفت انگیز</Dropdown.Item>
     <Dropdown.Item  onClick={()=>  history.push("/ShegeftGreen")}>شگفت انگیز فروشگاه سبز</Dropdown.Item>
     <Dropdown.Item  onClick={()=>  history.push("/pishnahadvijhe")}>فروش ویژه</Dropdown.Item>
-    {/* <Dropdown.Item  onClick={()=>  history.push("/pishnahadvijhe")}>پرفروش ترین</Dropdown.Item> */}
     </Dropdown.Menu>
     </Dropdown>
 
-              </Col>
+              </Col> */}
               <Col md="auto" xs="2" className="ta-center flex-1">
               <Dropdown>
   <Dropdown.Toggle className="menuDropDown">

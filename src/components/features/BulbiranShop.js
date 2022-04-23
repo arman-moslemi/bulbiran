@@ -37,30 +37,34 @@ const BulbiranShop = () => {
     const [propertySel,setPropertySel]=useState([])
     const swiper = useRef(null);
     const [val,setVal]=useState(0)
-    const params = useParams().id;
+    const uu=useParams().id;
+    const params = uu=="all"?2:uu;
     const [menu,setMenu]=useState([])
     const history = useHistory();
-    const mainSliderCount=()=>{
-      const axios = require("axios");
-      axios
-      .get(apiUrl + "CategoryProduct/"+params)
-  .then(function (response) {
-    if (response.data.result == "true") {
+  //   const mainSliderCount=()=>{
+  //     const axios = require("axios");
+  //     axios
+  //     .get(apiUrl + "CategoryProduct/"+params==0?2:params)
+  // .then(function (response) {
+  //   if (response.data.result == "true") {
 
-        setCount(parseInt(response.data.Data.length/20))
+  //       setCount(parseInt(response.data.Data.length/20))
 
-        console.log(response.data.Data)
-        console.log(response.data.Data.length)
+  //       console.log(33333)
+  //       console.log(response.data.Data)
+  //       console.log(response.data.Data.length)
     
-  }
-  else{
-    console.log(response.data.result)
+  // }
+  // else{
+  //   console.log(44444)
 
-  }})
-  .catch(function (error) {
-    console.log(error);
-  });
-    }
+  //   console.log(response.data.result)
+
+  // }})
+  // .catch(function (error) {
+  //   console.log(error);
+  // });
+  //   }
     const mainSlider=()=>{
         const axios = require("axios");
         if(page==1){
@@ -70,12 +74,13 @@ const BulbiranShop = () => {
         if (response.data.result == "true") {
   
             setCount(parseInt(response.data.Data.length/20))
-  
+            console.log(33333)
             console.log(response.data.Data)
             console.log(response.data.Data.length)
         
       }
       else{
+        console.log(44444)
         console.log(response.data.result)
   
       }})
@@ -301,20 +306,38 @@ console.log(page)
              onChange={ss=>mainCat(ss)}
             // value="1"
            className="radioB">
-               { menu?.slice(0,9).map((item) => {
-  return (
-    
-  <RadioButton value={item?.GroupID.toString()} rootColor="transparent"
-  //  onChange={()=>mainCat(1)}
-   onChange={()=>{history.push("/bulbiranshop/"+item.GroupID);window.location.reload()}}
-    pointColor="#ffb921">
-  {item?.SmallerGroup}
-  </RadioButton>
-
-                    );
-
-            })
-          }
+             {
+               uu=="all"?
+                group?.map((item, i) => {
+                return (
+              
+                <RadioButton value={item.SubGroupID.toString()} rootColor="transparent"
+              //    onChange={()=>mainCat(1)}
+                  pointColor="#ffb921">
+                {item.Title}
+                </RadioButton>
+              
+                                  );
+              
+                          })
+                        
+              
+               :
+                menu?.slice(0,9).map((item) => {
+                return (
+                  
+                <RadioButton value={item?.GroupID.toString()} rootColor="transparent"
+                //  onChange={()=>mainCat(1)}
+                 onChange={()=>{history.push("/bulbiranshop/"+item.GroupID);window.location.reload()}}
+                  pointColor="#ffb921">
+                {item?.SmallerGroup}
+                </RadioButton>
+              
+                                  );
+              
+                          })
+                        
+             }
   {/* <RadioButton value="2" rootColor="transparent" pointColor="#ffb921">
    روشنایی داخلی
   </RadioButton> */}
@@ -346,7 +369,23 @@ console.log(page)
             <div className="categoryBox2">
             <h4 className="circumstanceTitle ta-right">دسته بندی ها</h4>
             <div className="cateInner ta-center">
-            { menu?.map((item, i) => {
+            {
+            uu=="all"?
+
+            group?.map((item, i) => {
+              return (
+                              <Link onClick={()=>history.push( "/indoorlighting/"+item.SubGroupID)}>
+                <div>
+                                <img src={apiAsset+item.Photo}/>
+                                <p>{item.Title}</p>
+                            </div>
+                            </Link>
+                                  );
+            
+            })
+            
+            :
+            menu?.map((item, i) => {
   return (
                 <Link onClick={()=>{history.push("/bulbiranshop/"+item.GroupID);window.location.reload()}}>
                 <div>

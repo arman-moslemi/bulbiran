@@ -78,7 +78,7 @@ const Footer = () => {
                  </Col>  */}
             {/* <Col md={2} className="ta-right">
                  </Col> */}
-            <Col md={2} xs={6} className="ta-right">
+            {/* <Col md={2} xs={6} className="ta-right">
             <p className="footerTitle">مجله بالبیران</p>
                     <ul className="footerList">
                  <li>
@@ -90,6 +90,20 @@ const Footer = () => {
                  <li>
                  <a  onClick={()=>  history.push("/news")}  className="footerLink">طراحی روشنایی</a>
                  </li>
+
+
+                 </ul>
+            </Col> */}
+            <Col md={2} xs={6} className="ta-right">
+            <p className="footerTitle">استعلام قیمت</p>
+                    <ul className="footerList">
+                 <li>
+                 <a  onClick={()=>  history.push("/pricebrand")}  className="footerLink">لیست قیمت</a>
+                 </li>
+                 <li>
+                 <a  onClick={()=>  history.push("/darkhastprice")}  className="footerLink">درخواست استعلام قیمت</a>
+                 </li>
+               
 
 
                  </ul>
