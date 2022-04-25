@@ -112,7 +112,7 @@ const Menu = () => {
     const LampM = () => {
         return <div className="whiteMega" >
     <div onMouseEnter={()=>setpic(apiAsset+"lamp.png")} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlighting/1") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/bulbiranshop/1000"+1) ; window.location.reload()       }}>
 
        لامپ
        </Link>
@@ -231,7 +231,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const DakheliM = () => {
         return <div className="whiteMega">
     <div onMouseEnter={()=>setpic(apiAsset+"inner.png")} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlighting/2") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/bulbiranshop/1000"+2) ; window.location.reload()       }}>
 
       روشنایی داخلی
       </Link>
@@ -305,7 +305,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const KharejiM = () => {
         return <div className="whiteMega">
     <div  onMouseEnter={()=>setpic(apiAsset+"outdoor.png")}  className="whiteMegaTitle">
-    <Link  onClick={()=> {   history.push("/indoorlighting/3") ; window.location.reload()       }}>
+    <Link  onClick={()=> {   history.push("/bulbiranshop/1000"+3) ; window.location.reload()       }}>
 
      روشنایی خارجی
      </Link>
@@ -378,7 +378,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const TazeinM = () => {
         return <div className="whiteMega">
     <div  onMouseEnter={()=>setpic(apiAsset+"tazein.png")} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlighting/4") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/bulbiranshop/1000"+4) ; window.location.reload()       }}>
 
       روشنایی تزئینی
       </Link>
@@ -451,7 +451,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const KhasM = () => {
         return <div className="whiteMega">
     <div onMouseEnter={()=>setpic(apiAsset+"rise.png")}className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlighting/4") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/bulbiranshop/1000"+5) ; window.location.reload()       }}>
 
       روشنایی خاص
       </Link>
@@ -525,7 +525,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const JanebiM = () => {
         return <div className="whiteMega">
     <div onMouseEnter={()=>setpic(apiAsset+"lavazemjanebi.png")} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlighting/6") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/bulbiranshop/1000"+6) ; window.location.reload()       }}>
 
       لوازم جانبی
       </Link>
@@ -601,7 +601,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const LampLED = () => {
         return <div className="whiteMega hc1">
     <div  onMouseEnter={()=>setpic(Lamp)} className="whiteMegaTitle">
-    <Link    onClick={()=> {   history.push("/indoorlightingGreen/1") ; window.location.reload()       }}>
+    <Link    onClick={()=> {   history.push("/GreenShop/1000"+1) ; window.location.reload()       }}>
 
        لامپ
        </Link>
@@ -712,7 +712,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const PanelLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(Panel)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlightingGreen/2") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/GreenShop/1000"+2) ; window.location.reload()       }}>
 
       پنل
       </Link>
@@ -786,7 +786,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const NoorafkanLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(Noorafkan)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlightingGreen/3") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/GreenShop/1000"+3) ; window.location.reload()       }}>
 
      نورافکن
      </Link>
@@ -860,7 +860,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const RiseLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(rise)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlightingGreen/4") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/GreenShop/1000"+4) ; window.location.reload()       }}>
 
     ریسه
     </Link>
@@ -934,7 +934,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const CheraghLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(Cheragh)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlightingGreen/5") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/GreenShop/1000"+5) ; window.location.reload()       }}>
 
       چراغ
       </Link>
@@ -1008,7 +1008,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const AvizLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(Loster)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlightingGreen/6") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/GreenShop/1000"+6) ; window.location.reload()       }}>
 
       آویز
       </Link>
@@ -1082,7 +1082,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const JanebiLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(Janebi)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/indoorlightingGreen/7") ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/GreenShop/1000"+7) ; window.location.reload()       }}>
 
       لوازم جانبی
       </Link>

@@ -39,6 +39,8 @@ const BulbiranShop = () => {
     const [val,setVal]=useState(0)
     const uu=useParams().id;
     const params = uu=="all"?2:uu;
+    console.log(658)
+    // console.log(params.substring(4,5))
     const [menu,setMenu]=useState([])
     const history = useHistory();
   //   const mainSliderCount=()=>{
@@ -69,7 +71,7 @@ const BulbiranShop = () => {
         const axios = require("axios");
         if(page==1){
           axios
-          .get(apiUrl + "CategoryProduct/"+params)
+          .get(apiUrl +(params.length>4?"mainCategoryProduct/"+params.substring(4,5): "CategoryProduct/"+params))
       .then(function (response) {
         if (response.data.result == "true") {
   
@@ -90,7 +92,7 @@ const BulbiranShop = () => {
         }
     
           axios
-              .get(apiUrl + "CategoryProduct/"+params+"?page="+page)
+              .get(apiUrl +(params.length>4?"mainCategoryProduct/"+params.substring(4,5)+"?page="+page: "CategoryProduct/"+params+"?page="+page))
           .then(function (response) {
             if (response.data.result == "true") {
 
@@ -129,12 +131,13 @@ const BulbiranShop = () => {
             console.log(error);
           });
           axios
-          .get(apiUrl + "SubGroup/"+params)
+          .get(apiUrl +(params.length>4?"Group/"+params.substring(4,5): "SubGroup/"+params))
       .then(function (response) {
         if (response.data.result == "true") {
 
             setGroup(response.data.Data)
-
+            console.log(356);
+            console.log(response.data.Data);
       }
       else{
         console.log(response.data.result)
@@ -358,7 +361,7 @@ console.log(page)
         <span className="gTitle">فروشگاه بالبیران</span>
     </div>
     <div>
-        <span className="gTitle2">{group[0]?.SmallerGroup} </span>
+        <span className="gTitle2">{params.length>4?group[0]?.Title:group[0]?.SmallerGroup} </span>
     </div>
     </div>
           </div>
@@ -374,7 +377,7 @@ console.log(page)
 
             group?.map((item, i) => {
               return (
-                              <Link onClick={()=>history.push( "/indoorlighting/"+item.SubGroupID)}>
+                              <Link onClick={()=>{history.push( "/bulbiranshop/1000"+item.SubGroupID);window.location.reload()}}>
                 <div>
                                 <img src={apiAsset+item.Photo}/>
                                 <p>{item.Title}</p>

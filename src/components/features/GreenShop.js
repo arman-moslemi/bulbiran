@@ -60,7 +60,7 @@ const GreenShop = () => {
         const axios = require("axios");
         if(page==1){
           axios
-          .get(apiUrl + "CategoryGreenShop/"+params)
+          .get(apiUrl +(params.length>4?"mainCategoryGreenShop/"+params.substring(4,5): "CategoryGreenShop/"+params))
       .then(function (response) {
         if (response.data.result == "true") {
   
@@ -80,7 +80,7 @@ const GreenShop = () => {
         }
   
           axios
-              .get(apiUrl + "CategoryGreenShop/"+params+"?page="+page)
+              .get(apiUrl + (params.length>4?"mainCategoryGreenShop/"+params.substring(4,5)+"?page="+page:"CategoryGreenShop/"+params+"?page="+page))
           .then(function (response) {
             if (response.data.result == "true") {
 
@@ -119,7 +119,7 @@ const GreenShop = () => {
           });
       
           axios
-          .get(apiUrl + "SubGreenGroup/"+params)
+          .get(apiUrl +(params.length>4?"GreenGroup/"+params.substring(4,5): "SubGreenGroup/"+params))
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -343,7 +343,9 @@ console.log(check.length)
         <span className="gTitle">فروشگاه سبز</span>
     </div>
     <div>
-        <span className="gTitle2">{group[0]?.SmallerGroup}</span>
+        {/* <span className="gTitle2">{group[0]?.SmallerGroup}</span> */}
+        <span className="gTitle2">{params.length>4?group[0]?.Title:group[0]?.SmallerGroup} </span>
+
     </div>
     </div>
           </div>
@@ -359,7 +361,11 @@ console.log(check.length)
 
             group?.map((item, i) => {
               return (
-                              <Link onClick={()=>history.push( "/indoorlightingGreen/"+item.SubGreenGroupID)}>
+                              <Link
+                              //  onClick={()=>history.push( "/indoorlightingGreen/"+item.SubGreenGroupID)}
+                              onClick={()=>{history.push( "/GreenShop/1000"+item.SubGreenGroupID);window.location.reload()}}
+                              >
+                                
                 <div>
                                 <img src={apiAsset+item.Photo}/>
                                 <p>{item.Title}</p>
