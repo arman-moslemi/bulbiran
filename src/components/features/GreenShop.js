@@ -46,7 +46,9 @@ const GreenShop = () => {
     const [product,setProduct]=useState([])
     const [val,setVal]=useState(0)
     const uu=useParams().id;
-    const params = uu=="all"?1:uu;
+    // const params = uu=="all"?1:uu;
+    const params = uu=="all"?"1لامپ":uu;
+
         const [group,setGroup]=useState([])
     const [property,setProperty]=useState([])
     const [propertySel,setPropertySel]=useState([])
@@ -60,7 +62,7 @@ const GreenShop = () => {
         const axios = require("axios");
         if(page==1){
           axios
-          .get(apiUrl +(params.length>4?"mainCategoryGreenShop/"+params.substring(4,5): "CategoryGreenShop/"+params))
+          .get(apiUrl +(params.substring(0,1)=="1"?"mainCategoryGreenShopbyName/"+params.substring(1,params.length): "CategoryGreenShopbyName/"+params))
       .then(function (response) {
         if (response.data.result == "true") {
   
@@ -80,7 +82,7 @@ const GreenShop = () => {
         }
   
           axios
-              .get(apiUrl + (params.length>4?"mainCategoryGreenShop/"+params.substring(4,5)+"?page="+page:"CategoryGreenShop/"+params+"?page="+page))
+              .get(apiUrl + (params.substring(0,1)=="1"?"mainCategoryGreenShopbyName/"+params.substring(1,params.length)+"?page="+page:"CategoryGreenShopbyName/"+params+"?page="+page))
           .then(function (response) {
             if (response.data.result == "true") {
 
@@ -99,8 +101,23 @@ const GreenShop = () => {
                 //   :
                 //   null
                 // })
+                
                   setMenu(response.data.Data)
-          
+                  axios
+                  .get(apiUrl + "SubGreenGroupProperty/"+response.data.Data[0]?.GreenGroupID)
+              .then(function (response) {
+                if (response.data.result == "true") {
+            
+                    setProperty(response.data.Data)
+            
+              }
+              else{
+                console.log(response.data.result)
+            
+              }})
+              .catch(function (error) {
+                console.log(error);
+              });
             }
             else{
               console.log(response.data.result)
@@ -119,7 +136,7 @@ const GreenShop = () => {
           });
       
           axios
-          .get(apiUrl +(params.length>4?"GreenGroup/"+params.substring(4,5): "SubGreenGroup/"+params))
+          .get(apiUrl +(params.substring(0,1)=="1"?"GreenGroupbyName/"+params.substring(1,params.length): "SubGreenGroupbyName/"+params))
       .then(function (response) {
         if (response.data.result == "true") {
 
@@ -135,21 +152,7 @@ const GreenShop = () => {
       .catch(function (error) {
         console.log(error);
       });
-      axios
-      .get(apiUrl + "SubGreenGroupProperty/"+params)
-  .then(function (response) {
-    if (response.data.result == "true") {
-
-        setProperty(response.data.Data)
-
-  }
-  else{
-    console.log(response.data.result)
-
-  }})
-  .catch(function (error) {
-    console.log(error);
-  });
+   
       }
       const mainCat=(id)=>{
         const axios = require("axios");
@@ -297,14 +300,14 @@ console.log(check.length)
                 {
                uu=="all"?
                 group?.map((item, i) => {
-                return (
+                  return (
               
-                <RadioButton value={item.SubGreenGroupID.toString()} rootColor="transparent"
+                <RadioButton value={item?.SubGreenGroupID?.toString()} rootColor="transparent"
               //    onChange={()=>mainCat(1)}
                   pointColor="#ffb921">
-                {item.Title}
+                {item.SmallerGroup}
                 </RadioButton>
-              
+            
                                   );
               
                           })
@@ -344,7 +347,7 @@ console.log(check.length)
     </div>
     <div>
         {/* <span className="gTitle2">{group[0]?.SmallerGroup}</span> */}
-        <span className="gTitle2">{params.length>4?group[0]?.Title:group[0]?.SmallerGroup} </span>
+        <span className="gTitle2">{params.substring(0,1)=="1"?group[0]?.Title:group[0]?.SmallerGroup} </span>
 
     </div>
     </div>
@@ -361,16 +364,18 @@ console.log(check.length)
 
             group?.map((item, i) => {
               return (
+           
                               <Link
                               //  onClick={()=>history.push( "/indoorlightingGreen/"+item.SubGreenGroupID)}
-                              onClick={()=>{history.push( "/GreenShop/1000"+item.SubGreenGroupID);window.location.reload()}}
+                              onClick={()=>{history.push( "/GreenShop/1"+item.Title);window.location.reload()}}
                               >
                                 
                 <div>
                                 <img src={apiAsset+item.Photo}/>
-                                <p>{item.Title}</p>
+                                <p>{item.SmallerGroup}</p>
                             </div>
                             </Link>
+                         
                                   );
             
             })
@@ -378,7 +383,7 @@ console.log(check.length)
             :
             menu?.map((item, i) => {
   return (
-    <Link onClick={()=>{history.push("/GreenShop/"+item.GreenGroupID);window.location.reload()}}>
+    <Link onClick={()=>{history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_"));window.location.reload()}}>
     <div>
         <img src={apiAsset+item.Photo}/>
         <p>{item.SmallerGroup}</p>

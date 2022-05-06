@@ -38,9 +38,9 @@ const BulbiranShop = () => {
     const swiper = useRef(null);
     const [val,setVal]=useState(0)
     const uu=useParams().id;
-    const params = uu=="all"?2:uu;
+    const params = uu=="all"?"1"+"لامپ":uu;
     console.log(658)
-    // console.log(params.substring(4,5))
+    console.log(params.substring(0,1))
     const [menu,setMenu]=useState([])
     const history = useHistory();
   //   const mainSliderCount=()=>{
@@ -71,7 +71,7 @@ const BulbiranShop = () => {
         const axios = require("axios");
         if(page==1){
           axios
-          .get(apiUrl +(params.length>4?"mainCategoryProduct/"+params.substring(4,5): "CategoryProduct/"+params))
+          .get(apiUrl +(params.substring(0,1)=="1"?"mainCategoryProductbyName/"+params.substring(1,params.length): "CategoryProductbyName/"+params))
       .then(function (response) {
         if (response.data.result == "true") {
   
@@ -92,7 +92,7 @@ const BulbiranShop = () => {
         }
     
           axios
-              .get(apiUrl +(params.length>4?"mainCategoryProduct/"+params.substring(4,5)+"?page="+page: "CategoryProduct/"+params+"?page="+page))
+              .get(apiUrl +(params.substring(0,1)=="1"?"mainCategoryProductbyName/"+params.substring(1,params.length)+"?page="+page: "CategoryProductbyName/"+params+"?page="+page))
           .then(function (response) {
             if (response.data.result == "true") {
 
@@ -112,7 +112,28 @@ const BulbiranShop = () => {
                 //   :
                 //   null
                 // })
+                console.log(response.data.Data)
+                console.log(88888)
+
                   setMenu(response.data.Data)
+                  axios
+                  .get(apiUrl + "SubGroupProperty/"+response.data.Data[0]?.GroupID)
+              .then(function (response) {
+                if (response.data.result == "true") {
+            
+                    setProperty(response.data.Data)
+                    console.log(2222)
+                    console.log(response.data.Data)
+      
+            
+              }
+              else{
+                console.log(response.data.result)
+            
+              }})
+              .catch(function (error) {
+                console.log(error);
+              });
           
             }
             else{
@@ -122,6 +143,7 @@ const BulbiranShop = () => {
             .catch(function (error) {
               console.log(error);
             });
+         
           }
           else{
             console.log(response.data.result)
@@ -131,12 +153,13 @@ const BulbiranShop = () => {
             console.log(error);
           });
           axios
-          .get(apiUrl +(params.length>4?"Group/"+params.substring(4,5): "SubGroup/"+params))
+          .get(apiUrl +(params.substring(0,1)=="1"?"GroupbyName/"+params.substring(1,params.length): "SubGroupbyName/"+params))
       .then(function (response) {
         if (response.data.result == "true") {
 
             setGroup(response.data.Data)
             console.log(356);
+            console.log(params.substring(0,1)=="1"?"GroupbyName/"+params.substring(1,params.length): "SubGroupbyName/"+params);
             console.log(response.data.Data);
       }
       else{
@@ -146,21 +169,7 @@ const BulbiranShop = () => {
       .catch(function (error) {
         console.log(error);
       });
-      axios
-      .get(apiUrl + "SubGroupProperty/"+params)
-  .then(function (response) {
-    if (response.data.result == "true") {
-
-        setProperty(response.data.Data)
-
-  }
-  else{
-    console.log(response.data.result)
-
-  }})
-  .catch(function (error) {
-    console.log(error);
-  });
+   
       }
       const mainCat=(id)=>{
         const axios = require("axios");
@@ -314,10 +323,10 @@ console.log(page)
                 group?.map((item, i) => {
                 return (
               
-                <RadioButton value={item.SubGroupID.toString()} rootColor="transparent"
+                <RadioButton value={item.SubGroupID?.toString()} rootColor="transparent"
               //    onChange={()=>mainCat(1)}
                   pointColor="#ffb921">
-                {item.Title}
+                {item.SmallerGroup}
                 </RadioButton>
               
                                   );
@@ -331,7 +340,7 @@ console.log(page)
                   
                 <RadioButton value={item?.GroupID.toString()} rootColor="transparent"
                 //  onChange={()=>mainCat(1)}
-                 onChange={()=>{history.push("/bulbiranshop/"+item.GroupID);window.location.reload()}}
+                 onChange={()=>{history.push("/bulbiranshop/"+item.SmallerGroup.replace(" ","_"));window.location.reload()}}
                   pointColor="#ffb921">
                 {item?.SmallerGroup}
                 </RadioButton>
@@ -377,10 +386,10 @@ console.log(page)
 
             group?.map((item, i) => {
               return (
-                              <Link onClick={()=>{history.push( "/bulbiranshop/1000"+item.SubGroupID);window.location.reload()}}>
+                              <Link onClick={()=>{history.push( "/bulbiranshop/1"+item.Title);window.location.reload()}}>
                 <div>
                                 <img src={apiAsset+item.Photo}/>
-                                <p>{item.Title}</p>
+                                <p>{item.SmallerGroup}</p>
                             </div>
                             </Link>
                                   );
@@ -390,7 +399,7 @@ console.log(page)
             :
             menu?.map((item, i) => {
   return (
-                <Link onClick={()=>{history.push("/bulbiranshop/"+item.GroupID);window.location.reload()}}>
+                <Link onClick={()=>{history.push("/bulbiranshop/"+item.SmallerGroup.replace(" ","_"));window.location.reload()}}>
                 <div>
                     <img src={apiAsset+item.Photo}/>
                     <p>{item.SmallerGroup}</p>

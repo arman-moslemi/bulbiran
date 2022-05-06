@@ -112,7 +112,7 @@ const Menu = () => {
     const LampM = () => {
         return <div className="whiteMega" >
     <div onMouseEnter={()=>setpic(apiAsset+"lamp.png")} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/bulbiranshop/1000"+1) ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/bulbiranshop/1"+"لامپ") ; window.location.reload()       }}>
 
        لامپ
        </Link>
@@ -128,7 +128,7 @@ const Menu = () => {
                   i<5?
                       <>
                <li>
-                   <Link  onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> {  history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()       }}>{item.SmallerGroup}</Link>
+                   <Link  onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> {  history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_")) ; window.location.reload()       }}>{item.SmallerGroup}</Link>
                </li>
                {/* <li>
                    <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/3")}>لامپ کم مصرف</a>
@@ -156,9 +156,9 @@ const Menu = () => {
                       <>
                <li>
                    <Link
-          to={`/BulbiranShop/${item.GroupID}`}
+          to={`/BulbiranShop/${item.SmallerGroup}`}
                    onMouseEnter={()=>setpic(Lampd)} onMouseOut={()=>setpic(Lamp)} onClick={()=> {
-history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{item.SmallerGroup}</Link>
+history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_")) ; window.location.reload()    }}>{item.SmallerGroup}</Link>
                </li>
                {/* <li>
                    <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/3")}>لامپ کم مصرف</a>
@@ -185,7 +185,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<14&& i>9?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }  }>{item.SmallerGroup}</a>
                </li>
                {/* <li>
                    <a   onMouseEnter={()=>setpic(Lamp1)} onMouseOut={()=>setpic(Lamp)} onClick={()=>  history.push("/BulbiranShop/3")}>لامپ کم مصرف</a>
@@ -212,7 +212,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<19&& i>13?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(Lamp)} onClick={()=>{  history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }  }>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -231,7 +231,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const DakheliM = () => {
         return <div className="whiteMega">
     <div onMouseEnter={()=>setpic(apiAsset+"inner.png")} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/bulbiranshop/1000"+2) ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/bulbiranshop/1"+"روشنایی_داخلی") ; window.location.reload()       }}>
 
       روشنایی داخلی
       </Link>
@@ -247,7 +247,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<5?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history.push("/BulbiranShop/"+item.GroupID); window.location.reload()}   }>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload()}   }>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -266,7 +266,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>4 &&  i<10?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }  }>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }  }>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -285,7 +285,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<15&& i>9?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=> { history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -305,7 +305,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const KharejiM = () => {
         return <div className="whiteMega">
     <div  onMouseEnter={()=>setpic(apiAsset+"outdoor.png")}  className="whiteMegaTitle">
-    <Link  onClick={()=> {   history.push("/bulbiranshop/1000"+3) ; window.location.reload()       }}>
+    <Link  onClick={()=> {   history.push("/bulbiranshop/1"+"روشنایی_خارجی") ; window.location.reload()       }}>
 
      روشنایی خارجی
      </Link>
@@ -321,7 +321,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -340,7 +340,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -359,7 +359,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -378,7 +378,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const TazeinM = () => {
         return <div className="whiteMega">
     <div  onMouseEnter={()=>setpic(apiAsset+"tazein.png")} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/bulbiranshop/1000"+4) ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/bulbiranshop/1"+"روشنایی_تزئینی") ; window.location.reload()       }}>
 
       روشنایی تزئینی
       </Link>
@@ -394,7 +394,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<5?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -413,7 +413,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>4 &&  i<9?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.SmallerGroup)}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -432,7 +432,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<14&& i>8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.SmallerGroup); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -451,7 +451,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const KhasM = () => {
         return <div className="whiteMega">
     <div onMouseEnter={()=>setpic(apiAsset+"rise.png")}className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/bulbiranshop/1000"+5) ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/bulbiranshop/1"+"روشنایی_خاص") ; window.location.reload()       }}>
 
       روشنایی خاص
       </Link>
@@ -467,7 +467,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -486,7 +486,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -505,7 +505,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.GroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -525,7 +525,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const JanebiM = () => {
         return <div className="whiteMega">
     <div onMouseEnter={()=>setpic(apiAsset+"lavazemjanebi.png")} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/bulbiranshop/1000"+6) ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/bulbiranshop/1"+"لوازم_جانبی") ; window.location.reload()       }}>
 
       لوازم جانبی
       </Link>
@@ -541,7 +541,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_"))}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -560,7 +560,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_"))}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -579,7 +579,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.GroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/BulbiranShop/"+item.SmallerGroup.replace(" ","_"))}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -601,7 +601,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const LampLED = () => {
         return <div className="whiteMega hc1">
     <div  onMouseEnter={()=>setpic(Lamp)} className="whiteMegaTitle">
-    <Link    onClick={()=> {   history.push("/GreenShop/1000"+1) ; window.location.reload()       }}>
+    <Link    onClick={()=> {   history.push("/GreenShop/1"+"لامپ") ; window.location.reload()       }}>
 
        لامپ
        </Link>
@@ -617,7 +617,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<5?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -636,7 +636,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>4 &&  i<10?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -655,7 +655,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<15&& i>9?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -674,7 +674,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<19&& i>13?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -693,7 +693,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>19?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -712,7 +712,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const PanelLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(Panel)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/GreenShop/1000"+2) ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/GreenShop/1"+"پنل") ; window.location.reload()       }}>
 
       پنل
       </Link>
@@ -728,7 +728,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -747,7 +747,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_"))}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -766,7 +766,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -786,7 +786,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const NoorafkanLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(Noorafkan)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/GreenShop/1000"+3) ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/GreenShop/1"+"نورافکن") ; window.location.reload()       }}>
 
      نورافکن
      </Link>
@@ -802,7 +802,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -821,7 +821,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -840,7 +840,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -860,7 +860,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const RiseLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(rise)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/GreenShop/1000"+4) ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/GreenShop/1"+"ریسه") ; window.location.reload()       }}>
 
     ریسه
     </Link>
@@ -876,7 +876,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -895,7 +895,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -914,7 +914,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -934,7 +934,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const CheraghLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(Cheragh)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/GreenShop/1000"+5) ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/GreenShop/1"+"چراغ") ; window.location.reload()       }}>
 
       چراغ
       </Link>
@@ -950,7 +950,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -969,7 +969,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -988,7 +988,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -1008,7 +1008,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const AvizLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(Loster)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/GreenShop/1000"+6) ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/GreenShop/1"+"آویز") ; window.location.reload()       }}>
 
       آویز
       </Link>
@@ -1024,7 +1024,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -1043,7 +1043,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -1062,7 +1062,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -1082,7 +1082,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
       const JanebiLED = () => {
         return <div className="whiteMega hc1">
     <div onMouseEnter={()=>setpic(Janebi)} className="whiteMegaTitle">
-    <Link   onClick={()=> {   history.push("/GreenShop/1000"+7) ; window.location.reload()       }}>
+    <Link   onClick={()=> {   history.push("/GreenShop/1"+"لوازم_جانبی") ; window.location.reload()       }}>
 
       لوازم جانبی
       </Link>
@@ -1098,7 +1098,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                   i<4?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -1117,7 +1117,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                 i>3 &&  i<8?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.GreenGroupID)}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_"))}>{item.SmallerGroup}</a>
                </li>
 
                </>
@@ -1136,7 +1136,7 @@ history.push("/BulbiranShop/"+item.GroupID) ; window.location.reload()    }}>{it
                i<13&& i>7?
                       <>
                <li>
-                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.GreenGroupID); window.location.reload() }}>{item.SmallerGroup}</a>
+                   <a   onMouseEnter={()=>setpic(apiAsset+item.Photo)} onMouseOut={()=>setpic(apiAsset+item.Photo)} onClick={()=>  {history.push("/GreenShop/"+item.SmallerGroup.replace(" ","_")); window.location.reload() }}>{item.SmallerGroup}</a>
                </li>
 
                </>

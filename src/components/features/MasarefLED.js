@@ -306,7 +306,7 @@ const MasarefLED = () => {
             <Col md={3}>
             <div className="techWhite h10">
             <Row className="alignCenter">
-                <Col md={6} xs={6} className="ta-center" onClick={()=>  history.push("/greenshop/1")}>
+                <Col md={6} xs={6} className="ta-center" onClick={()=>  history.push("/greenshop/1"+"لامپ")}>
                     <span className="desP">دکوراتیو</span>
                 </Col>
                 <Col md={6} xs={6}>
@@ -318,7 +318,7 @@ const MasarefLED = () => {
             <Col md={3}>
             <div className="techWhite h10">
             <Row className="alignCenter">
-                <Col md={6} xs={6} className="ta-center"  onClick={()=>  history.push("/greenshop/1")}>
+                <Col md={6} xs={6} className="ta-center"  onClick={()=>  history.push("bulbiranshop/1روشنایی_تزئینی")}>
                     <span className="desP">تزئینی</span>
                 </Col>
                 <Col md={6} xs={6}>
@@ -328,7 +328,7 @@ const MasarefLED = () => {
             </div>
             </Col>
             <Col md={3}>
-            <div className="techWhite h10" onClick={()=>  history.push("/greenshop/1")}>
+            <div className="techWhite h10" onClick={()=>  history.push("/greenshop/1"+"لوازمـجانبی")}>
             <Row className="alignCenter">
                 <Col md={6} xs={6} className="ta-center">
                     <span className="desP">دیمرپذیر</span>
@@ -340,7 +340,7 @@ const MasarefLED = () => {
             </div>
             </Col>
             <Col md={3}>
-            <div className="techWhite h10" onClick={()=>  history.push("/greenshop/1")}>
+            <div className="techWhite h10" onClick={()=>  history.push("/greenshop/1"+"لوازمـجانبی")}>
             <Row className="alignCenter">
                 <Col md={6} xs={6} className="ta-center">
                     <span className="desP">اضطراری</span>
